@@ -1,5 +1,7 @@
+import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/Services/user_info_services.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Home_screen.dart';
+import 'package:eagle_tip/UI/views/pre_auth_screens/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -25,11 +27,15 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: HomeScreen(),
+        initialRoute: AppRoutes.loginscreen,
+        routes: {
+          AppRoutes.loginscreen: (context) => LoginScreen(),
+        },
       ),
     );
   }
