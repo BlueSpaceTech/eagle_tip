@@ -75,7 +75,7 @@ class LoginScreen extends StatelessWidget {
               SizedBox(
                 height: height * 0.06,
               ),
-              CustomSubmitButton(width: width),
+              CustomSubmitButton(width: width,title: "Login",),
               SizedBox(
                 height: height * 0.04,
               ),

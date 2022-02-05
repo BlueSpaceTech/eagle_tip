@@ -1,7 +1,10 @@
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/Services/user_info_services.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Home_screen.dart';
+import 'package:eagle_tip/UI/views/pre_auth_screens/create_account.dart';
+import 'package:eagle_tip/UI/views/pre_auth_screens/employer_code.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/login_screen.dart';
+import 'package:eagle_tip/UI/views/pre_auth_screens/uploadimage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -32,9 +35,12 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: AppRoutes.loginscreen,
+        initialRoute: AppRoutes.uploadpicture,
         routes: {
           AppRoutes.loginscreen: (context) => LoginScreen(),
+          AppRoutes.employercode: (context) => EmployerCode(),
+          AppRoutes.createAccount: (context) => CreateAccount(),
+          AppRoutes.uploadpicture: (context) => UploadImage(),
         },
       ),
     );

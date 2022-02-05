@@ -1,34 +1,10 @@
-/*
-DocumentReference dbRef = FirebaseFirestore.instance
-                        .collection('users')
-                        .doc("ABC121");
-
-                    dbRef.get().then((data) {
-                      if (data.exists) {
-                        setState(() {
-                          name.text = data.get("name");
-                          email.text = data.get("email");
-                          password.text = data.get("password");
-                          url.text = data.get("dpurl");
-                        });
-                      } else {
-                        print("not");
-
-                        SnackBar(content: Text("f"));
-                      }
-                    });
-                     FirebaseFirestore.instance
-                        .collection("users")
-                        .doc("df")
-                        .set({"name": "f"}, SetOptions(merge: true));
-*/
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
 import 'package:eagle_tip/UI/Widgets/customfaqbottom.dart';
 import 'package:eagle_tip/UI/Widgets/customsubmitbutton.dart';
 import 'package:flutter/material.dart';
 
-class EmployerCode extends StatelessWidget {
-  const EmployerCode({Key? key}) : super(key: key);
+class CreateAccount extends StatelessWidget {
+  const CreateAccount({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -56,10 +32,10 @@ class EmployerCode extends StatelessWidget {
               ),
               Image.asset("assets/Logo 2 1.png"),
               SizedBox(
-                height: height * 0.08,
+                height: height * 0.03,
               ),
               Text(
-                "Enter Employer Code",
+                "Enter Your Information",
                 style: TextStyle(
                     fontSize: 18,
                     color: Colors.white,
@@ -69,13 +45,20 @@ class EmployerCode extends StatelessWidget {
               SizedBox(
                 height: height * 0.02,
               ),
-              CustomTextField(width: width, height: height, labelText: "Code"),
+              CustomTextField(width: width, height: height, labelText: "Name"),
+              SizedBox(height: height * 0.01),
+              CustomTextField(width: width, height: height, labelText: "Email"),
+              SizedBox(height: height * 0.01),
+              CustomTextField(width: width, height: height, labelText: "Phone"),
+              SizedBox(height: height * 0.01),
+              CustomTextField(
+                  width: width, height: height, labelText: "Password"),
               SizedBox(
-                height: height * 0.22,
+                height: height * 0.05,
               ),
               CustomSubmitButton(
                 width: width,
-                title: "Submit",
+                title: "Create Account",
               ),
             ],
           ),
