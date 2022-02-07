@@ -1,5 +1,6 @@
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/Services/user_info_services.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/bottomNav.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Home_screen.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/create_account.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/employer_code.dart';
@@ -35,12 +36,14 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: AppRoutes.uploadpicture,
+        initialRoute: AppRoutes.bottomNav,
         routes: {
           AppRoutes.loginscreen: (context) => LoginScreen(),
           AppRoutes.employercode: (context) => EmployerCode(),
           AppRoutes.createAccount: (context) => CreateAccount(),
           AppRoutes.uploadpicture: (context) => UploadImage(),
+          AppRoutes.bottomNav: (context) => BottomNav(),
+          AppRoutes.homeScreen: (context) => HomeScreen(),
         },
       ),
     );

@@ -1,4 +1,8 @@
+// ignore_for_file: prefer_const_constructors, duplicate_ignore, unused_import, prefer_const_literals_to_create_immutables
+
 import 'package:eagle_tip/Services/authentication.dart';
+import 'package:eagle_tip/Utils/common.dart';
+import 'package:eagle_tip/Utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -13,49 +17,86 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final TextEditingController name = new TextEditingController();
-  final TextEditingController email = new TextEditingController();
-  final TextEditingController password = new TextEditingController();
-  final TextEditingController url = new TextEditingController();
-
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: GestureDetector(
-        onTap: () {},
-        child: Center(
-          child: Column(
-            children: [
-              TextField(
-                controller: name,
-              ),
-              TextField(
-                controller: email,
-              ),
-              TextField(
-                controller: password,
-              ),
-              TextField(
-                controller: url,
-              ),
-              TextButton(
-                  onPressed: () {
-                    /*
-                    AuthService.handleSignUp(
-                        name: name.text,
-                        email: email.text,
-                        userRole: UserRole.SA,
-                        phonenumber: 12,
-                        context: context,
-                        employercode: "abc33");
-                        */
-                  },
-                  child: Text("Clikc")),
-              SizedBox(
-                height: 20,
-              ),
-              TextButton(onPressed: () {}, child: Text("set"))
-            ],
+      body: SafeArea(
+        child: Container(
+          color: backGround_color,
+          child: Padding(
+            padding: EdgeInsets.only(top: 10.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  children: [
+                    SizedBox(
+                      width: width * 0.27,
+                    ),
+                    Image.asset(Common.assetImages + "Logo 2 2.png"),
+                    SizedBox(
+                      width: width * 0.2,
+                    ),
+                    Image.asset(
+                      Common.assetImages + "Vector.png",
+                      width: width * 0.045,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: height * 0.06,
+                ),
+                Column(
+                  children: [
+                    Text(
+                      "Acres Marathon",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17.0,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: "Poppins"),
+                    ),
+                    Text(
+                      "Tampa, FL",
+                      style: TextStyle(
+                          color: Color(0xFF6E7191),
+                          fontSize: 13.0,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: "Poppins"),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: height * 0.1,
+                ),
+                Stack(
+                  children: [
+                    Image.asset(
+                      Common.assetImages + "Ellipse 49.png",
+                      width: width * 0.7,
+                    ),
+                    Positioned(
+                      top: height * 0.11,
+                      left: width * 0.139,
+                      child: SizedBox(
+                        width: width * 0.4,
+                        child: Text(
+                          "Request Fuel",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 34.0,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                              fontFamily: "Poppins"),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
