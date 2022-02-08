@@ -1,3 +1,4 @@
+import 'package:eagle_tip/Services/authentication_helper.dart';
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
 import 'package:eagle_tip/UI/Widgets/customfaqbottom.dart';
 import 'package:eagle_tip/UI/Widgets/customsubmitbutton.dart';
@@ -11,13 +12,14 @@ class UploadImage extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.black12,
+      backgroundColor: Color(0xff2B343B),
       bottomNavigationBar: CustomFAQbottom(),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(
               left: width * 0.1, right: width * 0.1, top: height * 0.08),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 child: Row(
@@ -41,7 +43,42 @@ class UploadImage extends StatelessWidget {
                 height: height * 0.1,
               ),
               Text(
-                "Add Selfie",
+                "Hey Ben,",
+                style: TextStyle(
+                    fontSize: 24,
+                    color: Color(0xff92B8FF),
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.w500),
+              ),
+              Text(
+                "Upload a profile picture and set a password for your account.",
+                style: TextStyle(
+                    fontSize: 16,
+                    color: Color(0xffDEDEDE),
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.w400),
+              ),
+              SizedBox(
+                height: height * 0.04,
+              ),
+              Container(
+                alignment: Alignment.bottomRight,
+                width: width * 0.38,
+                height: height * 0.18,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/Camera.png"),
+                  ),
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+                child: Image.asset("assets/addblue.png"),
+              ),
+              SizedBox(
+                height: height * 0.04,
+              ),
+              Text(
+                "Set password",
                 style: TextStyle(
                     fontSize: 18,
                     color: Colors.white,
@@ -51,41 +88,17 @@ class UploadImage extends StatelessWidget {
               SizedBox(
                 height: height * 0.02,
               ),
-              Container(
-                alignment: Alignment.center,
-                width: width * 0.7,
-                height: height * 0.2,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                ),
-                child: Image.asset("assets/Camera.png"),
-              ),
+              CustomTextField(
+                  width: width, height: height, labelText: "Password"),
               SizedBox(
-                height: height * 0.04,
+                height: height * 0.01,
               ),
-              Container(
-                alignment: Alignment.center,
-                height: height * 0.08,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
+              GestureDetector(
+                onTap: () {},
+                child: CustomSubmitButton(
+                  width: width,
+                  title: "Done",
                 ),
-                child: Text(
-                  "Upload Profile Picture",
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.white,
-                    fontFamily: "Poppins",
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: height * 0.12,
-              ),
-              CustomSubmitButton(
-                width: width,
-                title: "Continue",
               ),
             ],
           ),

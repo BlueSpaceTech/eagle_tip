@@ -35,7 +35,7 @@ class EmployerCode extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.black12,
+      backgroundColor: Color(0xff2B343B),
       bottomNavigationBar: CustomFAQbottom(),
       body: SingleChildScrollView(
         child: Padding(
@@ -52,11 +52,11 @@ class EmployerCode extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: height * 0.1,
+                height: height * 0.06,
               ),
               Image.asset("assets/Logo 2 1.png"),
               SizedBox(
-                height: height * 0.08,
+                height: height * 0.15,
               ),
               Text(
                 "Enter Employer Code",
@@ -71,11 +71,11 @@ class EmployerCode extends StatelessWidget {
               ),
               CustomTextField(width: width, height: height, labelText: "Code"),
               SizedBox(
-                height: height * 0.22,
+                height: height * 0.015,
               ),
               CustomSubmitButton(
                 width: width,
-                title: "Submit",
+                title: "Next",
               ),
             ],
           ),

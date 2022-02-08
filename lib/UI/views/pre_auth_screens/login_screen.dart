@@ -11,7 +11,7 @@ class LoginScreen extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.black12,
+      backgroundColor: Color(0xff2B343B),
       bottomNavigationBar: CustomFAQbottom(),
       body: SingleChildScrollView(
         child: Padding(
@@ -24,7 +24,7 @@ class LoginScreen extends StatelessWidget {
                 height: height * 0.06,
               ),
               Text(
-                "Enter Credentials",
+                "Enter your Credentials",
                 style: TextStyle(
                     fontSize: 18,
                     color: Colors.white,
@@ -58,8 +58,18 @@ class LoginScreen extends StatelessWidget {
               SizedBox(
                 height: height * 0.015,
               ),
+              SizedBox(
+                height: height * 0.06,
+              ),
+              CustomSubmitButton(
+                width: width,
+                title: "Login",
+              ),
+              SizedBox(
+                height: height * 0.04,
+              ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "Forgot Password?",
@@ -73,20 +83,29 @@ class LoginScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: height * 0.06,
+                height: height * 0.01,
               ),
-              CustomSubmitButton(width: width,title: "Login",),
-              SizedBox(
-                height: height * 0.04,
-              ),
-              Text(
-                "Are you new?",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: "Poppins",
-                  fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.underline,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Are you new?",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: "Poppins",
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  Text(
+                    "Create Account",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: "Poppins",
+                      fontWeight: FontWeight.w500,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

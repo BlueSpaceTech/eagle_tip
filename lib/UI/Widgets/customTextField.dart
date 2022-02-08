@@ -28,7 +28,7 @@ class CustomTextField extends StatelessWidget {
           border: InputBorder.none,
           labelText: labelText,
           labelStyle: TextStyle(
-              color: Color(0xff6E7191),
+              color: Color(0xff28519D),
               fontFamily: "Poppins",
               fontWeight: FontWeight.w500),
         ),

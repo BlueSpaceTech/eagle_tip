@@ -3,8 +3,8 @@ import 'package:eagle_tip/UI/Widgets/customfaqbottom.dart';
 import 'package:eagle_tip/UI/Widgets/customsubmitbutton.dart';
 import 'package:flutter/material.dart';
 
-class CreateAccount extends StatelessWidget {
-  const CreateAccount({Key? key}) : super(key: key);
+class EmailSent extends StatelessWidget {
+  const EmailSent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +18,7 @@ class CreateAccount extends StatelessWidget {
           padding: EdgeInsets.only(
               left: width * 0.1, right: width * 0.1, top: height * 0.08),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
                 children: [
@@ -32,30 +33,35 @@ class CreateAccount extends StatelessWidget {
               ),
               Image.asset("assets/Logo 2 1.png"),
               SizedBox(
-                height: height * 0.1,
+                height: height * 0.08,
+              ),
+              Image.asset("assets/mailsent.png"),
+              SizedBox(
+                height: height * 0.04,
               ),
               Text(
-                "Get Otp on this mobile number",
+                "Check your mail",
                 style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 20,
                     color: Colors.white,
                     fontFamily: "Poppins",
                     fontWeight: FontWeight.w500),
               ),
               SizedBox(
-                height: height * 0.02,
+                height: height * 0.015,
               ),
-              CustomTextField(width: width, height: height, labelText: "Name"),
-              SizedBox(height: height * 0.01),
-              CustomTextField(width: width, height: height, labelText: "Email"),
-              SizedBox(height: height * 0.01),
-              CustomTextField(width: width, height: height, labelText: "Phone"),
-              SizedBox(
-                height: height * 0.05,
-              ),
-              CustomSubmitButton(
-                width: width,
-                title: "Send OTP",
+              Container(
+                width: width * 0.75,
+                alignment: Alignment.topLeft,
+                child: Text(
+                  "An email has been sent. Please click the link when you get it.",
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.white,
+                      fontFamily: "Poppins",
+                      fontWeight: FontWeight.w400),
+                  textAlign: TextAlign.center,
+                ),
               ),
             ],
           ),

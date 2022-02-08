@@ -7,4 +7,6 @@ class AppRoutes {
   static final String uploadpicture = "/upload_picture";
   static final String bottomNav = "/bottomNav";
   static final String homeScreen = "/Home_screen";
+  static final String forgetpass = "forget_pass";
+  static final String mailsent = "/mailsent";
 }

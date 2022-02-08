@@ -3,7 +3,9 @@ import 'package:eagle_tip/Services/user_info_services.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/bottomNav.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Home_screen.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/create_account.dart';
+import 'package:eagle_tip/UI/views/pre_auth_screens/emailsent.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/employer_code.dart';
+import 'package:eagle_tip/UI/views/pre_auth_screens/forgetpassword.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/login_screen.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/uploadimage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -35,8 +37,9 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          backgroundColor: Color(0xff2B343B),
         ),
-        initialRoute: AppRoutes.bottomNav,
+        initialRoute: AppRoutes.mailsent,
         routes: {
           AppRoutes.loginscreen: (context) => LoginScreen(),
           AppRoutes.employercode: (context) => EmployerCode(),
@@ -44,6 +47,8 @@ class MyApp extends StatelessWidget {
           AppRoutes.uploadpicture: (context) => UploadImage(),
           AppRoutes.bottomNav: (context) => BottomNav(),
           AppRoutes.homeScreen: (context) => HomeScreen(),
+          AppRoutes.forgetpass: (context) => ForgetPassword(),
+          AppRoutes.mailsent: (context) => EmailSent(),
         },
       ),
     );
