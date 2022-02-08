@@ -40,8 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: width * 0.2,
                     ),
                     Image.asset(
-                      Common.assetImages + "Vector.png",
-                      width: width * 0.045,
+                      Common.assetImages + "Group 287.png",
+                      width: width * 0.075,
                     ),
                   ],
                 ),
@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
                 SizedBox(
-                  height: height * 0.1,
+                  height: height * 0.07,
                 ),
                 Stack(
                   children: [
@@ -78,8 +78,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: width * 0.7,
                     ),
                     Positioned(
-                      top: height * 0.11,
-                      left: width * 0.139,
+                      top: height * 0.115,
+                      left: width * 0.142,
                       child: SizedBox(
                         width: width * 0.4,
                         child: Text(
@@ -95,9 +95,52 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
+                SizedBox(
+                  height: height * 0.1,
+                ),
+                SiteContainer(
+                  width: width,
+                  height: height,
+                  text: "View Site",
+                ),
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class SiteContainer extends StatelessWidget {
+  const SiteContainer({
+    Key? key,
+    required this.width,
+    required this.text,
+    required this.height,
+  }) : super(key: key);
+
+  final double width;
+  final String text;
+  final double height;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width * 0.72,
+      height: height * 0.062,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16.0),
+        color: Color(0xFF5081DB),
+      ),
+      child: Center(
+        child: Text(
+          text,
+          style: TextStyle(
+              fontSize: 18.0,
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+              fontFamily: "Poppins"),
         ),
       ),
     );

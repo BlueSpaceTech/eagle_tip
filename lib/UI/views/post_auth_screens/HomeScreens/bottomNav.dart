@@ -64,15 +64,18 @@ class _BottomNavState extends State<BottomNav> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.location_on_outlined),
-            label: 'Sites',
+            icon: Image.asset(
+              Common.assetImages + "Group 308.png",
+              width: 16.0,
+            ),
+            label: 'Notifications',
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
               Common.assetImages + "message.png",
               width: 16.0,
             ),
-            label: 'Messages',
+            label: 'Chat',
           ),
         ],
         currentIndex: _selectedIndex,
