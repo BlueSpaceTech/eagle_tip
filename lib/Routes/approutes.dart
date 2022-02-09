@@ -9,4 +9,6 @@ class AppRoutes {
   static final String homeScreen = "/Home_screen";
   static final String forgetpass = "forget_pass";
   static final String mailsent = "/mailsent";
+  static final String tanksRequest = "/tanks_request";
+  static final String ProductRequest = "/product_request";
 }

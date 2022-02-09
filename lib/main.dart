@@ -1,7 +1,9 @@
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/Services/user_info_services.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/bottomNav.dart';
-import 'package:eagle_tip/UI/views/post_auth_screens/Home_screen.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/Home_screen.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Tanks/product_request.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Tanks/tanks_request.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/create_account.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/emailsent.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/employer_code.dart';
@@ -39,7 +41,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           backgroundColor: Color(0xff2B343B),
         ),
-        initialRoute: AppRoutes.mailsent,
+        initialRoute: AppRoutes.tanksRequest,
         routes: {
           AppRoutes.loginscreen: (context) => LoginScreen(),
           AppRoutes.employercode: (context) => EmployerCode(),
@@ -49,6 +51,7 @@ class MyApp extends StatelessWidget {
           AppRoutes.homeScreen: (context) => HomeScreen(),
           AppRoutes.forgetpass: (context) => ForgetPassword(),
           AppRoutes.mailsent: (context) => EmailSent(),
+          AppRoutes.tanksRequest: (context) => TanksRequest(),
         },
       ),
     );

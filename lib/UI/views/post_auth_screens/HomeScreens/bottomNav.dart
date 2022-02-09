@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_final_fields, unused_field, prefer_const_literals_to_create_immutables, unused_local_variable
 
-import 'package:eagle_tip/UI/views/post_auth_screens/Home_screen.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/Home_screen.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:flutter/cupertino.dart';

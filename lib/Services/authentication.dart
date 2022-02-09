@@ -201,7 +201,7 @@ class AuthenticationService {
 */
 import 'package:eagle_tip/Models/users.dart';
 import 'package:eagle_tip/Services/user_info_services.dart';
-import 'package:eagle_tip/UI/views/post_auth_screens/Home_screen.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/Home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
