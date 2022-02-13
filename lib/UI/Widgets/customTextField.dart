@@ -6,11 +6,13 @@ class CustomTextField extends StatelessWidget {
     required this.width,
     required this.height,
     required this.labelText,
+    required this.controller,
   }) : super(key: key);
 
   final double width;
   final double height;
   final String labelText;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class CustomTextField extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(15)),
       ),
       child: TextField(
+        controller: controller,
         style: TextStyle(fontFamily: "Poppins"),
         cursorColor: Colors.black12,
         decoration: InputDecoration(

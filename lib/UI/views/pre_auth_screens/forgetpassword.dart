@@ -8,6 +8,7 @@ class ForgetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController _email = TextEditingController();
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -66,7 +67,11 @@ class ForgetPassword extends StatelessWidget {
               SizedBox(
                 height: height * 0.06,
               ),
-              CustomTextField(width: width, height: height, labelText: "Email"),
+              CustomTextField(
+                  controller: _email,
+                  width: width,
+                  height: height,
+                  labelText: "Email"),
               SizedBox(
                 height: height * 0.02,
               ),

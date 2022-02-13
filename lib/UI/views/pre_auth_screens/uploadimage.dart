@@ -1,12 +1,21 @@
+import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/Services/authentication_helper.dart';
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
 import 'package:eagle_tip/UI/Widgets/customfaqbottom.dart';
 import 'package:eagle_tip/UI/Widgets/customsubmitbutton.dart';
 import 'package:flutter/material.dart';
 
-class UploadImage extends StatelessWidget {
-  const UploadImage({Key? key}) : super(key: key);
+class UploadImage extends StatefulWidget {
+  UploadImage({Key? key, required this.email, required this.employercode})
+      : super(key: key);
+  String email;
+  String employercode;
+  @override
+  State<UploadImage> createState() => _UploadImageState();
+}
 
+class _UploadImageState extends State<UploadImage> {
+  final TextEditingController _password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -89,12 +98,21 @@ class UploadImage extends StatelessWidget {
                 height: height * 0.02,
               ),
               CustomTextField(
-                  width: width, height: height, labelText: "Password"),
+                  controller: _password,
+                  width: width,
+                  height: height,
+                  labelText: "Password"),
               SizedBox(
                 height: height * 0.01,
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  AuthFunctions.adddpUrl(widget.employercode);
+                  AuthFunctions.signUp(
+                      email: widget.email, password: _password.text);
+
+                  Navigator.pushNamed(context, AppRoutes.bottomNav);
+                },
                 child: CustomSubmitButton(
                   width: width,
                   title: "Done",

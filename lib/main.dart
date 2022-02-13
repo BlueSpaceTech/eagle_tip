@@ -41,12 +41,10 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           backgroundColor: Color(0xff2B343B),
         ),
-        initialRoute: AppRoutes.tanksRequest,
+        initialRoute: AppRoutes.loginscreen,
         routes: {
           AppRoutes.loginscreen: (context) => LoginScreen(),
           AppRoutes.employercode: (context) => EmployerCode(),
-          AppRoutes.createAccount: (context) => CreateAccount(),
-          AppRoutes.uploadpicture: (context) => UploadImage(),
           AppRoutes.bottomNav: (context) => BottomNav(),
           AppRoutes.homeScreen: (context) => HomeScreen(),
           AppRoutes.forgetpass: (context) => ForgetPassword(),
