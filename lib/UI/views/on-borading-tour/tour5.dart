@@ -21,7 +21,7 @@ class Tour5 extends StatelessWidget {
           children: [
             Positioned(
               top: height * 0.46,
-              left: width * 0.05,
+              left: width * 0.0501,
               child: TourUpContainer(
                 onnext: () {
                   Navigator.pushNamed(context, AppRoutes.finaltour);
