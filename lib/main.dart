@@ -1,5 +1,12 @@
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/Services/user_info_services.dart';
+import 'package:eagle_tip/UI/views/on-borading-tour/final_tour.dart';
+import 'package:eagle_tip/UI/views/on-borading-tour/tour1.dart';
+import 'package:eagle_tip/UI/views/on-borading-tour/tour2.dart';
+import 'package:eagle_tip/UI/views/on-borading-tour/tour3.dart';
+import 'package:eagle_tip/UI/views/on-borading-tour/tour4.dart';
+import 'package:eagle_tip/UI/views/on-borading-tour/tour5.dart';
+import 'package:eagle_tip/UI/views/on-borading-tour/welcome_tour.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/bottomNav.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/Home_screen.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Tanks/product_request.dart';
@@ -41,7 +48,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           backgroundColor: Color(0xff2B343B),
         ),
-        initialRoute: AppRoutes.loginscreen,
+        initialRoute: AppRoutes.welcometour,
         routes: {
           AppRoutes.loginscreen: (context) => LoginScreen(),
           AppRoutes.employercode: (context) => EmployerCode(),
@@ -50,6 +57,13 @@ class MyApp extends StatelessWidget {
           AppRoutes.forgetpass: (context) => ForgetPassword(),
           AppRoutes.mailsent: (context) => EmailSent(),
           AppRoutes.tanksRequest: (context) => TanksRequest(),
+          AppRoutes.welcometour: (context) => WelcomeTour(),
+          AppRoutes.tour1: (context) => Tour1(),
+          AppRoutes.tour2: (context) => Tour2(),
+          AppRoutes.tour3: (context) => Tour3(),
+          AppRoutes.tour4: (context) => Tour4(),
+          AppRoutes.tour5: (context) => Tour5(),
+          AppRoutes.finaltour: (context) => FinalTour(),
         },
       ),
     );

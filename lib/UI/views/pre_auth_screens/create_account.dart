@@ -100,7 +100,7 @@ class _CreateAccountState extends State<CreateAccount> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => UploadImage(
-                          email: email.text!,
+                          email: email.text,
                           employercode: widget.employercode,
                         ),
                       ));
