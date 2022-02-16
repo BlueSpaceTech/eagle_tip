@@ -22,13 +22,26 @@ DocumentReference dbRef = FirebaseFirestore.instance
                         .doc("df")
                         .set({"name": "f"}, SetOptions(merge: true));
 */
+import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
 import 'package:eagle_tip/UI/Widgets/customfaqbottom.dart';
 import 'package:eagle_tip/UI/Widgets/customsubmitbutton.dart';
+import 'package:eagle_tip/UI/views/pre_auth_screens/create_account.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class EmployerCode extends StatelessWidget {
+class EmployerCode extends StatefulWidget {
   const EmployerCode({Key? key}) : super(key: key);
+
+  @override
+  State<EmployerCode> createState() => _EmployerCodeState();
+}
+
+class _EmployerCodeState extends State<EmployerCode> {
+  String? name;
+  String? phone;
+  String? email;
+  final TextEditingController _emoloyercode = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -69,13 +82,48 @@ class EmployerCode extends StatelessWidget {
               SizedBox(
                 height: height * 0.02,
               ),
-              CustomTextField(width: width, height: height, labelText: "Code"),
+              CustomTextField(
+                  controller: _emoloyercode,
+                  width: width,
+                  height: height,
+                  labelText: "Code"),
               SizedBox(
                 height: height * 0.015,
               ),
-              CustomSubmitButton(
-                width: width,
-                title: "Next",
+              GestureDetector(
+                onTap: () {
+                  DocumentReference dbRef = FirebaseFirestore.instance
+                      .collection('users')
+                      .doc(_emoloyercode.text);
+
+                  dbRef.get().then((data) {
+                    if (data.exists) {
+                      setState(() {
+                        name = data.get("name");
+                        email = data.get("email");
+                        phone = data.get("phone");
+                      });
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CreateAccount(
+                              name: name!,
+                              phoneno: phone!,
+                              email: email!,
+                              employercode: _emoloyercode.text,
+                            ),
+                          ));
+                    } else {
+                      print("not");
+
+                      SnackBar(content: Text("f"));
+                    }
+                  });
+                },
+                child: CustomSubmitButton(
+                  width: width,
+                  title: "Next",
+                ),
               ),
             ],
           ),

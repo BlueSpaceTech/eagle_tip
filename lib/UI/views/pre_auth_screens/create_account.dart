@@ -1,10 +1,39 @@
+import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
 import 'package:eagle_tip/UI/Widgets/customfaqbottom.dart';
 import 'package:eagle_tip/UI/Widgets/customsubmitbutton.dart';
+import 'package:eagle_tip/UI/views/pre_auth_screens/uploadimage.dart';
 import 'package:flutter/material.dart';
 
-class CreateAccount extends StatelessWidget {
-  const CreateAccount({Key? key}) : super(key: key);
+class CreateAccount extends StatefulWidget {
+  CreateAccount({
+    Key? key,
+    required this.name,
+    required this.email,
+    required this.phoneno,
+    required this.employercode,
+  }) : super(key: key);
+  String name;
+  String phoneno;
+  String email;
+  String employercode;
+
+  @override
+  State<CreateAccount> createState() => _CreateAccountState();
+}
+
+class _CreateAccountState extends State<CreateAccount> {
+  final TextEditingController name = TextEditingController();
+  final TextEditingController email = TextEditingController();
+  final TextEditingController phoneno = TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    name.text = widget.name;
+    email.text = widget.email;
+    phoneno.text = widget.phoneno;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,17 +74,41 @@ class CreateAccount extends StatelessWidget {
               SizedBox(
                 height: height * 0.02,
               ),
-              CustomTextField(width: width, height: height, labelText: "Name"),
+              CustomTextField(
+                  controller: name,
+                  width: width,
+                  height: height,
+                  labelText: "Name"),
               SizedBox(height: height * 0.01),
-              CustomTextField(width: width, height: height, labelText: "Email"),
+              CustomTextField(
+                  controller: email,
+                  width: width,
+                  height: height,
+                  labelText: "Email"),
               SizedBox(height: height * 0.01),
-              CustomTextField(width: width, height: height, labelText: "Phone"),
+              CustomTextField(
+                  controller: phoneno,
+                  width: width,
+                  height: height,
+                  labelText: "Phone"),
               SizedBox(
                 height: height * 0.05,
               ),
-              CustomSubmitButton(
-                width: width,
-                title: "Send OTP",
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => UploadImage(
+                          email: email.text,
+                          employercode: widget.employercode,
+                        ),
+                      ));
+                },
+                child: CustomSubmitButton(
+                  width: width,
+                  title: "Send OTP",
+                ),
               ),
             ],
           ),

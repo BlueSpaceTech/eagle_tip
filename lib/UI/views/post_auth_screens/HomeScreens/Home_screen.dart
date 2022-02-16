@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, duplicate_ignore, unused_import, prefer_const_literals_to_create_immutables
 
+import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/Services/authentication.dart';
+import 'package:eagle_tip/Services/authentication_helper.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -50,13 +52,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Column(
                   children: [
-                    Text(
-                      "Acres Marathon",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17.0,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: "Poppins"),
+                    GestureDetector(
+                      onTap: () {
+                        AuthFunctions.signOut();
+                        Navigator.pushNamed(context, AppRoutes.loginscreen);
+                      },
+                      child: Text(
+                        "Acres Marathon",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 17.0,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: "Poppins"),
+                      ),
                     ),
                     Text(
                       "Tampa, FL",
