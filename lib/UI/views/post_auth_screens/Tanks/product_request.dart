@@ -192,12 +192,11 @@ class _ProductRequestState extends State<ProductRequest> {
                     Navigator.pop(context, {"val": initialVal, "bool": true});
                   },
                   child: Container(
-                    height: height * 0.084,
-                    width: width * 0.45,
+                    height: height * 0.075,
+                    width: width * 0.75,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16.0),
-                      color: Color(0xFF28519D),
-                    ),
+                        borderRadius: BorderRadius.circular(16.0),
+                        color: Color(0xFF5081db)),
                     child: Center(
                       child: Text(
                         "Request",

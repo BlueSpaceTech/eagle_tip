@@ -105,7 +105,7 @@ class EditUser extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          "Back",
+                          "Done",
                           style: TextStyle(
                               fontSize: 18.0,
                               color: Colors.white,

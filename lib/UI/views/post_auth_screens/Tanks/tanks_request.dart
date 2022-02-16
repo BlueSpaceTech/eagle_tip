@@ -176,61 +176,6 @@ class _TanksRequestState extends State<TanksRequest> {
                   ),
                 ),
                 SizedBox(
-                  height: height * 0.02,
-                ),
-                Visibility(
-                  visible: _requested!,
-                  child: Padding(
-                    padding: EdgeInsets.only(right: width * 0.2),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        RichText(
-                          text: TextSpan(
-                            text: 'Last Submission: ',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: "Poppins",
-                            ),
-                            children: const <TextSpan>[
-                              TextSpan(
-                                  text: '12/12/2021 09:30 pm',
-                                  style: TextStyle(
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: "Poppins",
-                                  )),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 5.0,
-                        ),
-                        RichText(
-                          text: TextSpan(
-                            text: 'Status: ',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: "Poppins",
-                            ),
-                            children: const <TextSpan>[
-                              TextSpan(
-                                  text: 'Submitted',
-                                  style: TextStyle(
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: "Poppins",
-                                  )),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
                   height: height * 0.025,
                 ),
                 InkWell(
@@ -407,7 +352,7 @@ class _TanksRequestState extends State<TanksRequest> {
                                         width: width * 0.32,
                                         height: height * 0.055,
                                         decoration: BoxDecoration(
-                                          color: Color(0Xff9D2828),
+                                          color: Color(0Xffed5c62),
                                           borderRadius:
                                               BorderRadius.circular(10.0),
                                         ),
@@ -501,7 +446,7 @@ class _TanksRequestState extends State<TanksRequest> {
                                         width: width * 0.32,
                                         height: height * 0.055,
                                         decoration: BoxDecoration(
-                                          color: Color(0Xff28519D),
+                                          color: Color(0Xff5081db),
                                           borderRadius:
                                               BorderRadius.circular(10.0),
                                         ),
@@ -601,7 +546,7 @@ class _TankState extends State<Tank> {
             height: widget.height * 0.075,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(17.0),
-              color: !isTapped! ? Colors.grey[500] : Colors.white,
+              color: !isTapped! ? Color(0xff8d9298) : Colors.white,
             ),
             child: !isTapped!
                 ? Center(

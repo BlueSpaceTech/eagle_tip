@@ -19,4 +19,11 @@ class AppRoutes {
   static final String tour4 = "/tour4";
   static final String tour5 = "/tour5";
   static final String finaltour = "/finaltour";
+  static final String ticketHistory = "/ticketHistory";
+  static final String ticketDetails = "/ticketHistoryDetail";
+  static final String siteScreen = "/sites";
+  static final String siteDetails = "/site_details";
+  static final String requestHistory = "/request_history";
+  static final String particularRequest = "/particular_request";
+  static final String settings = "/settings";
 }

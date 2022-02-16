@@ -9,10 +9,16 @@ import 'package:eagle_tip/UI/views/on-borading-tour/tour5.dart';
 import 'package:eagle_tip/UI/views/on-borading-tour/welcome_tour.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/bottomNav.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/Home_screen.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Request%20History/particular_request.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Request%20History/request_history.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Sites/site_details.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Sites/sites.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Tanks/product_request.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Tanks/tanks_request.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/TicketHistory/ticketHistory.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/TicketHistory/ticketHistoryDetail.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/editUser.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/settings.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/create_account.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/emailsent.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/employer_code.dart';
@@ -50,7 +56,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           backgroundColor: Color(0xff2B343B),
         ),
-        initialRoute: AppRoutes.welcometour,
+        initialRoute: AppRoutes.settings,
         routes: {
           AppRoutes.loginscreen: (context) => LoginScreen(),
           AppRoutes.employercode: (context) => EmployerCode(),
@@ -66,6 +72,12 @@ class MyApp extends StatelessWidget {
           AppRoutes.tour4: (context) => Tour4(),
           AppRoutes.tour5: (context) => Tour5(),
           AppRoutes.finaltour: (context) => FinalTour(),
+          AppRoutes.ticketHistory: (context) => TicketHistory(),
+          AppRoutes.ticketDetails: (context) => TicketDetail(),
+          AppRoutes.siteScreen: (context) => Sites(),
+          AppRoutes.siteDetails: (context) => SiteDetails(),
+          AppRoutes.settings: (context) => Settings(),
+          AppRoutes.particularRequest: (context) => ParticularRequest(),
         },
       ),
     );
