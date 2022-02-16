@@ -10,5 +10,7 @@ class AppRoutes {
   static final String forgetpass = "forget_pass";
   static final String mailsent = "/mailsent";
   static final String tanksRequest = "/tanks_request";
+  static final String editUser = "/editUser";
   static final String ProductRequest = "/product_request";
+  static final String ticketHistory = "/ticketHistory";
 }
