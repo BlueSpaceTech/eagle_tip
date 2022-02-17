@@ -19,6 +19,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool? isTapped = false;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -41,14 +42,67 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       width: width * 0.2,
                     ),
-                    Image.asset(
-                      Common.assetImages + "Group 287.png",
-                      width: width * 0.075,
+                    PopupMenuButton(
+                      color: Color(0xFF3f4850),
+                      child: isTapped!
+                          ? Image.asset(
+                              Common.assetImages + "Group 287.png",
+                              width: width * 0.075,
+                            )
+                          : Image.asset(
+                              Common.assetImages + "Group 288.png",
+                              width: width * 0.075,
+                            ),
+                      itemBuilder: (context) => [
+                        PopupMenuItem(
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(context, AppRoutes.faq);
+                            },
+                            child: Text(
+                              "faq",
+                              style: TextStyle(
+                                  fontSize: 13.0,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white,
+                                  fontFamily: "Poppins"),
+                            ),
+                          ),
+                          value: 1,
+                        ),
+                        PopupMenuItem(
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(context, AppRoutes.support);
+                            },
+                            child: Text(
+                              "support",
+                              style: TextStyle(
+                                  fontSize: 13.0,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white,
+                                  fontFamily: "Poppins"),
+                            ),
+                          ),
+                          value: 2,
+                        ),
+                        PopupMenuItem(
+                          child: Text(
+                            "take tour again",
+                            style: TextStyle(
+                                fontSize: 13.0,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                                fontFamily: "Poppins"),
+                          ),
+                          value: 3,
+                        )
+                      ],
                     ),
                   ],
                 ),
                 SizedBox(
-                  height: height * 0.06,
+                  height: height * 0.05,
                 ),
                 Column(
                   children: [
@@ -77,40 +131,54 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
                 SizedBox(
-                  height: height * 0.07,
+                  height: height * 0.05,
                 ),
-                Stack(
-                  children: [
-                    Image.asset(
-                      Common.assetImages + "Ellipse 49.png",
-                      width: width * 0.7,
-                    ),
-                    Positioned(
-                      top: height * 0.115,
-                      left: width * 0.142,
-                      child: SizedBox(
-                        width: width * 0.4,
-                        child: Text(
-                          "Request Fuel",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 34.0,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                              fontFamily: "Poppins"),
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      AppRoutes.siteDetails,
+                    );
+                  },
+                  child: Stack(
+                    children: [
+                      Image.asset(
+                        Common.assetImages + "Ellipse 49.png",
+                        width: width * 0.7,
+                      ),
+                      Positioned(
+                        top: height * 0.115,
+                        left: width * 0.142,
+                        child: SizedBox(
+                          width: width * 0.4,
+                          child: Text(
+                            "Request Fuel",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 34.0,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                                fontFamily: "Poppins"),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 SizedBox(
-                  height: height * 0.1,
+                  height: height * 0.07,
+                ),
+                InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, AppRoutes.siteScreen);
+                    },
+                    child: SiteContainer(
+                        width: width, text: "Sites", height: height)),
+                SizedBox(
+                  height: height * 0.02,
                 ),
                 SiteContainer(
-                  width: width,
-                  height: height,
-                  text: "View Site",
-                ),
+                    width: width, text: "Edit Employees", height: height)
               ],
             ),
           ),

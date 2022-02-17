@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:eagle_tip/Routes/approutes.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/editUser.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +20,18 @@ class MyProfile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Logo(width: width),
-              UserDetails(
-                height: height,
-                width: width,
-                boxTitle: "edit profile",
+              InkWell(
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return EditUser();
+                  }));
+                },
+                child: UserDetails(
+                  height: height,
+                  width: width,
+                  boxTitle: "edit profile",
+                ),
               ),
               ContactInfo(height: height, width: width),
               Divider(
@@ -64,11 +74,20 @@ class MiscContainer extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          MiscBox(
-            width: width,
-            MiscName: "Tickets History",
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, AppRoutes.ticketHistory);
+            },
+            child: MiscBox(
+              width: width,
+              MiscName: "Tickets History",
+            ),
           ),
-          MiscBox(width: width, MiscName: "Settings")
+          InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, AppRoutes.settings);
+              },
+              child: MiscBox(width: width, MiscName: "Settings"))
         ],
       ),
     );

@@ -55,10 +55,15 @@ class _SiteDetailsState extends State<SiteDetails> {
                         EdgeInsets.only(left: width * 0.04, top: height * 0.01),
                     child: Row(
                       children: [
-                        Icon(
-                          Icons.arrow_back,
-                          color: Colors.white,
-                          size: width * 0.06,
+                        InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Icon(
+                            Icons.arrow_back,
+                            color: Colors.white,
+                            size: width * 0.06,
+                          ),
                         ),
                         SizedBox(
                           width: width * 0.17,

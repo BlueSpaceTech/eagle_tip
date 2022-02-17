@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_final_fields, unused_field, prefer_const_literals_to_create_immutables, unused_local_variable
 
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/Home_screen.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Notifications/notifications.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/myprofile.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,16 +20,10 @@ class _BottomNavState extends State<BottomNav> {
     fontWeight: FontWeight.bold,
     color: Color(0xFFA0A3BD),
   );
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
+  List<Widget> _widgetOptions = <Widget>[
+    MyProfile(),
     HomeScreen(),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+    Notifications(),
     Text(
       'Index 3: School',
       style: optionStyle,

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -41,10 +42,15 @@ class TicketHistory extends StatelessWidget {
                         EdgeInsets.only(left: width * 0.04, top: height * 0.01),
                     child: Row(
                       children: [
-                        Icon(
-                          Icons.arrow_back,
-                          color: Colors.white,
-                          size: width * 0.06,
+                        InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Icon(
+                            Icons.arrow_back,
+                            color: Colors.white,
+                            size: width * 0.06,
+                          ),
                         ),
                         SizedBox(
                           width: width * 0.17,
@@ -158,45 +164,50 @@ class OpenTickets extends StatelessWidget {
     return ListView.builder(
       itemCount: openTickets.length,
       itemBuilder: (BuildContext context, int index) {
-        return Container(
-          width: width * 0.8,
-          height: height * 0.07,
-          child: Padding(
-            padding: EdgeInsets.only(
-                left: width * 0.05, right: width * 0.05, top: height * 0.02),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  height: height * 0.06,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        openTickets[index],
-                        style: TextStyle(
-                            fontSize: 13.0,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: "Poppins"),
-                      ),
-                      Text(
-                        openTicketsDates[index],
-                        style: TextStyle(
-                            fontSize: 12.0,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: "Poppins"),
-                      ),
-                    ],
+        return InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, AppRoutes.ticketDetails);
+          },
+          child: Container(
+            width: width * 0.8,
+            height: height * 0.07,
+            child: Padding(
+              padding: EdgeInsets.only(
+                  left: width * 0.05, right: width * 0.05, top: height * 0.02),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    height: height * 0.06,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          openTickets[index],
+                          style: TextStyle(
+                              fontSize: 13.0,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: "Poppins"),
+                        ),
+                        Text(
+                          openTicketsDates[index],
+                          style: TextStyle(
+                              fontSize: 12.0,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: "Poppins"),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 17.0,
-                  color: Colors.white,
-                ),
-              ],
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 17.0,
+                    color: Colors.white,
+                  ),
+                ],
+              ),
             ),
           ),
         );

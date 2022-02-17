@@ -36,10 +36,15 @@ class _SettingsState extends State<Settings> {
                 children: [
                   Row(
                     children: [
-                      Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                        size: width * 0.06,
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
+                          size: width * 0.06,
+                        ),
                       ),
                       SizedBox(
                         width: width * 0.17,
