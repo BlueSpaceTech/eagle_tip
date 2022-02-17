@@ -7,6 +7,7 @@ import 'package:eagle_tip/UI/views/on-borading-tour/tour3.dart';
 import 'package:eagle_tip/UI/views/on-borading-tour/tour4.dart';
 import 'package:eagle_tip/UI/views/on-borading-tour/tour5.dart';
 import 'package:eagle_tip/UI/views/on-borading-tour/welcome_tour.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/CRUD/crudmain.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/bottomNav.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/Home_screen.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Request%20History/particular_request.dart';
@@ -56,7 +57,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           backgroundColor: Color(0xff2B343B),
         ),
-        initialRoute: AppRoutes.settings,
+        initialRoute: AppRoutes.crudscreen,
         routes: {
           AppRoutes.loginscreen: (context) => LoginScreen(),
           AppRoutes.employercode: (context) => EmployerCode(),
@@ -78,6 +79,7 @@ class MyApp extends StatelessWidget {
           AppRoutes.siteDetails: (context) => SiteDetails(),
           AppRoutes.settings: (context) => Settings(),
           AppRoutes.particularRequest: (context) => ParticularRequest(),
+          AppRoutes.crudscreen: (context) => CrudScreen(),
         },
       ),
     );

@@ -26,4 +26,5 @@ class AppRoutes {
   static final String requestHistory = "/request_history";
   static final String particularRequest = "/particular_request";
   static final String settings = "/settings";
+   static final String crudscreen = "/crudscreen";
 }
