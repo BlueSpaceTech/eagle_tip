@@ -7,18 +7,22 @@ import 'package:eagle_tip/UI/views/on-borading-tour/tour3.dart';
 import 'package:eagle_tip/UI/views/on-borading-tour/tour4.dart';
 import 'package:eagle_tip/UI/views/on-borading-tour/tour5.dart';
 import 'package:eagle_tip/UI/views/on-borading-tour/welcome_tour.dart';
-import 'package:eagle_tip/UI/views/post_auth_screens/CRUD/crudmain.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/CRUD/Add%20New%20User/Manager/addUserManager.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/CRUD/Add%20New%20User/Owner/addUserOwner.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/CRUD/Add%20New%20User/invitation.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/bottomNav.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/Home_screen.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Request%20History/particular_request.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Request%20History/request_history.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Sites/site_details.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Sites/sites.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Support/support.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Tanks/product_request.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Tanks/tanks_request.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/TicketHistory/ticketHistory.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/TicketHistory/ticketHistoryDetail.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/editUser.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/faq.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/settings.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/create_account.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/emailsent.dart';
@@ -57,8 +61,10 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           backgroundColor: Color(0xff2B343B),
         ),
-        initialRoute: AppRoutes.crudscreen,
+        initialRoute: AppRoutes.bottomNav,
         routes: {
+          AppRoutes.support: (context) => SupportScreen(),
+          AppRoutes.faq: (context) => FAQScreen(),
           AppRoutes.loginscreen: (context) => LoginScreen(),
           AppRoutes.employercode: (context) => EmployerCode(),
           AppRoutes.bottomNav: (context) => BottomNav(),
@@ -78,6 +84,9 @@ class MyApp extends StatelessWidget {
           AppRoutes.siteScreen: (context) => Sites(),
           AppRoutes.siteDetails: (context) => SiteDetails(),
           AppRoutes.settings: (context) => Settings(),
+          AppRoutes.addUserOwner: (context) => AddNewUserByOwner(),
+          AppRoutes.addUserManager: (context) => AddUserByManager(),
+          AppRoutes.invitation: (context) => Invitation(),
           AppRoutes.particularRequest: (context) => ParticularRequest(),
           AppRoutes.crudscreen: (context) => CrudScreen(),
         },
