@@ -12,10 +12,15 @@ class CustomAppheader extends StatelessWidget {
         SizedBox(
           width: width * 0.02,
         ),
-        Icon(
-          Icons.arrow_back,
-          color: Colors.white,
-          size: width * 0.06,
+        GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+            size: width * 0.06,
+          ),
         ),
         SizedBox(
           width: width * 0.17,
