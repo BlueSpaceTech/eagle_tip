@@ -1,3 +1,4 @@
+import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:flutter/material.dart';
 
@@ -7,31 +8,72 @@ class CustomAppheader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool? isTapped = false;
     return Row(
       children: [
         SizedBox(
-          width: width * 0.02,
-        ),
-        GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-            size: width * 0.06,
-          ),
-        ),
-        SizedBox(
-          width: width * 0.17,
+          width: width * 0.27,
         ),
         Image.asset(Common.assetImages + "Logo 2 2.png"),
         SizedBox(
           width: width * 0.2,
         ),
-        Image.asset(
-          Common.assetImages + "Group 288.png",
-          width: width * 0.08,
+        PopupMenuButton(
+          color: Color(0xFF3f4850),
+          child: isTapped!
+              ? Image.asset(
+                  Common.assetImages + "Group 287.png",
+                  width: width * 0.075,
+                )
+              : Image.asset(
+                  Common.assetImages + "Group 288.png",
+                  width: width * 0.075,
+                ),
+          itemBuilder: (context) => [
+            PopupMenuItem(
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, AppRoutes.faq);
+                },
+                child: Text(
+                  "faq",
+                  style: TextStyle(
+                      fontSize: 13.0,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                      fontFamily: "Poppins"),
+                ),
+              ),
+              value: 1,
+            ),
+            PopupMenuItem(
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, AppRoutes.support);
+                },
+                child: Text(
+                  "support",
+                  style: TextStyle(
+                      fontSize: 13.0,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                      fontFamily: "Poppins"),
+                ),
+              ),
+              value: 2,
+            ),
+            PopupMenuItem(
+              child: Text(
+                "take tour again",
+                style: TextStyle(
+                    fontSize: 13.0,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                    fontFamily: "Poppins"),
+              ),
+              value: 3,
+            )
+          ],
         ),
       ],
     );
