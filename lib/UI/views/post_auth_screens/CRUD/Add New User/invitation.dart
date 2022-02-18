@@ -1,14 +1,15 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
+import 'package:eagle_tip/UI/Widgets/customappheader.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/TicketHistory/ticketHistoryDetail.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class Invitation extends StatelessWidget {
-  const Invitation({Key? key}) : super(key: key);
-
+  Invitation({Key? key}) : super(key: key);
+  bool? isTapped = false;
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -27,10 +28,15 @@ class Invitation extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                        size: width * 0.06,
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
+                          size: width * 0.06,
+                        ),
                       ),
                       SizedBox(
                         width: width * 0.17,
@@ -39,10 +45,7 @@ class Invitation extends StatelessWidget {
                       SizedBox(
                         width: width * 0.2,
                       ),
-                      Image.asset(
-                        Common.assetImages + "Group 288.png",
-                        width: width * 0.08,
-                      ),
+                      MenuButton(isTapped: isTapped, width: width)
                     ],
                   ),
                   SizedBox(

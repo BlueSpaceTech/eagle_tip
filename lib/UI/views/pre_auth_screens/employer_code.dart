@@ -58,9 +58,14 @@ class _EmployerCodeState extends State<EmployerCode> {
             children: [
               Row(
                 children: [
-                  Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    ),
                   ),
                 ],
               ),

@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:eagle_tip/Routes/approutes.dart';
+import 'package:eagle_tip/UI/Widgets/customappheader.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +20,7 @@ class AddNewUserByOwner extends StatelessWidget {
       "Clarks Marathon",
       "Huntington Marathon"
     ];
+    bool isTapped = false;
     List Roles = ["Site Manager", "Site User"];
     return Scaffold(
       body: SafeArea(
@@ -33,10 +36,15 @@ class AddNewUserByOwner extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                        size: width * 0.06,
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
+                          size: width * 0.06,
+                        ),
                       ),
                       SizedBox(
                         width: width * 0.17,
@@ -45,10 +53,7 @@ class AddNewUserByOwner extends StatelessWidget {
                       SizedBox(
                         width: width * 0.2,
                       ),
-                      Image.asset(
-                        Common.assetImages + "Group 288.png",
-                        width: width * 0.08,
-                      ),
+                      MenuButton(isTapped: isTapped, width: width)
                     ],
                   ),
                   SizedBox(
@@ -132,26 +137,31 @@ class AddNewUserByOwner extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Card(
-                        elevation: 5.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(13.0),
-                        ),
-                        child: Container(
-                          height: height * 0.06,
-                          width: width * 0.33,
-                          decoration: BoxDecoration(
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, AppRoutes.invitation);
+                        },
+                        child: Card(
+                          elevation: 5.0,
+                          shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(13.0),
-                            color: Color(0xFF5081db),
                           ),
-                          child: Center(
-                            child: Text(
-                              "Next",
-                              style: TextStyle(
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white,
-                                  fontFamily: "Poppins"),
+                          child: Container(
+                            height: height * 0.06,
+                            width: width * 0.33,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(13.0),
+                              color: Color(0xFF5081db),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "Next",
+                                style: TextStyle(
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                    fontFamily: "Poppins"),
+                              ),
                             ),
                           ),
                         ),
