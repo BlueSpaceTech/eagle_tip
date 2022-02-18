@@ -111,7 +111,7 @@ class _UploadImageState extends State<UploadImage> {
                   AuthFunctions.signUp(
                       email: widget.email, password: _password.text);
 
-                  Navigator.pushNamed(context, AppRoutes.bottomNav);
+                  Navigator.pushNamed(context, AppRoutes.welcometour);
                 },
                 child: CustomSubmitButton(
                   width: width,

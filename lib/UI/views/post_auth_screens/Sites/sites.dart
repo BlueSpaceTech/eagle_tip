@@ -103,6 +103,7 @@ class SiteList extends StatelessWidget {
     return Container(
       height: height * 0.5,
       child: ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
         itemBuilder: (BuildContext context, int index) {
           return SiteDet(
               width: width,

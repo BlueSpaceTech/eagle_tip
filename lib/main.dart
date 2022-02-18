@@ -10,6 +10,9 @@ import 'package:eagle_tip/UI/views/on-borading-tour/welcome_tour.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/CRUD/Add%20New%20User/Manager/addUserManager.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/CRUD/Add%20New%20User/Owner/addUserOwner.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/CRUD/Add%20New%20User/invitation.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/CRUD/crudmain.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Chat/newchat.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Chat/newchatscreen.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/bottomNav.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/Home_screen.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Request%20History/particular_request.dart';
@@ -61,7 +64,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           backgroundColor: Color(0xff2B343B),
         ),
-        initialRoute: AppRoutes.bottomNav,
+        initialRoute: AppRoutes.loginscreen,
         routes: {
           AppRoutes.support: (context) => SupportScreen(),
           AppRoutes.faq: (context) => FAQScreen(),
@@ -88,6 +91,8 @@ class MyApp extends StatelessWidget {
           AppRoutes.addUserManager: (context) => AddUserByManager(),
           AppRoutes.invitation: (context) => Invitation(),
           AppRoutes.particularRequest: (context) => ParticularRequest(),
+          AppRoutes.newchat: (context) => NewChatScreen(),
+          AppRoutes.chattingscreen: (context) => ChatScreenn(),
           AppRoutes.crudscreen: (context) => CrudScreen(),
         },
       ),

@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 onTap: () {
                   AuthFunctions.signIn(
                       email: _email.text, password: _password.text);
-                  Navigator.pushNamed(context, AppRoutes.bottomNav);
+                  Navigator.pushNamed(context, AppRoutes.welcometour);
                 },
                 child: CustomSubmitButton(
                   width: width,

@@ -92,11 +92,10 @@ class _ChatScreennState extends State<ChatScreenn> {
     final height = MediaQuery.of(context).size.height;
     int prevUserId;
     return Scaffold(
-      backgroundColor: Color(0XFF3F4850),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(height * 0.09),
         child: AppBar(
-          shadowColor: Colors.transparent,
+          automaticallyImplyLeading: false,
           backgroundColor: Color(0xff2B343B),
           title: Container(
             padding: EdgeInsets.only(top: height * 0.03),
@@ -106,9 +105,14 @@ class _ChatScreennState extends State<ChatScreenn> {
                 SizedBox(
                   width: 10,
                 ),
-                Icon(
-                  Icons.arrow_back,
-                  color: Colors.white,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                  ),
                 ),
                 SizedBox(
                   width: 25,
@@ -133,6 +137,7 @@ class _ChatScreennState extends State<ChatScreenn> {
           ),
         ),
       ),
+      backgroundColor: Color(0XFF3F4850),
       body: Column(
         children: <Widget>[
           Expanded(

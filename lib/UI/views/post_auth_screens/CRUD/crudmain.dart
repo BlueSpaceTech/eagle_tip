@@ -1,3 +1,7 @@
+import 'package:eagle_tip/Routes/approutes.dart';
+import 'package:eagle_tip/UI/Widgets/customappheader.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/CRUD/Add%20New%20User/Owner/addUserOwner.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/myprofile.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:flutter/material.dart';
 
@@ -13,194 +17,278 @@ class _CrudScreenState extends State<CrudScreen> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    List Site = [
+      "All",
+      "Acers Marathon",
+      "Bridge Marathon",
+      "Clarks Marathon",
+      "Huntington Marathon"
+    ];
+    List Roles = ["Site Manager", "Site User"];
     List name = ["rAKSHTI", "FF", "ABHISEKHUI", "rAKSHTI", "FF", "ABHISEKHUI"];
     return Scaffold(
-      backgroundColor: Color(0xff2B343B),
-      body: Column(
-        children: [
-          SizedBox(
-            height: height * 0.05,
+      floatingActionButton: GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, AppRoutes.addUserOwner);
+        },
+        child: Container(
+          alignment: Alignment.center,
+          width: width * 0.42,
+          height: 50,
+          decoration: BoxDecoration(
+            color: Color(0xff5081DB),
+            borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
-          Row(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text(
+                "Add new user",
+                style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.w600),
+              ),
               SizedBox(
                 width: width * 0.02,
               ),
-              Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-                size: width * 0.06,
-              ),
-              SizedBox(
-                width: width * 0.17,
-              ),
-              Image.asset(Common.assetImages + "Logo 2 2.png"),
-              SizedBox(
-                width: width * 0.2,
-              ),
-              Image.asset(
-                Common.assetImages + "Group 288.png",
-                width: width * 0.08,
-              ),
+              Icon(Icons.add, color: Colors.white),
             ],
           ),
-          SizedBox(
-            height: height * 0.076,
-          ),
-          Container(
-            alignment: Alignment.center,
-            padding: EdgeInsets.only(left: width * 0.06, right: width * 0.06),
-            height: height * 0.064,
-            width: width * 0.9,
-            decoration: BoxDecoration(
-              color: Color(0xff535C65),
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+        ),
+      ),
+      backgroundColor: Color(0xff2B343B),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: height * 0.05,
             ),
-            child: TextField(
-              style: TextStyle(fontFamily: "Poppins"),
-              cursorColor: Colors.black12,
-              decoration: InputDecoration(
-                hintText: "Search by name",
-                hintStyle: TextStyle(color: Colors.white.withOpacity(0.5)),
-                border: InputBorder.none,
-              ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: width * 0.01),
+              child: CustomAppheader(width: width),
             ),
-          ),
-          SizedBox(
-            height: height * 0.076,
-          ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Container(
-              height: 40,
-              color: Color(0xff2B343B),
-              child: Row(
+            SizedBox(
+              height: height * 0.076,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: width * 0.04),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    width: width * 0.2,
-                    child: Text(
-                      "",
-                      style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.white.withOpacity(0.5),
-                          fontFamily: "Poppins",
-                          fontWeight: FontWeight.w600),
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.only(
+                        left: width * 0.06, right: width * 0.06),
+                    height: height * 0.064,
+                    width: width * 0.9,
+                    decoration: BoxDecoration(
+                      color: Color(0xff535C65),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    child: TextField(
+                      style: TextStyle(fontFamily: "Poppins"),
+                      cursorColor: Colors.black12,
+                      decoration: InputDecoration(
+                        hintText: "Search by name",
+                        hintStyle:
+                            TextStyle(color: Colors.white.withOpacity(0.5)),
+                        border: InputBorder.none,
+                      ),
                     ),
                   ),
-                  Container(
-                    width: width * 0.6,
-                    child: Text(
-                      "Name",
-                      style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.white.withOpacity(0.5),
-                          fontFamily: "Poppins",
-                          fontWeight: FontWeight.w600),
-                    ),
+                  SizedBox(height: height * 0.02),
+                  Text(
+                    "Site",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: "Poppins",
+                        fontSize: 15),
                   ),
-                  Container(
-                    width: width * 0.3,
-                    child: Text(
-                      "role",
-                      style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.white.withOpacity(0.5),
-                          fontFamily: "Poppins",
-                          fontWeight: FontWeight.w600),
-                    ),
+                  SizedBox(
+                    height: height * 0.02,
                   ),
-                  Container(
-                    width: width * 0.44,
-                    child: Text(
-                      "Site",
-                      style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.white.withOpacity(0.5),
-                          fontFamily: "Poppins",
-                          fontWeight: FontWeight.w600),
-                    ),
+                  Wrap(
+                    runSpacing: 10,
+                    children: [
+                      for (int i = 0; i < Site.length; i++) ...{
+                        SiteChip(
+                          siteName: Site[i],
+                          height: height,
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                      },
+                    ],
                   ),
-                  Container(
-                    width: width * 0.3,
-                    child: Text(
-                      "Site",
-                      style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.white.withOpacity(0.5),
-                          fontFamily: "Poppins",
-                          fontWeight: FontWeight.w600),
-                    ),
+                  SizedBox(
+                    height: height * 0.02,
                   ),
-                  Container(
-                    width: width * 0.2,
-                    child: Text(
-                      "Profile Info",
-                      style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.white.withOpacity(0.5),
-                          fontFamily: "Poppins",
-                          fontWeight: FontWeight.w600),
-                    ),
+                  Text(
+                    "Role",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: "Poppins",
+                        fontSize: 15),
+                  ),
+                  SizedBox(
+                    height: height * 0.02,
+                  ),
+                  Wrap(
+                    runSpacing: 10,
+                    children: [
+                      for (int i = 0; i < Roles.length; i++) ...{
+                        SiteChip(
+                          siteName: Roles[i],
+                          height: height,
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                      },
+                    ],
                   ),
                 ],
               ),
             ),
-          ),
-          ListView.builder(
-              padding: EdgeInsets.only(top: 0),
-              shrinkWrap: true,
-              itemCount: name.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Column(
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Container(
+                height: 40,
+                color: Color(0xff2B343B),
+                child: Row(
                   children: [
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: index % 2 == 0
-                              ? Color(0xff2B343B)
-                              : Color(0xff24292E),
-                        ),
-                        height: 60,
-                        child: Row(
-                          children: [
-                            Container(
-                                width: width * 0.2,
-                                child: Image.asset("assets/delete.png")),
-                            Container(
-                              width: width * 0.6,
-                              child: Text(
-                                '${index + 1} ${name[index]}',
-                                style: TextStyle(
-                                    color: Colors.white, fontFamily: "Poppins"),
-                              ),
-                            ),
-                            Container(
-                              width: width * 0.3,
-                              child: Text('Site User',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily: "Poppins")),
-                            ),
-                            Container(
-                              width: width * 0.44,
-                              child: Text('Acers Marathon',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily: "Poppins")),
-                            ),
-                            Image.asset("assets/info.png"),
-                            SizedBox(
-                              width: width * 0.04,
-                            ),
-                          ],
-                        ),
+                    Container(
+                      width: width * 0.2,
+                      child: Text(
+                        "",
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.white.withOpacity(0.5),
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    Container(
+                      width: width * 0.56,
+                      child: Text(
+                        "Name",
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.white.withOpacity(0.5),
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    Container(
+                      width: width * 0.3,
+                      child: Text(
+                        "role",
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.white.withOpacity(0.5),
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    Container(
+                      width: width * 0.44,
+                      child: Text(
+                        "Site",
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.white.withOpacity(0.5),
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    Container(
+                      width: width * 0.3,
+                      child: Text(
+                        "Site",
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.white.withOpacity(0.5),
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    Container(
+                      width: width * 0.2,
+                      child: Text(
+                        "Profile Info",
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.white.withOpacity(0.5),
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
                   ],
-                );
-              }),
-        ],
+                ),
+              ),
+            ),
+            ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                padding: EdgeInsets.only(top: 0),
+                shrinkWrap: true,
+                itemCount: name.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Column(
+                    children: [
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: index % 2 == 0
+                                ? Color(0xff2B343B)
+                                : Color(0xff24292E),
+                          ),
+                          height: 60,
+                          child: Row(
+                            children: [
+                              Container(
+                                  width: width * 0.2,
+                                  child: Image.asset("assets/delete.png")),
+                              Container(
+                                width: width * 0.56,
+                                child: Text(
+                                  '${index + 1} ${name[index]}',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: "Poppins"),
+                                ),
+                              ),
+                              Container(
+                                width: width * 0.3,
+                                child: Text('Site User',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: "Poppins")),
+                              ),
+                              Container(
+                                width: width * 0.44,
+                                child: Text('Acers Marathon',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: "Poppins")),
+                              ),
+                              Image.asset("assets/info.png"),
+                              SizedBox(
+                                width: width * 0.04,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                }),
+          ],
+        ),
       ),
     );
   }

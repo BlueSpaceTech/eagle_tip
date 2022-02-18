@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_final_fields, unused_field, prefer_const_literals_to_create_immutables, unused_local_variable
 
+import 'package:eagle_tip/UI/views/post_auth_screens/Chat/allchats.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/Home_screen.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Notifications/notifications.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/myprofile.dart';
@@ -24,10 +25,7 @@ class _BottomNavState extends State<BottomNav> {
     MyProfile(),
     HomeScreen(),
     Notifications(),
-    Text(
-      'Index 3: School',
-      style: optionStyle,
-    ),
+    AllChatScreen(),
   ];
 
   void _onItemTapped(int index) {

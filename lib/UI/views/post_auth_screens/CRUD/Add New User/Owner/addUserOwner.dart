@@ -11,6 +11,14 @@ class AddNewUserByOwner extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+    List Site = [
+      "All",
+      "Acers Marathon",
+      "Bridge Marathon",
+      "Clarks Marathon",
+      "Huntington Marathon"
+    ];
+    List Roles = ["Site Manager", "Site User"];
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -75,37 +83,18 @@ class AddNewUserByOwner extends StatelessWidget {
                   SizedBox(
                     height: 10.0,
                   ),
-                  Row(
+                  Wrap(
+                    runSpacing: 10,
                     children: [
-                      SiteChip(
-                          siteName: "Acres Marathon",
-                          width: width * 0.28,
-                          height: height),
-                      SizedBox(
-                        width: 10.0,
-                      ),
-                      SiteChip(
-                          siteName: "Bridge Marathon",
-                          width: width * 0.3,
-                          height: height),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  Row(
-                    children: [
-                      SiteChip(
-                          siteName: "Clarks Marathon",
-                          width: width * 0.3,
-                          height: height),
-                      SizedBox(
-                        width: 10.0,
-                      ),
-                      SiteChip(
-                          siteName: "Huntington Marathon",
-                          width: width * 0.37,
-                          height: height),
+                      for (int i = 0; i < Site.length; i++) ...{
+                        SiteChip(
+                          siteName: Site[i],
+                          height: height,
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                      },
                     ],
                   ),
                   SizedBox(
@@ -123,19 +112,18 @@ class AddNewUserByOwner extends StatelessWidget {
                   SizedBox(
                     height: 10.0,
                   ),
-                  Row(
+                  Wrap(
+                    runSpacing: 10,
                     children: [
-                      SiteChip(
-                          siteName: "Site Manager",
-                          width: width * 0.28,
-                          height: height),
-                      SizedBox(
-                        width: 10.0,
-                      ),
-                      SiteChip(
-                          siteName: "Site User",
-                          width: width * 0.2,
-                          height: height),
+                      for (int i = 0; i < Roles.length; i++) ...{
+                        SiteChip(
+                          siteName: Roles[i],
+                          height: height,
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                      },
                     ],
                   ),
                   SizedBox(
@@ -183,12 +171,10 @@ class AddNewUserByOwner extends StatelessWidget {
 class SiteChip extends StatefulWidget {
   SiteChip({
     Key? key,
-    required this.width,
     required this.height,
     required this.siteName,
   }) : super(key: key);
 
-  final double width;
   final String siteName;
   final double height;
 
@@ -208,21 +194,18 @@ class _SiteChipState extends State<SiteChip> {
         });
       },
       child: Container(
-        width: widget.width,
-        height: widget.height * 0.042,
+        padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: isSelected! ? Color(0xFF5081db) : Color(0xFF535c65),
           borderRadius: BorderRadius.circular(30.0),
         ),
-        child: Center(
-          child: Text(
-            widget.siteName,
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 12.0,
-                fontWeight: FontWeight.w400,
-                fontFamily: "Poppins"),
-          ),
+        child: Text(
+          widget.siteName,
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 14.0,
+              fontWeight: FontWeight.w400,
+              fontFamily: "Poppins"),
         ),
       ),
     );

@@ -31,4 +31,7 @@ class AppRoutes {
   static final String faq = "/faq";
   static final String support = "/support";
   static final String addUserManager = "/addUserManager";
+  static final String newchat = "/newchat";
+  static final String chattingscreen = "/chattingscreen";
+  static final String crudscreen = "/crudscreen";
 }

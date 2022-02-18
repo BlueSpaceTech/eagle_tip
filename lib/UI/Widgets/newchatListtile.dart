@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ChatListTile extends StatelessWidget {
-  const ChatListTile({
+class NewChatListTile extends StatelessWidget {
+  const NewChatListTile({
     Key? key,
     required this.height,
     required this.width,
@@ -24,7 +24,6 @@ class ChatListTile extends StatelessWidget {
             width: 10,
           ),
           Container(
-            width: width * 0.55,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -37,7 +36,7 @@ class ChatListTile extends StatelessWidget {
                       fontWeight: FontWeight.w600),
                 ),
                 Text(
-                  "yesterday",
+                  "Manager",
                   style: TextStyle(
                       fontSize: 12,
                       color: Color(0xffD9DBE9),
@@ -45,16 +44,6 @@ class ChatListTile extends StatelessWidget {
                       fontWeight: FontWeight.w500),
                 ),
               ],
-            ),
-          ),
-          Container(
-            alignment: Alignment.center,
-            width: 20,
-            decoration:
-                BoxDecoration(shape: BoxShape.circle, color: Color(0xff5081DB)),
-            child: Text(
-              "2",
-              style: TextStyle(color: Colors.white, fontFamily: "Poppins"),
             ),
           ),
         ],

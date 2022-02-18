@@ -177,8 +177,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: height * 0.02,
                 ),
-                SiteContainer(
-                    width: width, text: "Edit Employees", height: height)
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, AppRoutes.crudscreen);
+                  },
+                  child: SiteContainer(
+                      width: width, text: "Edit Employees", height: height),
+                )
               ],
             ),
           ),
