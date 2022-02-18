@@ -83,13 +83,18 @@ class MenuButton extends StatelessWidget {
           value: 2,
         ),
         PopupMenuItem(
-          child: Text(
-            "take tour again",
-            style: TextStyle(
-                fontSize: 13.0,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-                fontFamily: "Poppins"),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, AppRoutes.welcometour);
+            },
+            child: Text(
+              "take tour again",
+              style: TextStyle(
+                  fontSize: 13.0,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
+                  fontFamily: "Poppins"),
+            ),
           ),
           value: 3,
         )

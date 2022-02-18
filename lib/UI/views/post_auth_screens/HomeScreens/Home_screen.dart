@@ -25,68 +25,71 @@ class _HomeScreenState extends State<HomeScreen> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          color: backGround_color,
-          child: Padding(
-            padding: EdgeInsets.only(top: 10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: width * 0.27,
-                    ),
-                    Image.asset(Common.assetImages + "Logo 2 2.png"),
-                    SizedBox(
-                      width: width * 0.2,
-                    ),
-                    PopupMenuButton(
-                      color: Color(0xFF3f4850),
-                      child: isTapped!
-                          ? Image.asset(
-                              Common.assetImages + "Group 287.png",
-                              width: width * 0.075,
-                            )
-                          : Image.asset(
-                              Common.assetImages + "Group 288.png",
-                              width: width * 0.075,
-                            ),
-                      itemBuilder: (context) => [
-                        PopupMenuItem(
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.pushNamed(context, AppRoutes.faq);
-                            },
-                            child: Text(
-                              "faq",
-                              style: TextStyle(
-                                  fontSize: 13.0,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white,
-                                  fontFamily: "Poppins"),
-                            ),
+      body: Container(
+        color: backGround_color,
+        child: Padding(
+          padding: EdgeInsets.only(top: height * 0.05),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                children: [
+                  SizedBox(
+                    width: width * 0.27,
+                  ),
+                  Image.asset(Common.assetImages + "Logo 2 2.png"),
+                  SizedBox(
+                    width: width * 0.2,
+                  ),
+                  PopupMenuButton(
+                    color: Color(0xFF3f4850),
+                    child: isTapped!
+                        ? Image.asset(
+                            Common.assetImages + "Group 287.png",
+                            width: width * 0.075,
+                          )
+                        : Image.asset(
+                            Common.assetImages + "Group 288.png",
+                            width: width * 0.075,
                           ),
-                          value: 1,
-                        ),
-                        PopupMenuItem(
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.pushNamed(context, AppRoutes.support);
-                            },
-                            child: Text(
-                              "support",
-                              style: TextStyle(
-                                  fontSize: 13.0,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white,
-                                  fontFamily: "Poppins"),
-                            ),
+                    itemBuilder: (context) => [
+                      PopupMenuItem(
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, AppRoutes.faq);
+                          },
+                          child: Text(
+                            "faq",
+                            style: TextStyle(
+                                fontSize: 13.0,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                                fontFamily: "Poppins"),
                           ),
-                          value: 2,
                         ),
-                        PopupMenuItem(
+                        value: 1,
+                      ),
+                      PopupMenuItem(
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, AppRoutes.support);
+                          },
+                          child: Text(
+                            "support",
+                            style: TextStyle(
+                                fontSize: 13.0,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                                fontFamily: "Poppins"),
+                          ),
+                        ),
+                        value: 2,
+                      ),
+                      PopupMenuItem(
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, AppRoutes.welcometour);
+                          },
                           child: Text(
                             "take tour again",
                             style: TextStyle(
@@ -95,97 +98,97 @@ class _HomeScreenState extends State<HomeScreen> {
                                 color: Colors.white,
                                 fontFamily: "Poppins"),
                           ),
-                          value: 3,
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: height * 0.05,
-                ),
-                Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        AuthFunctions.signOut();
-                        Navigator.pushNamed(context, AppRoutes.loginscreen);
-                      },
-                      child: Text(
-                        "Acres Marathon",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 17.0,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: "Poppins"),
-                      ),
-                    ),
-                    Text(
-                      "Tampa, FL",
-                      style: TextStyle(
-                          color: Color(0xFF6E7191),
-                          fontSize: 13.0,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: "Poppins"),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: height * 0.05,
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(
-                      context,
-                      AppRoutes.siteDetails,
-                    );
-                  },
-                  child: Stack(
-                    children: [
-                      Image.asset(
-                        Common.assetImages + "Ellipse 49.png",
-                        width: width * 0.7,
-                      ),
-                      Positioned(
-                        top: height * 0.115,
-                        left: width * 0.142,
-                        child: SizedBox(
-                          width: width * 0.4,
-                          child: Text(
-                            "Request Fuel",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 34.0,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                                fontFamily: "Poppins"),
-                          ),
                         ),
-                      ),
+                        value: 3,
+                      )
                     ],
                   ),
-                ),
-                SizedBox(
-                  height: height * 0.07,
-                ),
-                InkWell(
+                ],
+              ),
+              SizedBox(
+                height: height * 0.05,
+              ),
+              Column(
+                children: [
+                  GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, AppRoutes.siteScreen);
+                      AuthFunctions.signOut();
+                      Navigator.pushNamed(context, AppRoutes.loginscreen);
                     },
-                    child: SiteContainer(
-                        width: width, text: "Sites", height: height)),
-                SizedBox(
-                  height: height * 0.02,
+                    child: Text(
+                      "Acres Marathon",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17.0,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: "Poppins"),
+                    ),
+                  ),
+                  Text(
+                    "Tampa, FL",
+                    style: TextStyle(
+                        color: Color(0xFF6E7191),
+                        fontSize: 13.0,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: "Poppins"),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: height * 0.05,
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    AppRoutes.siteDetails,
+                  );
+                },
+                child: Stack(
+                  children: [
+                    Image.asset(
+                      Common.assetImages + "Ellipse 49.png",
+                      width: width * 0.7,
+                    ),
+                    Positioned(
+                      top: height * 0.115,
+                      left: width * 0.142,
+                      child: SizedBox(
+                        width: width * 0.4,
+                        child: Text(
+                          "Request Fuel",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 34.0,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                              fontFamily: "Poppins"),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                GestureDetector(
+              ),
+              SizedBox(
+                height: height * 0.07,
+              ),
+              InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, AppRoutes.crudscreen);
+                    Navigator.pushNamed(context, AppRoutes.siteScreen);
                   },
                   child: SiteContainer(
-                      width: width, text: "Edit Employees", height: height),
-                )
-              ],
-            ),
+                      width: width, text: "Sites", height: height)),
+              SizedBox(
+                height: height * 0.02,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, AppRoutes.crudscreen);
+                },
+                child: SiteContainer(
+                    width: width, text: "Edit Employees", height: height),
+              )
+            ],
           ),
         ),
       ),

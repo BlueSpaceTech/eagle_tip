@@ -34,4 +34,5 @@ class AppRoutes {
   static final String newchat = "/newchat";
   static final String chattingscreen = "/chattingscreen";
   static final String crudscreen = "/crudscreen";
+  static final String useprofile = "/userprofile";
 }

@@ -25,6 +25,7 @@ import 'package:eagle_tip/UI/views/post_auth_screens/Tanks/tanks_request.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/TicketHistory/ticketHistory.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/TicketHistory/ticketHistoryDetail.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/editUser.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/userProfile.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/faq.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/settings.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/create_account.dart';
@@ -94,6 +95,7 @@ class MyApp extends StatelessWidget {
           AppRoutes.newchat: (context) => NewChatScreen(),
           AppRoutes.chattingscreen: (context) => ChatScreenn(),
           AppRoutes.crudscreen: (context) => CrudScreen(),
+          AppRoutes.useprofile: (context) => UserProfile(),
         },
       ),
     );

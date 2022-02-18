@@ -91,6 +91,7 @@ class AllChatScreen extends StatelessWidget {
                               height: height * 0.05,
                             ),
                             ListView.builder(
+                              physics: NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               padding: EdgeInsets.symmetric(
                                   horizontal: width * 0.08),
@@ -142,6 +143,7 @@ class AllChatScreen extends StatelessWidget {
                 ),
               ),
               ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: 5,
                   itemBuilder: (BuildContext context, int index) {

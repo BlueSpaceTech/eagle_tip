@@ -13,6 +13,105 @@ class CrudScreen extends StatefulWidget {
 }
 
 class _CrudScreenState extends State<CrudScreen> {
+  deletUserDialog(double height, double width) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+        title: Text(
+          'Delete User',
+          style: TextStyle(
+            fontSize: 23.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: "Poppins",
+            color: Colors.black,
+          ),
+        ),
+        content: Container(
+          height: height * 0.2,
+          child: Column(
+            children: [
+              RichText(
+                text: TextSpan(
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: 'Are you sure you want to delete',
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontFamily: "Poppins",
+                            color: Color(0xff14142B))),
+                    TextSpan(
+                        text: ' Ahmad Elizondo ?',
+                        style: TextStyle(
+                            color: Color(0xff14142B),
+                            fontSize: 18,
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.w600)),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: height * 0.06,
+              ),
+              Row(
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      width: width * 0.32,
+                      height: height * 0.055,
+                      decoration: BoxDecoration(
+                        color: Color(0xffED5C62),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Back",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 13.0,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: "Poppins"),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: width * 0.02),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      width: width * 0.32,
+                      height: height * 0.055,
+                      decoration: BoxDecoration(
+                        color: Color(0Xff28519D),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Confirm",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 13.0,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: "Poppins"),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -26,6 +125,7 @@ class _CrudScreenState extends State<CrudScreen> {
     ];
     List Roles = ["Site Manager", "Site User"];
     List name = ["rAKSHTI", "FF", "ABHISEKHUI", "rAKSHTI", "FF", "ABHISEKHUI"];
+
     return Scaffold(
       floatingActionButton: GestureDetector(
         onTap: () {
@@ -250,9 +350,14 @@ class _CrudScreenState extends State<CrudScreen> {
                           height: 60,
                           child: Row(
                             children: [
-                              Container(
-                                  width: width * 0.2,
-                                  child: Image.asset("assets/delete.png")),
+                              GestureDetector(
+                                onTap: () {
+                                  deletUserDialog(height, width);
+                                },
+                                child: Container(
+                                    width: width * 0.2,
+                                    child: Image.asset("assets/delete.png")),
+                              ),
                               Container(
                                 width: width * 0.56,
                                 child: Text(
@@ -276,7 +381,12 @@ class _CrudScreenState extends State<CrudScreen> {
                                         color: Colors.white,
                                         fontFamily: "Poppins")),
                               ),
-                              Image.asset("assets/info.png"),
+                              GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, AppRoutes.useprofile);
+                                  },
+                                  child: Image.asset("assets/info.png")),
                               SizedBox(
                                 width: width * 0.04,
                               ),

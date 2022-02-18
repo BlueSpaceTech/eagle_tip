@@ -46,90 +46,92 @@ class _NotificationsState extends State<Notifications> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            color: backGround_color,
-            height: height,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
+      body: SingleChildScrollView(
+        child: Container(
+          color: backGround_color,
+          height: height,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: height * 0.05,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: width * 0.22,
+                  ),
+                  Image.asset(Common.assetImages + "Logo 2 2.png"),
+                  SizedBox(
+                    width: width * 0.15,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 10.0),
+                    child: Icon(
+                      Icons.search,
+                      color: Colors.white,
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: height * 0.05,
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: width * 0.08),
+                child: Row(
                   children: [
-                    SizedBox(
-                      width: width * 0.22,
-                    ),
-                    Image.asset(Common.assetImages + "Logo 2 2.png"),
-                    SizedBox(
-                      width: width * 0.15,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.0),
-                      child: Icon(
-                        Icons.search,
+                    Text(
+                      "Notifications",
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
                         color: Colors.white,
+                        fontFamily: "Poppins",
                       ),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: height * 0.05,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: width * 0.08),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Notifications",
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontFamily: "Poppins",
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10.0,
-                      ),
-                      Container(
-                        child: CircleAvatar(
-                          backgroundColor: Color(0xFFED5C62),
-                          radius: 8.0,
-                          child: Center(
-                            child: Text(
-                              _notifyNumberGenerator().toString(),
-                              style: TextStyle(fontSize: 10.0),
-                            ),
+                    ),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Container(
+                      child: CircleAvatar(
+                        backgroundColor: Color(0xFFED5C62),
+                        radius: 8.0,
+                        child: Center(
+                          child: Text(
+                            _notifyNumberGenerator().toString(),
+                            style: TextStyle(fontSize: 10.0),
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                Container(
-                  height: height * 0.7,
-                  child: ListView.builder(
-                      itemCount: notifyNames.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Notify(
-                            valueChanged: (val) {
-                              setState(() {
-                                isNew[index] = val;
-                              });
-                            },
-                            width: width,
-                            isnew: isNew[index],
-                            index: index,
-                            height: height,
-                            notifyNames: notifyNames,
-                            notifyDates: notifyDates);
-                      }),
-                ),
-              ],
-            ),
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              Container(
+                height: height * 0.7,
+                child: ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: notifyNames.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Notify(
+                          valueChanged: (val) {
+                            setState(() {
+                              isNew[index] = val;
+                            });
+                          },
+                          width: width,
+                          isnew: isNew[index],
+                          index: index,
+                          height: height,
+                          notifyNames: notifyNames,
+                          notifyDates: notifyDates);
+                    }),
+              ),
+            ],
           ),
         ),
       ),
