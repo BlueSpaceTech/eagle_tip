@@ -91,13 +91,18 @@ class _LoginScreenState extends State<LoginScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Forgot Password?",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: "Poppins",
-                      fontWeight: FontWeight.w500,
-                      decoration: TextDecoration.underline,
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, AppRoutes.forgetpass);
+                    },
+                    child: Text(
+                      "Forgot Password?",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: "Poppins",
+                        fontWeight: FontWeight.w500,
+                        decoration: TextDecoration.underline,
+                      ),
                     ),
                   ),
                 ],

@@ -1,3 +1,4 @@
+import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:flutter/material.dart';
 
 class CustomFAQbottom extends StatelessWidget {
@@ -20,13 +21,18 @@ class CustomFAQbottom extends StatelessWidget {
             SizedBox(
               width: 5,
             ),
-            Text(
-              "FAQ",
-              style: TextStyle(
-                color: Colors.white,
-                fontFamily: "Poppins",
-                fontWeight: FontWeight.w600,
-                fontSize: 18,
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, AppRoutes.faq);
+              },
+              child: Text(
+                "FAQ",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                ),
               ),
             ),
           ]),
@@ -42,13 +48,18 @@ class CustomFAQbottom extends StatelessWidget {
               SizedBox(
                 width: 5,
               ),
-              Text(
-                "Support",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: "Poppins",
-                  fontWeight: FontWeight.w600,
-                  fontSize: 18,
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, AppRoutes.support);
+                },
+                child: Text(
+                  "Support",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18,
+                  ),
                 ),
               ),
             ],

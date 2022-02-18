@@ -1,3 +1,4 @@
+import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
 import 'package:eagle_tip/UI/Widgets/customfaqbottom.dart';
 import 'package:eagle_tip/UI/Widgets/customsubmitbutton.dart';
@@ -23,9 +24,14 @@ class ForgetPassword extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    ),
                   ),
                 ],
               ),
@@ -75,9 +81,14 @@ class ForgetPassword extends StatelessWidget {
               SizedBox(
                 height: height * 0.02,
               ),
-              CustomSubmitButton(
-                width: width,
-                title: "Send Instructions",
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, AppRoutes.mailsent);
+                },
+                child: CustomSubmitButton(
+                  width: width,
+                  title: "Send Instructions",
+                ),
               ),
             ],
           ),
