@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:eagle_tip/Routes/approutes.dart';
+import 'package:eagle_tip/UI/Widgets/logo.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/editUser.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
@@ -278,23 +279,6 @@ class DetailsRow extends StatelessWidget {
               fontFamily: "Poppins"),
         ),
       ]),
-    );
-  }
-}
-
-class Logo extends StatelessWidget {
-  const Logo({
-    Key? key,
-    required this.width,
-  }) : super(key: key);
-
-  final double width;
-
-  @override
-  Widget build(BuildContext context) {
-    return Image.asset(
-      Common.assetImages + "Logo 2 1.png",
-      width: width * 0.4,
     );
   }
 }

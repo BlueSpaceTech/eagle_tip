@@ -88,6 +88,7 @@ class _EmployerCodeState extends State<EmployerCode> {
                 height: height * 0.02,
               ),
               CustomTextField(
+                  isactive: true,
                   controller: _emoloyercode,
                   width: width,
                   height: height,

@@ -33,6 +33,7 @@ import 'package:eagle_tip/UI/views/pre_auth_screens/emailsent.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/employer_code.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/forgetpassword.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/login_screen.dart';
+import 'package:eagle_tip/UI/views/pre_auth_screens/splashscreen.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/uploadimage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -65,7 +66,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           backgroundColor: Color(0xff2B343B),
         ),
-        initialRoute: AppRoutes.loginscreen,
+        initialRoute: AppRoutes.splashscreen,
         routes: {
           AppRoutes.support: (context) => SupportScreen(),
           AppRoutes.faq: (context) => FAQScreen(),
@@ -97,6 +98,7 @@ class MyApp extends StatelessWidget {
           AppRoutes.crudscreen: (context) => CrudScreen(),
           AppRoutes.editUser: (context) => EditUser(),
           AppRoutes.useprofile: (context) => UserProfile(),
+          AppRoutes.splashscreen: (context) => SplashScreen(),
         },
       ),
     );

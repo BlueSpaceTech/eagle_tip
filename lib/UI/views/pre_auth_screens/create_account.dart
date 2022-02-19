@@ -75,18 +75,21 @@ class _CreateAccountState extends State<CreateAccount> {
                 height: height * 0.02,
               ),
               CustomTextField(
+                  isactive: false,
                   controller: name,
                   width: width,
                   height: height,
                   labelText: "Name"),
               SizedBox(height: height * 0.01),
               CustomTextField(
+                  isactive: false,
                   controller: email,
                   width: width,
                   height: height,
                   labelText: "Email"),
               SizedBox(height: height * 0.01),
               CustomTextField(
+                  isactive: false,
                   controller: phoneno,
                   width: width,
                   height: height,

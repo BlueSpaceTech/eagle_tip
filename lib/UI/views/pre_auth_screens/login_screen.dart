@@ -45,6 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: height * 0.02,
               ),
               CustomTextField(
+                isactive: true,
                 controller: _email,
                 width: width,
                 height: height,
@@ -54,6 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: height * 0.01,
               ),
               CustomTextField(
+                isactive: true,
                 controller: _password,
                 width: width,
                 height: height,
@@ -63,6 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: height * 0.01,
               ),
               CustomTextField(
+                isactive: true,
                 controller: _employercode,
                 width: width,
                 height: height,

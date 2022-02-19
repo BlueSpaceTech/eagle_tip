@@ -5,6 +5,8 @@ import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/myprofile.dart
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:flutter/material.dart';
 
+import 'logo.dart';
+
 class CustomAppheader extends StatelessWidget {
   CustomAppheader({Key? key, required this.width}) : super(key: key);
   final double width;

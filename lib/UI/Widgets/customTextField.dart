@@ -7,14 +7,14 @@ class CustomTextField extends StatelessWidget {
     required this.height,
     required this.labelText,
     required this.controller,
-  
+    required this.isactive,
   }) : super(key: key);
 
   final double width;
   final double height;
   final String labelText;
   final TextEditingController controller;
- 
+  final bool isactive;
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +22,15 @@ class CustomTextField extends StatelessWidget {
       padding: EdgeInsets.only(left: width * 0.06, right: width * 0.06),
       height: height * 0.08,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isactive ? Colors.white : Color(0xffEFF0F6).withOpacity(0.7),
         borderRadius: BorderRadius.all(Radius.circular(15)),
       ),
       child: TextField(
+        enabled: isactive,
         controller: controller,
         style: TextStyle(fontFamily: "Poppins"),
         cursorColor: Colors.black12,
         decoration: InputDecoration(
-         
           border: InputBorder.none,
           labelText: labelText,
           labelStyle: TextStyle(

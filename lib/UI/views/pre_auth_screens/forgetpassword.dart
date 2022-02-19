@@ -74,7 +74,7 @@ class ForgetPassword extends StatelessWidget {
                 height: height * 0.06,
               ),
               CustomTextField(
-                
+                  isactive: true,
                   controller: _email,
                   width: width,
                   height: height,

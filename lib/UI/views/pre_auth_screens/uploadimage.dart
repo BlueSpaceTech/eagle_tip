@@ -98,6 +98,7 @@ class _UploadImageState extends State<UploadImage> {
                 height: height * 0.02,
               ),
               CustomTextField(
+                  isactive: true,
                   controller: _password,
                   width: width,
                   height: height,

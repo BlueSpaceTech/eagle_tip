@@ -3,6 +3,7 @@
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/Services/authentication.dart';
 import 'package:eagle_tip/Services/authentication_helper.dart';
+import 'package:eagle_tip/UI/Widgets/logo.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/myprofile.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';

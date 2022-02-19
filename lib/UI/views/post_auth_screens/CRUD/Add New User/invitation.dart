@@ -130,6 +130,7 @@ class Invitation extends StatelessWidget {
                     height: height * 0.07,
                   ),
                   CustomTextField(
+                    isactive: true,
                     width: width,
                     height: height,
                     labelText: "Name",
@@ -139,6 +140,7 @@ class Invitation extends StatelessWidget {
                     height: height * 0.02,
                   ),
                   CustomTextField(
+                    isactive: true,
                     width: width,
                     height: height,
                     labelText: "Email",
@@ -148,6 +150,7 @@ class Invitation extends StatelessWidget {
                     height: height * 0.02,
                   ),
                   CustomTextField(
+                    isactive: true,
                     width: width,
                     height: height,
                     labelText: "Phone Number",
