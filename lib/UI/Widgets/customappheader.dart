@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:eagle_tip/Routes/approutes.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/myprofile.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class CustomAppheader extends StatelessWidget {
         SizedBox(
           width: width * 0.27,
         ),
-        Image.asset(Common.assetImages + "Logo 2 2.png"),
+        Logo(width: width),
         SizedBox(
           width: width * 0.2,
         ),

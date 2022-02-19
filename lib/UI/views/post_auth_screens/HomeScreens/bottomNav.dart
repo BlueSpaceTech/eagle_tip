@@ -49,6 +49,10 @@ class _BottomNavState extends State<BottomNav> {
         selectedItemColor: Colors.white,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
+            activeIcon: Image.asset(
+              Common.assetImages + "activeProfile.png",
+              width: width * 0.05,
+            ),
             icon: Image.asset(
               Common.assetImages + "profil.png",
               width: width * 0.05,
@@ -56,6 +60,10 @@ class _BottomNavState extends State<BottomNav> {
             label: 'Profile',
           ),
           BottomNavigationBarItem(
+            activeIcon: Image.asset(
+              Common.assetImages + "activeHome.png",
+              width: width * 0.05,
+            ),
             icon: Image.asset(
               Common.assetImages + "home.png",
               width: width * 0.05,
@@ -63,6 +71,10 @@ class _BottomNavState extends State<BottomNav> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
+            activeIcon: Image.asset(
+              Common.assetImages + "activeNotification.png",
+              width: width * 0.05,
+            ),
             icon: Image.asset(
               Common.assetImages + "Group 308.png",
               width: width * 0.05,
@@ -70,6 +82,10 @@ class _BottomNavState extends State<BottomNav> {
             label: 'Notifications',
           ),
           BottomNavigationBarItem(
+            activeIcon: Image.asset(
+              Common.assetImages + "activeChat.png",
+              width: width * 0.05,
+            ),
             icon: Image.asset(
               Common.assetImages + "message.png",
               width: width * 0.05,

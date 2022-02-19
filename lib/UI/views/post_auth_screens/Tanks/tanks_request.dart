@@ -538,7 +538,11 @@ class _TankState extends State<Tank> {
         InkWell(
           onTap: () {
             setState(() {
-              isTapped = !isTapped!;
+              if (_controller.text.isEmpty) {
+                isTapped = !isTapped!;
+              } else {
+                isTapped = true;
+              }
               // widget.valueChanged(isTapped);
             });
           },

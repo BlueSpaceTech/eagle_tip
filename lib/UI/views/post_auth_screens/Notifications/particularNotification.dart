@@ -30,7 +30,7 @@ class SpecificNotification extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () {
-                        Navigator.pop(context);
+                        Navigator.pop(context, false);
                       },
                       child: Icon(
                         Icons.arrow_back,
