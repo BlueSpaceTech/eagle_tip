@@ -254,9 +254,6 @@ class _CrudScreenState extends State<CrudScreen> {
                 ],
               ),
             ),
-            SizedBox(
-              height: 20.0,
-            ),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Container(
@@ -340,64 +337,59 @@ class _CrudScreenState extends State<CrudScreen> {
                 shrinkWrap: true,
                 itemCount: name.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Column(
-                    children: [
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: index % 2 == 0
-                                ? Color(0xff2B343B)
-                                : Color(0xff24292E),
-                          ),
-                          height: 60,
-                          child: Row(
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  deletUserDialog(height, width);
-                                },
-                                child: Container(
-                                    width: width * 0.2,
-                                    child: Image.asset("assets/delete.png")),
-                              ),
-                              Container(
-                                width: width * 0.56,
-                                child: Text(
-                                  '${index + 1} ${name[index]}',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily: "Poppins"),
-                                ),
-                              ),
-                              Container(
-                                width: width * 0.3,
-                                child: Text('Site User',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontFamily: "Poppins")),
-                              ),
-                              Container(
-                                width: width * 0.44,
-                                child: Text('Acers Marathon',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontFamily: "Poppins")),
-                              ),
-                              GestureDetector(
-                                  onTap: () {
-                                    Navigator.pushNamed(
-                                        context, AppRoutes.useprofile);
-                                  },
-                                  child: Image.asset("assets/info.png")),
-                              SizedBox(
-                                width: width * 0.04,
-                              ),
-                            ],
-                          ),
-                        ),
+                  return SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: index % 2 == 0
+                            ? Color(0xff2B343B)
+                            : Color(0xff24292E),
                       ),
-                    ],
+                      height: 60,
+                      child: Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              deletUserDialog(height, width);
+                            },
+                            child: Container(
+                                width: width * 0.2,
+                                child: Image.asset("assets/delete.png")),
+                          ),
+                          Container(
+                            width: width * 0.56,
+                            child: Text(
+                              '${index + 1} ${name[index]}',
+                              style: TextStyle(
+                                  color: Colors.white, fontFamily: "Poppins"),
+                            ),
+                          ),
+                          Container(
+                            width: width * 0.3,
+                            child: Text('Site User',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: "Poppins")),
+                          ),
+                          Container(
+                            width: width * 0.44,
+                            child: Text('Acers Marathon',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: "Poppins")),
+                          ),
+                          GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, AppRoutes.useprofile);
+                              },
+                              child: Image.asset("assets/info.png")),
+                          SizedBox(
+                            width: width * 0.04,
+                          ),
+                        ],
+                      ),
+                    ),
                   );
                 }),
           ],

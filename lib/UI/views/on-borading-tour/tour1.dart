@@ -63,7 +63,7 @@ class TourUpContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height * 0.2,
+      height: pageno == "5" ? height * 0.21 : height * 0.19,
       width: width * 0.9,
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -76,7 +76,7 @@ class TourUpContainer extends StatelessWidget {
           children: [
             SizedBox(
                 height:
-                    containertype == "down" ? height * 0.014 : height * 0.045),
+                    containertype == "down" ? height * 0.014 : height * 0.05),
             Text(
               head,
               style: TextStyle(

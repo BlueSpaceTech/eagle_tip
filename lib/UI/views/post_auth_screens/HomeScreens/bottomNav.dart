@@ -36,6 +36,8 @@ class _BottomNavState extends State<BottomNav> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -47,29 +49,30 @@ class _BottomNavState extends State<BottomNav> {
         selectedItemColor: Colors.white,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person_outline,
+            icon: Image.asset(
+              Common.assetImages + "profil.png",
+              width: width * 0.05,
             ),
             label: 'Profile',
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
               Common.assetImages + "home.png",
-              width: 16.0,
+              width: width * 0.05,
             ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
               Common.assetImages + "Group 308.png",
-              width: 16.0,
+              width: width * 0.05,
             ),
             label: 'Notifications',
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
               Common.assetImages + "message.png",
-              width: 16.0,
+              width: width * 0.05,
             ),
             label: 'Chat',
           ),

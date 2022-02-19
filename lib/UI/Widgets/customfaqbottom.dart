@@ -8,8 +8,9 @@ class CustomFAQbottom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     return Container(
-      height: 50,
+      height: height * 0.07,
       decoration: BoxDecoration(
         color: Color(0xff1A1F23),
       ),
