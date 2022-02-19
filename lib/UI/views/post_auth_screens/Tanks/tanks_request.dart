@@ -387,9 +387,10 @@ class _TanksRequestState extends State<TanksRequest> {
                                                         20.0)),
                                             title: Text(
                                               'Your Request has been sent!',
+                                              textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 fontSize: 23.0,
-                                                fontWeight: FontWeight.bold,
+                                                fontWeight: FontWeight.w600,
                                                 fontFamily: "Poppins",
                                                 color: Colors.black,
                                               ),
@@ -400,7 +401,7 @@ class _TanksRequestState extends State<TanksRequest> {
                                                 children: [
                                                   Image.asset(
                                                     Common.assetImages +
-                                                        "Check.png",
+                                                        "check.png",
                                                     width: width * 0.2,
                                                   ),
                                                   SizedBox(
@@ -579,7 +580,7 @@ class _TankState extends State<Tank> {
                           children: [
                             Container(
                               height: widget.height * 0.03,
-                              width: widget.width * 0.3,
+                              width: widget.width * 0.52,
                               child: TextField(
                                 inputFormatters: [
                                   FilteringTextInputFormatter.digitsOnly

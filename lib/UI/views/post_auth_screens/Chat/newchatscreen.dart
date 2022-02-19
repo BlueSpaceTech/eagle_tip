@@ -1,3 +1,4 @@
+import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Chat/message_model.dart';
 import 'package:flutter/material.dart';
 
@@ -117,20 +118,32 @@ class _ChatScreennState extends State<ChatScreenn> {
                 SizedBox(
                   width: 25,
                 ),
-                CircleAvatar(
-                  radius: 20,
-                  backgroundImage: AssetImage("assets/image1.png"),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  "Ahmad Elizondo",
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                      fontFamily: "Poppins",
-                      fontWeight: FontWeight.w600),
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, AppRoutes.useprofile);
+                  },
+                  child: Container(
+                    width: width * 0.5,
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 20,
+                          backgroundImage: AssetImage("assets/image1.png"),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "Ahmad Elizondo",
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontFamily: "Poppins",
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),

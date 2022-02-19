@@ -219,7 +219,7 @@ class SiteDett extends StatelessWidget {
                               fontSize: 13.0,
                               fontWeight: FontWeight.w500,
                               fontFamily: "Poppins",
-                              color: Color(0xFF6E7191)),
+                              color: Color(0xFFd9dbe9)),
                         ),
                       ],
                     ),

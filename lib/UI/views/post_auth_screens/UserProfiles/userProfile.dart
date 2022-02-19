@@ -24,9 +24,14 @@ class UserProfile extends StatelessWidget {
                     EdgeInsets.only(left: width * 0.04, top: height * 0.02),
                 child: Row(
                   children: [
-                    Icon(
-                      Icons.arrow_back,
-                      color: Colors.white,
+                    InkWell(
+                      onTap: (() {
+                        Navigator.pop(context);
+                      }),
+                      child: Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
+                      ),
                     ),
                     SizedBox(
                       width: width * 0.22,

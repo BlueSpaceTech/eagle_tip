@@ -254,6 +254,9 @@ class _CrudScreenState extends State<CrudScreen> {
                 ],
               ),
             ),
+            SizedBox(
+              height: 20.0,
+            ),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Container(

@@ -47,7 +47,7 @@ class MenuButton extends StatelessWidget {
             )
           : Image.asset(
               Common.assetImages + "Group 288.png",
-              width: width * 0.075,
+              width: width * 0.082,
             ),
       itemBuilder: (context) => [
         PopupMenuItem(

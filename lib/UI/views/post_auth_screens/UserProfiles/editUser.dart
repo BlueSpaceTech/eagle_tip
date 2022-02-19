@@ -158,7 +158,7 @@ class ChangePassField extends StatelessWidget {
                 border: InputBorder.none,
                 labelText: labelText,
                 labelStyle: TextStyle(
-                    color: Color(0xff28519D),
+                    color: Color(0xff5e8be0),
                     fontFamily: "Poppins",
                     fontWeight: FontWeight.w500),
               ),

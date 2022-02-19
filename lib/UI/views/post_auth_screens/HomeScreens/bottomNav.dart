@@ -47,7 +47,9 @@ class _BottomNavState extends State<BottomNav> {
         selectedItemColor: Colors.white,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
+            icon: Icon(
+              Icons.person_outline,
+            ),
             label: 'Profile',
           ),
           BottomNavigationBarItem(

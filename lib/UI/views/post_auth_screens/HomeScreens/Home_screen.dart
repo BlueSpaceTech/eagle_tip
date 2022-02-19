@@ -3,6 +3,7 @@
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/Services/authentication.dart';
 import 'package:eagle_tip/Services/authentication_helper.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/myprofile.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Container(
         color: backGround_color,
         child: Padding(
-          padding: EdgeInsets.only(top: height * 0.05),
+          padding: EdgeInsets.only(top: height * 0.1),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -37,9 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     width: width * 0.27,
                   ),
-                  Image.asset(Common.assetImages + "Logo 2 2.png"),
+                  Logo(width: width),
                   SizedBox(
-                    width: width * 0.2,
+                    width: width * 0.17,
                   ),
                   PopupMenuButton(
                     color: Color(0xFF3f4850),
@@ -50,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           )
                         : Image.asset(
                             Common.assetImages + "Group 288.png",
-                            width: width * 0.075,
+                            width: width * 0.082,
                           ),
                     itemBuilder: (context) => [
                       PopupMenuItem(

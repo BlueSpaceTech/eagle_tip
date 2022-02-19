@@ -509,11 +509,14 @@ class _SiteDetailsState extends State<SiteDetails> {
                                                                           20.0)),
                                                           title: Text(
                                                             'Your Request has been sent!',
+                                                            textAlign: TextAlign
+                                                                .center,
                                                             style: TextStyle(
                                                               fontSize: 23.0,
+                                                              height: 1.2,
                                                               fontWeight:
                                                                   FontWeight
-                                                                      .bold,
+                                                                      .w600,
                                                               fontFamily:
                                                                   "Poppins",
                                                               color:
@@ -527,7 +530,7 @@ class _SiteDetailsState extends State<SiteDetails> {
                                                               children: [
                                                                 Image.asset(
                                                                   Common.assetImages +
-                                                                      "Check.png",
+                                                                      "check.png",
                                                                   width: width *
                                                                       0.2,
                                                                 ),
