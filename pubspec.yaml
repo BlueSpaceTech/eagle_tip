@@ -49,6 +49,8 @@ dependencies:
   sleek_circular_slider: ^2.0.1
   flutter_circular_slider: ^2.5.0
   flutter_switch: ^0.3.2
+  flutter_svg: ^1.0.3
+  otp_text_field: ^1.1.2
 
 dev_dependencies:
   flutter_test:

@@ -1,18 +1,28 @@
 import 'package:eagle_tip/Routes/approutes.dart';
-import 'package:eagle_tip/UI/Widgets/customTextField.dart';
 import 'package:eagle_tip/UI/Widgets/customfaqbottom.dart';
 import 'package:eagle_tip/UI/Widgets/customsubmitbutton.dart';
+import 'package:eagle_tip/UI/views/pre_auth_screens/uploadimage.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:otp_text_field/otp_field.dart';
+import 'package:otp_text_field/otp_text_field.dart';
+import 'package:otp_text_field/style.dart';
 
-class ForgetPassword extends StatelessWidget {
-  const ForgetPassword({Key? key}) : super(key: key);
+class VerificationScreen extends StatefulWidget {
+  VerificationScreen(
+      {Key? key, required this.email, required this.employercode})
+      : super(key: key);
+  String email;
+  String employercode;
+  @override
+  _VerificationScreenState createState() => _VerificationScreenState();
+}
 
+class _VerificationScreenState extends State<VerificationScreen> {
   @override
   Widget build(BuildContext context) {
-    final TextEditingController _email = TextEditingController();
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -62,12 +72,8 @@ class ForgetPassword extends StatelessWidget {
                     SizedBox(
                       height: height * 0.08,
                     ),
-                    Image.asset("assets/forgetpass.png"),
-                    SizedBox(
-                      height: height * 0.04,
-                    ),
                     Text(
-                      "Forget Password?",
+                      "Verification",
                       style: TextStyle(
                           fontSize: 20,
                           color: Colors.white,
@@ -79,9 +85,9 @@ class ForgetPassword extends StatelessWidget {
                     ),
                     Container(
                       width: width * 0.75,
-                      alignment: Alignment.topLeft,
+                      alignment: Alignment.center,
                       child: Text(
-                        "Enter your email address associated with your account and we’ll send an email with instructions to reset your password.",
+                        "Enter the OTP code sent to your phone",
                         style: TextStyle(
                             fontSize: 14,
                             color: Colors.white,
@@ -91,24 +97,82 @@ class ForgetPassword extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: height * 0.06,
+                      height: height * 0.03,
                     ),
-                    CustomTextField(
-                        isactive: true,
-                        controller: _email,
-                        width: width,
-                        height: height,
-                        labelText: "Email"),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        OTPTextField(
+                          keyboardType: TextInputType.number,
+                          length: 4,
+                          width: Responsive.isDesktop(context)
+                              ? width * 0.3
+                              : width * 0.5,
+                          fieldWidth: 50,
+                          style: TextStyle(fontSize: 17),
+                          textFieldAlignment: MainAxisAlignment.spaceAround,
+                          fieldStyle: FieldStyle.box,
+                          otpFieldStyle:
+                              OtpFieldStyle(backgroundColor: Colors.white),
+                          onCompleted: (pin) {
+                            print("Completed: " + pin);
+                          },
+                        ),
+                      ],
+                    ),
                     SizedBox(
-                      height: height * 0.02,
+                      height: height * 0.04,
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.pushNamed(context, AppRoutes.mailsent);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => UploadImage(
+                                email: widget.email,
+                                employercode: widget.employercode,
+                              ),
+                            ));
                       },
                       child: CustomSubmitButton(
                         width: width,
-                        title: "Send Instructions",
+                        title: "Continue",
+                      ),
+                    ),
+                    SizedBox(
+                      height: height * 0.04,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          onTap: () {},
+                          child: Text(
+                            "Didn’t receive any code?",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: "Poppins",
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Send new code",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: "Poppins",
+                              fontWeight: FontWeight.w500,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],

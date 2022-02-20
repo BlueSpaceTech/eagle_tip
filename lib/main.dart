@@ -35,6 +35,7 @@ import 'package:eagle_tip/UI/views/pre_auth_screens/forgetpassword.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/login_screen.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/splashscreen.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/uploadimage.dart';
+import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -43,15 +44,18 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
-    // Replace with actual values
+      // Replace with actual values
+/*
     options: FirebaseOptions(
       apiKey: "AIzaSyDVMUtzjQx29o2lMKZx0IHSJ_5v_z4mqnk",
       appId: "1:168073462322:android:364f09407678105ceeb22b",
       messagingSenderId: "168073462322",
       projectId: "eagle-tip",
     ),
-  );
+    */
+      );
   runApp(const MyApp());
 }
 
