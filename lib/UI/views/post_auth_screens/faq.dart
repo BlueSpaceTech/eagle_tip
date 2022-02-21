@@ -123,7 +123,7 @@ class _FAQState extends State<FAQ> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: isExpanded! ? widget.height * 0.3 : widget.height * 0.05,
+      height: isExpanded! ? widget.height * 0.26 : widget.height * 0.05,
       child: Column(
         children: [
           Container(

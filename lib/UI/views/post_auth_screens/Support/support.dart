@@ -1,9 +1,15 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+// import 'dart:html';
+
+import 'package:eagle_tip/UI/Widgets/customContainer.dart';
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
+import 'package:eagle_tip/Utils/detectPlatform.dart';
+import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SupportScreen extends StatelessWidget {
   const SupportScreen({Key? key}) : super(key: key);
@@ -13,27 +19,149 @@ class SupportScreen extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
+      body: Responsive(
+        mobile: Mobile(height: height, width: width),
+        tablet: DesktopSupport(
+          height: height,
+          width: width,
+        ),
+        desktop: DesktopSupport(
+          height: height,
+          width: width,
+        ),
+      ),
+    );
+  }
+}
+
+class Mobile extends StatelessWidget {
+  const Mobile({
+    Key? key,
+    required this.height,
+    required this.width,
+  }) : super(key: key);
+
+  final double height;
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Container(
+          height: height,
+          width: width,
+          color: backGround_color,
+          child: Padding(
+            padding: EdgeInsets.only(
+                top: 10.0, left: width * 0.07, right: width * 0.07),
+            child: Column(
+              children: [
+                PlatformInfo().isWeb() ? SizedBox() : TopRow(width: width),
+                SizedBox(
+                  height: height * 0.05,
+                ),
+                Text(
+                  "Support",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      fontSize: width * 0.05,
+                      fontFamily: "Poppins"),
+                ),
+                SizedBox(
+                  height: height * 0.02,
+                ),
+                SupportTextField(
+                    width: width, height: height, labelText: "Employer Code"),
+                SizedBox(
+                  height: height * 0.012,
+                ),
+                SupportTextField(
+                    width: width, height: height, labelText: "Name"),
+                SizedBox(
+                  height: height * 0.012,
+                ),
+                SupportTextField(
+                    width: width, height: height, labelText: "Email"),
+                SizedBox(
+                  height: height * 0.012,
+                ),
+                SupportTextField(
+                    width: width, height: height, labelText: "Subject"),
+                SizedBox(
+                  height: height * 0.012,
+                ),
+                MessageTextField(
+                    width: width, height: height, labelText: "Message"),
+                SizedBox(
+                  height: height * 0.04,
+                ),
+                Container(
+                  width: Responsive.isDesktop(context)
+                      ? width * 0.3
+                      : Responsive.isTablet(context)
+                          ? width * 0.6
+                          : width * 0.9,
+                  height: height * 0.065,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(13.0),
+                    color: Color(0xFF5081DB),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "Send",
+                      style: TextStyle(
+                          fontSize: width * 0.1,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: "Poppins"),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class DesktopSupport extends StatelessWidget {
+  const DesktopSupport({
+    Key? key,
+    required this.height,
+    required this.width,
+  }) : super(key: key);
+
+  final double height;
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Container(
+          height: height,
+          width: width,
+          color: backGround_color,
+          child: CustomContainer(
             height: height,
             width: width,
-            color: backGround_color,
-            child: Padding(
-              padding: EdgeInsets.only(
-                  top: 10.0, left: width * 0.07, right: width * 0.07),
+            child: Center(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TopRow(width: width),
-                  SizedBox(
-                    height: height * 0.05,
-                  ),
+                  // SizedBox(
+                  //   height: height * 0.05,
+                  // ),
                   Text(
                     "Support",
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
-                        fontSize: 18.0,
+                        fontSize: width * 0.014,
                         fontFamily: "Poppins"),
                   ),
                   SizedBox(
@@ -65,7 +193,11 @@ class SupportScreen extends StatelessWidget {
                     height: height * 0.04,
                   ),
                   Container(
-                    width: width * 0.9,
+                    width: Responsive.isDesktop(context)
+                        ? width * 0.3
+                        : Responsive.isTablet(context)
+                            ? width * 0.6
+                            : width * 0.9,
                     height: height * 0.065,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(13.0),
@@ -166,8 +298,23 @@ class _SupportTextFieldState extends State<SupportTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: Responsive.isDesktop(context)
+          ? widget.width * 0.3
+          : Responsive.isTablet(context)
+              ? widget.width * 0.6
+              : widget.width * 0.9,
       padding: EdgeInsets.only(
-          left: widget.width * 0.06, right: widget.width * 0.06),
+          top: Responsive.isDesktop(context)
+              ? widget.height * 0.006
+              : Responsive.isTablet(context)
+                  ? widget.height * 0.006
+                  : 0.0,
+          left: Responsive.isDesktop(context)
+              ? widget.width * 0.014
+              : Responsive.isTablet(context)
+                  ? widget.width * 0.021
+                  : widget.width * 0.06,
+          right: widget.width * 0.06),
       height: widget.height * 0.07,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -181,7 +328,7 @@ class _SupportTextFieldState extends State<SupportTextField> {
           border: InputBorder.none,
           labelText: widget.labelText,
           labelStyle: TextStyle(
-              fontSize: 15.0,
+              fontSize: widget.width * 0.008,
               color:
                   myFocusNode.hasFocus ? Color(0xFF5E8BE0) : Color(0xffAEB0C3),
               fontFamily: "Poppins",
@@ -227,8 +374,23 @@ class _MessageTextFieldState extends State<MessageTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: Responsive.isDesktop(context)
+          ? widget.width * 0.3
+          : Responsive.isTablet(context)
+              ? widget.width * 0.6
+              : widget.width * 0.9,
       padding: EdgeInsets.only(
-          left: widget.width * 0.06, right: widget.width * 0.06),
+          top: Responsive.isDesktop(context)
+              ? widget.height * 0.006
+              : Responsive.isTablet(context)
+                  ? widget.height * 0.006
+                  : 0.0,
+          left: Responsive.isDesktop(context)
+              ? widget.width * 0.014
+              : Responsive.isTablet(context)
+                  ? widget.width * 0.021
+                  : widget.width * 0.06,
+          right: widget.width * 0.06),
       height: widget.height * 0.25,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -242,7 +404,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
           border: InputBorder.none,
           labelText: widget.labelText,
           labelStyle: TextStyle(
-              fontSize: 15.0,
+              fontSize: widget.width * 0.008,
               color:
                   myFocusNode.hasFocus ? Color(0xFF5E8BE0) : Color(0xffAEB0C3),
               fontFamily: "Poppins",

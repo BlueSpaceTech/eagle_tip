@@ -176,7 +176,9 @@ class _NotifyState extends State<Notify> {
                     notifyContent:
                         "Risus vestibulum, risus feugiat semper velit feugiat velit. Placerat elit volutpat volutpat elit bibendum molestie eget. Convallis mattis dignissim quis tincidunt quisque. Adipiscing suspendisse faucibus aliquet a turpis odio pellentesque lectus duis. Sodales odio eu bibendum massa velit maecenas eget. Maecenas facilisis nunc tincidunt sed eget viverra porttitor feugiat. Mattis dictum sed suspendisse faucibus gravida. Id eget amet dis amet ut at in eget nam. Diam aenean ullamcorper viverra sed tincidunt. Volutpat amet et scelerisque lacus, vitae rhoncus iaculis. In egestas a cras orci cras. Neque at magna nunc turpis. Leo mattis porttitor sed nisl. Tortor tincidunt et sit nullam cras fames ac. Eget ac ultrices phasellus diam nam massa. Egestas risus amet, convallis felis faucibus. Quis odio non duis sollicitudin massa urna luctus vel. Est maecenas a diam et tellus. Pellentesque lobortis tincidunt aliquet quam et turpis. Erat in eget tortor, morbi a venenatis.")));
         setState(() {
-          widget.valueChanged(newNotify);
+          if (newNotify != null) {
+            widget.valueChanged(newNotify);
+          }
         });
       },
       child: Padding(
