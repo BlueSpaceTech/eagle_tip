@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:eagle_tip/Routes/approutes.dart';
+import 'package:eagle_tip/UI/Widgets/customHeader2.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -16,64 +17,35 @@ class Sites extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            height: height,
-            color: backGround_color,
-            child: Padding(
-              padding: EdgeInsets.only(
-                  top: height * 0.01, left: width * 0.05, right: width * 0.05),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Icon(
-                          Icons.arrow_back,
-                          color: Colors.white,
-                          size: width * 0.06,
-                        ),
-                      ),
-                      SizedBox(
-                        width: width * 0.17,
-                      ),
-                      Image.asset(Common.assetImages + "Logo 2 2.png"),
-                      SizedBox(
-                        width: width * 0.2,
-                      ),
-                      Image.asset(
-                        Common.assetImages + "Vector.png",
-                        width: width * 0.048,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: height * 0.05,
-                  ),
-                  Text(
-                    "Sites",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: "Poppins"),
-                  ),
-                  SizedBox(
-                    height: height * 0.03,
-                  ),
-                  SiteList(
-                      height: height,
-                      width: width,
-                      siteImg: siteImg,
-                      siteName: siteName,
-                      sitelocation: sitelocation),
-                ],
-              ),
+      body: SingleChildScrollView(
+        child: Container(
+          height: height,
+          color: backGround_color,
+          child: Padding(
+            padding: EdgeInsets.only(
+                top: height * 0.1, left: width * 0.05, right: width * 0.05),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomHeader2(),
+                SizedBox(
+                  height: height * 0.05,
+                ),
+                Text(
+                  "Sites",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "Poppins"),
+                ),
+                SiteList(
+                    height: height,
+                    width: width,
+                    siteImg: siteImg,
+                    siteName: siteName,
+                    sitelocation: sitelocation),
+              ],
             ),
           ),
         ),

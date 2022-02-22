@@ -188,7 +188,8 @@ class _CrudScreenState extends State<CrudScreen> {
               height: height * 0.05,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: width * 0.01),
+              padding: EdgeInsets.only(
+                  left: width * 0.01, right: width * 0.01, top: height * 0.04),
               child: CustomAppheader(width: width),
             ),
             SizedBox(

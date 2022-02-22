@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:eagle_tip/UI/Widgets/customContainer.dart';
+import 'package:eagle_tip/UI/Widgets/logo.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Support/support_desktop.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
@@ -64,65 +65,63 @@ class MobileFAQ extends StatefulWidget {
 class _MobileFAQState extends State<MobileFAQ> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Container(
-          color: backGround_color,
-          height: widget.height,
-          child: Padding(
-            padding: EdgeInsets.only(
-                left: widget.width * 0.04, top: widget.height * 0.04),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Row(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                        size: widget.width * 0.06,
-                      ),
-                    ),
-                    SizedBox(
-                      width: widget.width * 0.2,
-                    ),
-                    Image.asset(Common.assetImages + "Logo 2 2.png"),
-                  ],
-                ),
-                SizedBox(
-                  height: widget.height * 0.05,
-                ),
-                Text(
-                  "FAQ",
-                  style: TextStyle(
+    return SingleChildScrollView(
+      child: Container(
+        color: backGround_color,
+        height: widget.height,
+        child: Padding(
+          padding: EdgeInsets.only(
+              left: widget.width * 0.04, top: widget.height * 0.1),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back,
                       color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: widget.width * 0.04,
-                      fontFamily: "Poppins"),
-                ),
-                SizedBox(
-                  height: widget.height * 0.05,
-                ),
-                Container(
-                  height: widget.height * 0.6,
-                  child: ListView.builder(
-                      itemCount: widget.FAQNames.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return FAQ(
-                          widht: widget.width,
-                          FAQdata: widget.FAQdata,
-                          height: widget.height,
-                          FAQNames: widget.FAQNames,
-                          index: index,
-                        );
-                      }),
-                ),
-              ],
-            ),
+                      size: widget.width * 0.06,
+                    ),
+                  ),
+                  SizedBox(
+                    width: widget.width * 0.2,
+                  ),
+                  Logo(width: widget.width),
+                ],
+              ),
+              SizedBox(
+                height: widget.height * 0.05,
+              ),
+              Text(
+                "FAQ",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: widget.width * 0.04,
+                    fontFamily: "Poppins"),
+              ),
+              SizedBox(
+                height: widget.height * 0.05,
+              ),
+              Container(
+                height: widget.height * 0.6,
+                child: ListView.builder(
+                    itemCount: widget.FAQNames.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return FAQ(
+                        widht: widget.width,
+                        FAQdata: widget.FAQdata,
+                        height: widget.height,
+                        FAQNames: widget.FAQNames,
+                        index: index,
+                      );
+                    }),
+              ),
+            ],
           ),
         ),
       ),
@@ -303,7 +302,7 @@ class _FAQState extends State<FAQ> {
                   Text(
                     widget.FAQNames[widget.index],
                     style: TextStyle(
-                        fontSize: widget.widht * 0.032,
+                        fontSize: widget.widht * 0.034,
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
                         fontFamily: "Poppins"),

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:eagle_tip/UI/Widgets/customHeader2.dart';
 import 'package:eagle_tip/UI/Widgets/customappheader.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
@@ -24,28 +25,7 @@ class TicketDetail extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Icon(
-                          Icons.arrow_back,
-                          color: Colors.white,
-                          size: width * 0.06,
-                        ),
-                      ),
-                      SizedBox(
-                        width: width * 0.17,
-                      ),
-                      Image.asset(Common.assetImages + "Logo 2 2.png"),
-                      SizedBox(
-                        width: width * 0.2,
-                      ),
-                      MenuButton(isTapped: false, width: width),
-                    ],
-                  ),
+                  CustomHeader2(),
                   SizedBox(
                     height: height * 0.06,
                   ),

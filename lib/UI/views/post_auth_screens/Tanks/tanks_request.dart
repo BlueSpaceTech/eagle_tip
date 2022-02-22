@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:eagle_tip/UI/Widgets/customHeader2.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Tanks/product_request.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
@@ -35,26 +36,7 @@ class _TanksRequestState extends State<TanksRequest> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.arrow_back,
-                      color: Colors.white,
-                      size: width * 0.06,
-                    ),
-                    SizedBox(
-                      width: width * 0.17,
-                    ),
-                    Image.asset(Common.assetImages + "Logo 2 2.png"),
-                    SizedBox(
-                      width: width * 0.2,
-                    ),
-                    Image.asset(
-                      Common.assetImages + "Vector.png",
-                      width: width * 0.048,
-                    ),
-                  ],
-                ),
+                CustomHeader2(),
                 SizedBox(
                   height: height * 0.06,
                 ),

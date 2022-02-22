@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:eagle_tip/UI/Widgets/customHeader2.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/Home_screen.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
@@ -21,41 +22,16 @@ class SpecificNotification extends StatelessWidget {
         return Future.value(false);
       },
       child: Scaffold(
-        body: SafeArea(
-            child: SingleChildScrollView(
+        body: SingleChildScrollView(
           child: Container(
             height: height,
             color: backGround_color,
             child: Padding(
               padding: EdgeInsets.only(
-                  top: height * 0.02, left: width * 0.03, right: width * 0.02),
+                  top: height * 0.1, left: width * 0.03, right: width * 0.02),
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.pop(context, false);
-                        },
-                        child: Icon(
-                          Icons.arrow_back,
-                          color: Colors.white,
-                          size: width * 0.06,
-                        ),
-                      ),
-                      SizedBox(
-                        width: width * 0.17,
-                      ),
-                      Image.asset(Common.assetImages + "Logo 2 2.png"),
-                      SizedBox(
-                        width: width * 0.2,
-                      ),
-                      Image.asset(
-                        Common.assetImages + "Vector.png",
-                        width: width * 0.048,
-                      ),
-                    ],
-                  ),
+                  CustomHeader2(),
                   SizedBox(
                     height: height * 0.06,
                   ),
@@ -111,7 +87,7 @@ class SpecificNotification extends StatelessWidget {
               ),
             ),
           ),
-        )),
+        ),
       ),
     );
   }

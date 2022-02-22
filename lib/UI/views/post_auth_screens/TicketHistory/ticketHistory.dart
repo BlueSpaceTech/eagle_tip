@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:eagle_tip/Routes/approutes.dart';
+import 'package:eagle_tip/UI/Widgets/customHeader2.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -40,31 +41,7 @@ class TicketHistory extends StatelessWidget {
                   Padding(
                     padding:
                         EdgeInsets.only(left: width * 0.04, top: height * 0.01),
-                    child: Row(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
-                            size: width * 0.06,
-                          ),
-                        ),
-                        SizedBox(
-                          width: width * 0.17,
-                        ),
-                        Image.asset(Common.assetImages + "Logo 2 2.png"),
-                        SizedBox(
-                          width: width * 0.2,
-                        ),
-                        Image.asset(
-                          Common.assetImages + "Vector.png",
-                          width: width * 0.048,
-                        ),
-                      ],
-                    ),
+                    child: CustomHeader2(),
                   ),
                   SizedBox(
                     height: height * 0.05,
