@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Request%20History/request_history.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Tanks/tanks_request.dart';
+import 'package:lottie/lottie.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +15,8 @@ class SiteDetails extends StatefulWidget {
   State<SiteDetails> createState() => _SiteDetailsState();
 }
 
-class _SiteDetailsState extends State<SiteDetails> {
+class _SiteDetailsState extends State<SiteDetails>
+    with TickerProviderStateMixin {
   bool? _isTapped = false;
   String? regularVal = "0";
   String? midgradeVal = "0";
@@ -35,6 +38,27 @@ class _SiteDetailsState extends State<SiteDetails> {
     "3/7/19",
     "22/15/10",
   ];
+
+  late final AnimationController _controller;
+
+  AudioPlayer audioPlayer = AudioPlayer();
+  playLocal() async {
+    int result = await audioPlayer.play("assets/pop-sound.mp3", isLocal: true);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _controller = AnimationController(vsync: this);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _controller.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -528,11 +552,20 @@ class _SiteDetailsState extends State<SiteDetails> {
                                                                 height * 0.25,
                                                             child: Column(
                                                               children: [
-                                                                Image.asset(
-                                                                  Common.assetImages +
-                                                                      "check.png",
+                                                                Lottie.asset(
+                                                                  'assets/tick_animation.json',
+                                                                  repeat: false,
+                                                                  onLoaded:
+                                                                      (composition) {
+                                                                    _controller
+                                                                            .duration =
+                                                                        Duration(
+                                                                            seconds:
+                                                                                1);
+                                                                    playLocal();
+                                                                  },
                                                                   width: width *
-                                                                      0.2,
+                                                                      0.22,
                                                                 ),
                                                                 SizedBox(
                                                                   height:
