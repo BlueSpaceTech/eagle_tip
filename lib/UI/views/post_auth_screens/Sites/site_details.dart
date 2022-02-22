@@ -41,9 +41,14 @@ class _SiteDetailsState extends State<SiteDetails>
 
   late final AnimationController _controller;
 
-  AudioPlayer audioPlayer = AudioPlayer();
+  AudioPlayer audioPlayer = AudioPlayer(mode: PlayerMode.LOW_LATENCY);
   playLocal() async {
     int result = await audioPlayer.play("assets/pop-sound.mp3", isLocal: true);
+  }
+
+  void playsound() {
+    final player = AudioCache();
+    player.play('pop-sound.mp3');
   }
 
   @override
@@ -517,6 +522,8 @@ class _SiteDetailsState extends State<SiteDetails>
                                                   ),
                                                   InkWell(
                                                     onTap: () {
+                                                      playsound();
+                                                      playLocal();
                                                       Navigator.pop(context);
                                                       setState(() {
                                                         _requested = true;

@@ -4,6 +4,7 @@ import 'package:eagle_tip/UI/views/post_auth_screens/CRUD/Add%20New%20User/Owner
 import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/myprofile.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:flutter/material.dart';
+import 'package:linked_scroll_controller/linked_scroll_controller.dart';
 
 class CrudScreen extends StatefulWidget {
   const CrudScreen({Key? key}) : super(key: key);
@@ -13,6 +14,11 @@ class CrudScreen extends StatefulWidget {
 }
 
 class _CrudScreenState extends State<CrudScreen> {
+  LinkedScrollControllerGroup? _controllers;
+  ScrollController? _letters;
+  ScrollController? _numbers;
+  late ScrollController SCROL;
+
   deletUserDialog(double height, double width) {
     showDialog(
       context: context,
@@ -110,6 +116,21 @@ class _CrudScreenState extends State<CrudScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _controllers = LinkedScrollControllerGroup();
+    _letters = _controllers!.addAndGet();
+    _numbers = _controllers!.addAndGet();
+  }
+
+  @override
+  void dispose() {
+    _letters!.dispose();
+    _numbers!.dispose();
+    super.dispose();
   }
 
   @override
@@ -254,7 +275,11 @@ class _CrudScreenState extends State<CrudScreen> {
                 ],
               ),
             ),
+            SizedBox(
+              height: 25,
+            ),
             SingleChildScrollView(
+              controller: _letters,
               scrollDirection: Axis.horizontal,
               child: Container(
                 height: 40,
@@ -295,17 +320,6 @@ class _CrudScreenState extends State<CrudScreen> {
                       ),
                     ),
                     Container(
-                      width: width * 0.44,
-                      child: Text(
-                        "Site",
-                        style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.white.withOpacity(0.5),
-                            fontFamily: "Poppins",
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    Container(
                       width: width * 0.3,
                       child: Text(
                         "Site",
@@ -338,6 +352,7 @@ class _CrudScreenState extends State<CrudScreen> {
                 itemCount: name.length,
                 itemBuilder: (BuildContext context, int index) {
                   return SingleChildScrollView(
+                    controller: _numbers,
                     scrollDirection: Axis.horizontal,
                     child: Container(
                       decoration: BoxDecoration(

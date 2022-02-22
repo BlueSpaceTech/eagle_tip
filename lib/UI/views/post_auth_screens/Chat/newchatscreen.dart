@@ -67,7 +67,7 @@ class _ChatScreennState extends State<ChatScreenn> {
   _sendMessageArea(double height, double width) {
     return Container(
       margin: EdgeInsets.only(bottom: 5),
-      padding: EdgeInsets.only(left: 15),
+      padding: EdgeInsets.only(left: 15, right: 10),
       alignment: Alignment.centerLeft,
       height: height * 0.08,
       width: width * 0.92,
@@ -76,8 +76,9 @@ class _ChatScreennState extends State<ChatScreenn> {
         color: Color(0xff20272C),
       ),
       child: TextField(
+        style: TextStyle(color: Colors.white),
         decoration: InputDecoration(
-          //  suffixIcon: Image.asset("assets/mesicon.png"),
+          suffixIcon: Image.asset("assets/mesicon.png"),
           border: InputBorder.none,
           hintText: 'Message',
           hintStyle: TextStyle(
