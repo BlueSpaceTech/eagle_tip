@@ -56,23 +56,22 @@ class _NotificationsState extends State<Notifications> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: width * 0.22,
-                    ),
-                    Logo(width: width),
-                    SizedBox(
-                      width: width * 0.15,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.0),
-                      child: Icon(
-                        Icons.search,
-                        color: Colors.white,
-                      ),
-                    )
-                  ],
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: width * 0.09),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(""),
+                      Logo(width: width),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.0),
+                        child: Icon(
+                          Icons.search,
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: height * 0.05,

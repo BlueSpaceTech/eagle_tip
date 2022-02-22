@@ -38,7 +38,13 @@ class _NewChatScreenState extends State<NewChatScreen> {
                       ),
                     ),
                     Image.asset("assets/Logo 2 2.png"),
-                    Image.asset("assets/search.png"),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10.0),
+                      child: Icon(
+                        Icons.search,
+                        color: Colors.white,
+                      ),
+                    )
                   ],
                 ),
               ),

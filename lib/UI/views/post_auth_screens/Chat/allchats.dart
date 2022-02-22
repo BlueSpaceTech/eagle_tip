@@ -1,5 +1,6 @@
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/chatListTile.dart';
+import 'package:eagle_tip/UI/Widgets/logo.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Sites/sites.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
@@ -56,24 +57,21 @@ class AllChatScreen extends StatelessWidget {
                   Responsive.isDesktop(context) ? width * 0.01 : width * 0.09,
               top: height * 0.1),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Visibility(
-                visible: Responsive.isDesktop(context) ? false : true,
-                child: Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset(
-                        "assets/Logo 2 1.svg",
-                        width: width * 0.45,
-                      ),
-                      // SvgPicture.asset(".svg"),
-                      SizedBox(width: width * 0.15),
-                      Image.asset("assets/search.png"),
-                    ],
-                  ),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(""),
+                  Logo(width: width),
+                  Padding(
+                    padding: EdgeInsets.only(top: 10.0),
+                    child: Icon(
+                      Icons.search,
+                      color: Colors.white,
+                    ),
+                  )
+                ],
               ),
               SizedBox(
                 height: height * 0.04,
