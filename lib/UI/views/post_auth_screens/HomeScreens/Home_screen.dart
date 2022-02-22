@@ -30,96 +30,98 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: Container(
         color: backGround_color,
-        child: Padding(
-          padding: EdgeInsets.only(top: height * 0.1),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              CustomAppheader(width: width),
-              SizedBox(
-                height: height * 0.05,
-              ),
-              Column(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      AuthFunctions.signOut();
-                      Navigator.pushNamed(context, AppRoutes.loginscreen);
-                    },
-                    child: Text(
-                      "Acres Marathon",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17.0,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: "Poppins"),
-                    ),
-                  ),
-                  Text(
-                    "Tampa, FL",
-                    style: TextStyle(
-                        color: Color(0xFF6E7191),
-                        fontSize: 13.0,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: "Poppins"),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: height * 0.05,
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.pushNamed(
-                    context,
-                    AppRoutes.siteDetails,
-                  );
-                },
-                child: Stack(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.only(top: height * 0.1),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CustomAppheader(width: width),
+                SizedBox(
+                  height: height * 0.05,
+                ),
+                Column(
                   children: [
-                    Image.asset(
-                      Common.assetImages + "Ellipse 49.png",
-                      width: width * 0.7,
-                    ),
-                    Positioned(
-                      top: height * 0.115,
-                      left: width * 0.142,
-                      child: SizedBox(
-                        width: width * 0.4,
-                        child: Text(
-                          "Request Fuel",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 34.0,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                              fontFamily: "Poppins"),
-                        ),
+                    GestureDetector(
+                      onTap: () {
+                        AuthFunctions.signOut();
+                        Navigator.pushNamed(context, AppRoutes.loginscreen);
+                      },
+                      child: Text(
+                        "Acres Marathon",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 17.0,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: "Poppins"),
                       ),
+                    ),
+                    Text(
+                      "Tampa, FL",
+                      style: TextStyle(
+                          color: Color(0xFF6E7191),
+                          fontSize: 13.0,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: "Poppins"),
                     ),
                   ],
                 ),
-              ),
-              SizedBox(
-                height: height * 0.07,
-              ),
-              InkWell(
+                SizedBox(
+                  height: height * 0.05,
+                ),
+                InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, AppRoutes.siteScreen);
+                    Navigator.pushNamed(
+                      context,
+                      AppRoutes.siteDetails,
+                    );
+                  },
+                  child: Stack(
+                    children: [
+                      Image.asset(
+                        Common.assetImages + "Ellipse 49.png",
+                        width: width * 0.7,
+                      ),
+                      Positioned(
+                        top: height * 0.115,
+                        left: width * 0.142,
+                        child: SizedBox(
+                          width: width * 0.4,
+                          child: Text(
+                            "Request Fuel",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 34.0,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                                fontFamily: "Poppins"),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: height * 0.07,
+                ),
+                InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, AppRoutes.siteScreen);
+                    },
+                    child: SiteContainer(
+                        width: width, text: "Sites", height: height)),
+                SizedBox(
+                  height: height * 0.02,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, AppRoutes.crudscreen);
                   },
                   child: SiteContainer(
-                      width: width, text: "Sites", height: height)),
-              SizedBox(
-                height: height * 0.02,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, AppRoutes.crudscreen);
-                },
-                child: SiteContainer(
-                    width: width, text: "Edit Employees", height: height),
-              )
-            ],
+                      width: width, text: "Edit Employees", height: height),
+                )
+              ],
+            ),
           ),
         ),
       ),

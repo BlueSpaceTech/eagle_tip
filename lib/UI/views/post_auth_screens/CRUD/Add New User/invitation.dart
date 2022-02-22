@@ -2,6 +2,7 @@
 
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
 import 'package:eagle_tip/UI/Widgets/customappheader.dart';
+import 'package:eagle_tip/UI/Widgets/customsubmitbutton.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/TicketHistory/ticketHistoryDetail.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
@@ -24,7 +25,7 @@ class Invitation extends StatelessWidget {
               padding: EdgeInsets.only(
                   left: width * 0.04, right: width * 0.04, top: height * 0.01),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Row(
                     children: [
@@ -159,10 +160,10 @@ class Invitation extends StatelessWidget {
                   SizedBox(
                     height: height * 0.02,
                   ),
-                  CustomButton(
-                      width: width,
-                      buttonText: "Send Invitation",
-                      height: height)
+                  CustomSubmitButton(
+                    width: width,
+                    title: "Send Invitation",
+                  )
                 ],
               ),
             ),
