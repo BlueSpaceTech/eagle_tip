@@ -29,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
+        height: height,
         color: backGround_color,
         child: Padding(
           padding: EdgeInsets.only(top: height * 0.1),

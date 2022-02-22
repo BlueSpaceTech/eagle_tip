@@ -21,7 +21,7 @@ class CustomAppheader extends StatelessWidget {
         ),
         Logo(width: width),
         SizedBox(
-          width: width * 0.2,
+          width: width * 0.14,
         ),
         MenuButton(isTapped: isTapped, width: width),
       ],

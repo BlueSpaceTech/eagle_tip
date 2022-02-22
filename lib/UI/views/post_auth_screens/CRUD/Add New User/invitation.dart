@@ -3,6 +3,7 @@
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
 import 'package:eagle_tip/UI/Widgets/customappheader.dart';
 import 'package:eagle_tip/UI/Widgets/customsubmitbutton.dart';
+import 'package:eagle_tip/UI/Widgets/logo.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/TicketHistory/ticketHistoryDetail.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
@@ -42,9 +43,9 @@ class Invitation extends StatelessWidget {
                       SizedBox(
                         width: width * 0.17,
                       ),
-                      Image.asset(Common.assetImages + "Logo 2 2.png"),
+                      Logo(width: width),
                       SizedBox(
-                        width: width * 0.2,
+                        width: width * 0.17,
                       ),
                       MenuButton(isTapped: isTapped, width: width)
                     ],

@@ -34,28 +34,7 @@ class AddNewUserByOwner extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Icon(
-                          Icons.arrow_back,
-                          color: Colors.white,
-                          size: width * 0.06,
-                        ),
-                      ),
-                      SizedBox(
-                        width: width * 0.17,
-                      ),
-                      Image.asset(Common.assetImages + "Logo 2 2.png"),
-                      SizedBox(
-                        width: width * 0.2,
-                      ),
-                      MenuButton(isTapped: isTapped, width: width)
-                    ],
-                  ),
+                  CustomAppheader(width: width),
                   SizedBox(
                     height: height * 0.06,
                   ),

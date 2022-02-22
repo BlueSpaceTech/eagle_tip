@@ -26,7 +26,7 @@ class CustomHeader2 extends StatelessWidget {
         ),
         Logo(width: width),
         SizedBox(
-          width: width * 0.2,
+          width: width * 0.15,
         ),
         Image.asset(
           Common.assetImages + "Vector.png",
