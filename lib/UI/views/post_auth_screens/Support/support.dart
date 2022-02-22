@@ -53,7 +53,7 @@ class Mobile extends StatelessWidget {
         color: backGround_color,
         child: Padding(
           padding: EdgeInsets.only(
-              top: 10.0, left: width * 0.07, right: width * 0.07),
+              top: height * 0.1, left: width * 0.07, right: width * 0.07),
           child: Column(
             children: [
               TopRow(width: width),
