@@ -1,4 +1,5 @@
 import 'package:eagle_tip/Routes/approutes.dart';
+import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
 import 'package:eagle_tip/UI/Widgets/customfaqbottom.dart';
 import 'package:eagle_tip/UI/Widgets/customsubmitbutton.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/uploadimage.dart';
@@ -30,12 +31,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
       bottomNavigationBar: CustomFAQbottom(),
       body: SingleChildScrollView(
         child: Stack(children: [
-          SvgPicture.asset(
-            webbg,
-            alignment: Alignment.center,
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-          ),
+          WebBg(),
           Padding(
             padding: EdgeInsets.only(
                 left: width * 0.1, right: width * 0.1, top: height * 0.08),
@@ -52,18 +48,21 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Row(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
+                    Visibility(
+                      visible: Responsive.isDesktop(context) ? false : true,
+                      child: Row(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: height * 0.06,

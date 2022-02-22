@@ -36,4 +36,5 @@ class AppRoutes {
   static final String crudscreen = "/crudscreen";
   static final String useprofile = "/userprofile";
   static final String splashscreen = "/splashscreen";
+  static final String messagemain = "/messagemain";
 }

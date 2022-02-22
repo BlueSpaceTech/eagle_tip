@@ -1,5 +1,6 @@
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
+import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
 import 'package:eagle_tip/UI/Widgets/customfaqbottom.dart';
 import 'package:eagle_tip/UI/Widgets/customsubmitbutton.dart';
 import 'package:eagle_tip/Utils/constants.dart';
@@ -20,12 +21,7 @@ class ForgetPassword extends StatelessWidget {
       bottomNavigationBar: CustomFAQbottom(),
       body: SingleChildScrollView(
         child: Stack(children: [
-          SvgPicture.asset(
-            webbg,
-            alignment: Alignment.center,
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-          ),
+          WebBg(),
           Padding(
             padding: EdgeInsets.only(
                 left: width * 0.1, right: width * 0.1, top: height * 0.08),
@@ -42,18 +38,21 @@ class ForgetPassword extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Row(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
+                    Visibility(
+                      visible: Responsive.isDesktop(context) ? false : true,
+                      child: Row(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: height * 0.06,
@@ -79,7 +78,6 @@ class ForgetPassword extends StatelessWidget {
                     ),
                     Container(
                       width: width * 0.75,
-                      alignment: Alignment.topLeft,
                       child: Text(
                         "Enter your email address associated with your account and we’ll send an email with instructions to reset your password.",
                         style: TextStyle(

@@ -1,3 +1,4 @@
+import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 
 class ChatListTile extends StatelessWidget {
@@ -24,7 +25,7 @@ class ChatListTile extends StatelessWidget {
             width: 10,
           ),
           Container(
-            width: width * 0.55,
+            width: Responsive.isDesktop(context) ? width * 0.2 : width * 0.55,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

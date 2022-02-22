@@ -2,6 +2,7 @@ import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/chatListTile.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Sites/sites.dart';
 import 'package:eagle_tip/Utils/common.dart';
+import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 
 class AllChatScreen extends StatelessWidget {
@@ -20,7 +21,7 @@ class AllChatScreen extends StatelessWidget {
         },
         child: Container(
           alignment: Alignment.center,
-          width: width * 0.35,
+          width: Responsive.isDesktop(context) ? 200 : width * 0.35,
           height: 50,
           decoration: BoxDecoration(
             color: Color(0xff5081DB),
@@ -49,18 +50,24 @@ class AllChatScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(
-              left: width * 0.09, right: width * 0.09, top: height * 0.08),
+              left: Responsive.isDesktop(context) ? width * 0.01 : width * 0.09,
+              right:
+                  Responsive.isDesktop(context) ? width * 0.01 : width * 0.09,
+              top: height * 0.08),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Image.asset("assets/Logo 2 2.png"),
-                    SizedBox(width: width * 0.15),
-                    Image.asset("assets/search.png"),
-                  ],
+              Visibility(
+                visible: Responsive.isDesktop(context) ? false : true,
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset("assets/Logo 2 2.png"),
+                      SizedBox(width: width * 0.15),
+                      Image.asset("assets/search.png"),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(
@@ -149,7 +156,13 @@ class AllChatScreen extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, AppRoutes.chattingscreen);
+                        if (Responsive.isDesktop(context)) {
+                          Navigator.pop(context);
+                          Navigator.pushNamed(context, AppRoutes.messagemain);
+                        } else {
+                          Navigator.pushNamed(
+                              context, AppRoutes.chattingscreen);
+                        }
                       },
                       child: ChatListTile(
                         height: height,

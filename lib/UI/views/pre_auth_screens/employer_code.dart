@@ -24,6 +24,7 @@ DocumentReference dbRef = FirebaseFirestore.instance
 */
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
+import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
 import 'package:eagle_tip/UI/Widgets/customfaqbottom.dart';
 import 'package:eagle_tip/UI/Widgets/customsubmitbutton.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/create_account.dart';
@@ -55,12 +56,7 @@ class _EmployerCodeState extends State<EmployerCode> {
       bottomNavigationBar: CustomFAQbottom(),
       body: SingleChildScrollView(
         child: Stack(children: [
-          SvgPicture.asset(
-            webbg,
-            alignment: Alignment.center,
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-          ),
+          WebBg(),
           Padding(
             padding: EdgeInsets.only(
                 left: width * 0.1, right: width * 0.1, top: height * 0.08),
