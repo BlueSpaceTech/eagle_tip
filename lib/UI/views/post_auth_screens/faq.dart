@@ -1,7 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:eagle_tip/UI/Widgets/customContainer.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Support/support_desktop.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
+import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 
 class FAQScreen extends StatefulWidget {
@@ -31,65 +34,225 @@ class _FAQScreenState extends State<FAQScreen> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            height: height,
-            width: width,
-            color: backGround_color,
-            child: Padding(
-              padding: EdgeInsets.only(left: width * 0.04, top: height * 0.01),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Icon(
-                          Icons.arrow_back,
-                          color: Colors.white,
-                          size: width * 0.06,
-                        ),
+      body: Responsive(
+        mobile: MobileFAQ(
+            width: width, height: height, FAQNames: FAQNames, FAQdata: FAQdata),
+        tablet: Container(),
+        desktop: DesktopFAQ(
+            width: width, height: height, FAQNames: FAQNames, FAQdata: FAQdata),
+      ),
+    );
+  }
+}
+
+class MobileFAQ extends StatefulWidget {
+  const MobileFAQ({
+    Key? key,
+    required this.width,
+    required this.height,
+    required this.FAQNames,
+    required this.FAQdata,
+  }) : super(key: key);
+  final double width;
+  final double height;
+  final List FAQNames;
+  final List FAQdata;
+  @override
+  _MobileFAQState createState() => _MobileFAQState();
+}
+
+class _MobileFAQState extends State<MobileFAQ> {
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Container(
+          color: backGround_color,
+          height: widget.height,
+          child: Padding(
+            padding: EdgeInsets.only(
+                left: widget.width * 0.04, top: widget.height * 0.04),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
+                        size: widget.width * 0.06,
                       ),
-                      SizedBox(
-                        width: width * 0.2,
-                      ),
-                      Image.asset(Common.assetImages + "Logo 2 2.png"),
-                    ],
-                  ),
-                  SizedBox(
-                    height: height * 0.05,
-                  ),
-                  Text(
-                    "FAQ",
-                    style: TextStyle(
-                      fontSize: 18.0,
+                    ),
+                    SizedBox(
+                      width: widget.width * 0.2,
+                    ),
+                    Image.asset(Common.assetImages + "Logo 2 2.png"),
+                  ],
+                ),
+                SizedBox(
+                  height: widget.height * 0.05,
+                ),
+                Text(
+                  "FAQ",
+                  style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontFamily: "Poppins",
+                      fontSize: widget.width * 0.04,
+                      fontFamily: "Poppins"),
+                ),
+                SizedBox(
+                  height: widget.height * 0.05,
+                ),
+                Container(
+                  height: widget.height * 0.6,
+                  child: ListView.builder(
+                      itemCount: widget.FAQNames.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return FAQ(
+                          widht: widget.width,
+                          FAQdata: widget.FAQdata,
+                          height: widget.height,
+                          FAQNames: widget.FAQNames,
+                          index: index,
+                        );
+                      }),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class DesktopFAQ extends StatelessWidget {
+  const DesktopFAQ({
+    Key? key,
+    required this.width,
+    required this.height,
+    required this.FAQNames,
+    required this.FAQdata,
+  }) : super(key: key);
+
+  final double width;
+  final double height;
+  final List FAQNames;
+  final List FAQdata;
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Container(
+          color: backGround_color,
+          child: Padding(
+            padding: EdgeInsets.only(left: width * 0.04, top: height * 0.01),
+            child: Column(
+              children: [
+                Responsive.isDesktop(context)
+                    ? Navbar(width: width, height: height)
+                    : SizedBox(),
+                SizedBox(
+                  height: height * 0.06,
+                ),
+                CustomContainer(
+                  topPad: 0.0,
+                  width: width * 0.9,
+                  height: height,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      left: Responsive.isDesktop(context) ? width * 0.04 : 0.0,
+                      right: Responsive.isDesktop(context) ? width * 0.04 : 0.0,
+                    ),
+                    child: Column(
+                      children: [
+                        Responsive.isMobile(context)
+                            ? Row(
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Icon(
+                                      Icons.arrow_back,
+                                      color: Colors.white,
+                                      size: width * 0.06,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: width * 0.2,
+                                  ),
+                                  Image.asset(
+                                      Common.assetImages + "Logo 2 2.png"),
+                                ],
+                              )
+                            : SizedBox(),
+                        SizedBox(
+                          height: height * 0.05,
+                        ),
+                        Responsive.isDesktop(context)
+                            ? Text(
+                                "FAQ",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: Responsive.isDesktop(context)
+                                        ? width * 0.01
+                                        : width * 0.023,
+                                    fontFamily: "Poppins"),
+                              )
+                            : Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.arrow_back,
+                                    color: Colors.white,
+                                  ),
+                                  SizedBox(
+                                    width: width * 0.33,
+                                  ),
+                                  Text(
+                                    "FAQ",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: Responsive.isDesktop(context)
+                                            ? width * 0.01
+                                            : width * 0.023,
+                                        fontFamily: "Poppins"),
+                                  ),
+                                  SizedBox(
+                                    width: width * 0.4,
+                                  ),
+                                ],
+                              ),
+                        SizedBox(
+                          height: height * 0.05,
+                        ),
+                        Container(
+                          height: height * 0.6,
+                          child: ListView.builder(
+                              itemCount: FAQNames.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return FAQ(
+                                  widht: width,
+                                  FAQdata: FAQdata,
+                                  height: height,
+                                  FAQNames: FAQNames,
+                                  index: index,
+                                );
+                              }),
+                        ),
+                      ],
                     ),
                   ),
-                  SizedBox(
-                    height: height * 0.05,
-                  ),
-                  Container(
-                    height: height * 0.6,
-                    child: ListView.builder(
-                        itemCount: FAQNames.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return FAQ(
-                            widht: width,
-                            FAQdata: FAQdata,
-                            height: height,
-                            FAQNames: FAQNames,
-                            index: index,
-                          );
-                        }),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
@@ -140,7 +303,7 @@ class _FAQState extends State<FAQ> {
                   Text(
                     widget.FAQNames[widget.index],
                     style: TextStyle(
-                        fontSize: 13.0,
+                        fontSize: widget.widht * 0.03,
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
                         fontFamily: "Poppins"),
@@ -148,12 +311,16 @@ class _FAQState extends State<FAQ> {
                   isExpanded!
                       ? Image.asset(
                           Common.assetImages + "Forward.png",
-                          width: 15.0,
+                          width: Responsive.isDesktop(context)
+                              ? widget.widht * 0.01
+                              : 15.0,
                         )
                       : Icon(
                           Icons.arrow_forward_ios,
                           color: Colors.white,
-                          size: 18.0,
+                          size: Responsive.isDesktop(context)
+                              ? widget.widht * 0.01
+                              : 15.0,
                         ),
                 ],
               ),
@@ -165,13 +332,13 @@ class _FAQState extends State<FAQ> {
           Visibility(
             visible: isExpanded!,
             child: Padding(
-              padding: EdgeInsets.only(bottom: 10.0),
+              padding: EdgeInsets.only(bottom: 8.0),
               child: Container(
                   width: widget.widht * 0.85,
                   child: Text(
                     widget.FAQdata[widget.index],
                     style: TextStyle(
-                        fontSize: 12.0,
+                        fontSize: widget.widht * 0.028,
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
                         fontFamily: "Poppins"),

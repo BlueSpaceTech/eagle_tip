@@ -46,29 +46,207 @@ class Mobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Container(
+    return SingleChildScrollView(
+      child: Container(
+        height: height,
+        width: width,
+        color: backGround_color,
+        child: Padding(
+          padding: EdgeInsets.only(
+              top: 10.0, left: width * 0.07, right: width * 0.07),
+          child: Column(
+            children: [
+              TopRow(width: width),
+              SizedBox(
+                height: height * 0.05,
+              ),
+              Text(
+                "Support",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    fontSize: width * 0.05,
+                    fontFamily: "Poppins"),
+              ),
+              SizedBox(
+                height: height * 0.02,
+              ),
+              CustomTextFieldMobile(
+                  controller: TextEditingController(),
+                  isactive: true,
+                  width: width * 1.1,
+                  height: height,
+                  labelText: "Employer Code"),
+              SizedBox(
+                height: height * 0.012,
+              ),
+              CustomTextFieldMobile(
+                  controller: TextEditingController(),
+                  isactive: true,
+                  width: width * 1.1,
+                  height: height,
+                  labelText: "Name"),
+              SizedBox(
+                height: height * 0.012,
+              ),
+              CustomTextFieldMobile(
+                  controller: TextEditingController(),
+                  isactive: true,
+                  width: width * 1.1,
+                  height: height,
+                  labelText: "Email"),
+              SizedBox(
+                height: height * 0.012,
+              ),
+              CustomTextFieldMobile(
+                  controller: TextEditingController(),
+                  isactive: true,
+                  width: width * 1.1,
+                  height: height,
+                  labelText: "Subject"),
+              SizedBox(
+                height: height * 0.012,
+              ),
+              MessageTextField(
+                  width: width, height: height, labelText: "Message"),
+              SizedBox(
+                height: height * 0.04,
+              ),
+              Container(
+                width: Responsive.isDesktop(context)
+                    ? width * 0.3
+                    : Responsive.isTablet(context)
+                        ? width * 0.6
+                        : width * 0.9,
+                height: height * 0.065,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(13.0),
+                  color: Color(0xFF5081DB),
+                ),
+                child: Center(
+                  child: Text(
+                    "Send",
+                    style: TextStyle(
+                        fontSize: width * 0.05,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: "Poppins"),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CustomTextFieldMobile extends StatelessWidget {
+  const CustomTextFieldMobile({
+    Key? key,
+    required this.width,
+    required this.height,
+    required this.labelText,
+    required this.controller,
+    required this.isactive,
+  }) : super(key: key);
+
+  final double width;
+  final double height;
+  final String labelText;
+  final TextEditingController controller;
+  final bool isactive;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: Responsive.isDesktop(context) ? width * 0.4 : width * 0.8,
+      padding: EdgeInsets.only(left: width * 0.06, right: width * 0.06),
+      height: height * 0.08,
+      decoration: BoxDecoration(
+        color: isactive ? Colors.white : Color(0xffEFF0F6).withOpacity(0.7),
+        borderRadius: BorderRadius.all(Radius.circular(15)),
+      ),
+      child: TextField(
+        enabled: isactive,
+        controller: controller,
+        style: TextStyle(fontFamily: "Poppins"),
+        cursorColor: Colors.black12,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          labelText: labelText,
+          labelStyle: TextStyle(
+              color: Color(0xffAEB0C3),
+              fontFamily: "Poppins",
+              fontWeight: FontWeight.w500),
+        ),
+      ),
+    );
+  }
+}
+
+class DesktopSupport extends StatelessWidget {
+  const DesktopSupport({
+    Key? key,
+    required this.height,
+    required this.width,
+  }) : super(key: key);
+
+  final double height;
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Container(
+        height: height,
+        width: width,
+        color: backGround_color,
+        child: CustomContainer(
+          topPad: height * 0.08,
           height: height,
           width: width,
-          color: backGround_color,
-          child: Padding(
-            padding: EdgeInsets.only(
-                top: 10.0, left: width * 0.07, right: width * 0.07),
+          child: Center(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                PlatformInfo().isWeb() ? SizedBox() : TopRow(width: width),
-                SizedBox(
-                  height: height * 0.05,
-                ),
-                Text(
-                  "Support",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                      fontSize: width * 0.05,
-                      fontFamily: "Poppins"),
-                ),
+                Responsive.isDesktop(context)
+                    ? Text(
+                        "Support",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            fontSize: Responsive.isDesktop(context)
+                                ? width * 0.01
+                                : width * 0.023,
+                            fontFamily: "Poppins"),
+                      )
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.arrow_back,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: width * 0.2,
+                          ),
+                          Text(
+                            "Support",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                fontSize: Responsive.isDesktop(context)
+                                    ? width * 0.01
+                                    : width * 0.023,
+                                fontFamily: "Poppins"),
+                          ),
+                          SizedBox(
+                            width: width * 0.25,
+                          ),
+                        ],
+                      ),
                 SizedBox(
                   height: height * 0.02,
                 ),
@@ -112,7 +290,9 @@ class Mobile extends StatelessWidget {
                     child: Text(
                       "Send",
                       style: TextStyle(
-                          fontSize: width * 0.1,
+                          fontSize: Responsive.isDesktop(context)
+                              ? width * 0.01
+                              : width * 0.023,
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
                           fontFamily: "Poppins"),
@@ -120,102 +300,6 @@ class Mobile extends StatelessWidget {
                   ),
                 )
               ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class DesktopSupport extends StatelessWidget {
-  const DesktopSupport({
-    Key? key,
-    required this.height,
-    required this.width,
-  }) : super(key: key);
-
-  final double height;
-  final double width;
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Container(
-          height: height,
-          width: width,
-          color: backGround_color,
-          child: CustomContainer(
-            height: height,
-            width: width,
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // SizedBox(
-                  //   height: height * 0.05,
-                  // ),
-                  Text(
-                    "Support",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                        fontSize: width * 0.014,
-                        fontFamily: "Poppins"),
-                  ),
-                  SizedBox(
-                    height: height * 0.02,
-                  ),
-                  SupportTextField(
-                      width: width, height: height, labelText: "Employer Code"),
-                  SizedBox(
-                    height: height * 0.012,
-                  ),
-                  SupportTextField(
-                      width: width, height: height, labelText: "Name"),
-                  SizedBox(
-                    height: height * 0.012,
-                  ),
-                  SupportTextField(
-                      width: width, height: height, labelText: "Email"),
-                  SizedBox(
-                    height: height * 0.012,
-                  ),
-                  SupportTextField(
-                      width: width, height: height, labelText: "Subject"),
-                  SizedBox(
-                    height: height * 0.012,
-                  ),
-                  MessageTextField(
-                      width: width, height: height, labelText: "Message"),
-                  SizedBox(
-                    height: height * 0.04,
-                  ),
-                  Container(
-                    width: Responsive.isDesktop(context)
-                        ? width * 0.3
-                        : Responsive.isTablet(context)
-                            ? width * 0.6
-                            : width * 0.9,
-                    height: height * 0.065,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(13.0),
-                      color: Color(0xFF5081DB),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Send",
-                        style: TextStyle(
-                            fontSize: 18.0,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: "Poppins"),
-                      ),
-                    ),
-                  )
-                ],
-              ),
             ),
           ),
         ),
@@ -328,7 +412,9 @@ class _SupportTextFieldState extends State<SupportTextField> {
           border: InputBorder.none,
           labelText: widget.labelText,
           labelStyle: TextStyle(
-              fontSize: widget.width * 0.008,
+              fontSize: Responsive.isDesktop(context)
+                  ? widget.width * 0.01
+                  : widget.width * 0.023,
               color:
                   myFocusNode.hasFocus ? Color(0xFF5E8BE0) : Color(0xffAEB0C3),
               fontFamily: "Poppins",
@@ -404,7 +490,9 @@ class _MessageTextFieldState extends State<MessageTextField> {
           border: InputBorder.none,
           labelText: widget.labelText,
           labelStyle: TextStyle(
-              fontSize: widget.width * 0.008,
+              fontSize: Responsive.isDesktop(context)
+                  ? widget.width * 0.01
+                  : widget.width * 0.03,
               color:
                   myFocusNode.hasFocus ? Color(0xFF5E8BE0) : Color(0xffAEB0C3),
               fontFamily: "Poppins",
