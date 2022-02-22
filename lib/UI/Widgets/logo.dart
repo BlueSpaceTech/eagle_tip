@@ -1,5 +1,6 @@
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Logo extends StatelessWidget {
   const Logo({
@@ -11,9 +12,9 @@ class Logo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      Common.assetImages + "Logo 2 1.png",
-      width: width * 0.4,
+    return SvgPicture.asset(
+      "assets/Logo 2 1.svg",
+      width: width * 0.42,
     );
   }
 }

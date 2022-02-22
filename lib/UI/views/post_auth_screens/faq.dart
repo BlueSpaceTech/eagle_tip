@@ -303,7 +303,7 @@ class _FAQState extends State<FAQ> {
                   Text(
                     widget.FAQNames[widget.index],
                     style: TextStyle(
-                        fontSize: widget.widht * 0.03,
+                        fontSize: widget.widht * 0.032,
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
                         fontFamily: "Poppins"),

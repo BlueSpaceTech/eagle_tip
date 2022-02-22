@@ -4,6 +4,7 @@ import 'package:eagle_tip/UI/views/post_auth_screens/Sites/sites.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class AllChatScreen extends StatelessWidget {
   AllChatScreen({Key? key}) : super(key: key);
@@ -53,7 +54,7 @@ class AllChatScreen extends StatelessWidget {
               left: Responsive.isDesktop(context) ? width * 0.01 : width * 0.09,
               right:
                   Responsive.isDesktop(context) ? width * 0.01 : width * 0.09,
-              top: height * 0.08),
+              top: height * 0.1),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -63,7 +64,11 @@ class AllChatScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset("assets/Logo 2 2.png"),
+                      SvgPicture.asset(
+                        "assets/Logo 2 1.svg",
+                        width: width * 0.45,
+                      ),
+                      // SvgPicture.asset(".svg"),
                       SizedBox(width: width * 0.15),
                       Image.asset("assets/search.png"),
                     ],

@@ -16,41 +16,45 @@ class MyProfile extends StatelessWidget {
       body: Container(
         height: height,
         color: backGround_color,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            SizedBox(
-              height: height * 0.01,
-            ),
-            Logo(width: width),
-            InkWell(
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) {
-                  return EditUser();
-                }));
-              },
-              child: UserDetails(
-                height: height,
-                width: width,
-                boxTitle: "edit profile",
+        child: Padding(
+          padding: EdgeInsets.only(top: height * 0.02),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SizedBox(
+                height: height * 0.01,
               ),
-            ),
-            ContactInfo(height: height, width: width),
-            Divider(
-              color: Color(0xFF2E3840),
-              thickness: 3.0,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: width * 0.08, right: width * 0.04),
-              child: SitesData(height: height, width: width),
-            ),
-            Divider(
-              color: Color(0xFF2E3840),
-              thickness: 3.0,
-            ),
-            MiscContainer(height: height, width: width),
-          ],
+              Logo(width: width),
+              InkWell(
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return EditUser();
+                  }));
+                },
+                child: UserDetails(
+                  height: height,
+                  width: width,
+                  boxTitle: "edit profile",
+                ),
+              ),
+              ContactInfo(height: height, width: width),
+              Divider(
+                color: Color(0xFF2E3840),
+                thickness: 3.0,
+              ),
+              Padding(
+                padding:
+                    EdgeInsets.only(left: width * 0.08, right: width * 0.04),
+                child: SitesData(height: height, width: width),
+              ),
+              Divider(
+                color: Color(0xFF2E3840),
+                thickness: 3.0,
+              ),
+              MiscContainer(height: height, width: width),
+            ],
+          ),
         ),
       ),
     );
