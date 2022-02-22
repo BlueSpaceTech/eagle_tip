@@ -3,6 +3,7 @@
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/Services/authentication.dart';
 import 'package:eagle_tip/Services/authentication_helper.dart';
+import 'package:eagle_tip/UI/Widgets/customappheader.dart';
 import 'package:eagle_tip/UI/Widgets/logo.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/myprofile.dart';
 import 'package:eagle_tip/Utils/common.dart';
@@ -34,79 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Row(
-                children: [
-                  SizedBox(
-                    width: width * 0.27,
-                  ),
-                  Logo(width: width),
-                  SizedBox(
-                    width: width * 0.17,
-                  ),
-                  PopupMenuButton(
-                    color: Color(0xFF3f4850),
-                    child: isTapped!
-                        ? Image.asset(
-                            Common.assetImages + "Group 287.png",
-                            width: width * 0.075,
-                          )
-                        : Image.asset(
-                            Common.assetImages + "Group 288.png",
-                            width: width * 0.082,
-                          ),
-                    itemBuilder: (context) => [
-                      PopupMenuItem(
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(context, AppRoutes.faq);
-                          },
-                          child: Text(
-                            "faq",
-                            style: TextStyle(
-                                fontSize: 13.0,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
-                                fontFamily: "Poppins"),
-                          ),
-                        ),
-                        value: 1,
-                      ),
-                      PopupMenuItem(
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(context, AppRoutes.support);
-                          },
-                          child: Text(
-                            "support",
-                            style: TextStyle(
-                                fontSize: 13.0,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
-                                fontFamily: "Poppins"),
-                          ),
-                        ),
-                        value: 2,
-                      ),
-                      PopupMenuItem(
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, AppRoutes.welcometour);
-                          },
-                          child: Text(
-                            "take tour again",
-                            style: TextStyle(
-                                fontSize: 13.0,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
-                                fontFamily: "Poppins"),
-                          ),
-                        ),
-                        value: 3,
-                      )
-                    ],
-                  ),
-                ],
-              ),
+              CustomAppheader(width: width),
               SizedBox(
                 height: height * 0.05,
               ),

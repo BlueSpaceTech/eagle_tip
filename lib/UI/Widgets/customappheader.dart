@@ -30,7 +30,7 @@ class CustomAppheader extends StatelessWidget {
 }
 
 class MenuButton extends StatelessWidget {
-  const MenuButton({
+  MenuButton({
     Key? key,
     required this.isTapped,
     required this.width,
@@ -39,9 +39,17 @@ class MenuButton extends StatelessWidget {
   final bool? isTapped;
   final double width;
 
+  Map ScreeRoutes = {
+    1: AppRoutes.faq,
+    2: AppRoutes.support,
+    3: AppRoutes.welcometour,
+  };
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
+      onSelected: (value) {
+        Navigator.pushNamed(context, ScreeRoutes[value]);
+      },
       color: Color(0xFF3f4850),
       child: isTapped!
           ? Image.asset(

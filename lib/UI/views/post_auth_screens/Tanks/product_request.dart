@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:eagle_tip/UI/Widgets/customappheader.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -55,10 +56,7 @@ class _ProductRequestState extends State<ProductRequest> {
                     SizedBox(
                       width: width * 0.2,
                     ),
-                    Image.asset(
-                      Common.assetImages + "Group 287.png",
-                      width: width * 0.075,
-                    ),
+                    MenuButton(isTapped: true, width: width)
                   ],
                 ),
                 SizedBox(
