@@ -14,7 +14,7 @@ class CustomSubmitButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Responsive.isDesktop(context) ? width * 0.4 : width * 0.8,
+      width: Responsive.isDesktop(context) ? 600 : width * 0.8,
       height: 60,
       alignment: Alignment.center,
       decoration: BoxDecoration(

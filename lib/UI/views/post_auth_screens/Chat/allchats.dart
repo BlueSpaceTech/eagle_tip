@@ -1,6 +1,8 @@
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/chatListTile.dart';
 import 'package:eagle_tip/UI/Widgets/logo.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Chat/message_main.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Chat/newchatscreen.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Sites/sites.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
@@ -161,7 +163,13 @@ class AllChatScreen extends StatelessWidget {
                       onTap: () {
                         if (Responsive.isDesktop(context)) {
                           Navigator.pop(context);
-                          Navigator.pushNamed(context, AppRoutes.messagemain);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MessageMain(
+                                  index: index,
+                                ),
+                              ));
                         } else {
                           Navigator.pushNamed(
                               context, AppRoutes.chattingscreen);

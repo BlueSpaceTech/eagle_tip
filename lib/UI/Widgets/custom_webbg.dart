@@ -9,7 +9,7 @@ class WebBg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Visibility(
-      visible:Responsive.isDesktop(context)?true:false,
+      visible: Responsive.isDesktop(context),
       child: SvgPicture.asset(
         webbg,
         alignment: Alignment.center,

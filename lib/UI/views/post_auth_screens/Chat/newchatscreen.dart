@@ -1,8 +1,14 @@
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Chat/message_model.dart';
+import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 
 class ChatScreenn extends StatefulWidget {
+  ChatScreenn({
+    Key? key,
+    required this.index,
+  }) : super(key: key);
+  int index;
   @override
   _ChatScreennState createState() => _ChatScreennState();
 }
@@ -78,10 +84,7 @@ class _ChatScreennState extends State<ChatScreenn> {
       child: TextField(
         style: TextStyle(color: Colors.white),
         decoration: InputDecoration(
-          suffixIcon: Image.asset(
-            "assets/send.png",
-            width: width * 0.01,
-          ),
+          suffixIcon: Image.asset("assets/mesicon.png"),
           border: InputBorder.none,
           hintText: 'Message',
           hintStyle: TextStyle(
@@ -110,13 +113,16 @@ class _ChatScreennState extends State<ChatScreenn> {
                 SizedBox(
                   width: 10,
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
+                Visibility(
+                  visible: Responsive.isDesktop(context) ? false : true,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -138,7 +144,7 @@ class _ChatScreennState extends State<ChatScreenn> {
                           width: 10,
                         ),
                         Text(
-                          "Ahmad Elizondo",
+                          "Ahmed Elizondo",
                           style: TextStyle(
                               fontSize: 16,
                               color: Colors.white,

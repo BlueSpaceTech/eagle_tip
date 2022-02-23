@@ -1,6 +1,5 @@
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/chatListTile.dart';
-import 'package:eagle_tip/UI/Widgets/customHeader2.dart';
 import 'package:eagle_tip/UI/Widgets/newchatListtile.dart';
 import 'package:flutter/material.dart';
 
@@ -21,11 +20,34 @@ class _NewChatScreenState extends State<NewChatScreen> {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(
-              left: width * 0.06, right: width * 0.09, top: height * 0.08),
+              left: width * 0.09, right: width * 0.09, top: height * 0.08),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CustomHeader2(),
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Image.asset("assets/Logo 2 2.png"),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10.0),
+                      child: Icon(
+                        Icons.search,
+                        color: Colors.white,
+                      ),
+                    )
+                  ],
+                ),
+              ),
               SizedBox(
                 height: height * 0.04,
               ),
@@ -66,7 +88,7 @@ class _NewChatScreenState extends State<NewChatScreen> {
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, AppRoutes.chattingscreen);
+                        Navigator.pushNamed(context, AppRoutes.messagemain);
                       },
                       child: NewChatListTile(
                         height: height,

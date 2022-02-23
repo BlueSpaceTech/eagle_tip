@@ -1,4 +1,5 @@
 import 'package:eagle_tip/Utils/common.dart';
+import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -14,7 +15,7 @@ class Logo extends StatelessWidget {
   Widget build(BuildContext context) {
     return SvgPicture.asset(
       "assets/Logo 2 1.svg",
-      width: width * 0.42,
+      width: Responsive.isDesktop(context) ? 200 : width * 0.42,
     );
   }
 }

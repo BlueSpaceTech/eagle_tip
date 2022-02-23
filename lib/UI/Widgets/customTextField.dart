@@ -20,7 +20,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Responsive.isDesktop(context) ? width * 0.4 : width * 0.8,
+      width: Responsive.isDesktop(context) ? 600 : width * 0.8,
       padding: EdgeInsets.only(left: width * 0.06, right: width * 0.06),
       height: height * 0.08,
       decoration: BoxDecoration(
