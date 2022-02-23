@@ -1,10 +1,17 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:eagle_tip/UI/Widgets/customContainer.dart';
+import 'package:eagle_tip/UI/Widgets/customHeader2.dart';
+import 'package:eagle_tip/UI/Widgets/customNav.dart';
+import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
 import 'package:eagle_tip/UI/Widgets/logo.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Notifications/particularNotification.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Support/support_desktop.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
+import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Notifications extends StatefulWidget {
   Notifications({Key? key}) : super(key: key);
@@ -49,83 +56,289 @@ class _NotificationsState extends State<Notifications> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          height: height,
+          width: width,
+          height: Responsive.isDesktop(context) ? height * 1.12 : height,
           color: backGround_color,
           child: Padding(
-            padding: EdgeInsets.only(top: height * 0.1),
+            padding: EdgeInsets.only(
+                top: Responsive.isDesktop(context)
+                    ? height * 0.02
+                    : height * 0.1),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Visibility(
+                  visible: Responsive.isDesktop(context),
+                  child: Navbar(
+                    width: width,
+                    height: height,
+                    text1: "Home",
+                    text2: "Chat",
+                    widget3: Row(
+                      children: [
+                        Text(
+                          "Notifications",
+                          style: TextStyle(
+                            fontSize: Responsive.isDesktop(context)
+                                ? width * 0.01
+                                : width * 0.02,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: "Poppins",
+                            color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 5.0,
+                        ),
+                        Container(
+                          child: CircleAvatar(
+                            backgroundColor: Color(0xFFED5C62),
+                            radius: 8.0,
+                            child: Center(
+                              child: Text(
+                                _notifyNumberGenerator().toString(),
+                                style: TextStyle(fontSize: 10.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: width * 0.09),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(""),
-                      Logo(width: width),
-                      Padding(
-                        padding: EdgeInsets.only(top: 10.0),
-                        child: Icon(
-                          Icons.search,
-                          color: Colors.white,
-                        ),
-                      )
-                    ],
+                  child: Visibility(
+                    visible: Responsive.isMobile(context),
+                    child: CustomHeader2(),
                   ),
                 ),
                 SizedBox(
                   height: height * 0.05,
                 ),
-                Padding(
-                  padding: EdgeInsets.only(left: width * 0.08),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Notifications",
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontFamily: "Poppins",
+                Visibility(
+                  visible: Responsive.isMobile(context),
+                  child: Padding(
+                    padding: EdgeInsets.only(left: width * 0.08),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Notifications",
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontFamily: "Poppins",
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        width: 10.0,
-                      ),
-                      Container(
-                        child: CircleAvatar(
-                          backgroundColor: Color(0xFFED5C62),
-                          radius: 8.0,
-                          child: Center(
-                            child: Text(
-                              _notifyNumberGenerator().toString(),
-                              style: TextStyle(fontSize: 10.0),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        Container(
+                          child: CircleAvatar(
+                            backgroundColor: Color(0xFFED5C62),
+                            radius: 8.0,
+                            child: Center(
+                              child: Text(
+                                _notifyNumberGenerator().toString(),
+                                style: TextStyle(fontSize: 10.0),
+                              ),
                             ),
                           ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Visibility(
+                  visible: Responsive.isDesktop(context),
+                  child: Stack(
+                    children: [
+                      Visibility(
+                        visible: Responsive.isDesktop(context) ? true : false,
+                        child: SvgPicture.asset(
+                          webbg,
+                          alignment: Alignment.center,
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height,
+                        ),
+                      ),
+                      Visibility(
+                        visible: Responsive.isDesktop(context),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: width * 0.15,
+                            ),
+                            Container(
+                              width: width * 0.5,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Column(
+                                        children: [
+                                          Text(
+                                            "Acres Marathon",
+                                            style: TextStyle(
+                                              fontSize: width * 0.008,
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: "Poppins",
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: height * 0.003,
+                                          ),
+                                          Text(
+                                            "Tampa,FL",
+                                            style: TextStyle(
+                                              fontSize: width * 0.007,
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: "Poppins",
+                                              color: Color(0xFF6E7191),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: height * 0.05,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(left: width * 0.05),
+                                    child: Container(
+                                      height: height * 0.6,
+                                      width: width * 0.5,
+                                      child: ListView.builder(
+                                          physics:
+                                              NeverScrollableScrollPhysics(),
+                                          itemCount: notifyNames.length,
+                                          itemBuilder: (BuildContext context,
+                                              int index) {
+                                            return Notify(
+                                                valueChanged: (val) {
+                                                  setState(() {
+                                                    isNew[index] = val;
+                                                  });
+                                                },
+                                                width: width,
+                                                isnew: isNew[index],
+                                                index: index,
+                                                height: height,
+                                                notifyNames: notifyNames,
+                                                notifyDates: notifyDates);
+                                          }),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              width: width * 0.02,
+                            ),
+                            Container(
+                              height: height * 0.8,
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    alignment: Alignment.center,
+                                    width: width * 0.11,
+                                    height: 50,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xff5081DB),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(8)),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "Create Notification",
+                                          style: TextStyle(
+                                              fontSize: width * 0.008,
+                                              color: Colors.white,
+                                              fontFamily: "Poppins",
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                        SizedBox(
+                                          width: width * 0.005,
+                                        ),
+                                        Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Visibility(
+                                    visible: Responsive.isDesktop(context),
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                          top: height * 0.007,
+                                          right: width * 0.004),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          Image.asset(
+                                            Common.assetImages +
+                                                "Group 287.png",
+                                            width: width * 0.03,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
                   ),
                 ),
-                Container(
-                  height: height * 0.6,
-                  child: ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: notifyNames.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Notify(
-                            valueChanged: (val) {
-                              setState(() {
-                                isNew[index] = val;
-                              });
-                            },
-                            width: width,
-                            isnew: isNew[index],
-                            index: index,
-                            height: height,
-                            notifyNames: notifyNames,
-                            notifyDates: notifyDates);
-                      }),
+                SizedBox(
+                  height: Responsive.isDesktop(context)
+                      ? height * 0.06
+                      : height * 0.0,
+                ),
+                Visibility(
+                  visible: Responsive.isMobile(context),
+                  child: Center(
+                    child: Container(
+                      height: height * 0.6,
+                      width:
+                          Responsive.isDesktop(context) ? width * 0.5 : width,
+                      child: ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: notifyNames.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Notify(
+                                valueChanged: (val) {
+                                  setState(() {
+                                    isNew[index] = val;
+                                  });
+                                },
+                                width: width,
+                                isnew: isNew[index],
+                                index: index,
+                                height: height,
+                                notifyNames: notifyNames,
+                                notifyDates: notifyDates);
+                          }),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -186,17 +399,24 @@ class _NotifyState extends State<Notify> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                width: widget.width * 0.5,
+                width: Responsive.isDesktop(context)
+                    ? widget.width * 0.3
+                    : widget.width * 0.5,
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     widget.isnew
                         ? Image.asset(
                             Common.assetImages + "Rectangle 522.png",
-                            height: widget.height * 0.05,
+                            height: Responsive.isDesktop(context)
+                                ? widget.height * 0.036
+                                : widget.height * 0.05,
                           )
                         : SizedBox(),
                     SizedBox(
-                      width: widget.width * 0.07,
+                      width: Responsive.isDesktop(context)
+                          ? widget.width * 0.01
+                          : widget.width * 0.07,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

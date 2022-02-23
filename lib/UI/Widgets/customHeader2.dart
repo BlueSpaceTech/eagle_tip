@@ -22,11 +22,11 @@ class CustomHeader2 extends StatelessWidget {
           ),
         ),
         SizedBox(
-          width: width * 0.17,
+          width: width * 0.15,
         ),
         Logo(width: width),
         SizedBox(
-          width: width * 0.15,
+          width: width * 0.14,
         ),
         Image.asset(
           Common.assetImages + "Vector.png",

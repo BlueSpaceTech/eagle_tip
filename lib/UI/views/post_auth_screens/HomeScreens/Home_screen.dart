@@ -3,11 +3,14 @@
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/Services/authentication.dart';
 import 'package:eagle_tip/Services/authentication_helper.dart';
+import 'package:eagle_tip/UI/Widgets/customNav.dart';
+import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
 import 'package:eagle_tip/UI/Widgets/customappheader.dart';
 import 'package:eagle_tip/UI/Widgets/logo.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/myprofile.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
+import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -28,100 +31,219 @@ class _HomeScreenState extends State<HomeScreen> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Container(
-        height: height,
-        color: backGround_color,
-        child: Padding(
-          padding: EdgeInsets.only(top: height * 0.1),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              CustomAppheader(width: width),
-              SizedBox(
-                height: height * 0.05,
-              ),
-              Column(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      AuthFunctions.signOut();
-                      Navigator.pushNamed(context, AppRoutes.loginscreen);
-                    },
-                    child: Text(
-                      "Acres Marathon",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17.0,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: "Poppins"),
-                    ),
-                  ),
-                  Text(
-                    "Tampa, FL",
-                    style: TextStyle(
-                        color: Color(0xFF6E7191),
-                        fontSize: 13.0,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: "Poppins"),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: height * 0.05,
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.pushNamed(
-                    context,
-                    AppRoutes.siteDetails,
-                  );
-                },
-                child: Stack(
+      body: SingleChildScrollView(
+        child: Container(
+          height: Responsive.isDesktop(context) ? height : height * 1.5,
+          color: backGround_color,
+          child: Responsive.isDesktop(context)
+              ? Stack(
                   children: [
-                    Image.asset(
-                      Common.assetImages + "Ellipse 49.png",
-                      width: width * 0.7,
-                    ),
-                    Positioned(
-                      top: height * 0.115,
-                      left: width * 0.142,
-                      child: SizedBox(
-                        width: width * 0.4,
-                        child: Text(
-                          "Request Fuel",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 34.0,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                              fontFamily: "Poppins"),
-                        ),
+                    WebBg(),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: height * 0.04,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Navbar(
+                              width: width,
+                              height: height,
+                              text1: "Home",
+                              text2: "Chat",
+                              widget3:
+                                  Navtext(text: "Notifications", width: width)),
+                          SizedBox(
+                            height: height * 0.05,
+                          ),
+                          Column(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  AuthFunctions.signOut();
+                                  Navigator.pushNamed(
+                                      context, AppRoutes.loginscreen);
+                                },
+                                child: Text(
+                                  "Acres Marathon",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 17.0,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: "Poppins"),
+                                ),
+                              ),
+                              Text(
+                                "Tampa, FL",
+                                style: TextStyle(
+                                    color: Color(0xFF6E7191),
+                                    fontSize: 13.0,
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: "Poppins"),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: height * 0.05,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                AppRoutes.siteDetails,
+                              );
+                            },
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                Image.asset(
+                                  Common.assetImages + "Ellipse 49.png",
+                                  width: width * 0.15,
+                                ),
+                                SizedBox(
+                                  width: width * 0.068,
+                                  child: Text(
+                                    "Request Fuel",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: width * 0.016,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white,
+                                        fontFamily: "Poppins"),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: height * 0.07,
+                          ),
+                          InkWell(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, AppRoutes.siteScreen);
+                              },
+                              child: SiteContainer(
+                                  width: width, text: "Sites", height: height)),
+                          SizedBox(
+                            height: height * 0.02,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, AppRoutes.crudscreen);
+                            },
+                            child: SiteContainer(
+                                width: width,
+                                text: "Edit Employees",
+                                height: height),
+                          )
+                        ],
                       ),
                     ),
+                    Positioned(
+                      bottom: height * 0.02,
+                      right: width * 0.03,
+                      child:
+                          MenuButton(isTapped: !isTapped!, width: width * 0.34),
+                    ),
                   ],
+                )
+              : Padding(
+                  padding: EdgeInsets.only(top: height * 0.1),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CustomAppheader(width: width),
+                      SizedBox(
+                        height: height * 0.05,
+                      ),
+                      Column(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              AuthFunctions.signOut();
+                              Navigator.pushNamed(
+                                  context, AppRoutes.loginscreen);
+                            },
+                            child: Text(
+                              "Acres Marathon",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17.0,
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: "Poppins"),
+                            ),
+                          ),
+                          Text(
+                            "Tampa, FL",
+                            style: TextStyle(
+                                color: Color(0xFF6E7191),
+                                fontSize: 13.0,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: "Poppins"),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: height * 0.05,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            AppRoutes.siteDetails,
+                          );
+                        },
+                        child: Stack(
+                          children: [
+                            Image.asset(
+                              Common.assetImages + "Ellipse 49.png",
+                              width: width * 0.7,
+                            ),
+                            Positioned(
+                              top: height * 0.115,
+                              left: width * 0.142,
+                              child: SizedBox(
+                                width: width * 0.4,
+                                child: Text(
+                                  "Request Fuel",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 34.0,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white,
+                                      fontFamily: "Poppins"),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: height * 0.07,
+                      ),
+                      InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, AppRoutes.siteScreen);
+                          },
+                          child: SiteContainer(
+                              width: width, text: "Sites", height: height)),
+                      SizedBox(
+                        height: height * 0.02,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, AppRoutes.crudscreen);
+                        },
+                        child: SiteContainer(
+                            width: width,
+                            text: "Edit Employees",
+                            height: height),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: height * 0.07,
-              ),
-              InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, AppRoutes.siteScreen);
-                  },
-                  child: SiteContainer(
-                      width: width, text: "Sites", height: height)),
-              SizedBox(
-                height: height * 0.02,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, AppRoutes.crudscreen);
-                },
-                child: SiteContainer(
-                    width: width, text: "Edit Employees", height: height),
-              )
-            ],
-          ),
         ),
       ),
     );
@@ -143,10 +265,11 @@ class SiteContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width * 0.72,
+      width: Responsive.isDesktop(context) ? width * 0.2 : width * 0.72,
       height: height * 0.062,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16.0),
+        borderRadius:
+            BorderRadius.circular(Responsive.isDesktop(context) ? 14.0 : 16.0),
         color: Color(0xFF5081DB),
       ),
       child: Center(

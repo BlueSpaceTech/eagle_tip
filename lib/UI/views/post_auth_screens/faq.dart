@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:eagle_tip/UI/Widgets/customContainer.dart';
+import 'package:eagle_tip/UI/Widgets/customNav.dart';
 import 'package:eagle_tip/UI/Widgets/logo.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Support/support_desktop.dart';
 import 'package:eagle_tip/Utils/common.dart';
@@ -154,7 +155,16 @@ class DesktopFAQ extends StatelessWidget {
             child: Column(
               children: [
                 Responsive.isDesktop(context)
-                    ? Navbar(width: width, height: height)
+                    ? Navbar(
+                        text2: "Site",
+                        text1: "Home",
+                        widget3: Navtext(
+                          text: "Messages",
+                          width: width,
+                        ),
+                        width: width,
+                        height: height,
+                      )
                     : SizedBox(),
                 SizedBox(
                   height: height * 0.06,
@@ -302,7 +312,9 @@ class _FAQState extends State<FAQ> {
                   Text(
                     widget.FAQNames[widget.index],
                     style: TextStyle(
-                        fontSize: widget.widht * 0.034,
+                        fontSize: Responsive.isDesktop(context)
+                            ? widget.widht * 0.01
+                            : widget.widht * 0.034,
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
                         fontFamily: "Poppins"),
@@ -337,9 +349,11 @@ class _FAQState extends State<FAQ> {
                   child: Text(
                     widget.FAQdata[widget.index],
                     style: TextStyle(
-                        fontSize: widget.widht * 0.028,
+                        fontSize: Responsive.isDesktop(context)
+                            ? widget.widht * 0.01
+                            : widget.widht * 0.034,
                         color: Colors.white,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w500,
                         fontFamily: "Poppins"),
                   )),
             ),

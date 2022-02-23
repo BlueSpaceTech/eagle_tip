@@ -17,6 +17,9 @@ import 'package:eagle_tip/UI/views/post_auth_screens/Chat/newchat.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Chat/newchatscreen.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/bottomNav.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/Home_screen.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Notifications/createNotification.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Notifications/notifications.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Notifications/particularNotification.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Request%20History/particular_request.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Request%20History/request_history.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Sites/site_details.dart';
@@ -48,15 +51,15 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(
-      // Replace with actual values
+    // Replace with actual values
 
-      // options: FirebaseOptions(
-      //   apiKey: "AIzaSyDVMUtzjQx29o2lMKZx0IHSJ_5v_z4mqnk",
-      //   appId: "1:168073462322:android:364f09407678105ceeb22b",
-      //   messagingSenderId: "168073462322",
-      //   projectId: "eagle-tip",
-      // ),
-      );
+    options: FirebaseOptions(
+      apiKey: "AIzaSyDVMUtzjQx29o2lMKZx0IHSJ_5v_z4mqnk",
+      appId: "1:168073462322:android:364f09407678105ceeb22b",
+      messagingSenderId: "168073462322",
+      projectId: "eagle-tip",
+    ),
+  );
   runApp(const MyApp());
 }
 
@@ -79,7 +82,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           backgroundColor: Color(0xff2B343B),
         ),
-        initialRoute: AppRoutes.splashscreen,
+        initialRoute: AppRoutes.homeScreen,
         routes: {
           AppRoutes.support: (context) => SupportScreen(),
           AppRoutes.faq: (context) => FAQScreen(),
@@ -95,6 +98,7 @@ class MyApp extends StatelessWidget {
           AppRoutes.tour2: (context) => Tour2(),
           AppRoutes.tour3: (context) => Tour3(),
           AppRoutes.tour4: (context) => Tour4(),
+          AppRoutes.notifications: (context) => Notifications(),
           AppRoutes.tour5: (context) => Tour5(),
           AppRoutes.finaltour: (context) => FinalTour(),
           AppRoutes.ticketHistory: (context) => TicketHistory(),
@@ -112,6 +116,11 @@ class MyApp extends StatelessWidget {
           AppRoutes.editUser: (context) => EditUser(),
           AppRoutes.useprofile: (context) => UserProfile(),
           AppRoutes.splashscreen: (context) => SplashScreen(),
+          AppRoutes.createNotification: (context) => CreateNotification(),
+          AppRoutes.specificNotification: (context) => SpecificNotification(
+              notifyName: "Hurricane Coming!",
+              notifyContent:
+                  "Risus vestibulum, risus feugiat semper velit feugiat velit. Placerat elit volutpat volutpat elit bibendum molestie eget. Convallis mattis dignissim quis tincidunt quisque. Adipiscing suspendisse faucibus aliquet a turpis odio pellentesque lectus duis. Sodales odio eu bibendum massa velit maecenas eget. Maecenas facilisis nunc tincidunt sed eget viverra porttitor feugiat. Mattis dictum sed suspendisse faucibus gravida. Id eget amet dis amet ut at in eget nam. ")
         },
       ),
     );

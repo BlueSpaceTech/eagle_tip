@@ -37,4 +37,7 @@ class AppRoutes {
   static final String useprofile = "/userprofile";
   static final String splashscreen = "/splashscreen";
   static final String messagemain = "/messagemain";
+  static final String notifications = "/notifications";
+  static final String specificNotification = "/particularNotification";
+  static final String createNotification = "/createNotification";
 }
