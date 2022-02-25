@@ -1,4 +1,5 @@
 import 'package:eagle_tip/Routes/approutes.dart';
+import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeTour extends StatelessWidget {
@@ -14,7 +15,10 @@ class WelcomeTour extends StatelessWidget {
         width: width * 1,
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/tour0.png"), fit: BoxFit.fill),
+              image: AssetImage(Responsive.isDesktop(context)
+                  ? "webtour/tour0web.png"
+                  : "assets/tour0.png"),
+              fit: BoxFit.fill),
         ),
         child: Stack(
           children: [
@@ -23,7 +27,8 @@ class WelcomeTour extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Container(
                   height: height * 0.3,
-                  width: width * 0.8,
+                  width:
+                      Responsive.isDesktop(context) ? width * 0.4 : width * 0.8,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(
@@ -34,6 +39,7 @@ class WelcomeTour extends StatelessWidget {
                     children: [
                       Image.asset(
                         "assets/containertop.png",
+                        
                       ),
                       SizedBox(
                         height: height * 0.02,

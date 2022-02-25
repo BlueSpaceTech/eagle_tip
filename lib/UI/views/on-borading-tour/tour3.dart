@@ -1,5 +1,6 @@
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/views/on-borading-tour/tour1.dart';
+import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 
 class Tour3 extends StatelessWidget {
@@ -15,13 +16,17 @@ class Tour3 extends StatelessWidget {
         width: width * 1,
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/tour3.png"), fit: BoxFit.fill),
+              image: AssetImage(Responsive.isDesktop(context)
+                  ? "webtour/tour3web.png"
+                  : "assets/tour3.png"),
+              fit: BoxFit.fill),
         ),
         child: Stack(
           children: [
             Positioned(
-              top: height * 0.48,
-              left: width * 0.05,
+              top:
+                  Responsive.isDesktop(context) ? height * 0.55 : height * 0.48,
+              left: Responsive.isDesktop(context) ? width * 0.3 : width * 0.05,
               child: TourUpContainer(
                 onnext: () {
                   Navigator.pushNamed(context, AppRoutes.tour4);

@@ -1,4 +1,5 @@
 import 'package:eagle_tip/Routes/approutes.dart';
+import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 
 class Tour1 extends StatelessWidget {
@@ -14,13 +15,16 @@ class Tour1 extends StatelessWidget {
         width: width * 1,
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/tour1.png"), fit: BoxFit.fill),
+              image: AssetImage(Responsive.isDesktop(context)
+                  ? "webtour/tour1web.png"
+                  : "assets/tour1.png"),
+              fit: BoxFit.fill),
         ),
         child: Stack(
           children: [
             Positioned(
               top: height * 0.58,
-              left: width * 0.05,
+              left: Responsive.isDesktop(context) ? width * 0.3 : width * 0.05,
               child: TourUpContainer(
                 onnext: () {
                   Navigator.pushNamed(context, AppRoutes.tour2);
@@ -64,14 +68,20 @@ class TourUpContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: pageno == "5" ? height * 0.21 : height * 0.19,
-      width: width * 0.9,
+      width: Responsive.isDesktop(context) ? width * 0.4 : width * 0.9,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/${containertype}container.png"),
+          image: AssetImage(Responsive.isDesktop(context)
+              ? "assets/${containertype}1.png"
+              : "assets/${containertype}container.png"),
         ),
       ),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: width * 0.08),
+        alignment: Alignment.center,
+        padding: EdgeInsets.symmetric(
+            horizontal: containertype == "down" && Responsive.isDesktop(context)
+                ? width * 0.1
+                : width * 0.08),
         child: Column(
           children: [
             SizedBox(
@@ -97,6 +107,7 @@ class TourUpContainer extends StatelessWidget {
                   ),
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     if (pageno == "6") ...[
                       Text(

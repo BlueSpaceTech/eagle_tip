@@ -1,5 +1,6 @@
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/views/on-borading-tour/tour1.dart';
+import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 
 class Tour5 extends StatelessWidget {
@@ -15,7 +16,10 @@ class Tour5 extends StatelessWidget {
         width: width * 1,
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/tour5.png"), fit: BoxFit.fill),
+              image: AssetImage(Responsive.isDesktop(context)
+                  ? "webtour/tour5web.png"
+                  : "assets/tour5.png"),
+              fit: BoxFit.fill),
         ),
         child: Stack(
           children: [
@@ -24,7 +28,9 @@ class Tour5 extends StatelessWidget {
               left: width * 0.0501,
               child: TourUpContainer(
                 onnext: () {
-                  Navigator.pushNamed(context, AppRoutes.finaltour);
+                  Responsive.isDesktop(context)
+                      ? Navigator.pushNamed(context, AppRoutes.webfinaltour)
+                      : Navigator.pushNamed(context, AppRoutes.finaltour);
                 },
                 containertype: "arrowup",
                 distance: height * 0.028,

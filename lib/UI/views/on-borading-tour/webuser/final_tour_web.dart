@@ -3,8 +3,8 @@ import 'package:eagle_tip/UI/views/on-borading-tour/tour1.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 
-class FinalTour extends StatelessWidget {
-  const FinalTour({Key? key}) : super(key: key);
+class FinalTourWeb extends StatelessWidget {
+  const FinalTourWeb({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +24,9 @@ class FinalTour extends StatelessWidget {
         child: Stack(
           children: [
             Positioned(
-              top: height * 0.12,
-              left: width * 0.05,
-              child: TourUpContainer(
+              bottom: height * 0.13,
+              right: -100,
+              child: TourUpContainer1(
                 onnext: () {
                   Navigator.pushNamed(context, AppRoutes.bottomNav);
                 },
@@ -80,15 +80,10 @@ class TourUpContainer1 extends StatelessWidget {
       ),
       child: Container(
         alignment: Alignment.center,
-        padding: EdgeInsets.symmetric(
-            horizontal: containertype == "down" && Responsive.isDesktop(context)
-                ? width * 0.1
-                : width * 0.08),
+        padding: EdgeInsets.symmetric(horizontal: width * 0.1),
         child: Column(
           children: [
-            SizedBox(
-                height:
-                    containertype == "down" ? height * 0.014 : height * 0.05),
+            SizedBox(height: height * 0.014),
             Text(
               head,
               style: TextStyle(

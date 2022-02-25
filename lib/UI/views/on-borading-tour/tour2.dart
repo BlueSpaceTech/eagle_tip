@@ -1,5 +1,6 @@
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/views/on-borading-tour/tour1.dart';
+import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 
 class Tour2 extends StatelessWidget {
@@ -15,7 +16,10 @@ class Tour2 extends StatelessWidget {
         width: width * 1,
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/tour2.png"), fit: BoxFit.fill),
+              image: AssetImage(Responsive.isDesktop(context)
+                  ? "webtour/tour2web.png"
+                  : "assets/tour2.png"),
+              fit: BoxFit.fill),
         ),
         child: Stack(
           children: [

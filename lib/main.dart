@@ -8,6 +8,7 @@ import 'package:eagle_tip/UI/views/on-borading-tour/tour2.dart';
 import 'package:eagle_tip/UI/views/on-borading-tour/tour3.dart';
 import 'package:eagle_tip/UI/views/on-borading-tour/tour4.dart';
 import 'package:eagle_tip/UI/views/on-borading-tour/tour5.dart';
+import 'package:eagle_tip/UI/views/on-borading-tour/webuser/final_tour_web.dart';
 import 'package:eagle_tip/UI/views/on-borading-tour/welcome_tour.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/CRUD/Add%20New%20User/Manager/addUserManager.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/CRUD/Add%20New%20User/Owner/addUserOwner.dart';
@@ -82,7 +83,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           backgroundColor: Color(0xff2B343B),
         ),
-        initialRoute: AppRoutes.homeScreen,
+        initialRoute: AppRoutes.welcometour,
         routes: {
           AppRoutes.support: (context) => SupportScreen(),
           AppRoutes.faq: (context) => FAQScreen(),
@@ -111,7 +112,9 @@ class MyApp extends StatelessWidget {
           AppRoutes.invitation: (context) => Invitation(),
           AppRoutes.particularRequest: (context) => ParticularRequest(),
           AppRoutes.newchat: (context) => NewChatScreen(),
-          AppRoutes.chattingscreen: (context) => ChatScreenn(),
+          AppRoutes.chattingscreen: (context) => ChatScreenn(
+                index: 0,
+              ),
           AppRoutes.crudscreen: (context) => CrudScreen(),
           AppRoutes.editUser: (context) => EditUser(),
           AppRoutes.useprofile: (context) => UserProfile(),
@@ -120,7 +123,8 @@ class MyApp extends StatelessWidget {
           AppRoutes.specificNotification: (context) => SpecificNotification(
               notifyName: "Hurricane Coming!",
               notifyContent:
-                  "Risus vestibulum, risus feugiat semper velit feugiat velit. Placerat elit volutpat volutpat elit bibendum molestie eget. Convallis mattis dignissim quis tincidunt quisque. Adipiscing suspendisse faucibus aliquet a turpis odio pellentesque lectus duis. Sodales odio eu bibendum massa velit maecenas eget. Maecenas facilisis nunc tincidunt sed eget viverra porttitor feugiat. Mattis dictum sed suspendisse faucibus gravida. Id eget amet dis amet ut at in eget nam. ")
+                  "Risus vestibulum, risus feugiat semper velit feugiat velit. Placerat elit volutpat volutpat elit bibendum molestie eget. Convallis mattis dignissim quis tincidunt quisque. Adipiscing suspendisse faucibus aliquet a turpis odio pellentesque lectus duis. Sodales odio eu bibendum massa velit maecenas eget. Maecenas facilisis nunc tincidunt sed eget viverra porttitor feugiat. Mattis dictum sed suspendisse faucibus gravida. Id eget amet dis amet ut at in eget nam. "),
+          AppRoutes.webfinaltour: (context) => FinalTourWeb(),
         },
       ),
     );
