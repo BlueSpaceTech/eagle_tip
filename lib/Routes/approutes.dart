@@ -41,4 +41,5 @@ class AppRoutes {
   static final String notifications = "/notifications";
   static final String specificNotification = "/particularNotification";
   static final String createNotification = "/createNotification";
+  static final String terminalhome = "/terminalhome";
 }

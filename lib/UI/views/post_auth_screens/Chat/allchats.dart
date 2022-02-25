@@ -220,7 +220,9 @@ class SiteDett extends StatelessWidget {
                   children: [
                     Image.asset(
                       Common.assetImages + "${siteImg[index]}.png",
-                      width: width * 0.14,
+                      width: Responsive.isDesktop(context)
+                          ? width * 0.06
+                          : width * 0.14,
                     ),
                     SizedBox(
                       width: 10.0,

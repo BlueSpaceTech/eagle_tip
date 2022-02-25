@@ -14,6 +14,7 @@ import 'package:eagle_tip/UI/views/post_auth_screens/CRUD/Add%20New%20User/Manag
 import 'package:eagle_tip/UI/views/post_auth_screens/CRUD/Add%20New%20User/Owner/addUserOwner.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/CRUD/Add%20New%20User/invitation.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/CRUD/crudmain.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Chat/message_main.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Chat/newchat.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Chat/newchatscreen.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/bottomNav.dart';
@@ -28,6 +29,7 @@ import 'package:eagle_tip/UI/views/post_auth_screens/Sites/sites.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Support/support.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Tanks/product_request.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Tanks/tanks_request.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Terminal/terminalhome.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/TicketHistory/ticketHistory.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/TicketHistory/ticketHistoryDetail.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/editUser.dart';
@@ -83,7 +85,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           backgroundColor: Color(0xff2B343B),
         ),
-        initialRoute: AppRoutes.useprofile,
+        initialRoute: AppRoutes.terminalhome,
         routes: {
           AppRoutes.support: (context) => SupportScreen(),
           AppRoutes.faq: (context) => FAQScreen(),
@@ -123,6 +125,8 @@ class MyApp extends StatelessWidget {
               notifyContent:
                   "Risus vestibulum, risus feugiat semper velit feugiat velit. Placerat elit volutpat volutpat elit bibendum molestie eget. Convallis mattis dignissim quis tincidunt quisque. Adipiscing suspendisse faucibus aliquet a turpis odio pellentesque lectus duis. Sodales odio eu bibendum massa velit maecenas eget. Maecenas facilisis nunc tincidunt sed eget viverra porttitor feugiat. Mattis dictum sed suspendisse faucibus gravida. Id eget amet dis amet ut at in eget nam. "),
           AppRoutes.webfinaltour: (context) => FinalTourWeb(),
+          AppRoutes.messagemain: (context) => MessageMain(index: 0),
+          AppRoutes.terminalhome: (context) => TerminalHome(),
         },
       ),
     );

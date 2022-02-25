@@ -24,7 +24,7 @@ class Navbar extends StatelessWidget {
     return Container(
       color: Color(0xFF2B343B),
       width: width,
-      height: height * 0.06,
+      height: height * 0.1,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -33,6 +33,9 @@ class Navbar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                SizedBox(
+                  width: width * 0.03,
+                ),
                 Logo(width: width * 0.6),
                 Padding(
                   padding: EdgeInsets.only(top: height * 0.024),
