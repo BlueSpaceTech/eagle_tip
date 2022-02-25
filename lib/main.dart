@@ -83,7 +83,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           backgroundColor: Color(0xff2B343B),
         ),
-        initialRoute: AppRoutes.welcometour,
+        initialRoute: AppRoutes.useprofile,
         routes: {
           AppRoutes.support: (context) => SupportScreen(),
           AppRoutes.faq: (context) => FAQScreen(),
@@ -112,9 +112,7 @@ class MyApp extends StatelessWidget {
           AppRoutes.invitation: (context) => Invitation(),
           AppRoutes.particularRequest: (context) => ParticularRequest(),
           AppRoutes.newchat: (context) => NewChatScreen(),
-          AppRoutes.chattingscreen: (context) => ChatScreenn(
-                index: 0,
-              ),
+          // AppRoutes.chattingscreen: (context) => ChatScreenn(),
           AppRoutes.crudscreen: (context) => CrudScreen(),
           AppRoutes.editUser: (context) => EditUser(),
           AppRoutes.useprofile: (context) => UserProfile(),
