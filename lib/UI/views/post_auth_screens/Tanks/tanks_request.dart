@@ -4,6 +4,7 @@ import 'package:eagle_tip/UI/Widgets/customHeader2.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Tanks/product_request.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
+import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -530,7 +531,9 @@ class _TankState extends State<Tank> {
           },
           child: Container(
             width: widget.width * 0.72,
-            height: widget.height * 0.075,
+            height: Responsive.isDesktop(context)
+                ? widget.height * 0.065
+                : widget.height * 0.075,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(17.0),
               color: !isTapped! ? Color(0xff8d9298) : Colors.white,
@@ -574,8 +577,13 @@ class _TankState extends State<Tank> {
                                 controller: _controller,
                                 onChanged: (value) {
                                   setState(() {
-                                    widget.valueChanged(
-                                        _controller.text.isNotEmpty);
+                                    if (_controller.text != "0") {
+                                      widget.valueChanged(
+                                          _controller.text.isNotEmpty);
+                                    }
+                                    if (value == "0") {
+                                      widget.valueChanged(false);
+                                    }
                                     widget.valueChanged2(_controller.text);
                                   });
                                 },
@@ -618,7 +626,9 @@ class _TankState extends State<Tank> {
               _controller.text = fieldVal["val"].toString();
               widget.valueChanged2(_controller.text);
               isTapped = fieldVal["bool"];
-              widget.valueChanged(isTapped);
+              if (_controller.text != "0") {
+                widget.valueChanged(isTapped);
+              }
               print(isTapped);
             });
           },

@@ -3,6 +3,7 @@
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
+import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 
 class Requests extends StatelessWidget {
@@ -23,6 +24,7 @@ class Requests extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: height * 0.6,
+      width: width * 0.3,
       child: ListView.builder(
         itemCount: requestId.length,
         itemBuilder: (BuildContext context, int index) {
@@ -91,7 +93,8 @@ class ReqContainer extends StatelessWidget {
             ),
             Icon(
               Icons.arrow_forward_ios,
-              size: width * 0.045,
+              size:
+                  Responsive.isDesktop(context) ? width * 0.015 : width * 0.045,
               color: Colors.white,
             )
           ],
