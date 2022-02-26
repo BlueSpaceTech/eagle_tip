@@ -33,6 +33,7 @@ import 'package:eagle_tip/UI/views/post_auth_screens/Terminal/terminalhome.dart'
 import 'package:eagle_tip/UI/views/post_auth_screens/TicketHistory/ticketHistory.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/TicketHistory/ticketHistoryDetail.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/editUser.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/myprofile.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/userProfile.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/faq.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/settings.dart';
@@ -85,7 +86,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           backgroundColor: Color(0xff2B343B),
         ),
-        initialRoute: AppRoutes.crudscreen,
+        initialRoute: AppRoutes.ticketDetails,
         routes: {
           AppRoutes.support: (context) => SupportScreen(),
           AppRoutes.faq: (context) => FAQScreen(),
@@ -105,6 +106,7 @@ class MyApp extends StatelessWidget {
           AppRoutes.tour5: (context) => Tour5(),
           AppRoutes.finaltour: (context) => FinalTour(),
           AppRoutes.ticketHistory: (context) => TicketHistory(),
+          AppRoutes.myProfile: (context) => MyProfile(),
           AppRoutes.ticketDetails: (context) => TicketDetail(),
           AppRoutes.siteScreen: (context) => Sites(),
           AppRoutes.siteDetails: (context) => SiteDetails(),
