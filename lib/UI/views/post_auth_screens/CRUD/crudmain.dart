@@ -260,7 +260,15 @@ class _CrudScreenState extends State<CrudScreen> {
                           SizedBox(
                             width: 10,
                           ),
-                          customfab(width: width),
+                          Visibility(
+                            visible: Responsive.isDesktop(context),
+                            child: GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, AppRoutes.addUserOwner);
+                                },
+                                child: customfab(width: width)),
+                          ),
                         ],
                       ),
                       SizedBox(height: height * 0.02),

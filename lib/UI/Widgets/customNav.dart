@@ -21,63 +21,66 @@ class Navbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Color(0xFF2B343B),
-      width: width,
-      height: height * 0.1,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            width: Responsive.isDesktop(context) ? width * 0.42 : width * 0.6,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                  width: width * 0.03,
-                ),
-                Logo(width: width * 0.6),
-                Padding(
-                  padding: EdgeInsets.only(top: height * 0.024),
-                  child: Container(
-                    width: Responsive.isDesktop(context)
-                        ? width * 0.15
-                        : width * 0.27,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Navtext(
-                          width: width,
-                          text: text1,
-                        ),
-                        Navtext(
-                          text: text2,
-                          width: width,
-                        ),
-                        widget3,
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(right: width * 0.07),
-            child: Container(
+    return Visibility(
+      visible: Responsive.isDesktop(context),
+      child: Container(
+        color: Color(0xFF2B343B),
+        width: width,
+        height: height * 0.1,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              width: Responsive.isDesktop(context) ? width * 0.42 : width * 0.6,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image.asset(Common.assetImages + "search.png"),
                   SizedBox(
-                    width: width * 0.02,
+                    width: width * 0.03,
                   ),
-                  Image.asset(Common.assetImages + "image1.png"),
+                  Logo(width: width * 0.6),
+                  Padding(
+                    padding: EdgeInsets.only(top: height * 0.024),
+                    child: Container(
+                      width: Responsive.isDesktop(context)
+                          ? width * 0.15
+                          : width * 0.27,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Navtext(
+                            width: width,
+                            text: text1,
+                          ),
+                          Navtext(
+                            text: text2,
+                            width: width,
+                          ),
+                          widget3,
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
-          ),
-        ],
+            Padding(
+              padding: EdgeInsets.only(right: width * 0.07),
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Image.asset(Common.assetImages + "search.png"),
+                    SizedBox(
+                      width: width * 0.02,
+                    ),
+                    Image.asset(Common.assetImages + "image1.png"),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
