@@ -56,33 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           SizedBox(
                             height: height * 0.05,
                           ),
-                          Column(
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  AuthFunctions.signOut();
-                                  Navigator.pushNamed(
-                                      context, AppRoutes.loginscreen);
-                                },
-                                child: Text(
-                                  "Acres Marathon",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 17.0,
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: "Poppins"),
-                                ),
-                              ),
-                              Text(
-                                "Tampa, FL",
-                                style: TextStyle(
-                                    color: Color(0xFF6E7191),
-                                    fontSize: 13.0,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: "Poppins"),
-                              ),
-                            ],
-                          ),
+                          SiteNameAndLocation(fontSize: 17.0, fontSize2: 13.0),
                           SizedBox(
                             height: height * 0.05,
                           ),
@@ -158,32 +132,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(
                         height: height * 0.05,
                       ),
-                      Column(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              AuthFunctions.signOut();
-                              Navigator.pushNamed(
-                                  context, AppRoutes.loginscreen);
-                            },
-                            child: Text(
-                              "Acres Marathon",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17.0,
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: "Poppins"),
-                            ),
-                          ),
-                          Text(
-                            "Tampa, FL",
-                            style: TextStyle(
-                                color: Color(0xFF6E7191),
-                                fontSize: 13.0,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: "Poppins"),
-                          ),
-                        ],
+                      SiteNameAndLocation(
+                        fontSize2: 13.0,
+                        fontSize: 17.0,
                       ),
                       SizedBox(
                         height: height * 0.05,
@@ -246,6 +197,46 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
         ),
       ),
+    );
+  }
+}
+
+class SiteNameAndLocation extends StatelessWidget {
+  const SiteNameAndLocation({
+    Key? key,
+    required this.fontSize,
+    required this.fontSize2,
+  }) : super(key: key);
+
+  final double fontSize;
+  final double fontSize2;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: () {
+            AuthFunctions.signOut();
+            Navigator.pushNamed(context, AppRoutes.loginscreen);
+          },
+          child: Text(
+            "Acres Marathon",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 17.0,
+                fontWeight: FontWeight.w400,
+                fontFamily: "Poppins"),
+          ),
+        ),
+        Text(
+          "Tampa, FL",
+          style: TextStyle(
+              color: Color(0xFF6E7191),
+              fontSize: 13.0,
+              fontWeight: FontWeight.w500,
+              fontFamily: "Poppins"),
+        ),
+      ],
     );
   }
 }

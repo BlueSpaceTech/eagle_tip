@@ -1,9 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:eagle_tip/UI/Widgets/customContainer.dart';
 import 'package:eagle_tip/UI/Widgets/customHeader2.dart';
+import 'package:eagle_tip/UI/Widgets/customNav.dart';
+import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
 import 'package:eagle_tip/UI/Widgets/customappheader.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
+import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 
 class TicketDetail extends StatelessWidget {
@@ -17,7 +21,7 @@ class TicketDetail extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            height: height,
+            height: Responsive.isDesktop(context) ? height * 1.15 : height,
             color: backGround_color,
             child: Padding(
               padding: EdgeInsets.only(
@@ -25,88 +29,129 @@ class TicketDetail extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomHeader2(),
+                  Responsive.isDesktop(context)
+                      ? Navbar(
+                          width: width,
+                          height: height,
+                          text1: "Home",
+                          text2: "Sites",
+                          widget3: Navtext(text: "Messages", width: width),
+                        )
+                      : CustomHeader2(),
                   SizedBox(
                     height: height * 0.06,
                   ),
-                  Ticketdet(),
-                  SizedBox(
-                    height: height * 0.04,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  Stack(
                     children: [
-                      Text(
-                        "Can't open app",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontFamily: "Poppins",
-                            fontSize: 18.0),
-                      ),
+                      WebBg(),
+                      CustomContainer(
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                left: Responsive.isDesktop(context)
+                                    ? width * 0.04
+                                    : 0.0,
+                                right: Responsive.isDesktop(context)
+                                    ? width * 0.04
+                                    : 0.0,
+                                top: Responsive.isDesktop(context)
+                                    ? height * 0.03
+                                    : 0.0),
+                            child: Column(
+                              children: [
+                                Ticketdet(),
+                                SizedBox(
+                                  height: height * 0.04,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Can't open app",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                          fontFamily: "Poppins",
+                                          fontSize: 18.0),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: height * 0.04,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Ahmad: ",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12.0,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: "Poppins"),
+                                    ),
+                                    Container(
+                                      width: width * 0.9,
+                                      child: Text(
+                                        "Risus vestibulum, risus feugiat semper velit feugiat velit. Placerat elit volutpat volutpat elit bibendum molestie eget. Convallis mattis dignissim quis tincidunt quisque. Adipiscing suspendisse faucibus aliquet a turpis odio pellentesque lectus duis. Sodales odio eu bibendum massa velit maecenas eget. Maecenas facilisis nunc tincidunt sed eget viverra porttitor feugiat. Mattis dictum sed suspendisse faucibus gravida. Id eget amet dis amet ut at in eget nam. ",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12.0,
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: "Poppins"),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: height * 0.04,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Text(
+                                          "Support: ",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 12.0,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: "Poppins"),
+                                        ),
+                                      ],
+                                    ),
+                                    Container(
+                                      width: width * 0.9,
+                                      child: Text(
+                                        "Diam aenean ullamcorper viverra sed tincidunt. Volutpat amet et scelerisque lacus, vitae rhoncus iaculis. In egestas a cras orci cras. Neque at magna nunc turpis. Leo mattis porttitor sed nisl.",
+                                        textAlign: TextAlign.right,
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12.0,
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: "Poppins"),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: Responsive.isDesktop(context)
+                                      ? height * 0.05
+                                      : height * 0.03,
+                                ),
+                                CustomButton(
+                                  width: width,
+                                  height: height,
+                                  buttonText: "Reply",
+                                ),
+                              ],
+                            ),
+                          ),
+                          width: width,
+                          topPad: 0.0,
+                          height: height)
                     ],
-                  ),
-                  SizedBox(
-                    height: height * 0.04,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Ahmad: ",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12.0,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "Poppins"),
-                      ),
-                      Container(
-                        width: width * 0.9,
-                        child: Text(
-                          "Risus vestibulum, risus feugiat semper velit feugiat velit. Placerat elit volutpat volutpat elit bibendum molestie eget. Convallis mattis dignissim quis tincidunt quisque. Adipiscing suspendisse faucibus aliquet a turpis odio pellentesque lectus duis. Sodales odio eu bibendum massa velit maecenas eget. Maecenas facilisis nunc tincidunt sed eget viverra porttitor feugiat. Mattis dictum sed suspendisse faucibus gravida. Id eget amet dis amet ut at in eget nam. ",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12.0,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: "Poppins"),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: height * 0.04,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Support: ",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12.0,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "Poppins"),
-                      ),
-                      Container(
-                        width: width * 0.9,
-                        child: Text(
-                          "Diam aenean ullamcorper viverra sed tincidunt. Volutpat amet et scelerisque lacus, vitae rhoncus iaculis. In egestas a cras orci cras. Neque at magna nunc turpis. Leo mattis porttitor sed nisl.",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12.0,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: "Poppins"),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: height * 0.03,
-                  ),
-                  CustomButton(
-                    width: width,
-                    height: height,
-                    buttonText: "Reply",
                   ),
                 ],
               ),
@@ -137,8 +182,8 @@ class CustomButton extends StatelessWidget {
         Navigator.pop(context, false);
       },
       child: Container(
-        width: width * 0.9,
-        height: height * 0.07,
+        width: Responsive.isDesktop(context) ? width * 0.27 : width * 0.9,
+        height: Responsive.isDesktop(context) ? height * 0.055 : height * 0.07,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.0),
           color: Color(0xFF5081DB),

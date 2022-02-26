@@ -1,3 +1,5 @@
+import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
+import 'package:eagle_tip/UI/Widgets/customappheader.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
@@ -23,12 +25,7 @@ class CustomContainer extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: Stack(
         children: [
-          SvgPicture.asset(
-            webbg,
-            alignment: Alignment.center,
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-          ),
+          WebBg(),
           Padding(
             padding: EdgeInsets.only(
                 left:
@@ -88,13 +85,10 @@ class CustomContainer extends StatelessWidget {
                 Responsive.isDesktop(context)
                     ? Padding(
                         padding: EdgeInsets.only(top: height * 0.8),
-                        child: Image.asset(
-                          Common.assetImages + "Group 287.png",
-                          width: Responsive.isDesktop(context)
-                              ? width * 0.024
-                              : width * 0.07,
-                        ),
-                      )
+                        child: MenuButton(
+                          isTapped: true,
+                          width: width * 0.4,
+                        ))
                     : SizedBox(),
               ],
             ),

@@ -23,33 +23,56 @@ class UserProfile extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            height: Responsive.isDesktop(context) ? height * 1.15 : height,
-            color: backGround_color,
-            child: Responsive.isDesktop(context)
-                ? Padding(
-                    padding: EdgeInsets.only(
-                        top: height * 0.03,
-                        left: width * 0.04,
-                        right: width * 0.04),
-                    child: Column(
+              height: Responsive.isDesktop(context) ? height * 1.15 : height,
+              color: backGround_color,
+              child: Padding(
+                padding: EdgeInsets.only(
+                    top: height * 0.03,
+                    left: width * 0.04,
+                    right: width * 0.04),
+                child: Column(
+                  children: [
+                    Responsive.isDesktop(context)
+                        ? Navbar(
+                            width: width,
+                            height: height,
+                            text1: "Home",
+                            text2: "Sites",
+                            widget3: Navtext(text: "Chat", width: width),
+                          )
+                        : Padding(
+                            padding: EdgeInsets.only(
+                                left: width * 0.04, top: height * 0.02),
+                            child: Row(
+                              children: [
+                                InkWell(
+                                  onTap: (() {
+                                    Navigator.pop(context);
+                                  }),
+                                  child: Icon(
+                                    Icons.arrow_back,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: width * 0.22,
+                                ),
+                                Logo(width: width),
+                              ],
+                            ),
+                          ),
+                    SizedBox(
+                      height: Responsive.isDesktop(context)
+                          ? height * 0.1
+                          : height * 0.05,
+                    ),
+                    Stack(
                       children: [
-                        Navbar(
-                          width: width,
-                          height: height,
-                          text1: "Home",
-                          text2: "Sites",
-                          widget3: Navtext(text: "Chat", width: width),
-                        ),
-                        Stack(
+                        WebBg(),
+                        Column(
                           children: [
-                            WebBg(),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  top: height * 0.07, left: width * 0.02),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
+                            Responsive.isDesktop(context)
+                                ? Row(
                                     children: [
                                       Image.asset(
                                         Common.assetImages + "Ellipse 45.png",
@@ -58,31 +81,7 @@ class UserProfile extends StatelessWidget {
                                       SizedBox(
                                         width: width * 0.02,
                                       ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "Ahmad Elizondo",
-                                            style: TextStyle(
-                                                fontSize: width * 0.011,
-                                                fontWeight: FontWeight.w600,
-                                                color: Colors.white,
-                                                fontFamily: 'Poppins'),
-                                          ),
-                                          SizedBox(
-                                            height: 4.0,
-                                          ),
-                                          Text(
-                                            "Manager",
-                                            style: TextStyle(
-                                                fontSize: width * 0.01,
-                                                color: Color(0xFFD9DBE9),
-                                                fontWeight: FontWeight.w500,
-                                                fontFamily: 'Poppins'),
-                                          ),
-                                        ],
-                                      ),
+                                      UserNameandDet(width: width),
                                       SizedBox(
                                         width: width * 0.1,
                                       ),
@@ -106,92 +105,53 @@ class UserProfile extends StatelessWidget {
                                         )),
                                       ),
                                     ],
-                                  ),
-                                  SizedBox(
-                                    height: height * 0.04,
-                                  ),
-                                  Divider(
-                                    color: Colors.black,
-                                    thickness: 1.0,
-                                  ),
-                                  SizedBox(
-                                    height: height * 0.04,
-                                  ),
-                                  Container(
-                                    height: height * 0.14,
+                                  )
+                                : Container(
+                                    height: height * 0.26,
                                     width: width,
                                     child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(
-                                          "Contact Details",
-                                          style: TextStyle(
-                                              fontSize: width * 0.011,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.white,
-                                              fontFamily: 'Poppins'),
+                                        Image.asset(
+                                          Common.assetImages + "Ellipse 45.png",
+                                          width: width * 0.18,
                                         ),
                                         SizedBox(
-                                          height: height * 0.02,
+                                          height: height * 0.005,
                                         ),
-                                        Container(
-                                          width: width * 0.1,
-                                          child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Image.asset(
-                                                  Common.assetImages +
-                                                      "call.png",
-                                                  width: width * 0.013,
-                                                ),
-                                                Text(
-                                                  "(209) 555-0104",
-                                                  style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 14.0,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      fontFamily: "Poppins"),
-                                                ),
-                                              ]),
-                                        ),
+                                        UserNameandDet(width: width),
                                         SizedBox(
-                                          height: height * 0.02,
+                                          height: height * 0.004,
                                         ),
                                         Container(
-                                          width: width * 0.113,
-                                          child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Image.asset(
-                                                  Common.assetImages +
-                                                      "mail.png",
-                                                  width: width * 0.013,
-                                                ),
-                                                Text(
-                                                  "ahmad@site.com",
-                                                  style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 14.0,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      fontFamily: "Poppins"),
-                                                ),
-                                              ]),
+                                          width: width * 0.2,
+                                          height: height * 0.035,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            color: Color(0xFF5081DB),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              "Chat",
+                                              style: TextStyle(
+                                                fontSize: 13.0,
+                                                fontFamily: "Poppins",
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                  SizedBox(
-                                    height: height * 0.025,
-                                  ),
+                            SizedBox(
+                              height: height * 0.04,
+                            ),
+                            Visibility(
+                              visible: Responsive.isDesktop(context),
+                              child: Column(
+                                children: [
                                   Divider(
                                     color: Colors.black,
                                     thickness: 1.0,
@@ -199,162 +159,109 @@ class UserProfile extends StatelessWidget {
                                   SizedBox(
                                     height: height * 0.04,
                                   ),
-                                  Text(
-                                    "Sites",
-                                    style: TextStyle(
-                                        fontSize: width * 0.011,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                        fontFamily: 'Poppins'),
-                                  ),
-                                  SizedBox(
-                                    height: height * 0.02,
-                                  ),
-                                  Row(
-                                    children: [
-                                      DesktopSiteData(
-                                          siteloc: "Tampa, Fl",
-                                          sitename: "Acres Marathon",
-                                          imgPath: "site11",
-                                          width: width,
-                                          height: height),
-                                      SizedBox(
-                                        width: width * 0.036,
-                                      ),
-                                      DesktopSiteData(
-                                          siteloc: "Tampa, Fl",
-                                          sitename: "Bridge Marathon",
-                                          imgPath: "site21",
-                                          width: width,
-                                          height: height),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: height * 0.06,
-                                  ),
-                                  Container(
-                                    width: width * 0.88,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        MenuButton(
-                                            isTapped: true, width: width * 0.4)
-                                      ],
-                                    ),
-                                  ),
                                 ],
+                              ),
+                            ),
+                            ContactInfo(
+                                height: Responsive.isDesktop(context)
+                                    ? height * 1.06
+                                    : height,
+                                width: width),
+                            SizedBox(
+                              height: Responsive.isDesktop(context)
+                                  ? height * 0.025
+                                  : height * 0.02,
+                            ),
+                            Divider(
+                              color: Responsive.isDesktop(context)
+                                  ? Colors.black
+                                  : Color(0xFF2E3840),
+                              thickness:
+                                  Responsive.isDesktop(context) ? 1.0 : 3.0,
+                            ),
+                            SizedBox(
+                              height: Responsive.isDesktop(context)
+                                  ? height * 0.04
+                                  : height * 0.02,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left: Responsive.isDesktop(context)
+                                      ? 0.0
+                                      : width * 0.08,
+                                  right: Responsive.isDesktop(context)
+                                      ? 0.0
+                                      : width * 0.04),
+                              child: SitesData(
+                                  height: height * 1.08, width: width),
+                            ),
+                            Visibility(
+                              visible: Responsive.isDesktop(context),
+                              child: SizedBox(
+                                height: height * 0.04,
+                              ),
+                            ),
+                            Visibility(
+                              visible: Responsive.isDesktop(context),
+                              child: Container(
+                                width: width * 0.88,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    MenuButton(
+                                        isTapped: true, width: width * 0.4)
+                                  ],
+                                ),
                               ),
                             ),
                           ],
                         ),
                       ],
                     ),
-                  )
-                : Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: width * 0.04, top: height * 0.02),
-                        child: Row(
-                          children: [
-                            InkWell(
-                              onTap: (() {
-                                Navigator.pop(context);
-                              }),
-                              child: Icon(
-                                Icons.arrow_back,
-                                color: Colors.white,
-                              ),
-                            ),
-                            SizedBox(
-                              width: width * 0.22,
-                            ),
-                            Logo(width: width),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: height * 0.07,
-                      ),
-                      Container(
-                        height: height * 0.26,
-                        width: width,
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              Common.assetImages + "Ellipse 45.png",
-                              width: width * 0.18,
-                            ),
-                            SizedBox(
-                              height: height * 0.005,
-                            ),
-                            Text(
-                              "Ahmad Elizondo",
-                              style: TextStyle(
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white,
-                                  fontFamily: 'Poppins'),
-                            ),
-                            SizedBox(
-                              height: height * 0.001,
-                            ),
-                            Text(
-                              "Manager",
-                              style: TextStyle(
-                                  fontSize: 14.0,
-                                  color: Color(0xFFD9DBE9),
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: 'Poppins'),
-                            ),
-                            SizedBox(
-                              height: height * 0.004,
-                            ),
-                            Container(
-                              width: width * 0.2,
-                              height: height * 0.035,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                                color: Color(0xFF5081DB),
-                              ),
-                              child: Center(
-                                  child: Text(
-                                "Chat",
-                                style: TextStyle(
-                                  fontSize: 13.0,
-                                  fontFamily: "Poppins",
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white,
-                                ),
-                              )),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: height * 0.04,
-                      ),
-                      ContactInfo(height: height, width: width),
-                      SizedBox(
-                        height: height * 0.02,
-                      ),
-                      Divider(
-                        color: Color(0xFF2E3840),
-                        thickness: 3.0,
-                      ),
-                      SizedBox(
-                        height: height * 0.02,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: width * 0.08, right: width * 0.04),
-                        child: SitesData(height: height * 1.03, width: width),
-                      ),
-                    ],
-                  ),
-          ),
+                  ],
+                ),
+              )),
         ),
       ),
+    );
+  }
+}
+
+class UserNameandDet extends StatelessWidget {
+  const UserNameandDet({
+    Key? key,
+    required this.width,
+  }) : super(key: key);
+
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: Responsive.isDesktop(context)
+          ? CrossAxisAlignment.start
+          : CrossAxisAlignment.center,
+      children: [
+        Text(
+          "Ahmad Elizondo",
+          style: TextStyle(
+              fontSize: Responsive.isDesktop(context) ? width * 0.011 : 18.0,
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+              fontFamily: 'Poppins'),
+        ),
+        SizedBox(
+          height: 4.0,
+        ),
+        Text(
+          "Manager",
+          style: TextStyle(
+              fontSize: Responsive.isDesktop(context) ? width * 0.01 : 14.0,
+              color: Color(0xFFD9DBE9),
+              fontWeight: FontWeight.w500,
+              fontFamily: 'Poppins'),
+        ),
+      ],
     );
   }
 }

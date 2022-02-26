@@ -18,7 +18,7 @@ class ParticularRequest extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          height: Responsive.isDesktop(context) ? height * 1.16 : height,
+          height: Responsive.isDesktop(context) ? height * 1.16 : height * 1.07,
           color: backGround_color,
           child: Padding(
             padding: EdgeInsets.only(
@@ -27,228 +27,48 @@ class ParticularRequest extends StatelessWidget {
                 top: Responsive.isDesktop(context)
                     ? height * 0.04
                     : height * 0.1),
-            child: Responsive.isDesktop(context)
-                ? Column(
-                    children: [
-                      Navbar(
-                          width: width,
-                          height: height,
-                          text1: "Home",
-                          text2: "Sites",
-                          widget3: Navtext(text: "Messages", width: width)),
-                      SizedBox(
-                        height: height * 0.05,
-                      ),
-                      CustomContainer(
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                left: width * 0.06, right: width * 0.06),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Column(
+              children: [
+                Responsive.isDesktop(context)
+                    ? Navbar(
+                        width: width,
+                        height: height,
+                        text1: "Home",
+                        text2: "Sites",
+                        widget3: Navtext(text: "Messages", width: width))
+                    : CustomHeader2(),
+                SizedBox(
+                  height: height * 0.05,
+                ),
+                CustomContainer(
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          left: width * 0.06, right: width * 0.06),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Visibility(
+                            visible: Responsive.isDesktop(context),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Order ID: 654681",
-                                      style: TextStyle(
-                                        fontSize: width * 0.013,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: "Poppins",
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: Responsive.isDesktop(context)
-                                      ? height * 0.04
-                                      : height * 0.03,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    RichText(
-                                      text: TextSpan(
-                                        text: "Request:",
-                                        style: TextStyle(
-                                            fontSize: width * 0.01,
-                                            fontWeight: FontWeight.w600,
-                                            fontFamily: "Poppins",
-                                            color: Colors.white),
-                                        children: [
-                                          TextSpan(
-                                            text: "  #3456345",
-                                            style: TextStyle(
-                                              fontSize: width * 0.01,
-                                              color: Color(0xFFD9DBE9),
-                                              fontWeight: FontWeight.w400,
-                                              fontFamily: "Poppins",
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    RichText(
-                                      text: TextSpan(
-                                        text: "Date:",
-                                        style: TextStyle(
-                                            fontSize: width * 0.01,
-                                            fontWeight: FontWeight.w600,
-                                            fontFamily: "Poppins",
-                                            color: Colors.white),
-                                        children: [
-                                          TextSpan(
-                                            text: "  5/27/15",
-                                            style: TextStyle(
-                                              fontSize: width * 0.01,
-                                              color: Color(0xFFD9DBE9),
-                                              fontWeight: FontWeight.w400,
-                                              fontFamily: "Poppins",
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: height * 0.015,
-                                ),
-                                RichText(
-                                  text: TextSpan(
-                                    text: "Site:",
-                                    style: TextStyle(
-                                        fontSize: width * 0.01,
-                                        fontWeight: FontWeight.w600,
-                                        fontFamily: "Poppins",
-                                        color: Colors.white),
-                                    children: [
-                                      TextSpan(
-                                        text: "  Acres Marathon",
-                                        style: TextStyle(
-                                          fontSize: width * 0.01,
-                                          color: Color(0xFFD9DBE9),
-                                          fontWeight: FontWeight.w400,
-                                          fontFamily: "Poppins",
-                                        ),
-                                      ),
-                                    ],
+                                Text(
+                                  "Order ID: 654681",
+                                  style: TextStyle(
+                                    fontSize: width * 0.013,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: "Poppins",
                                   ),
-                                ),
-                                SizedBox(
-                                  height: height * 0.015,
-                                ),
-                                RichText(
-                                  text: TextSpan(
-                                    text: "Request made by:",
-                                    style: TextStyle(
-                                        fontSize: width * 0.01,
-                                        fontWeight: FontWeight.w600,
-                                        fontFamily: "Poppins",
-                                        color: Colors.white),
-                                    children: [
-                                      TextSpan(
-                                        text: "  Ahmed Elizando",
-                                        style: TextStyle(
-                                          fontSize: width * 0.01,
-                                          color: Color(0xFFD9DBE9),
-                                          fontWeight: FontWeight.w400,
-                                          fontFamily: "Poppins",
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: Responsive.isDesktop(context)
-                                      ? height * 0.04
-                                      : height * 0.008,
-                                ),
-                                TankDet(
-                                  tankDet: "Tank 1: Regular",
-                                  productID: "132",
-                                  requestedAmount: "4,500 Gal",
-                                ),
-                                SizedBox(
-                                  height: Responsive.isDesktop(context)
-                                      ? height * 0.04
-                                      : height * 0.008,
-                                ),
-                                TankDet(
-                                  tankDet: "Tank 2: Midgrade",
-                                  productID: "132",
-                                  requestedAmount: "5,500 Gal",
-                                ),
-                                SizedBox(
-                                  height: Responsive.isDesktop(context)
-                                      ? height * 0.04
-                                      : height * 0.008,
-                                ),
-                                TankDet(
-                                  tankDet: "Tank 3: Premium",
-                                  productID: "132",
-                                  requestedAmount: "8,000 Gal",
-                                ),
-                                SizedBox(
-                                  height: Responsive.isDesktop(context)
-                                      ? height * 0.04
-                                      : height * 0.008,
-                                ),
-                                TankDet(
-                                  tankDet: "Tank 4: ULSD",
-                                  productID: "132",
-                                  requestedAmount: "8,000 Gal",
-                                ),
-                                SizedBox(
-                                  height: Responsive.isDesktop(context)
-                                      ? height * 0.04
-                                      : height * 0.008,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      width: width * 0.08,
-                                      height: height * 0.05,
-                                      decoration: BoxDecoration(
-                                        color: Color(0Xff5081db),
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          "Close",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 13.0,
-                                              fontWeight: FontWeight.w600,
-                                              fontFamily: "Poppins"),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
                                 ),
                               ],
                             ),
                           ),
-                          width: width,
-                          topPad: 0.0,
-                          height: Responsive.isDesktop(context)
-                              ? height * 0.9
-                              : height)
-                    ],
-                  )
-                : Column(
-                    children: [
-                      CustomHeader2(),
-                      SizedBox(
-                        height: height * 0.05,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                          SizedBox(
+                            height: Responsive.isDesktop(context)
+                                ? height * 0.04
+                                : height * 0.03,
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -256,7 +76,9 @@ class ParticularRequest extends StatelessWidget {
                                 text: TextSpan(
                                   text: "Request:",
                                   style: TextStyle(
-                                      fontSize: 13.0,
+                                      fontSize: Responsive.isDesktop(context)
+                                          ? width * 0.01
+                                          : 13.0,
                                       fontWeight: FontWeight.w600,
                                       fontFamily: "Poppins",
                                       color: Colors.white),
@@ -264,7 +86,9 @@ class ParticularRequest extends StatelessWidget {
                                     TextSpan(
                                       text: "  #3456345",
                                       style: TextStyle(
-                                        fontSize: 13.0,
+                                        fontSize: Responsive.isDesktop(context)
+                                            ? width * 0.01
+                                            : 13.0,
                                         color: Color(0xFFD9DBE9),
                                         fontWeight: FontWeight.w400,
                                         fontFamily: "Poppins",
@@ -277,7 +101,9 @@ class ParticularRequest extends StatelessWidget {
                                 text: TextSpan(
                                   text: "Date:",
                                   style: TextStyle(
-                                      fontSize: 13.0,
+                                      fontSize: Responsive.isDesktop(context)
+                                          ? width * 0.01
+                                          : 13.0,
                                       fontWeight: FontWeight.w600,
                                       fontFamily: "Poppins",
                                       color: Colors.white),
@@ -285,7 +111,9 @@ class ParticularRequest extends StatelessWidget {
                                     TextSpan(
                                       text: "  5/27/15",
                                       style: TextStyle(
-                                        fontSize: 13.0,
+                                        fontSize: Responsive.isDesktop(context)
+                                            ? width * 0.01
+                                            : 13.0,
                                         color: Color(0xFFD9DBE9),
                                         fontWeight: FontWeight.w400,
                                         fontFamily: "Poppins",
@@ -303,7 +131,9 @@ class ParticularRequest extends StatelessWidget {
                             text: TextSpan(
                               text: "Site:",
                               style: TextStyle(
-                                  fontSize: 13.0,
+                                  fontSize: Responsive.isDesktop(context)
+                                      ? width * 0.01
+                                      : 13.0,
                                   fontWeight: FontWeight.w600,
                                   fontFamily: "Poppins",
                                   color: Colors.white),
@@ -311,7 +141,9 @@ class ParticularRequest extends StatelessWidget {
                                 TextSpan(
                                   text: "  Acres Marathon",
                                   style: TextStyle(
-                                    fontSize: 13.0,
+                                    fontSize: Responsive.isDesktop(context)
+                                        ? width * 0.01
+                                        : 13.0,
                                     color: Color(0xFFD9DBE9),
                                     fontWeight: FontWeight.w400,
                                     fontFamily: "Poppins",
@@ -327,7 +159,9 @@ class ParticularRequest extends StatelessWidget {
                             text: TextSpan(
                               text: "Request made by:",
                               style: TextStyle(
-                                  fontSize: 13.0,
+                                  fontSize: Responsive.isDesktop(context)
+                                      ? width * 0.01
+                                      : 13.0,
                                   fontWeight: FontWeight.w600,
                                   fontFamily: "Poppins",
                                   color: Colors.white),
@@ -335,7 +169,9 @@ class ParticularRequest extends StatelessWidget {
                                 TextSpan(
                                   text: "  Ahmed Elizando",
                                   style: TextStyle(
-                                    fontSize: 13.0,
+                                    fontSize: Responsive.isDesktop(context)
+                                        ? width * 0.01
+                                        : 13.0,
                                     color: Color(0xFFD9DBE9),
                                     fontWeight: FontWeight.w400,
                                     fontFamily: "Poppins",
@@ -345,7 +181,9 @@ class ParticularRequest extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            height: height * 0.04,
+                            height: Responsive.isDesktop(context)
+                                ? height * 0.04
+                                : height * 0.008,
                           ),
                           TankDet(
                             tankDet: "Tank 1: Regular",
@@ -353,7 +191,9 @@ class ParticularRequest extends StatelessWidget {
                             requestedAmount: "4,500 Gal",
                           ),
                           SizedBox(
-                            height: height * 0.04,
+                            height: Responsive.isDesktop(context)
+                                ? height * 0.04
+                                : height * 0.008,
                           ),
                           TankDet(
                             tankDet: "Tank 2: Midgrade",
@@ -361,7 +201,9 @@ class ParticularRequest extends StatelessWidget {
                             requestedAmount: "5,500 Gal",
                           ),
                           SizedBox(
-                            height: height * 0.04,
+                            height: Responsive.isDesktop(context)
+                                ? height * 0.04
+                                : height * 0.008,
                           ),
                           TankDet(
                             tankDet: "Tank 3: Premium",
@@ -369,17 +211,55 @@ class ParticularRequest extends StatelessWidget {
                             requestedAmount: "8,000 Gal",
                           ),
                           SizedBox(
-                            height: height * 0.04,
+                            height: Responsive.isDesktop(context)
+                                ? height * 0.04
+                                : height * 0.008,
                           ),
                           TankDet(
                             tankDet: "Tank 4: ULSD",
                             productID: "132",
                             requestedAmount: "8,000 Gal",
                           ),
+                          SizedBox(
+                            height: Responsive.isDesktop(context)
+                                ? height * 0.04
+                                : height * 0.008,
+                          ),
+                          Visibility(
+                            visible: Responsive.isDesktop(context),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: width * 0.08,
+                                  height: height * 0.05,
+                                  decoration: BoxDecoration(
+                                    color: Color(0Xff5081db),
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "Close",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 13.0,
+                                          fontWeight: FontWeight.w600,
+                                          fontFamily: "Poppins"),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
-                    ],
-                  ),
+                    ),
+                    width: width,
+                    topPad: 0.0,
+                    height:
+                        Responsive.isDesktop(context) ? height * 0.9 : height)
+              ],
+            ),
           ),
         ),
       ),
@@ -407,7 +287,7 @@ class TankDet extends StatelessWidget {
         Text(
           tankDet,
           style: TextStyle(
-            fontSize: width * 0.012,
+            fontSize: width * 0.01,
             color: Colors.white,
             fontWeight: FontWeight.w400,
             fontFamily: "Poppins",

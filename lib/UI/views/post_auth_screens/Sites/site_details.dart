@@ -7,6 +7,7 @@ import 'package:eagle_tip/UI/Widgets/customHeader2.dart';
 import 'package:eagle_tip/UI/Widgets/customNav.dart';
 import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
 import 'package:eagle_tip/UI/Widgets/customappheader.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/Home_screen.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Request%20History/request_history.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Tanks/tanks_request.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
@@ -101,29 +102,8 @@ class _MobileSiteDetState extends State<MobileSiteDet> {
                                 Icons.arrow_back,
                                 color: Colors.white,
                               ),
-                              Column(
-                                children: [
-                                  Text(
-                                    "Acres Marathon",
-                                    style: TextStyle(
-                                        fontSize: 17.0,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: "Poppins"),
-                                  ),
-                                  SizedBox(
-                                    height: height * 0.01,
-                                  ),
-                                  Text(
-                                    "Tampa,FL",
-                                    style: TextStyle(
-                                        fontSize: 13.0,
-                                        color: Color(0xFF6E7191),
-                                        fontWeight: FontWeight.w500,
-                                        fontFamily: "Poppins"),
-                                  ),
-                                ],
-                              ),
+                              SiteNameAndLocation(
+                                  fontSize: 17.0, fontSize2: 13.0),
                               reqSent!
                                   ? Image.asset(
                                       Common.assetImages +
