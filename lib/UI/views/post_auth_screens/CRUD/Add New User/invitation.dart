@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:eagle_tip/Services/authentication_helper.dart';
 import 'package:eagle_tip/UI/Widgets/customNav.dart';
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
 import 'package:eagle_tip/UI/Widgets/customappheader.dart';
@@ -11,9 +12,21 @@ import 'package:eagle_tip/Utils/constants.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 
-class Invitation extends StatelessWidget {
-  Invitation({Key? key}) : super(key: key);
+class Invitation extends StatefulWidget {
+  Invitation({Key? key, required this.sites, required this.role})
+      : super(key: key);
+  List sites;
+  String role;
+  @override
+  State<Invitation> createState() => _InvitationState();
+}
+
+class _InvitationState extends State<Invitation> {
   bool? isTapped = false;
+  TextEditingController _name = new TextEditingController();
+  TextEditingController _email = new TextEditingController();
+  TextEditingController _phone = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -191,7 +204,7 @@ class Invitation extends StatelessWidget {
                         width: width,
                         height: height,
                         labelText: "Name",
-                        controller: TextEditingController(),
+                        controller: _name,
                       ),
                       SizedBox(
                         height: height * 0.02,
@@ -201,7 +214,7 @@ class Invitation extends StatelessWidget {
                         width: width,
                         height: height,
                         labelText: "Email",
-                        controller: TextEditingController(),
+                        controller: _email,
                       ),
                       SizedBox(
                         height: height * 0.02,
@@ -211,14 +224,26 @@ class Invitation extends StatelessWidget {
                         width: width,
                         height: height,
                         labelText: "Phone Number",
-                        controller: TextEditingController(),
+                        controller: _phone,
                       ),
                       SizedBox(
                         height: height * 0.02,
                       ),
-                      CustomSubmitButton(
-                        width: width,
-                        title: "Send Invitation",
+                      GestureDetector(
+                        onTap: () {
+                          AuthFunctions.addUserTodb(
+                              _name.text,
+                              _email.text,
+                              _phone.text,
+                              widget.role,
+                              "",
+                              false,
+                              widget.sites);
+                        },
+                        child: CustomSubmitButton(
+                          width: width,
+                          title: "Send Invitation",
+                        ),
                       )
                     ],
                   ),

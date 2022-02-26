@@ -132,10 +132,7 @@ class _EmployerCodeState extends State<EmployerCode> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => CreateAccount(
-                                    name: name!,
-                                    phoneno: phone!,
-                                    email: email!,
-                                    employercode: _emoloyercode.text,
+                                    doc: data,
                                   ),
                                 ));
                           } else {

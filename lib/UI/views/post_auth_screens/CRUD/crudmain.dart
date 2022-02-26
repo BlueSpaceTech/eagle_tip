@@ -287,6 +287,7 @@ class _CrudScreenState extends State<CrudScreen> {
                         children: [
                           for (int i = 0; i < Site.length; i++) ...{
                             SiteChip(
+                              function: () {},
                               siteName: Site[i],
                               height: height,
                             ),
@@ -314,6 +315,7 @@ class _CrudScreenState extends State<CrudScreen> {
                         children: [
                           for (int i = 0; i < Roles.length; i++) ...{
                             SiteChip(
+                              function: () {},
                               siteName: Roles[i],
                               height: height,
                             ),

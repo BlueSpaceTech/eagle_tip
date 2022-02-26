@@ -4,6 +4,7 @@ import 'package:eagle_tip/UI/Widgets/customContainer.dart';
 import 'package:eagle_tip/UI/Widgets/customHeader2.dart';
 import 'package:eagle_tip/UI/Widgets/customNav.dart';
 import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
+import 'package:eagle_tip/UI/Widgets/customappheader.dart';
 import 'package:eagle_tip/UI/Widgets/logo.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Notifications/particularNotification.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Support/support_desktop.dart';
@@ -54,6 +55,10 @@ class _NotificationsState extends State<Notifications> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      floatingActionButton: MenuButton(
+        width: width,
+        isTapped: false,
+      ),
       body: SingleChildScrollView(
         child: Container(
           width: width,

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
 import 'package:eagle_tip/UI/Widgets/customfaqbottom.dart';
@@ -12,11 +13,8 @@ import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
 
 class VerificationScreen extends StatefulWidget {
-  VerificationScreen(
-      {Key? key, required this.email, required this.employercode})
-      : super(key: key);
-  String email;
-  String employercode;
+  VerificationScreen({Key? key, required this.doc}) : super(key: key);
+  DocumentSnapshot doc;
   @override
   _VerificationScreenState createState() => _VerificationScreenState();
 }
@@ -128,8 +126,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => UploadImage(
-                                email: widget.email,
-                                employercode: widget.employercode,
+                                doc: widget.doc,
                               ),
                             ));
                       },

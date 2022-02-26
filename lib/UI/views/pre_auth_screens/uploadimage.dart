@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/Services/authentication_helper.dart';
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
@@ -10,10 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class UploadImage extends StatefulWidget {
-  UploadImage({Key? key, required this.email, required this.employercode})
-      : super(key: key);
-  String email;
-  String employercode;
+  UploadImage({Key? key, required this.doc}) : super(key: key);
+  DocumentSnapshot doc;
   @override
   State<UploadImage> createState() => _UploadImageState();
 }
@@ -132,9 +131,18 @@ class _UploadImageState extends State<UploadImage> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        AuthFunctions.adddpUrl(widget.employercode);
-                        AuthFunctions.signUp(
-                            email: widget.email, password: _password.text);
+                        // AuthFunctions.adddpUrl(widget.employercode);
+                        AuthFunctions().signupuser(
+                            email: widget.doc.get("email"),
+                            password: _password.text,
+                            username: widget.doc.get("name"),
+                            phoneno: widget.doc.get("phoneno"),
+                            role: widget.doc.get("role"),
+                            Sites: widget.doc.get("sites"),
+                            employercode: widget.doc.get("empoyercode"),
+                            isverified: true);
+                        // AuthFunctions.signUp(
+                        //    email: widget.email, password: _password.text);
 
                         Navigator.pushNamed(context, AppRoutes.welcometour);
                       },

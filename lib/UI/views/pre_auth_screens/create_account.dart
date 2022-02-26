@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
 import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
@@ -13,15 +14,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 class CreateAccount extends StatefulWidget {
   CreateAccount({
     Key? key,
-    required this.name,
-    required this.email,
-    required this.phoneno,
-    required this.employercode,
+    required this.doc,
   }) : super(key: key);
-  String name;
-  String phoneno;
-  String email;
-  String employercode;
+  DocumentSnapshot doc;
 
   @override
   State<CreateAccount> createState() => _CreateAccountState();
@@ -34,9 +29,9 @@ class _CreateAccountState extends State<CreateAccount> {
   @override
   void initState() {
     // TODO: implement initState
-    name.text = widget.name;
-    email.text = widget.email;
-    phoneno.text = widget.phoneno;
+    name.text = widget.doc.get("name");
+    email.text = widget.doc.get("email");
+    phoneno.text = widget.doc.get("phoneno");
     super.initState();
   }
 
@@ -123,8 +118,7 @@ class _CreateAccountState extends State<CreateAccount> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => VerificationScreen(
-                                email: email.text,
-                                employercode: widget.employercode,
+                                doc: widget.doc,
                               ),
                             ));
                       },

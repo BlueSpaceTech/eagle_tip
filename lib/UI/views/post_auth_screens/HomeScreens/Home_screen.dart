@@ -31,6 +31,10 @@ class _HomeScreenState extends State<HomeScreen> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      floatingActionButton: MenuButton(
+        width: width,
+        isTapped: false,
+      ),
       body: SingleChildScrollView(
         child: Container(
           height: Responsive.isDesktop(context) ? height : height * 1.5,
@@ -115,12 +119,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                     ),
+                    /*
                     Positioned(
                       bottom: height * 0.02,
                       right: width * 0.03,
                       child:
                           MenuButton(isTapped: !isTapped!, width: width * 0.34),
                     ),
+                    */
                   ],
                 )
               : Padding(

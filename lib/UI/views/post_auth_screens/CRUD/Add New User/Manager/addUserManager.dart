@@ -76,6 +76,7 @@ class AddUserByManager extends StatelessWidget {
                   SizedBox(
                     height: 10.0,
                   ),
+                  /*
                   Row(
                     children: [
                       SiteChip(siteName: "Acres Marathon", height: height),
@@ -85,6 +86,7 @@ class AddUserByManager extends StatelessWidget {
                       SiteChip(siteName: "Bridge Marathon", height: height),
                     ],
                   ),
+                  */
                   SizedBox(
                     height: height * 0.45,
                   ),
