@@ -43,4 +43,6 @@ class AppRoutes {
   static final String myProfile = "/myprofile";
   static final String createNotification = "/createNotification";
   static final String terminalhome = "/terminalhome";
+  static final String faqTerminal = "/faqTerminal";
+  static final String addFAQ = "/addFAQ";
 }
