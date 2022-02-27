@@ -116,7 +116,9 @@ class MyApp extends StatelessWidget {
           AppRoutes.siteScreen: (context) => Sites(),
           AppRoutes.siteDetails: (context) => SiteDetails(),
           AppRoutes.settings: (context) => Settings(),
-          AppRoutes.chattingscreen: (context) => AllChatScreen(),
+          AppRoutes.chattingscreen: (context) => ChatScreenn(
+                index: 0,
+              ),
           AppRoutes.addUserOwner: (context) => AddNewUserByOwner(),
           AppRoutes.addUserManager: (context) => AddUserByManager(),
 

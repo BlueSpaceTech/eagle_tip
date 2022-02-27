@@ -88,7 +88,7 @@ class _NewChatScreenState extends State<NewChatScreen> {
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, AppRoutes.messagemain);
+                        Navigator.pop(context);
                       },
                       child: NewChatListTile(
                         height: height,
