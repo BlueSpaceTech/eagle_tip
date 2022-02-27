@@ -188,7 +188,7 @@ class ParticularRequest extends StatelessWidget {
                           SizedBox(
                             height: Responsive.isDesktop(context)
                                 ? height * 0.04
-                                : height * 0.008,
+                                : height * 0.04,
                           ),
                           TankDet(
                             tankDet: "Tank 1: Regular",
@@ -198,7 +198,7 @@ class ParticularRequest extends StatelessWidget {
                           SizedBox(
                             height: Responsive.isDesktop(context)
                                 ? height * 0.04
-                                : height * 0.008,
+                                : height * 0.02,
                           ),
                           TankDet(
                             tankDet: "Tank 2: Midgrade",
@@ -208,7 +208,7 @@ class ParticularRequest extends StatelessWidget {
                           SizedBox(
                             height: Responsive.isDesktop(context)
                                 ? height * 0.04
-                                : height * 0.008,
+                                : height * 0.02,
                           ),
                           TankDet(
                             tankDet: "Tank 3: Premium",
@@ -218,7 +218,7 @@ class ParticularRequest extends StatelessWidget {
                           SizedBox(
                             height: Responsive.isDesktop(context)
                                 ? height * 0.04
-                                : height * 0.008,
+                                : height * 0.02,
                           ),
                           TankDet(
                             tankDet: "Tank 4: ULSD",
@@ -228,7 +228,7 @@ class ParticularRequest extends StatelessWidget {
                           SizedBox(
                             height: Responsive.isDesktop(context)
                                 ? height * 0.04
-                                : height * 0.008,
+                                : height * 0.02,
                           ),
                           Visibility(
                             visible: Responsive.isDesktop(context),
@@ -292,7 +292,7 @@ class TankDet extends StatelessWidget {
         Text(
           tankDet,
           style: TextStyle(
-            fontSize: width * 0.01,
+            fontSize: Responsive.isDesktop(context) ? width * 0.01 : 16.0,
             color: Colors.white,
             fontWeight: FontWeight.w400,
             fontFamily: "Poppins",
@@ -304,7 +304,7 @@ class TankDet extends StatelessWidget {
             Text(
               productID,
               style: TextStyle(
-                fontSize: width * 0.01,
+                fontSize: Responsive.isDesktop(context) ? width * 0.01 : 16.0,
                 fontFamily: "Poppins",
                 fontWeight: FontWeight.w500,
                 color: Color(0xFF6E7191),
@@ -313,7 +313,7 @@ class TankDet extends StatelessWidget {
             Text(
               requestedAmount,
               style: TextStyle(
-                fontSize: width * 0.011,
+                fontSize: Responsive.isDesktop(context) ? width * 0.01 : 16.0,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontFamily: "Poppins",

@@ -297,7 +297,7 @@ class _NotificationsState extends State<Notifications> {
                 SizedBox(
                   height: Responsive.isDesktop(context)
                       ? height * 0.06
-                      : height * 0.0,
+                      : height * 0.02,
                 ),
                 Visibility(
                   visible: Responsive.isMobile(context),

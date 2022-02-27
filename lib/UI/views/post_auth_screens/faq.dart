@@ -352,7 +352,7 @@ class _FAQState extends State<FAQ> {
                     style: TextStyle(
                         fontSize: Responsive.isDesktop(context)
                             ? widget.widht * 0.01
-                            : widget.widht * 0.034,
+                            : widget.widht * 0.03,
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
                         fontFamily: "Poppins"),

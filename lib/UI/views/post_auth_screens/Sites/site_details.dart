@@ -38,14 +38,6 @@ class MobileSiteDet extends StatefulWidget {
 class _MobileSiteDetState extends State<MobileSiteDet> {
   bool? _isTapped = false;
 
-  String? regularVal = "0";
-
-  String? midgradeVal = "0";
-
-  String? premiumVal = "0";
-
-  String? ulsdVal = "0";
-
   bool? _requested = false;
 
   List requestId = [
@@ -140,19 +132,16 @@ class _MobileSiteDetState extends State<MobileSiteDet> {
                                           fontFamily: "Poppins"),
                                     ),
                                     FuelRequestPart(
-                                        valueChanged: (val) {
-                                          setState(() {
-                                            reqSent = val;
-                                          });
-                                        },
-                                        width: width * 0.23,
-                                        height: height,
-                                        regularVal: regularVal,
-                                        ulsdVal: ulsdVal,
-                                        premiumVal: premiumVal,
-                                        requestDate: requestDate,
-                                        requestId: requestId,
-                                        midgradeVal: midgradeVal),
+                                      valueChanged: (val) {
+                                        setState(() {
+                                          reqSent = val;
+                                        });
+                                      },
+                                      width: width * 0.23,
+                                      height: height,
+                                      requestDate: requestDate,
+                                      requestId: requestId,
+                                    ),
                                   ],
                                 ),
                                 SizedBox(
@@ -269,19 +258,16 @@ class _MobileSiteDetState extends State<MobileSiteDet> {
                         child: TabBarView(
                           children: [
                             FuelRequestPart(
-                                width: width,
-                                valueChanged: (val) {
-                                  setState(() {
-                                    reqSent = val;
-                                  });
-                                },
-                                height: height,
-                                regularVal: regularVal,
-                                ulsdVal: ulsdVal,
-                                premiumVal: premiumVal,
-                                requestDate: requestDate,
-                                requestId: requestId,
-                                midgradeVal: midgradeVal),
+                              valueChanged: (val) {
+                                setState(() {
+                                  reqSent = val;
+                                });
+                              },
+                              width: width,
+                              height: height,
+                              requestDate: requestDate,
+                              requestId: requestId,
+                            ),
                             RequestHistoryPart(
                                 width: width,
                                 height: height,
@@ -304,34 +290,23 @@ class FuelRequestPart extends StatelessWidget {
     Key? key,
     required this.width,
     required this.height,
-    required this.regularVal,
-    required this.ulsdVal,
-    required this.premiumVal,
     required this.requestDate,
     required this.requestId,
-    required this.midgradeVal,
     required this.valueChanged,
   }) : super(key: key);
 
   final double width;
   final double height;
-  final String? regularVal;
-  final String? ulsdVal;
-  final String? premiumVal;
   final List requestDate;
   final List requestId;
-  final String? midgradeVal;
   final ValueChanged valueChanged;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          left: width * 0.05, right: width * 0.03, top: height * 0.04),
+          left: width * 0.05, right: width * 0.03, top: height * 0.03),
       child: FuelReqColumn(
-        regularVal: regularVal!,
-        ulsdVal: ulsdVal!,
-        premiumVal: premiumVal!,
         valueChanged: (val) {
           valueChanged(val);
         },
@@ -339,7 +314,6 @@ class FuelRequestPart extends StatelessWidget {
         requestId: requestId,
         height: height,
         width: width,
-        midgradeVal: midgradeVal!,
       ),
     );
   }
@@ -363,7 +337,7 @@ class RequestHistoryPart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          left: width * 0.04, right: width * 0.04, top: height * 0.0),
+          left: width * 0.04, right: width * 0.04, top: height * 0.03),
       child: Requests(
           height: height,
           requestId: requestId,
@@ -380,21 +354,14 @@ class FuelReqColumn extends StatefulWidget {
     required this.width,
     required this.requestId,
     required this.requestDate,
-    required this.midgradeVal,
-    required this.premiumVal,
-    required this.regularVal,
     required this.valueChanged,
-    required this.ulsdVal,
   }) : super(key: key);
 
   final double height;
   final double width;
   final List requestId;
   final List requestDate;
-  String regularVal;
-  String midgradeVal;
-  String ulsdVal;
-  String premiumVal;
+
   final ValueChanged valueChanged;
 
   @override
@@ -445,6 +412,14 @@ class _FuelReqColumnState extends State<FuelReqColumn>
     _controller.dispose();
   }
 
+  String? regularVal = "0";
+
+  String? midgradeVal = "0";
+
+  String? premiumVal = "0";
+
+  String? ulsdVal = "0";
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -461,7 +436,7 @@ class _FuelReqColumnState extends State<FuelReqColumn>
               Tank(
                 valueChanged2: (val) {
                   setState(() {
-                    widget.regularVal = val;
+                    regularVal = val;
                   });
                 },
                 tankNumber: 1,
@@ -478,7 +453,7 @@ class _FuelReqColumnState extends State<FuelReqColumn>
               Tank(
                 valueChanged2: (val) {
                   setState(() {
-                    widget.midgradeVal = val;
+                    midgradeVal = val;
                   });
                 },
                 tankNumber: 2,
@@ -495,7 +470,7 @@ class _FuelReqColumnState extends State<FuelReqColumn>
               Tank(
                 valueChanged2: (val) {
                   setState(() {
-                    widget.premiumVal = val;
+                    premiumVal = val;
                   });
                 },
                 tankNumber: 3,
@@ -512,7 +487,7 @@ class _FuelReqColumnState extends State<FuelReqColumn>
               Tank(
                 valueChanged2: (val) {
                   setState(() {
-                    widget.ulsdVal = val;
+                    ulsdVal = val;
                   });
                 },
                 tankNumber: 4,
@@ -534,6 +509,7 @@ class _FuelReqColumnState extends State<FuelReqColumn>
         ),
         InkWell(
           onTap: () {
+            print(regularVal);
             if (isTapped!) {
               showDialog(
                 context: context,
@@ -583,7 +559,7 @@ class _FuelReqColumnState extends State<FuelReqColumn>
                               width: 10.0,
                             ),
                             Text(
-                              widget.regularVal.toString().replaceAllMapped(
+                              regularVal.toString().replaceAllMapped(
                                   RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
                                   (Match m) => '${m[1]},'),
                               style: TextStyle(
@@ -627,7 +603,7 @@ class _FuelReqColumnState extends State<FuelReqColumn>
                               width: 10.0,
                             ),
                             Text(
-                              widget.midgradeVal.toString().replaceAllMapped(
+                              midgradeVal.toString().replaceAllMapped(
                                   RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
                                   (Match m) => '${m[1]},'),
                               style: TextStyle(
@@ -671,7 +647,7 @@ class _FuelReqColumnState extends State<FuelReqColumn>
                               width: 10.0,
                             ),
                             Text(
-                              widget.premiumVal.toString().replaceAllMapped(
+                              premiumVal.toString().replaceAllMapped(
                                   RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
                                   (Match m) => '${m[1]},'),
                               style: TextStyle(
@@ -715,7 +691,7 @@ class _FuelReqColumnState extends State<FuelReqColumn>
                               width: 10.0,
                             ),
                             Text(
-                              widget.ulsdVal.toString().replaceAllMapped(
+                              ulsdVal.toString().replaceAllMapped(
                                   RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
                                   (Match m) => '${m[1]},'),
                               style: TextStyle(
