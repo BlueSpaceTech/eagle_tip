@@ -123,8 +123,8 @@ class _AddNewUserByOwnerState extends State<AddNewUserByOwner> {
                 width: width,
                 height: height,
                 text1: "Home",
-                text2: "Sites",
-                widget3: Navtext(text: "Chat", width: width),
+                text2: "Chat",
+                widget3: Navtext(text: "Notification", width: width),
               ),
               SingleChildScrollView(
                 child: Container(
@@ -148,13 +148,8 @@ class _AddNewUserByOwnerState extends State<AddNewUserByOwner> {
                             children: [
                               Row(
                                 children: [
-                                  Icon(
-                                    Icons.arrow_back,
-                                    color: Colors.white,
-                                    size: 30,
-                                  ),
                                   Text(
-                                    "Back",
+                                    "    ",
                                     style: TextStyle(
                                         fontFamily: "Poppins",
                                         fontWeight: FontWeight.bold,

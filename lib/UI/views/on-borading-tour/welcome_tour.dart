@@ -39,7 +39,6 @@ class WelcomeTour extends StatelessWidget {
                     children: [
                       Image.asset(
                         "assets/containertop.png",
-                        
                       ),
                       SizedBox(
                         height: height * 0.02,
@@ -101,8 +100,11 @@ class WelcomeTour extends StatelessWidget {
                               children: [
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.pushNamed(
-                                        context, AppRoutes.finaltour);
+                                    Responsive.isDesktop(context)
+                                        ? Navigator.pushNamed(
+                                            context, AppRoutes.webfinaltour)
+                                        : Navigator.pushNamed(
+                                            context, AppRoutes.finaltour);
                                   },
                                   child: Text(
                                     "I’ll explore on my own",

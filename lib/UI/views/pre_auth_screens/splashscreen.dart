@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:eagle_tip/UI/Widgets/logo.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/login_screen.dart';
 import 'package:eagle_tip/Utils/constants.dart';
+import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -29,41 +30,48 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: backGround_color,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: width * 0.1),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Logo(width: width * 2),
-            SizedBox(
-              height: height * 0.02,
-            ),
-            Text(
-              "Eagle Transport Inventry Program",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: "Poppins",
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500),
-            ),
-            SizedBox(
-              height: height * 0.18,
-            ),
-            CircularProgressIndicator(
-              color: Colors.white,
-            ),
-            SizedBox(
-              height: height * 0.04,
-            ),
-            Text(
-              "Loading",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: "Poppins",
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500),
-            ),
-          ],
+        padding: EdgeInsets.symmetric(horizontal: width * 0),
+        child: Container(
+          alignment: Alignment.center,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Responsive.isDesktop(context)
+                  ? LogoSplash(width: width)
+                  : Logo(
+                      width: width * 2,
+                    ),
+              SizedBox(
+                height: height * 0.02,
+              ),
+              Text(
+                "Eagle Transport Inventry Program",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: "Poppins",
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500),
+              ),
+              SizedBox(
+                height: height * 0.18,
+              ),
+              CircularProgressIndicator(
+                color: Colors.white,
+              ),
+              SizedBox(
+                height: height * 0.04,
+              ),
+              Text(
+                "Loading",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: "Poppins",
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500),
+              ),
+            ],
+          ),
         ),
       ),
     );

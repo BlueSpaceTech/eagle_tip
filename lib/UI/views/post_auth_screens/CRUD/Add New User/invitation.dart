@@ -65,13 +65,8 @@ class _InvitationState extends State<Invitation> {
                           children: [
                             Row(
                               children: [
-                                Icon(
-                                  Icons.arrow_back,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
                                 Text(
-                                  "Back",
+                                  "    ",
                                   style: TextStyle(
                                       fontFamily: "Poppins",
                                       fontWeight: FontWeight.bold,

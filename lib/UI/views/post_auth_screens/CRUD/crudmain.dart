@@ -165,7 +165,8 @@ class _CrudScreenState extends State<CrudScreen> {
         WebBg(),
         SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: width * 0.1),
+            padding: EdgeInsets.symmetric(
+                horizontal: Responsive.isDesktop(context) ? width * 0.1 : 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -201,13 +202,8 @@ class _CrudScreenState extends State<CrudScreen> {
                           children: [
                             Row(
                               children: [
-                                Icon(
-                                  Icons.arrow_back,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
                                 Text(
-                                  "Back",
+                                  "         ",
                                   style: TextStyle(
                                       fontFamily: "Poppins",
                                       fontWeight: FontWeight.bold,

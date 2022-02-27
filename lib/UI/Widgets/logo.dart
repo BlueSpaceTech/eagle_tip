@@ -13,9 +13,32 @@ class Logo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(
-      "assets/Logo 2 1.svg",
-      width: Responsive.isDesktop(context) ? 200 : width * 0.42,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 0),
+      child: SvgPicture.asset(
+        "assets/Logo 2 1.svg",
+        width: Responsive.isDesktop(context) ? 200 : width * 0.42,
+      ),
+    );
+  }
+}
+
+class LogoSplash extends StatelessWidget {
+  const LogoSplash({
+    Key? key,
+    required this.width,
+  }) : super(key: key);
+
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: width * 0.2),
+      child: SvgPicture.asset(
+        "assets/Logo 2 1.svg",
+        width: width * 0.42,
+      ),
     );
   }
 }
