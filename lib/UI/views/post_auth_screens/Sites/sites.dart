@@ -22,17 +22,20 @@ class Sites extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
+      floatingActionButton: Responsive.isDesktop(context)
+          ? MenuButton(isTapped: false, width: width)
+          : SizedBox(),
       body: SingleChildScrollView(
         child: Container(
-          height: Responsive.isDesktop(context) ? height * 1.15 : height,
+          height: Responsive.isDesktop(context) ? height * 1.19 : height,
           color: backGround_color,
           child: Padding(
             padding: EdgeInsets.only(
                 top: Responsive.isDesktop(context)
                     ? height * 0.04
                     : height * 0.1,
-                left: width * 0.05,
-                right: width * 0.05),
+                left: Responsive.isDesktop(context) ? 0.0 : width * 0.05,
+                right: Responsive.isDesktop(context) ? 0.0 : width * 0.05),
             child: Responsive.isDesktop(context)
                 ? Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,66 +52,42 @@ class Sites extends StatelessWidget {
                       Stack(
                         children: [
                           WebBg(),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Icon(
-                                        Icons.arrow_back,
-                                        color: Colors.white,
-                                        size: width * 0.02,
-                                      ),
-                                      SizedBox(
-                                        width: width * 0.014,
-                                      ),
-                                      Text(
-                                        "Back",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: width * 0.012,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: "Poppins",
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Image.asset(
-                                    Common.assetImages + "activeHome.png",
-                                    width: width * 0.01,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: height * 0.05,
-                              ),
-                              Text(
-                                "Sites",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18.0,
-                                    fontWeight: Responsive.isDesktop(context)
-                                        ? FontWeight.w500
-                                        : FontWeight.bold,
-                                    fontFamily: "Poppins"),
-                              ),
-                              SiteList(
-                                  height: height,
-                                  width: width,
-                                  siteImg: siteImgDesk,
-                                  siteName: siteName,
-                                  sitelocation: sitelocation),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  MenuButton(isTapped: false, width: width),
-                                ],
-                              ),
-                            ],
+                          Padding(
+                            padding: EdgeInsets.only(
+                                left: width * 0.04, right: width * 0.04),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Image.asset(
+                                      Common.assetImages + "activeHome.png",
+                                      width: width * 0.01,
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: height * 0.05,
+                                ),
+                                Text(
+                                  "Sites",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18.0,
+                                      fontWeight: Responsive.isDesktop(context)
+                                          ? FontWeight.w500
+                                          : FontWeight.bold,
+                                      fontFamily: "Poppins"),
+                                ),
+                                SiteList(
+                                    height: height,
+                                    width: width,
+                                    siteImg: siteImgDesk,
+                                    siteName: siteName,
+                                    sitelocation: sitelocation),
+                              ],
+                            ),
                           ),
                         ],
                       ),

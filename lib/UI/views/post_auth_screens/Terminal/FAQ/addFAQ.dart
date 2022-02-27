@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/customContainer.dart';
 import 'package:eagle_tip/UI/Widgets/customNav.dart';
 import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
@@ -25,6 +26,9 @@ class AddFAQ extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      floatingActionButton: Responsive.isDesktop(context)
+          ? MenuButton(isTapped: false, width: width)
+          : SizedBox(),
       body: SingleChildScrollView(
         child: Container(
           height: height * 1.4,
@@ -191,20 +195,6 @@ class AddFAQ extends StatelessWidget {
                         SizedBox(
                           width: width * 0.07,
                         ),
-                        Responsive.isDesktop(context)
-                            ? Container(
-                                height: height * 0.8,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    MenuButton(
-                                      isTapped: true,
-                                      width: width * 0.4,
-                                    ),
-                                  ],
-                                ),
-                              )
-                            : SizedBox(),
                       ],
                     ),
                   ],

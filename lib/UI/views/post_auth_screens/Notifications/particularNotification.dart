@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/customContainer.dart';
 import 'package:eagle_tip/UI/Widgets/customHeader2.dart';
 import 'package:eagle_tip/UI/Widgets/customNav.dart';
+import 'package:eagle_tip/UI/Widgets/customappheader.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/Home_screen.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
@@ -25,17 +27,21 @@ class SpecificNotification extends StatelessWidget {
         return Future.value(false);
       },
       child: Scaffold(
+        floatingActionButton: Responsive.isDesktop(context)
+            ? MenuButton(isTapped: false, width: width)
+            : SizedBox(),
         body: SingleChildScrollView(
           child: Container(
-            height: Responsive.isDesktop(context) ? height * 1.14 : height,
+            height: Responsive.isDesktop(context) ? height * 1.18 : height,
             color: backGround_color,
             child: Padding(
               padding: EdgeInsets.only(
-                  top: Responsive.isDesktop(context)
-                      ? height * 0.02
-                      : height * 0.1,
-                  left: width * 0.03,
-                  right: width * 0.02),
+                top: Responsive.isDesktop(context)
+                    ? height * 0.02
+                    : height * 0.1,
+                left: Responsive.isDesktop(context) ? 0.0 : width * 0.03,
+                right: Responsive.isDesktop(context) ? 0.0 : width * 0.02,
+              ),
               child: Column(
                 children: [
                   Responsive.isDesktop(context)

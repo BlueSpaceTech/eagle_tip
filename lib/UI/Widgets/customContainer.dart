@@ -82,14 +82,6 @@ class CustomContainer extends StatelessWidget {
                       ? width * 0.14
                       : width * 0.0,
                 ),
-                Responsive.isDesktop(context)
-                    ? Padding(
-                        padding: EdgeInsets.only(top: height * 0.8),
-                        child: MenuButton(
-                          isTapped: true,
-                          width: width * 0.4,
-                        ))
-                    : SizedBox(),
               ],
             ),
           ),

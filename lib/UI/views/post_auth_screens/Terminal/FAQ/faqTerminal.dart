@@ -33,13 +33,16 @@ class TerminalFAQ extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      floatingActionButton: Responsive.isDesktop(context)
+          ? MenuButton(isTapped: false, width: width)
+          : SizedBox(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
             height: height * 1.2,
             color: backGround_color,
             child: Padding(
-              padding: EdgeInsets.only(left: width * 0.04, top: height * 0.01),
+              padding: EdgeInsets.only(left: width * 0.0, top: height * 0.01),
               child: Column(
                 children: [
                   Navbar(
@@ -228,15 +231,6 @@ class TerminalFAQ extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              Responsive.isDesktop(context)
-                                  ? Padding(
-                                      padding:
-                                          EdgeInsets.only(top: height * 0.8),
-                                      child: MenuButton(
-                                        isTapped: true,
-                                        width: width * 0.4,
-                                      ))
-                                  : SizedBox(),
                             ],
                           ),
                         ),

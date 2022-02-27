@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/customNav.dart';
 import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
 import 'package:eagle_tip/UI/Widgets/customappheader.dart';
@@ -28,6 +29,9 @@ class _EditUserState extends State<EditUser> {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
+      floatingActionButton: Responsive.isDesktop(context)
+          ? MenuButton(isTapped: false, width: width)
+          : SizedBox(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -36,7 +40,7 @@ class _EditUserState extends State<EditUser> {
             child: Padding(
               padding: EdgeInsets.only(
                   left: Responsive.isDesktop(context)
-                      ? width * 0.04
+                      ? width * 0.0
                       : width * 0.07,
                   right: Responsive.isDesktop(context) ? 0.0 : width * 0.08,
                   top: height * 0.015),
@@ -374,20 +378,6 @@ class _EditUserState extends State<EditUser> {
                                   ),
                                 ),
                               ],
-                            ),
-                            Visibility(
-                              visible: Responsive.isDesktop(context),
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    right: width * 0.04, top: height * 0.03),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    MenuButton(
-                                        isTapped: true, width: width * 0.4)
-                                  ],
-                                ),
-                              ),
                             ),
                           ],
                         ),

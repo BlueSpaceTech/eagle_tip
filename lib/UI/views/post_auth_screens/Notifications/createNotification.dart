@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/customContainer.dart';
 import 'package:eagle_tip/UI/Widgets/customNav.dart';
+import 'package:eagle_tip/UI/Widgets/customappheader.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
@@ -29,13 +31,19 @@ class _CreateNotificationState extends State<CreateNotification> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      floatingActionButton: Responsive.isDesktop(context)
+          ? MenuButton(isTapped: false, width: width)
+          : SizedBox(),
       body: SingleChildScrollView(
         child: Container(
-          height: height * 1.4,
+          height: height * 1.2,
           color: backGround_color,
           child: Padding(
             padding: EdgeInsets.only(
-                top: height * 0.02, left: width * 0.03, right: width * 0.02),
+              top: height * 0.02,
+              left: Responsive.isDesktop(context) ? 0.0 : width * 0.03,
+              right: Responsive.isDesktop(context) ? 0.0 : width * 0.02,
+            ),
             child: Column(
               children: [
                 Navbar(

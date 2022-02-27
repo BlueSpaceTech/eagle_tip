@@ -532,7 +532,7 @@ class _TankState extends State<Tank> {
           child: Container(
             width: widget.width * 0.72,
             height: Responsive.isDesktop(context)
-                ? widget.height * 0.065
+                ? widget.height * 0.066
                 : widget.height * 0.075,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(17.0),
@@ -559,7 +559,9 @@ class _TankState extends State<Tank> {
                           widget.tankType + " Max ${widget.max}",
                           style: TextStyle(
                             color: Color(0xFF6E7191),
-                            fontSize: 12.0,
+                            fontSize: Responsive.isDesktop(context)
+                                ? widget.width * 0.025
+                                : 12.0,
                             fontWeight: FontWeight.w500,
                             fontFamily: "Poppins",
                           ),
@@ -568,7 +570,9 @@ class _TankState extends State<Tank> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              height: widget.height * 0.03,
+                              height: Responsive.isDesktop(context)
+                                  ? widget.height * 0.013
+                                  : widget.height * 0.03,
                               width: widget.width * 0.52,
                               child: TextField(
                                 inputFormatters: [

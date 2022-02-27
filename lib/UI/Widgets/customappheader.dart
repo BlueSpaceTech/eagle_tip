@@ -3,6 +3,7 @@
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/myprofile.dart';
 import 'package:eagle_tip/Utils/common.dart';
+import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 
 import 'logo.dart';
@@ -55,11 +56,13 @@ class MenuButton extends StatelessWidget {
       child: isTapped!
           ? Image.asset(
               Common.assetImages + "Group 287.png",
-              width: width * 0.075,
+              width:
+                  Responsive.isDesktop(context) ? width * 0.03 : width * 0.075,
             )
           : Image.asset(
               Common.assetImages + "Group 288.png",
-              width: width * 0.082,
+              width:
+                  Responsive.isDesktop(context) ? width * 0.03 : width * 0.082,
             ),
       itemBuilder: (context) => [
         PopupMenuItem(

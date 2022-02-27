@@ -31,10 +31,9 @@ class _HomeScreenState extends State<HomeScreen> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      floatingActionButton: MenuButton(
-        width: width,
-        isTapped: false,
-      ),
+      floatingActionButton: Responsive.isDesktop(context)
+          ? MenuButton(isTapped: false, width: width)
+          : SizedBox(),
       body: SingleChildScrollView(
         child: Container(
           height: Responsive.isDesktop(context) ? height : height * 1.5,
@@ -43,81 +42,75 @@ class _HomeScreenState extends State<HomeScreen> {
               ? Stack(
                   children: [
                     WebBg(),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: height * 0.04,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Navbar(
-                              width: width,
-                              height: height,
-                              text1: "Home",
-                              text2: "Chat",
-                              widget3:
-                                  Navtext(text: "Notifications", width: width)),
-                          SizedBox(
-                            height: height * 0.05,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Navbar(
+                            width: width,
+                            height: height,
+                            text1: "Home",
+                            text2: "Chat",
+                            widget3:
+                                Navtext(text: "Notifications", width: width)),
+                        SizedBox(
+                          height: height * 0.05,
+                        ),
+                        SiteNameAndLocation(fontSize: 17.0, fontSize2: 13.0),
+                        SizedBox(
+                          height: height * 0.05,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              AppRoutes.siteDetails,
+                            );
+                          },
+                          child: Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Image.asset(
+                                Common.assetImages + "Ellipse 49.png",
+                                width: width * 0.15,
+                              ),
+                              SizedBox(
+                                width: width * 0.068,
+                                child: Text(
+                                  "Request Fuel",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: width * 0.016,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white,
+                                      fontFamily: "Poppins"),
+                                ),
+                              ),
+                            ],
                           ),
-                          SiteNameAndLocation(fontSize: 17.0, fontSize2: 13.0),
-                          SizedBox(
-                            height: height * 0.05,
-                          ),
-                          InkWell(
+                        ),
+                        SizedBox(
+                          height: height * 0.07,
+                        ),
+                        InkWell(
                             onTap: () {
                               Navigator.pushNamed(
-                                context,
-                                AppRoutes.siteDetails,
-                              );
-                            },
-                            child: Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                Image.asset(
-                                  Common.assetImages + "Ellipse 49.png",
-                                  width: width * 0.15,
-                                ),
-                                SizedBox(
-                                  width: width * 0.068,
-                                  child: Text(
-                                    "Request Fuel",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize: width * 0.016,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                        fontFamily: "Poppins"),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: height * 0.07,
-                          ),
-                          InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(
-                                    context, AppRoutes.siteScreen);
-                              },
-                              child: SiteContainer(
-                                  width: width, text: "Sites", height: height)),
-                          SizedBox(
-                            height: height * 0.02,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.pushNamed(
-                                  context, AppRoutes.crudscreen);
+                                  context, AppRoutes.siteScreen);
                             },
                             child: SiteContainer(
-                                width: width,
-                                text: "Edit Employees",
-                                height: height),
-                          )
-                        ],
-                      ),
+                                width: width, text: "Sites", height: height)),
+                        SizedBox(
+                          height: height * 0.02,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, AppRoutes.crudscreen);
+                          },
+                          child: SiteContainer(
+                              width: width,
+                              text: "Edit Employees",
+                              height: height),
+                        )
+                      ],
                     ),
                     /*
                     Positioned(

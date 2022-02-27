@@ -28,7 +28,9 @@ class FinalTour extends StatelessWidget {
               left: width * 0.05,
               child: TourUpContainer(
                 onnext: () {
-                  Navigator.pushNamed(context, AppRoutes.bottomNav);
+                  Responsive.isDesktop(context)
+                      ? Navigator.pushNamed(context, AppRoutes.homeScreen)
+                      : Navigator.pushNamed(context, AppRoutes.bottomNav);
                 },
                 containertype: "right",
                 distance: height * 0.028,

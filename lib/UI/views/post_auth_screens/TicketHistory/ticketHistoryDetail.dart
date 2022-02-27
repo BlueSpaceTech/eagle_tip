@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/customContainer.dart';
 import 'package:eagle_tip/UI/Widgets/customHeader2.dart';
 import 'package:eagle_tip/UI/Widgets/customNav.dart';
@@ -18,14 +19,19 @@ class TicketDetail extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
+      floatingActionButton: Responsive.isDesktop(context)
+          ? MenuButton(isTapped: false, width: width)
+          : SizedBox(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            height: Responsive.isDesktop(context) ? height * 1.15 : height,
+            height: Responsive.isDesktop(context) ? height * 1.17 : height,
             color: backGround_color,
             child: Padding(
               padding: EdgeInsets.only(
-                  top: height * 0.01, left: width * 0.04, right: width * 0.05),
+                  top: height * 0.01,
+                  left: Responsive.isDesktop(context) ? 0.0 : width * 0.04,
+                  right: Responsive.isDesktop(context) ? 0.0 : width * 0.05),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -150,7 +156,7 @@ class TicketDetail extends StatelessWidget {
                           ),
                           width: width,
                           topPad: 0.0,
-                          height: height)
+                          height: height * 0.85)
                     ],
                   ),
                 ],

@@ -39,6 +39,9 @@ class MyProfile extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      floatingActionButton: Responsive.isDesktop(context)
+          ? MenuButton(isTapped: false, width: width)
+          : SizedBox(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -138,9 +141,8 @@ class _DesktopMyProfileState extends State<DesktopMyProfile> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          top: widget.height * 0.01,
-          left: widget.width * 0.04,
-          right: widget.width * 0.04),
+        top: widget.height * 0.01,
+      ),
       child: Column(
         children: [
           Navbar(
@@ -165,9 +167,7 @@ class _DesktopMyProfileState extends State<DesktopMyProfile> {
                       child: Column(
                         children: [
                           Padding(
-                            padding: EdgeInsets.only(
-                                top: widget.height * 0.07,
-                                left: widget.width * 0.02),
+                            padding: EdgeInsets.only(left: widget.width * 0.02),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -491,15 +491,6 @@ class _DesktopMyProfileState extends State<DesktopMyProfile> {
                     ),
                     SizedBox(
                       width: widget.width * 0.01,
-                    ),
-                    SizedBox(
-                      height: widget.height * 0.9,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          MenuButton(isTapped: true, width: widget.width * 0.34)
-                        ],
-                      ),
                     ),
                   ],
                 ),

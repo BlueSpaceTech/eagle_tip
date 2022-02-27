@@ -3,6 +3,7 @@
 import 'dart:async';
 
 import 'package:audioplayers/audioplayers.dart';
+import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/customHeader2.dart';
 import 'package:eagle_tip/UI/Widgets/customNav.dart';
 import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
@@ -71,126 +72,128 @@ class _MobileSiteDetState extends State<MobileSiteDet> {
     final height = MediaQuery.of(context).size.height;
     return Responsive.isDesktop(context)
         ? Scaffold(
+            floatingActionButton: Responsive.isDesktop(context)
+                ? MenuButton(isTapped: false, width: width)
+                : SizedBox(),
             body: SingleChildScrollView(
               child: Container(
                 height: height * 1.19,
                 color: backGround_color,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      top: height * 0.04,
-                      left: width * 0.05,
-                      right: width * 0.05),
-                  child: Column(
-                    children: [
-                      Navbar(
-                        width: width,
-                        height: height,
-                        text1: "Home",
-                        text2: "Sites",
-                        widget3: Navtext(text: "Messages", width: width),
-                      ),
-                      SizedBox(
-                        height: height * 0.05,
-                      ),
-                      Stack(
-                        children: [
-                          WebBg(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(
-                                Icons.arrow_back,
-                                color: Colors.white,
-                              ),
-                              SiteNameAndLocation(
-                                  fontSize: 17.0, fontSize2: 13.0),
-                              reqSent!
-                                  ? Image.asset(
-                                      Common.assetImages +
-                                          "requestIndicator.png",
-                                      width: width * 0.18,
-                                    )
-                                  : SizedBox(),
-                            ],
+                child: Column(
+                  children: [
+                    Navbar(
+                      width: width,
+                      height: height,
+                      text1: "Home",
+                      text2: "Sites",
+                      widget3: Navtext(text: "Messages", width: width),
+                    ),
+                    SizedBox(
+                      height: height * 0.05,
+                    ),
+                    Stack(
+                      children: [
+                        WebBg(),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            left: width * 0.05,
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(top: height * 0.1),
-                            child: IntrinsicHeight(
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Column(
-                                    children: [
-                                      Text(
-                                        "Tanks",
-                                        style: TextStyle(
-                                            fontSize: width * 0.012,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white,
-                                            fontFamily: "Poppins"),
-                                      ),
-                                      FuelRequestPart(
-                                          valueChanged: (val) {
-                                            setState(() {
-                                              reqSent = val;
-                                            });
-                                          },
-                                          width: width * 0.23,
-                                          height: height,
-                                          regularVal: regularVal,
-                                          ulsdVal: ulsdVal,
-                                          premiumVal: premiumVal,
-                                          requestDate: requestDate,
-                                          requestId: requestId,
-                                          midgradeVal: midgradeVal),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    width: width * 0.05,
-                                  ),
-                                  VerticalDivider(
-                                    color: Colors.white,
-                                    thickness: 1.0,
-                                    endIndent: 100,
-                                    indent: 1,
-                                  ),
-                                  SizedBox(
-                                    width: width * 0.05,
-                                  ),
-                                  Column(
-                                    children: [
-                                      Text(
-                                        "Request History",
-                                        style: TextStyle(
-                                            fontSize: width * 0.012,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white,
-                                            fontFamily: "Poppins"),
-                                      ),
-                                      SizedBox(
-                                        height: height * 0.047,
-                                      ),
-                                      RequestHistoryPart(
-                                          width: width * 0.65,
-                                          height: height * 0.9,
-                                          requestId: requestId,
-                                          requestDate: requestDate),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                          child: SizedBox(
+                            width: width * 0.87,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: reqSent! ? width * 0.36 : width * 0.19,
+                                ),
+                                SiteNameAndLocation(
+                                    fontSize: 17.0, fontSize2: 13.0),
+                                SizedBox(
+                                  width: width * 0.18,
+                                ),
+                                reqSent!
+                                    ? Image.asset(
+                                        Common.assetImages +
+                                            "requestIndicator.png",
+                                        width: width * 0.18,
+                                      )
+                                    : SizedBox(),
+                              ],
                             ),
                           ),
-                          Positioned(
-                              top: height * 0.76,
-                              right: width * 0.01,
-                              child: MenuButton(
-                                  isTapped: false, width: width * 0.3)),
-                        ],
-                      ),
-                    ],
-                  ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: height * 0.1),
+                          child: IntrinsicHeight(
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Column(
+                                  children: [
+                                    Text(
+                                      "Tanks",
+                                      style: TextStyle(
+                                          fontSize: width * 0.012,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white,
+                                          fontFamily: "Poppins"),
+                                    ),
+                                    FuelRequestPart(
+                                        valueChanged: (val) {
+                                          setState(() {
+                                            reqSent = val;
+                                          });
+                                        },
+                                        width: width * 0.23,
+                                        height: height,
+                                        regularVal: regularVal,
+                                        ulsdVal: ulsdVal,
+                                        premiumVal: premiumVal,
+                                        requestDate: requestDate,
+                                        requestId: requestId,
+                                        midgradeVal: midgradeVal),
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: width * 0.05,
+                                ),
+                                VerticalDivider(
+                                  color: Colors.white,
+                                  thickness: 1.0,
+                                  endIndent: 100,
+                                  indent: 1,
+                                ),
+                                SizedBox(
+                                  width: width * 0.05,
+                                ),
+                                Column(
+                                  children: [
+                                    Text(
+                                      "Request History",
+                                      style: TextStyle(
+                                          fontSize: width * 0.012,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white,
+                                          fontFamily: "Poppins"),
+                                    ),
+                                    SizedBox(
+                                      height: height * 0.047,
+                                    ),
+                                    RequestHistoryPart(
+                                        width: width * 0.65,
+                                        height: height * 0.9,
+                                        requestId: requestId,
+                                        requestDate: requestDate),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),

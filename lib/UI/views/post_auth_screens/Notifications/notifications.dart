@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/customContainer.dart';
 import 'package:eagle_tip/UI/Widgets/customHeader2.dart';
 import 'package:eagle_tip/UI/Widgets/customNav.dart';
@@ -55,10 +56,9 @@ class _NotificationsState extends State<Notifications> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      floatingActionButton: MenuButton(
-        width: width,
-        isTapped: false,
-      ),
+      floatingActionButton: Responsive.isDesktop(context)
+          ? MenuButton(isTapped: false, width: width)
+          : SizedBox(),
       body: SingleChildScrollView(
         child: Container(
           width: width,
@@ -283,25 +283,6 @@ class _NotificationsState extends State<Notifications> {
                                           color: Colors.white,
                                         ),
                                       ],
-                                    ),
-                                  ),
-                                  Visibility(
-                                    visible: Responsive.isDesktop(context),
-                                    child: Padding(
-                                      padding: EdgeInsets.only(
-                                          top: height * 0.007,
-                                          right: width * 0.004),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        children: [
-                                          Image.asset(
-                                            Common.assetImages +
-                                                "Group 287.png",
-                                            width: width * 0.03,
-                                          ),
-                                        ],
-                                      ),
                                     ),
                                   ),
                                 ],

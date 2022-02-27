@@ -1,3 +1,4 @@
+import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/logo.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
@@ -48,13 +49,25 @@ class Navbar extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Navtext(
-                            width: width,
-                            text: text1,
+                          InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, AppRoutes.homeScreen);
+                            },
+                            child: Navtext(
+                              width: width,
+                              text: text1,
+                            ),
                           ),
-                          Navtext(
-                            text: text2,
-                            width: width,
+                          InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, AppRoutes.siteScreen);
+                            },
+                            child: Navtext(
+                              text: text2,
+                              width: width,
+                            ),
                           ),
                           widget3,
                         ],
