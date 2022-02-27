@@ -22,7 +22,7 @@ class AuthFunctions {
     required String email,
     required String password,
     required String username,
-    required int phoneno,
+    required String phoneno,
     required String role,
     required List Sites,
     required String employercode,

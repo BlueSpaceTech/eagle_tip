@@ -126,7 +126,7 @@ class _EmployerCodeState extends State<EmployerCode> {
                             setState(() {
                               name = data.get("name");
                               email = data.get("email");
-                              phone = data.get("phone");
+                              phone = data.get("phonenumber");
                             });
                             Navigator.push(
                                 context,

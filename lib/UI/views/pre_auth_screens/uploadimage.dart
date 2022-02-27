@@ -136,10 +136,10 @@ class _UploadImageState extends State<UploadImage> {
                             email: widget.doc.get("email"),
                             password: _password.text,
                             username: widget.doc.get("name"),
-                            phoneno: widget.doc.get("phoneno"),
-                            role: widget.doc.get("role"),
+                            phoneno: widget.doc.get("phonenumber"),
+                            role: widget.doc.get("userRole"),
                             Sites: widget.doc.get("sites"),
-                            employercode: widget.doc.get("empoyercode"),
+                            employercode: widget.doc.get("employerCode"),
                             isverified: true);
                         // AuthFunctions.signUp(
                         //    email: widget.email, password: _password.text);

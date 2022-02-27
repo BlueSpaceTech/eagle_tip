@@ -87,29 +87,6 @@ class _EditUserState extends State<EditUser> {
                                 : 0.0),
                         child: Column(
                           children: [
-                            Responsive.isDesktop(context)
-                                ? Row(
-                                    children: [
-                                      Icon(
-                                        Icons.arrow_back,
-                                        color: Colors.white,
-                                        size: width * 0.02,
-                                      ),
-                                      SizedBox(
-                                        width: width * 0.014,
-                                      ),
-                                      Text(
-                                        "Back",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: width * 0.014,
-                                          fontWeight: FontWeight.w600,
-                                          fontFamily: "Poppins",
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                                : SizedBox(),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [

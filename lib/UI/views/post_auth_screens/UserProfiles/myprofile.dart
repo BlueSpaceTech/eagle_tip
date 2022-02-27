@@ -208,24 +208,30 @@ class _DesktopMyProfileState extends State<DesktopMyProfile> {
                                     SizedBox(
                                       width: widget.width * 0.1,
                                     ),
-                                    Container(
-                                      width: widget.width * 0.06,
-                                      height: widget.height * 0.05,
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        color: Color(0xFF5081DB),
-                                      ),
-                                      child: Center(
-                                          child: Text(
-                                        "Chat",
-                                        style: TextStyle(
-                                          fontSize: widget.width * 0.008,
-                                          fontFamily: "Poppins",
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white,
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.pushNamed(
+                                            context, AppRoutes.editUser);
+                                      },
+                                      child: Container(
+                                        width: widget.width * 0.06,
+                                        height: widget.height * 0.05,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          color: Color(0xFF5081DB),
                                         ),
-                                      )),
+                                        child: Center(
+                                            child: Text(
+                                          "Edit Profile",
+                                          style: TextStyle(
+                                            fontSize: widget.width * 0.008,
+                                            fontFamily: "Poppins",
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        )),
+                                      ),
                                     ),
                                   ],
                                 ),

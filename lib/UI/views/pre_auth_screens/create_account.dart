@@ -31,7 +31,7 @@ class _CreateAccountState extends State<CreateAccount> {
     // TODO: implement initState
     name.text = widget.doc.get("name");
     email.text = widget.doc.get("email");
-    phoneno.text = widget.doc.get("phoneno");
+    phoneno.text = widget.doc.get("phonenumber");
     super.initState();
   }
 

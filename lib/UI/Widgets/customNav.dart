@@ -96,7 +96,11 @@ class Navbar extends StatelessWidget {
                     SizedBox(
                       width: width * 0.02,
                     ),
-                    Image.asset(Common.assetImages + "image1.png"),
+                    InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, AppRoutes.myProfile);
+                        },
+                        child: Image.asset(Common.assetImages + "image1.png")),
                   ],
                 ),
               ),

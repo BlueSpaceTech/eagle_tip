@@ -430,15 +430,21 @@ class _CrudScreenState extends State<CrudScreen> {
                                         : width * 0.2,
                                     child: Image.asset("assets/delete.png")),
                               ),
-                              Container(
-                                width: Responsive.isDesktop(context)
-                                    ? width * 0.22
-                                    : width * 0.56,
-                                child: Text(
-                                  '${index + 1}. ${name[index]}',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily: "Poppins"),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, AppRoutes.useprofile);
+                                },
+                                child: Container(
+                                  width: Responsive.isDesktop(context)
+                                      ? width * 0.22
+                                      : width * 0.56,
+                                  child: Text(
+                                    '${index + 1}. ${name[index]}',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: "Poppins"),
+                                  ),
                                 ),
                               ),
                               Container(
