@@ -29,6 +29,8 @@ import 'package:eagle_tip/UI/views/post_auth_screens/Sites/sites.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Support/support.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Tanks/product_request.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Tanks/tanks_request.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Terminal/FAQ/addFAQ.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Terminal/FAQ/faqTerminal.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Terminal/terminalhome.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/TicketHistory/ticketHistory.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/TicketHistory/ticketHistoryDetail.dart';
@@ -87,9 +89,10 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           backgroundColor: Color(0xff2B343B),
         ),
-        initialRoute: AppRoutes.splashscreen,
+        initialRoute: AppRoutes.faqTerminal,
         routes: {
           AppRoutes.support: (context) => SupportScreen(),
+          AppRoutes.addFAQ: (context) => AddFAQ(),
           AppRoutes.faq: (context) => FAQScreen(),
           AppRoutes.loginscreen: (context) => LoginScreen(),
           AppRoutes.employercode: (context) => EmployerCode(),
@@ -97,6 +100,7 @@ class MyApp extends StatelessWidget {
           AppRoutes.homeScreen: (context) => HomeScreen(),
           AppRoutes.forgetpass: (context) => ForgetPassword(),
           AppRoutes.mailsent: (context) => EmailSent(),
+          AppRoutes.faqTerminal: (context) => TerminalFAQ(),
           AppRoutes.tanksRequest: (context) => TanksRequest(),
           AppRoutes.welcometour: (context) => WelcomeTour(),
           AppRoutes.tour1: (context) => Tour1(),
