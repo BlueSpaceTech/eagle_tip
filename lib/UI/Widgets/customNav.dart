@@ -23,7 +23,7 @@ class Navbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Visibility(
-      visible: Responsive.isDesktop(context),
+      visible: Responsive.isDesktop(context) || Responsive.isTablet(context),
       child: Container(
         color: Color(0xFF2B343B),
         width: width,
@@ -56,20 +56,29 @@ class Navbar extends StatelessWidget {
                             },
                             child: Navtext(
                               width: width,
-                              text: text1,
+                              text: "Home",
                             ),
                           ),
                           InkWell(
                             onTap: () {
                               Navigator.pushNamed(
-                                  context, AppRoutes.siteScreen);
+                                  context, AppRoutes.messagemain);
                             },
                             child: Navtext(
-                              text: text2,
+                              text: "Chat",
                               width: width,
                             ),
                           ),
-                          widget3,
+                          InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, AppRoutes.notifications);
+                            },
+                            child: Navtext(
+                              text: "Notifications",
+                              width: width,
+                            ),
+                          ),
                         ],
                       ),
                     ),

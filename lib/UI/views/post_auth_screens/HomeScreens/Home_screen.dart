@@ -146,25 +146,22 @@ class _HomeScreenState extends State<HomeScreen> {
                           );
                         },
                         child: Stack(
+                          alignment: Alignment.center,
                           children: [
                             Image.asset(
                               Common.assetImages + "Ellipse 49.png",
                               width: width * 0.7,
                             ),
-                            Positioned(
-                              top: height * 0.115,
-                              left: width * 0.142,
-                              child: SizedBox(
-                                width: width * 0.4,
-                                child: Text(
-                                  "Request Fuel",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: 34.0,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white,
-                                      fontFamily: "Poppins"),
-                                ),
+                            SizedBox(
+                              width: width * 0.4,
+                              child: Text(
+                                "Request Fuel",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 34.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                    fontFamily: "Poppins"),
                               ),
                             ),
                           ],

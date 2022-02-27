@@ -571,10 +571,17 @@ class _TankState extends State<Tank> {
                           children: [
                             Container(
                               height: Responsive.isDesktop(context)
-                                  ? widget.height * 0.013
+                                  ? widget.height * 0.012
                                   : widget.height * 0.03,
                               width: widget.width * 0.52,
                               child: TextField(
+                                style: TextStyle(
+                                  fontSize: Responsive.isDesktop(context)
+                                      ? widget.width * 0.034
+                                      : 12.0,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: "Poppins",
+                                ),
                                 inputFormatters: [
                                   FilteringTextInputFormatter.digitsOnly
                                 ],
@@ -601,7 +608,9 @@ class _TankState extends State<Tank> {
                             Text(
                               "Gal",
                               style: TextStyle(
-                                fontSize: 15.0,
+                                fontSize: Responsive.isDesktop(context)
+                                    ? widget.width * 0.034
+                                    : 15.0,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: "Poppins",
                               ),

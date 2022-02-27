@@ -544,7 +544,9 @@ class _FuelReqColumnState extends State<FuelReqColumn>
                     'Request Confirmation',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 23.0,
+                      fontSize: Responsive.isDesktop(context)
+                          ? widget.width * 0.05
+                          : 23.0,
                       fontWeight: FontWeight.bold,
                       fontFamily: "Poppins",
                       color: Colors.black,
@@ -564,7 +566,9 @@ class _FuelReqColumnState extends State<FuelReqColumn>
                               fontFamily: "Poppins"),
                         ),
                         SizedBox(
-                          height: widget.height * 0.05,
+                          height: Responsive.isDesktop(context)
+                              ? widget.height * 0.02
+                              : widget.height * 0.05,
                         ),
                         Row(
                           children: [
@@ -606,7 +610,9 @@ class _FuelReqColumnState extends State<FuelReqColumn>
                           ],
                         ),
                         SizedBox(
-                          height: 8.0,
+                          height: Responsive.isDesktop(context)
+                              ? widget.height * 0.006
+                              : 8.0,
                         ),
                         Row(
                           children: [
@@ -648,7 +654,9 @@ class _FuelReqColumnState extends State<FuelReqColumn>
                           ],
                         ),
                         SizedBox(
-                          height: 8.0,
+                          height: Responsive.isDesktop(context)
+                              ? widget.height * 0.006
+                              : 8.0,
                         ),
                         Row(
                           children: [
@@ -690,7 +698,9 @@ class _FuelReqColumnState extends State<FuelReqColumn>
                           ],
                         ),
                         SizedBox(
-                          height: 8.0,
+                          height: Responsive.isDesktop(context)
+                              ? widget.height * 0.006
+                              : 8.0,
                         ),
                         Row(
                           children: [
