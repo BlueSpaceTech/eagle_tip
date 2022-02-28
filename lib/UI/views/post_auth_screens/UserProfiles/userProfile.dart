@@ -279,12 +279,14 @@ class DesktopSiteData extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.asset(
-          Common.assetImages + "$imgPath.png",
-          width: width * 0.08,
-        ),
-        SizedBox(
-          height: height * 0.01,
+        Container(
+          width: 120.0,
+          height: 120.0,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(50.0)),
+          child: Image.asset(
+            Common.assetImages + "$imgPath.png",
+            width: width * 0.08,
+          ),
         ),
         Text(
           sitename,

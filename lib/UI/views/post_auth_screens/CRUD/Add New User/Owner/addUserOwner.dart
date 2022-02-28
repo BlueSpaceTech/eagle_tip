@@ -118,210 +118,216 @@ class _AddNewUserByOwnerState extends State<AddNewUserByOwner> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Navbar(
-                  width: width, height: height, text1: "text1", text2: "text2"),
-              SingleChildScrollView(
-                child: Container(
-                  height: height * 1,
-                  color: backGround_color,
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                        left: width * 0.04,
-                        right: width * 0.04,
-                        top: height * 0.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: Responsive.isDesktop(context) ? 20 : 0,
-                        ),
-                        Visibility(
-                          visible: Responsive.isDesktop(context),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    "    ",
-                                    style: TextStyle(
-                                        fontFamily: "Poppins",
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                        fontSize: 25),
-                                  ),
-                                ],
-                              ),
-                              Text(
-                                "Add new Employee",
-                                style: TextStyle(
-                                    fontFamily: "Poppins",
-                                    color: Colors.white,
-                                    fontSize: 20),
-                              ),
-                              Text("                       "),
-                            ],
+          child: Container(
+            color: backGround_color,
+            child: Column(
+              children: [
+                Navbar(
+                    width: width,
+                    height: height,
+                    text1: "text1",
+                    text2: "text2"),
+                SingleChildScrollView(
+                  child: Container(
+                    height: height * 1,
+                    color: backGround_color,
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          left: width * 0.04,
+                          right: width * 0.04,
+                          top: height * 0.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: Responsive.isDesktop(context) ? 20 : 0,
                           ),
-                        ),
-                        Visibility(
-                            visible: !Responsive.isDesktop(context),
-                            child: CustomAppheader(width: width)),
-                        SizedBox(
-                          height: height * 0.06,
-                        ),
-                        Visibility(
-                          visible: !Responsive.isDesktop(context),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Add new user",
-                                style: TextStyle(
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white,
-                                  fontFamily: "Poppins",
+                          Visibility(
+                            visible: Responsive.isDesktop(context),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      "    ",
+                                      style: TextStyle(
+                                          fontFamily: "Poppins",
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                          fontSize: 25),
+                                    ),
+                                  ],
                                 ),
-                              ),
+                                Text(
+                                  "Add new Employee",
+                                  style: TextStyle(
+                                      fontFamily: "Poppins",
+                                      color: Colors.white,
+                                      fontSize: 20),
+                                ),
+                                Text("                       "),
+                              ],
+                            ),
+                          ),
+                          Visibility(
+                              visible: !Responsive.isDesktop(context),
+                              child: CustomAppheader(width: width)),
+                          SizedBox(
+                            height: height * 0.06,
+                          ),
+                          Visibility(
+                            visible: !Responsive.isDesktop(context),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Add new user",
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                    fontFamily: "Poppins",
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: height * 0.04,
+                          ),
+                          Text(
+                            "Site",
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white,
+                              fontFamily: "Poppins",
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          /*
+                          ChipsChoice<String>.multiple(
+                            wrapped: true,
+                            choiceStyle: C2ChoiceStyle(color: Colors.black),
+                            choiceActiveStyle: C2ChoiceStyle(color: Colors.blue),
+                            value: selectedsites,
+                            onChanged: (val) =>
+                                setState(() => selectedsites = val),
+                            choiceItems: C2Choice.listFrom<String, String>(
+                              source: sites,
+                              value: (i, v) => v,
+                              label: (i, v) => v,
+                            ),
+                          ),
+                          */
+                          Wrap(
+                            children: _buildsiteschip(),
+                          ),
+                          /*
+                          Wrap(
+                            runSpacing: 10,
+                            children: [
+                              for (int i = 0; i < sites.length; i++) ...{
+                                InkWell(
+                                  onTap: () {},
+                                  child: SiteChip(
+                                    function: () {
+                                      selectedsitess.contains(sites[i])
+                                          ? selectedsitess.remove(sites[i])
+                                          : selectedsitess.add(sites[i]);
+                                      print(selectedsitess);
+                                      print("Rr");
+                                    },
+                                    siteName: sites[i],
+                                    height: height,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                              },
                             ],
                           ),
-                        ),
-                        SizedBox(
-                          height: height * 0.04,
-                        ),
-                        Text(
-                          "Site",
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white,
-                            fontFamily: "Poppins",
+                          */
+                          SizedBox(
+                            height: height * 0.04,
                           ),
-                        ),
-                        SizedBox(
-                          height: 10.0,
-                        ),
-                        /*
-                        ChipsChoice<String>.multiple(
-                          wrapped: true,
-                          choiceStyle: C2ChoiceStyle(color: Colors.black),
-                          choiceActiveStyle: C2ChoiceStyle(color: Colors.blue),
-                          value: selectedsites,
-                          onChanged: (val) =>
-                              setState(() => selectedsites = val),
-                          choiceItems: C2Choice.listFrom<String, String>(
-                            source: sites,
-                            value: (i, v) => v,
-                            label: (i, v) => v,
+                          Text(
+                            "Role",
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white,
+                              fontFamily: "Poppins",
+                            ),
                           ),
-                        ),
-                        */
-                        Wrap(
-                          children: _buildsiteschip(),
-                        ),
-                        /*
-                        Wrap(
-                          runSpacing: 10,
-                          children: [
-                            for (int i = 0; i < sites.length; i++) ...{
-                              InkWell(
-                                onTap: () {},
-                                child: SiteChip(
-                                  function: () {
-                                    selectedsitess.contains(sites[i])
-                                        ? selectedsitess.remove(sites[i])
-                                        : selectedsitess.add(sites[i]);
-                                    print(selectedsitess);
-                                    print("Rr");
-                                  },
-                                  siteName: sites[i],
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          /*
+                          Wrap(
+                            runSpacing: 10,
+                            children: [
+                              for (int i = 0; i < Roles.length; i++) ...{
+                                SiteChip(
+                                  function: () {},
+                                  siteName: Roles[i],
                                   height: height,
                                 ),
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                            },
-                          ],
-                        ),
-                        */
-                        SizedBox(
-                          height: height * 0.04,
-                        ),
-                        Text(
-                          "Role",
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white,
-                            fontFamily: "Poppins",
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10.0,
-                        ),
-                        /*
-                        Wrap(
-                          runSpacing: 10,
-                          children: [
-                            for (int i = 0; i < Roles.length; i++) ...{
-                              SiteChip(
-                                function: () {},
-                                siteName: Roles[i],
-                                height: height,
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                            },
-                          ],
-                        ),
-                        */
-                        Wrap(
-                          children: _buildRolechip(),
-                        ),
-                        SizedBox(
-                          height: height * 0.32,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => Invitation(
-                                        sites: selectedsitess,
-                                        role: selectedrOLE,
-                                      ),
-                                    ));
-                              },
-                              child: Card(
-                                elevation: 5.0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
+                                SizedBox(
+                                  width: 15,
                                 ),
-                                child: Responsive.isDesktop(context)
-                                    ? customfab(
-                                        width: width,
-                                        text: "Next",
-                                        height: height,
-                                      )
-                                    : CustomSubmitButton(
-                                        width: width, title: "Next"),
+                              },
+                            ],
+                          ),
+                          */
+                          Wrap(
+                            children: _buildRolechip(),
+                          ),
+                          SizedBox(
+                            height: height * 0.32,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Invitation(
+                                          sites: selectedsitess,
+                                          role: selectedrOLE,
+                                        ),
+                                      ));
+                                },
+                                child: Card(
+                                  elevation: 5.0,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  ),
+                                  child: Responsive.isDesktop(context)
+                                      ? customfab(
+                                          width: width,
+                                          text: "Next",
+                                          height: height,
+                                        )
+                                      : CustomSubmitButton(
+                                          width: width, title: "Next"),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

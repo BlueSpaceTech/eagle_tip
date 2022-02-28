@@ -10,11 +10,10 @@ class WebBg extends StatelessWidget {
   Widget build(BuildContext context) {
     return Visibility(
       visible: Responsive.isDesktop(context),
-      child: SvgPicture.asset(
-        webbg,
-        alignment: Alignment.center,
+      child: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
+        color: backGround_color,
       ),
     );
   }

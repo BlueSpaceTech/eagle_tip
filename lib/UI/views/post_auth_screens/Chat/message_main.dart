@@ -1,3 +1,4 @@
+import 'package:eagle_tip/UI/Widgets/customNav.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Chat/allchats.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Chat/newchat.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Chat/newchatscreen.dart';
@@ -14,18 +15,36 @@ class MessageMain extends StatefulWidget {
 class _MessageMainState extends State<MessageMain> {
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Responsive(
         mobile: AllChatScreen(),
         tablet: AllChatScreen(),
-        desktop: Row(
+        desktop: Column(
           children: [
-            Expanded(flex: 2, child: AllChatScreen()),
+            Navbar(
+              width: width,
+              height: height,
+              text1: "Home",
+              text2: "Sites",
+            ),
             Expanded(
-                flex: 5,
-                child: ChatScreenn(
-                  index: widget.index,
-                )),
+              child: Stack(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(flex: 2, child: AllChatScreen()),
+                      Expanded(
+                          flex: 5,
+                          child: ChatScreenn(
+                            index: widget.index,
+                          )),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

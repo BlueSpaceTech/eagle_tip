@@ -84,7 +84,7 @@ class _ChatScreennState extends State<ChatScreenn> {
       child: TextField(
         style: TextStyle(color: Colors.white),
         decoration: InputDecoration(
-          suffixIcon: Image.asset("assets/mesicon.png"),
+          suffixIcon: Image.asset("assets/send.png"),
           border: InputBorder.none,
           hintText: 'Message',
           hintStyle: TextStyle(
