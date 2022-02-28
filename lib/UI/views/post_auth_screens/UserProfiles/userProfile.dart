@@ -281,12 +281,19 @@ class DesktopSiteData extends StatelessWidget {
       children: [
         Container(
           width: 120.0,
-          height: 120.0,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(50.0)),
-          child: Image.asset(
-            Common.assetImages + "$imgPath.png",
-            width: width * 0.08,
+          height: 80.0,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20.0),
+            color: Colors.white,
+            image: DecorationImage(
+                image: AssetImage(
+                  Common.assetImages + "$imgPath.png",
+                ),
+                fit: BoxFit.fill),
           ),
+        ),
+        SizedBox(
+          height: 5,
         ),
         Text(
           sitename,

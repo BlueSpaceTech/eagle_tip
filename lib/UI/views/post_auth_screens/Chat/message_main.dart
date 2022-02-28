@@ -62,18 +62,34 @@ class NewChatMain extends StatefulWidget {
 class _NewChatMainState extends State<NewChatMain> {
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Responsive(
         mobile: NewChatScreen(),
         tablet: NewChatScreen(),
-        desktop: Row(
+        desktop: Column(
           children: [
-            Expanded(flex: 2, child: AllChatScreen()),
+            Navbar(
+              width: width,
+              height: height,
+              text1: "Home",
+              text2: "Sites",
+            ),
             Expanded(
-                flex: 5,
-                child: ChatScreenn(
-                  index: widget.index,
-                )),
+              child: Stack(children: [
+                Row(
+                  children: [
+                    Expanded(flex: 2, child: NewChatScreen()),
+                    Expanded(
+                        flex: 5,
+                        child: ChatScreenn(
+                          index: widget.index,
+                        )),
+                  ],
+                ),
+              ]),
+            ),
           ],
         ),
       ),
