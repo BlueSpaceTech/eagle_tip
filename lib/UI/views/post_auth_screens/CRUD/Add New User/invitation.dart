@@ -42,7 +42,6 @@ class _InvitationState extends State<Invitation> {
                 height: height,
                 text1: "Home",
                 text2: "Sites",
-                widget3: Navtext(text: "Chat", width: width),
               ),
               Container(
                 height: height,

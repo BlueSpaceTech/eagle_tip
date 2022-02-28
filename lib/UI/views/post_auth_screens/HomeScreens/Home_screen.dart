@@ -46,12 +46,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Navbar(
-                            width: width,
-                            height: height,
-                            text1: "Home",
-                            text2: "Chat",
-                            widget3:
-                                Navtext(text: "Notifications", width: width)),
+                          width: width,
+                          height: height,
+                          text1: "Home",
+                          text2: "Chat",
+                        ),
                         SizedBox(
                           height: height * 0.05,
                         ),

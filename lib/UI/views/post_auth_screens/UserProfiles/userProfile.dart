@@ -44,7 +44,6 @@ class UserProfile extends StatelessWidget {
                             height: height,
                             text1: "Home",
                             text2: "Sites",
-                            widget3: Navtext(text: "Chat", width: width),
                           )
                         : Padding(
                             padding: EdgeInsets.only(

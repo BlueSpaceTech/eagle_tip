@@ -53,10 +53,6 @@ class _ProductRequestState extends State<ProductRequest> {
                         height: height,
                         text1: "Home",
                         text2: "Sites",
-                        widget3: Navtext(
-                          text: "Messages",
-                          width: width,
-                        ),
                       )
                     : Row(
                         children: [

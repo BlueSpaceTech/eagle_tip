@@ -21,7 +21,14 @@ class AllChatScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButton: GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, AppRoutes.newchat);
+          Navigator.pop(context);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => NewChatMain(
+                  index: 0,
+                ),
+              ));
         },
         child: Container(
           alignment: Alignment.center,
@@ -123,34 +130,37 @@ class AllChatScreen extends StatelessWidget {
                     },
                   );
                 },
-                child: Container(
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Acers Marathon",
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.white,
-                                fontFamily: "Poppins",
-                                fontWeight: FontWeight.w500),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Image.asset("assets/down.png"),
-                        ],
-                      ),
-                      Text(
-                        "Tampa, FL",
-                        style: TextStyle(
-                            color: Color(0xff6E7191),
-                            fontFamily: "Poppins",
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ],
+                child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Acers Marathon",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                  fontFamily: "Poppins",
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Image.asset("assets/down.png"),
+                          ],
+                        ),
+                        Text(
+                          "Tampa, FL",
+                          style: TextStyle(
+                              color: Color(0xff6E7191),
+                              fontFamily: "Poppins",
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -175,9 +185,12 @@ class AllChatScreen extends StatelessWidget {
                               context, AppRoutes.chattingscreen);
                         }
                       },
-                      child: ChatListTile(
-                        height: height,
-                        width: width,
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.text,
+                        child: ChatListTile(
+                          height: height,
+                          width: width,
+                        ),
                       ),
                     );
                   }),

@@ -79,6 +79,7 @@ class _NotificationsState extends State<Notifications> {
                     height: height,
                     text1: "Home",
                     text2: "Chat",
+                    /*
                     widget3: Row(
                       children: [
                         Text(
@@ -109,6 +110,7 @@ class _NotificationsState extends State<Notifications> {
                         ),
                       ],
                     ),
+                    */
                   ),
                 ),
                 Padding(

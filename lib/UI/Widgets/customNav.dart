@@ -4,79 +4,113 @@ import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 
-class Navbar extends StatelessWidget {
+int index = 0;
+
+class Navbar extends StatefulWidget {
   const Navbar({
     Key? key,
     required this.width,
     required this.height,
     required this.text1,
     required this.text2,
-    required this.widget3,
   }) : super(key: key);
 
   final double width;
   final double height;
   final String text1;
   final String text2;
-  final Widget widget3;
 
+  @override
+  State<Navbar> createState() => _NavbarState();
+}
+
+class _NavbarState extends State<Navbar> {
   @override
   Widget build(BuildContext context) {
     return Visibility(
-      visible: Responsive.isDesktop(context) || Responsive.isTablet(context),
+      visible: Responsive.isDesktop(context),
       child: Container(
         color: Color(0xFF2B343B),
-        width: width,
-        height: height * 0.1,
+        width: widget.width,
+        height: widget.height * 0.1,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              width: Responsive.isDesktop(context) ? width * 0.42 : width * 0.6,
+              width: Responsive.isDesktop(context)
+                  ? widget.width * 0.42
+                  : widget.width * 0.6,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    width: width * 0.03,
+                    width: widget.width * 0.03,
                   ),
-                  Logo(width: width * 0.6),
+                  Logo(width: widget.width * 0.6),
                   Padding(
-                    padding: EdgeInsets.only(top: height * 0.024),
+                    padding: EdgeInsets.only(top: widget.height * 0.024),
                     child: Container(
                       width: Responsive.isDesktop(context)
-                          ? width * 0.15
-                          : width * 0.27,
+                          ? widget.width * 0.15
+                          : widget.width * 0.27,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          InkWell(
-                            onTap: () {
-                              Navigator.pushNamed(
-                                  context, AppRoutes.homeScreen);
-                            },
-                            child: Navtext(
-                              width: width,
-                              text: "Home",
+                          MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, AppRoutes.homeScreen);
+                                setState(() {
+                                  index = 0;
+                                });
+                              },
+                              child: Navtext(
+                                color: index == 0
+                                    ? Colors.white
+                                    : Color(0xFFA0A3BD),
+                                width: widget.width,
+                                text: "Home",
+                              ),
                             ),
                           ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.pushNamed(
-                                  context, AppRoutes.messagemain);
-                            },
-                            child: Navtext(
-                              text: "Chat",
-                              width: width,
+                          MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, AppRoutes.messagemain);
+                                setState(() {
+                                  index = 1;
+                                });
+                              },
+                              child: Navtext(
+                                color: index == 1
+                                    ? Colors.white
+                                    : Color(0xFFA0A3BD),
+                                text: "Chat",
+                                width: widget.width,
+                              ),
                             ),
                           ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.pushNamed(
-                                  context, AppRoutes.notifications);
-                            },
-                            child: Navtext(
-                              text: "Notifications",
-                              width: width,
+                          MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, AppRoutes.notifications);
+                                setState(() {
+                                  index = 2;
+                                });
+                              },
+                              child: Navtext(
+                                color: index == 2
+                                    ? Colors.white
+                                    : Color(0xFFA0A3BD),
+                                text: "Notifications",
+                                width: widget.width,
+                              ),
                             ),
                           ),
                         ],
@@ -87,14 +121,14 @@ class Navbar extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(right: width * 0.07),
+              padding: EdgeInsets.only(right: widget.width * 0.07),
               child: Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image.asset(Common.assetImages + "search.png"),
                     SizedBox(
-                      width: width * 0.02,
+                      width: widget.width * 0.02,
                     ),
                     InkWell(
                         onTap: () {
@@ -117,17 +151,19 @@ class Navtext extends StatelessWidget {
     Key? key,
     required this.text,
     required this.width,
+    required this.color,
   }) : super(key: key);
 
   final double width;
   final String text;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
       style: TextStyle(
-          color: Color(0xFFA0A3BD),
+          color: color,
           fontSize: Responsive.isDesktop(context) ? width * 0.01 : width * 0.02,
           fontWeight: FontWeight.w500,
           fontFamily: "Poppins"),

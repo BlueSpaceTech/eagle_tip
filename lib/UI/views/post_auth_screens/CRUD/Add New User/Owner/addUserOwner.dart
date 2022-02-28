@@ -124,7 +124,6 @@ class _AddNewUserByOwnerState extends State<AddNewUserByOwner> {
                 height: height,
                 text1: "Home",
                 text2: "Chat",
-                widget3: Navtext(text: "Notification", width: width),
               ),
               SingleChildScrollView(
                 child: Container(

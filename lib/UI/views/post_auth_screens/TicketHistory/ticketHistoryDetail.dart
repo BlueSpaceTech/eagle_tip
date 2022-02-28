@@ -41,7 +41,6 @@ class TicketDetail extends StatelessWidget {
                           height: height,
                           text1: "Home",
                           text2: "Sites",
-                          widget3: Navtext(text: "Messages", width: width),
                         )
                       : CustomHeader2(),
                   SizedBox(

@@ -29,10 +29,6 @@ class SupportDesktop extends StatelessWidget {
                 height: height,
                 text1: "Home",
                 text2: "Sites",
-                widget3: Navtext(
-                  text: "Messages",
-                  width: width,
-                ),
               ),
               SizedBox(
                 height: height * 0.06,

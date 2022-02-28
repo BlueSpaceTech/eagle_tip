@@ -150,7 +150,7 @@ class _DesktopMyProfileState extends State<DesktopMyProfile> {
             height: widget.height,
             text1: "Home",
             text2: "Sites",
-            widget3: Navtext(text: "Chat", width: widget.width),
+           
           ),
           SizedBox(
             height: widget.height * 0.01,

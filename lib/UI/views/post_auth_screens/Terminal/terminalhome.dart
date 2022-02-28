@@ -27,7 +27,6 @@ class _TerminalHomeState extends State<TerminalHome> {
             height: height,
             text1: "Home",
             text2: "Sites",
-            widget3: Navtext(text: "Chat", width: width),
           ),
           SingleChildScrollView(
             child: Column(

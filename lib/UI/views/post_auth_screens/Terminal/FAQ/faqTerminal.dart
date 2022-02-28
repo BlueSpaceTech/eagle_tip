@@ -48,10 +48,6 @@ class TerminalFAQ extends StatelessWidget {
                   Navbar(
                     text2: "Site",
                     text1: "Home",
-                    widget3: Navtext(
-                      text: "Messages",
-                      width: width,
-                    ),
                     width: width,
                     height: height,
                   ),
