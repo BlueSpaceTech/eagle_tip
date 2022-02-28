@@ -50,6 +50,7 @@ class TicketDetail extends StatelessWidget {
                     children: [
                       WebBg(),
                       CustomContainer(
+                          opacity: 0.2,
                           child: Padding(
                             padding: EdgeInsets.only(
                                 left: Responsive.isDesktop(context)

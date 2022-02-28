@@ -161,102 +161,94 @@ class _NotificationsState extends State<Notifications> {
                   visible: Responsive.isDesktop(context),
                   child: Stack(
                     children: [
-                      Visibility(
-                        visible: Responsive.isDesktop(context) ? true : false,
-                        child: SvgPicture.asset(
-                          webbg,
-                          alignment: Alignment.center,
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height,
-                        ),
-                      ),
-                      Visibility(
-                        visible: Responsive.isDesktop(context),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              width: width * 0.15,
-                            ),
-                            Container(
-                              width: width * 0.5,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Column(
-                                        children: [
-                                          Text(
-                                            "Acres Marathon",
-                                            style: TextStyle(
-                                              fontSize: width * 0.008,
-                                              fontWeight: FontWeight.w400,
-                                              fontFamily: "Poppins",
-                                              color: Colors.white,
-                                            ),
+                      Opacity(opacity: 0.2, child: WebBg()),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            width: width * 0.15,
+                          ),
+                          Container(
+                            width: width * 0.5,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Text(
+                                          "Acres Marathon",
+                                          style: TextStyle(
+                                            fontSize: width * 0.008,
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: "Poppins",
+                                            color: Colors.white,
                                           ),
-                                          SizedBox(
-                                            height: height * 0.003,
+                                        ),
+                                        SizedBox(
+                                          height: height * 0.003,
+                                        ),
+                                        Text(
+                                          "Tampa,FL",
+                                          style: TextStyle(
+                                            fontSize: width * 0.007,
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: "Poppins",
+                                            color: Color(0xFF6E7191),
                                           ),
-                                          Text(
-                                            "Tampa,FL",
-                                            style: TextStyle(
-                                              fontSize: width * 0.007,
-                                              fontWeight: FontWeight.w400,
-                                              fontFamily: "Poppins",
-                                              color: Color(0xFF6E7191),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: height * 0.05,
-                                  ),
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.only(left: width * 0.05),
-                                    child: Container(
-                                      height: height * 0.6,
-                                      width: width * 0.5,
-                                      child: ListView.builder(
-                                          physics:
-                                              NeverScrollableScrollPhysics(),
-                                          itemCount: notifyNames.length,
-                                          itemBuilder: (BuildContext context,
-                                              int index) {
-                                            return Notify(
-                                                valueChanged: (val) {
-                                                  setState(() {
-                                                    isNew[index] = val;
-                                                  });
-                                                },
-                                                width: width,
-                                                isnew: isNew[index],
-                                                index: index,
-                                                height: height,
-                                                notifyNames: notifyNames,
-                                                notifyDates: notifyDates);
-                                          }),
+                                        ),
+                                      ],
                                     ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: height * 0.05,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: width * 0.05),
+                                  child: Container(
+                                    height: height * 0.6,
+                                    width: width * 0.5,
+                                    child: ListView.builder(
+                                        physics: NeverScrollableScrollPhysics(),
+                                        itemCount: notifyNames.length,
+                                        itemBuilder:
+                                            (BuildContext context, int index) {
+                                          return Notify(
+                                              valueChanged: (val) {
+                                                setState(() {
+                                                  isNew[index] = val;
+                                                });
+                                              },
+                                              width: width,
+                                              isnew: isNew[index],
+                                              index: index,
+                                              height: height,
+                                              notifyNames: notifyNames,
+                                              notifyDates: notifyDates);
+                                        }),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                            SizedBox(
-                              width: width * 0.02,
-                            ),
-                            Container(
-                              height: height * 0.8,
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
+                          ),
+                          SizedBox(
+                            width: width * 0.02,
+                          ),
+                          Container(
+                            height: height * 0.8,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, AppRoutes.createNotification);
+                                  },
+                                  child: Container(
                                     alignment: Alignment.center,
                                     width: width * 0.11,
                                     height: 50,
@@ -287,11 +279,11 @@ class _NotificationsState extends State<Notifications> {
                                       ],
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

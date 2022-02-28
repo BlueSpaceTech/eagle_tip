@@ -157,348 +157,366 @@ class _DesktopMyProfileState extends State<DesktopMyProfile> {
           ),
           Stack(
             children: [
-              WebBg(),
-              Container(
-                width: widget.width,
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 2,
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: widget.width * 0.02),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    Image.asset(
-                                      Common.assetImages + "Ellipse 45.png",
-                                      width: widget.width * 0.045,
-                                    ),
-                                    SizedBox(
-                                      width: widget.width * 0.02,
-                                    ),
-                                    Column(
+              Opacity(
+                opacity: 0.2,
+                child: WebBg(),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                    left: widget.width * 0.02, right: widget.width * 0.04),
+                child: Container(
+                  width: widget.width,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsets.only(left: widget.width * 0.02),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        Common.assetImages + "Ellipse 45.png",
+                                        width: widget.width * 0.045,
+                                      ),
+                                      SizedBox(
+                                        width: widget.width * 0.02,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Ahmad Elizondo",
+                                            style: TextStyle(
+                                                fontSize: widget.width * 0.011,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.white,
+                                                fontFamily: 'Poppins'),
+                                          ),
+                                          SizedBox(
+                                            height: 4.0,
+                                          ),
+                                          Text(
+                                            "Manager",
+                                            style: TextStyle(
+                                                fontSize: widget.width * 0.01,
+                                                color: Color(0xFFD9DBE9),
+                                                fontWeight: FontWeight.w500,
+                                                fontFamily: 'Poppins'),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        width: widget.width * 0.1,
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          Navigator.pushNamed(
+                                              context, AppRoutes.editUser);
+                                        },
+                                        child: Container(
+                                          width: widget.width * 0.06,
+                                          height: widget.height * 0.05,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            color: Color(0xFF5081DB),
+                                          ),
+                                          child: Center(
+                                              child: Text(
+                                            "Edit Profile",
+                                            style: TextStyle(
+                                              fontSize: widget.width * 0.008,
+                                              fontFamily: "Poppins",
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            ),
+                                          )),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: widget.height * 0.04,
+                                  ),
+                                  Divider(
+                                    color: Colors.black,
+                                    thickness: 1.0,
+                                    indent: 1,
+                                    endIndent: 200,
+                                  ),
+                                  SizedBox(
+                                    height: widget.height * 0.04,
+                                  ),
+                                  Container(
+                                    height: widget.height * 0.14,
+                                    width: widget.width,
+                                    child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          "Ahmad Elizondo",
+                                          "Contact Details",
                                           style: TextStyle(
                                               fontSize: widget.width * 0.011,
-                                              fontWeight: FontWeight.w600,
+                                              fontWeight: FontWeight.w500,
                                               color: Colors.white,
                                               fontFamily: 'Poppins'),
                                         ),
                                         SizedBox(
-                                          height: 4.0,
+                                          height: widget.height * 0.02,
                                         ),
-                                        Text(
-                                          "Manager",
-                                          style: TextStyle(
-                                              fontSize: widget.width * 0.01,
-                                              color: Color(0xFFD9DBE9),
-                                              fontWeight: FontWeight.w500,
-                                              fontFamily: 'Poppins'),
+                                        Container(
+                                          width: widget.width * 0.11,
+                                          child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Image.asset(
+                                                  Common.assetImages +
+                                                      "call.png",
+                                                  width: widget.width * 0.013,
+                                                ),
+                                                Text(
+                                                  "(209) 555-0104",
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 14.0,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontFamily: "Poppins"),
+                                                ),
+                                              ]),
+                                        ),
+                                        SizedBox(
+                                          height: widget.height * 0.02,
+                                        ),
+                                        Container(
+                                          width: widget.width * 0.124,
+                                          child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Image.asset(
+                                                  Common.assetImages +
+                                                      "mail.png",
+                                                  width: widget.width * 0.013,
+                                                ),
+                                                Text(
+                                                  "ahmad@site.com",
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 14.0,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontFamily: "Poppins"),
+                                                ),
+                                              ]),
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
-                                      width: widget.width * 0.1,
-                                    ),
-                                    InkWell(
-                                      onTap: () {
-                                        Navigator.pushNamed(
-                                            context, AppRoutes.editUser);
-                                      },
-                                      child: Container(
-                                        width: widget.width * 0.06,
-                                        height: widget.height * 0.05,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          color: Color(0xFF5081DB),
-                                        ),
-                                        child: Center(
-                                            child: Text(
-                                          "Edit Profile",
-                                          style: TextStyle(
-                                            fontSize: widget.width * 0.008,
-                                            fontFamily: "Poppins",
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white,
-                                          ),
-                                        )),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: widget.height * 0.04,
-                                ),
-                                Divider(
-                                  color: Colors.black,
-                                  thickness: 1.0,
-                                  indent: 1,
-                                  endIndent: 200,
-                                ),
-                                SizedBox(
-                                  height: widget.height * 0.04,
-                                ),
-                                Container(
-                                  height: widget.height * 0.14,
-                                  width: widget.width,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                  ),
+                                  SizedBox(
+                                    height: widget.height * 0.025,
+                                  ),
+                                  Divider(
+                                    color: Colors.black,
+                                    thickness: 1.0,
+                                    indent: 1,
+                                    endIndent: 200,
+                                  ),
+                                  SizedBox(
+                                    height: widget.height * 0.04,
+                                  ),
+                                  Text(
+                                    "Sites",
+                                    style: TextStyle(
+                                        fontSize: widget.width * 0.011,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white,
+                                        fontFamily: 'Poppins'),
+                                  ),
+                                  SizedBox(
+                                    height: widget.height * 0.02,
+                                  ),
+                                  Row(
                                     children: [
-                                      Text(
-                                        "Contact Details",
-                                        style: TextStyle(
-                                            fontSize: widget.width * 0.011,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white,
-                                            fontFamily: 'Poppins'),
-                                      ),
+                                      DesktopSiteData(
+                                          siteloc: "Tampa, Fl",
+                                          sitename: "Acres Marathon",
+                                          imgPath: "site11",
+                                          width: widget.width,
+                                          height: widget.height),
                                       SizedBox(
-                                        height: widget.height * 0.02,
+                                        width: widget.width * 0.036,
                                       ),
-                                      Container(
-                                        width: widget.width * 0.11,
-                                        child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Image.asset(
-                                                Common.assetImages + "call.png",
-                                                width: widget.width * 0.013,
-                                              ),
-                                              Text(
-                                                "(209) 555-0104",
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 14.0,
-                                                    fontWeight: FontWeight.w400,
-                                                    fontFamily: "Poppins"),
-                                              ),
-                                            ]),
-                                      ),
-                                      SizedBox(
-                                        height: widget.height * 0.02,
-                                      ),
-                                      Container(
-                                        width: widget.width * 0.124,
-                                        child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Image.asset(
-                                                Common.assetImages + "mail.png",
-                                                width: widget.width * 0.013,
-                                              ),
-                                              Text(
-                                                "ahmad@site.com",
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 14.0,
-                                                    fontWeight: FontWeight.w400,
-                                                    fontFamily: "Poppins"),
-                                              ),
-                                            ]),
-                                      ),
+                                      DesktopSiteData(
+                                          siteloc: "Tampa, Fl",
+                                          sitename: "Bridge Marathon",
+                                          imgPath: "site21",
+                                          width: widget.width,
+                                          height: widget.height),
                                     ],
                                   ),
-                                ),
-                                SizedBox(
-                                  height: widget.height * 0.025,
-                                ),
-                                Divider(
-                                  color: Colors.black,
-                                  thickness: 1.0,
-                                  indent: 1,
-                                  endIndent: 200,
-                                ),
-                                SizedBox(
-                                  height: widget.height * 0.04,
-                                ),
+                                  SizedBox(
+                                    height: widget.height * 0.06,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          padding: EdgeInsets.only(top: 20),
+                          width: Responsive.isDesktop(context)
+                              ? widget.width * 0.1
+                              : widget.width * 0.9,
+                          height: widget.height * 0.85,
+                          decoration: BoxDecoration(
+                              color: Colors.black.withOpacity(
+                                  Responsive.isDesktop(context) ? 0.6 : 0),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15))),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                left: widget.width * 0.04,
+                                top: widget.height * 0.02,
+                                right: widget.width * 0.04),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
                                 Text(
-                                  "Sites",
+                                  "Tickets",
                                   style: TextStyle(
-                                      fontSize: widget.width * 0.011,
-                                      fontWeight: FontWeight.w500,
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.w600,
                                       color: Colors.white,
                                       fontFamily: 'Poppins'),
                                 ),
                                 SizedBox(
-                                  height: widget.height * 0.02,
+                                  height: widget.height * 0.01,
                                 ),
                                 Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
-                                    DesktopSiteData(
-                                        siteloc: "Tampa, Fl",
-                                        sitename: "Acres Marathon",
-                                        imgPath: "site11",
-                                        width: widget.width,
-                                        height: widget.height),
-                                    SizedBox(
-                                      width: widget.width * 0.036,
+                                    Container(
+                                      width: widget.width * 0.06,
+                                      child: Row(
+                                        children: [
+                                          InkWell(
+                                            onTap: () {
+                                              setState(() {
+                                                if (!isOpen) {
+                                                  isOpen = true;
+                                                }
+                                              });
+                                            },
+                                            child: Text(
+                                              "Open",
+                                              style: isOpen
+                                                  ? TextStyle(
+                                                      fontSize:
+                                                          widget.width * 0.008,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: Colors.white,
+                                                      decoration: TextDecoration
+                                                          .underline,
+                                                      fontFamily: "Poppins",
+                                                    )
+                                                  : TextStyle(
+                                                      fontSize:
+                                                          widget.width * 0.008,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: Color(0xFFFCFCFC),
+                                                      fontFamily: "Poppins",
+                                                    ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: widget.width * 0.008,
+                                          ),
+                                          InkWell(
+                                            onTap: () {
+                                              if (isOpen) {
+                                                setState(() {
+                                                  isOpen = false;
+                                                  print(isOpen);
+                                                });
+                                              }
+                                            },
+                                            child: Text(
+                                              "Close",
+                                              style: !isOpen
+                                                  ? TextStyle(
+                                                      fontSize:
+                                                          widget.width * 0.008,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: Colors.white,
+                                                      decoration: TextDecoration
+                                                          .underline,
+                                                      fontFamily: "Poppins",
+                                                    )
+                                                  : TextStyle(
+                                                      fontSize:
+                                                          widget.width * 0.008,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: Color(0xFFFCFCFC),
+                                                      fontFamily: "Poppins",
+                                                    ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
-                                    DesktopSiteData(
-                                        siteloc: "Tampa, Fl",
-                                        sitename: "Bridge Marathon",
-                                        imgPath: "site21",
-                                        width: widget.width,
-                                        height: widget.height),
                                   ],
                                 ),
                                 SizedBox(
-                                  height: widget.height * 0.06,
+                                  height: widget.height * 0.05,
                                 ),
+                                isOpen
+                                    ? Expanded(
+                                        child: OpenTickets(
+                                            openTickets: widget.openTickets,
+                                            width: widget.width * 0,
+                                            height: widget.height,
+                                            openTicketsDates:
+                                                widget.openTicketsDates),
+                                      )
+                                    : Expanded(
+                                        child: ClosedTickets(
+                                            closedTickets: widget.closedTickets,
+                                            width: widget.width * 0,
+                                            height: widget.height,
+                                            closedTicketsDates:
+                                                widget.closedTicketsDates),
+                                      ),
                               ],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        padding: EdgeInsets.only(top: 20),
-                        width: Responsive.isDesktop(context)
-                            ? widget.width * 0.1
-                            : widget.width * 0.9,
-                        height: widget.height * 0.85,
-                        decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(
-                                Responsive.isDesktop(context) ? 0.6 : 0),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(15))),
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                              left: widget.width * 0.04,
-                              top: widget.height * 0.02,
-                              right: widget.width * 0.04),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Tickets",
-                                style: TextStyle(
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white,
-                                    fontFamily: 'Poppins'),
-                              ),
-                              SizedBox(
-                                height: widget.height * 0.01,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Container(
-                                    width: widget.width * 0.06,
-                                    child: Row(
-                                      children: [
-                                        InkWell(
-                                          onTap: () {
-                                            setState(() {
-                                              if (!isOpen) {
-                                                isOpen = true;
-                                              }
-                                            });
-                                          },
-                                          child: Text(
-                                            "Open",
-                                            style: isOpen
-                                                ? TextStyle(
-                                                    fontSize:
-                                                        widget.width * 0.008,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: Colors.white,
-                                                    decoration: TextDecoration
-                                                        .underline,
-                                                    fontFamily: "Poppins",
-                                                  )
-                                                : TextStyle(
-                                                    fontSize:
-                                                        widget.width * 0.008,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Color(0xFFFCFCFC),
-                                                    fontFamily: "Poppins",
-                                                  ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: widget.width * 0.008,
-                                        ),
-                                        InkWell(
-                                          onTap: () {
-                                            if (isOpen) {
-                                              setState(() {
-                                                isOpen = false;
-                                                print(isOpen);
-                                              });
-                                            }
-                                          },
-                                          child: Text(
-                                            "Close",
-                                            style: !isOpen
-                                                ? TextStyle(
-                                                    fontSize:
-                                                        widget.width * 0.008,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: Colors.white,
-                                                    decoration: TextDecoration
-                                                        .underline,
-                                                    fontFamily: "Poppins",
-                                                  )
-                                                : TextStyle(
-                                                    fontSize:
-                                                        widget.width * 0.008,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Color(0xFFFCFCFC),
-                                                    fontFamily: "Poppins",
-                                                  ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: widget.height * 0.05,
-                              ),
-                              isOpen
-                                  ? Expanded(
-                                      child: OpenTickets(
-                                          openTickets: widget.openTickets,
-                                          width: widget.width * 0,
-                                          height: widget.height,
-                                          openTicketsDates:
-                                              widget.openTicketsDates),
-                                    )
-                                  : Expanded(
-                                      child: ClosedTickets(
-                                          closedTickets: widget.closedTickets,
-                                          width: widget.width * 0,
-                                          height: widget.height,
-                                          closedTicketsDates:
-                                              widget.closedTicketsDates),
-                                    ),
-                            ],
-                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      width: widget.width * 0.01,
-                    ),
-                  ],
+                      SizedBox(
+                        width: widget.width * 0.01,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

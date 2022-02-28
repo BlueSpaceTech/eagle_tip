@@ -13,11 +13,13 @@ class CustomContainer extends StatelessWidget {
     required this.width,
     required this.topPad,
     required this.height,
+    required this.opacity,
   }) : super(key: key);
   final double width;
   final Widget child;
   final double height;
   final double topPad;
+  final double opacity;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +27,7 @@ class CustomContainer extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: Stack(
         children: [
-          WebBg(),
+          Opacity(opacity: opacity, child: WebBg()),
           Padding(
             padding: EdgeInsets.only(
                 left:

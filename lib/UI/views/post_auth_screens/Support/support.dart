@@ -209,6 +209,7 @@ class DesktopSupport extends StatelessWidget {
         width: width,
         color: backGround_color,
         child: CustomContainer(
+          opacity: 1.0,
           topPad: height * 0.08,
           height: height,
           width: width,

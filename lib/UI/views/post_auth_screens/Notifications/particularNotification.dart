@@ -57,6 +57,7 @@ class SpecificNotification extends StatelessWidget {
                   ),
                   Responsive.isDesktop(context)
                       ? CustomContainer(
+                          opacity: 0.2,
                           child: Padding(
                             padding: EdgeInsets.only(top: height * 0.01),
                             child: Column(

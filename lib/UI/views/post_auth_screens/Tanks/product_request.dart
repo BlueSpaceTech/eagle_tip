@@ -4,6 +4,7 @@ import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/customNav.dart';
 import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
 import 'package:eagle_tip/UI/Widgets/customappheader.dart';
+import 'package:eagle_tip/UI/Widgets/customfab.dart';
 import 'package:eagle_tip/UI/Widgets/logo.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/Home_screen.dart';
 import 'package:eagle_tip/Utils/common.dart';
@@ -35,6 +36,9 @@ class _ProductRequestState extends State<ProductRequest> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      floatingActionButton: Responsive.isDesktop(context)
+          ? MenuButton(isTapped: false, width: width)
+          : SizedBox(),
       body: SingleChildScrollView(
         child: Container(
           height: Responsive.isDesktop(context) ? height * 1.17 : height,
@@ -44,7 +48,7 @@ class _ProductRequestState extends State<ProductRequest> {
                 top: Responsive.isDesktop(context)
                     ? height * 0.04
                     : height * 0.1,
-                left: width * 0.04),
+                left: Responsive.isDesktop(context) ? 0.0 : width * 0.04),
             child: Column(
               children: [
                 Responsive.isDesktop(context)
@@ -78,10 +82,7 @@ class _ProductRequestState extends State<ProductRequest> {
                       ),
                 Stack(
                   children: [
-                    Visibility(
-                      visible: Responsive.isDesktop(context),
-                      child: WebBg(),
-                    ),
+                    Opacity(opacity: 0.2, child: WebBg()),
                     Column(
                       children: [
                         SizedBox(
@@ -239,19 +240,6 @@ class _ProductRequestState extends State<ProductRequest> {
                                 ),
                               ),
                             ],
-                          ),
-                        ),
-                        Visibility(
-                          visible: Responsive.isDesktop(context),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                right: width * 0.06, top: height * 0.15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                MenuButton(isTapped: true, width: width * 0.36)
-                              ],
-                            ),
                           ),
                         ),
                       ],

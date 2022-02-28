@@ -167,6 +167,7 @@ class DesktopFAQ extends StatelessWidget {
                   height: height * 0.06,
                 ),
                 CustomContainer(
+                  opacity: 0.2,
                   topPad: 0.0,
                   width: width * 0.9,
                   height: height,
@@ -347,7 +348,7 @@ class _FAQState extends State<FAQ> {
                     widget.FAQdata[widget.index],
                     style: TextStyle(
                         fontSize: Responsive.isDesktop(context)
-                            ? widget.widht * 0.01
+                            ? widget.widht * 0.008
                             : widget.widht * 0.03,
                         color: Colors.white,
                         fontWeight: FontWeight.w500,

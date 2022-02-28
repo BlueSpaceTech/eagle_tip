@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Responsive.isDesktop(context)
               ? Stack(
                   children: [
-                    WebBg(),
+                    Opacity(opacity: 0.2, child: WebBg()),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [

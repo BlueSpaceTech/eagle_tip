@@ -84,7 +84,7 @@ class _MobileSiteDetState extends State<MobileSiteDet> {
                     ),
                     Stack(
                       children: [
-                        WebBg(),
+                        Opacity(opacity: 0.2, child: WebBg()),
                         Padding(
                           padding: EdgeInsets.only(
                             left: width * 0.05,

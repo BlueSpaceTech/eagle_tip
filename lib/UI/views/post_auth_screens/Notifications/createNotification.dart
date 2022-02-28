@@ -57,6 +57,7 @@ class _CreateNotificationState extends State<CreateNotification> {
                   height: height * 0.06,
                 ),
                 CustomContainer(
+                  opacity: 0.2,
                   child: Padding(
                     padding: EdgeInsets.only(
                         top: height * 0.01,

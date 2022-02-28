@@ -27,8 +27,8 @@ class ParticularRequest extends StatelessWidget {
           color: backGround_color,
           child: Padding(
             padding: EdgeInsets.only(
-                left: width * 0.05,
-                right: width * 0.05,
+                left: Responsive.isDesktop(context) ? 0.0 : width * 0.04,
+                right: Responsive.isDesktop(context) ? 0.0 : width * 0.04,
                 top: Responsive.isDesktop(context)
                     ? height * 0.04
                     : height * 0.1),
@@ -46,6 +46,7 @@ class ParticularRequest extends StatelessWidget {
                   height: height * 0.05,
                 ),
                 CustomContainer(
+                    opacity: 0.2,
                     child: Padding(
                       padding: EdgeInsets.only(
                           left: width * 0.06, right: width * 0.06),
@@ -235,21 +236,26 @@ class ParticularRequest extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Container(
-                                  width: width * 0.08,
-                                  height: height * 0.05,
-                                  decoration: BoxDecoration(
-                                    color: Color(0Xff5081db),
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "Close",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 13.0,
-                                          fontWeight: FontWeight.w600,
-                                          fontFamily: "Poppins"),
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Container(
+                                    width: width * 0.08,
+                                    height: height * 0.05,
+                                    decoration: BoxDecoration(
+                                      color: Color(0Xff5081db),
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        "Close",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 13.0,
+                                            fontWeight: FontWeight.w600,
+                                            fontFamily: "Poppins"),
+                                      ),
                                     ),
                                   ),
                                 ),
