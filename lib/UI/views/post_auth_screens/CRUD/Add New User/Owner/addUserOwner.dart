@@ -3,6 +3,7 @@
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/customNav.dart';
 import 'package:eagle_tip/UI/Widgets/customappheader.dart';
+import 'package:eagle_tip/UI/Widgets/customfab.dart';
 import 'package:eagle_tip/UI/Widgets/customsubmitbutton.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/CRUD/Add%20New%20User/invitation.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Sites/sites.dart';
@@ -120,20 +121,16 @@ class _AddNewUserByOwnerState extends State<AddNewUserByOwner> {
           child: Column(
             children: [
               Navbar(
-                width: width,
-                height: height,
-                text1: "Home",
-                text2: "Chat",
-              ),
+                  width: width, height: height, text1: "text1", text2: "text2"),
               SingleChildScrollView(
                 child: Container(
-                  height: height,
+                  height: height * 1,
                   color: backGround_color,
                   child: Padding(
                     padding: EdgeInsets.only(
                         left: width * 0.04,
                         right: width * 0.04,
-                        top: height * 0.01),
+                        top: height * 0.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -307,8 +304,14 @@ class _AddNewUserByOwnerState extends State<AddNewUserByOwner> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15.0),
                                 ),
-                                child: CustomSubmitButton(
-                                    title: "Next", width: width),
+                                child: Responsive.isDesktop(context)
+                                    ? customfab(
+                                        width: width,
+                                        text: "Next",
+                                        height: height,
+                                      )
+                                    : CustomSubmitButton(
+                                        width: width, title: "Next"),
                               ),
                             ),
                           ],

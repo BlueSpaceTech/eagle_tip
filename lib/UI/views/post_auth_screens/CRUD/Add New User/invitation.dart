@@ -137,7 +137,9 @@ class _InvitationState extends State<Invitation> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            width: width * 0.8,
+                            width: Responsive.isDesktop(context)
+                                ? width * 0.4
+                                : width * 0.8,
                             child: RichText(
                               text: TextSpan(
                                 text: "New user will join",
