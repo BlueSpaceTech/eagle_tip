@@ -5,10 +5,12 @@ import 'package:eagle_tip/UI/Widgets/customTextField.dart';
 import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
 import 'package:eagle_tip/UI/Widgets/customfaqbottom.dart';
 import 'package:eagle_tip/UI/Widgets/customsubmitbutton.dart';
+import 'package:eagle_tip/UI/Widgets/customtoast.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class UploadImage extends StatefulWidget {
   UploadImage({Key? key, required this.doc}) : super(key: key);
@@ -18,7 +20,18 @@ class UploadImage extends StatefulWidget {
 }
 
 class _UploadImageState extends State<UploadImage> {
+  FToast? fToast;
   final TextEditingController _password = TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    super.initState();
+    super.initState();
+    fToast = FToast();
+    fToast!.init(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -132,6 +145,7 @@ class _UploadImageState extends State<UploadImage> {
                     GestureDetector(
                       onTap: () {
                         // AuthFunctions.adddpUrl(widget.employercode);
+                        /*
                         AuthFunctions().signupuser(
                             email: widget.doc.get("email"),
                             password: _password.text,
@@ -143,8 +157,15 @@ class _UploadImageState extends State<UploadImage> {
                             isverified: true);
                         // AuthFunctions.signUp(
                         //    email: widget.email, password: _password.text);
+*/
 
                         Navigator.pushNamed(context, AppRoutes.welcometour);
+                        fToast!.showToast(
+                          child:
+                              Toastt(width: width, message: "ACCOUTN CREATED"),
+                          gravity: ToastGravity.BOTTOM,
+                          toastDuration: Duration(seconds: 3),
+                        );
                       },
                       child: CustomSubmitButton(
                         width: width,
