@@ -21,7 +21,9 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: Responsive.isDesktop(context) ? 600 : width * 0.8,
-      padding: EdgeInsets.only(left: width * 0.06, right: width * 0.06),
+      padding: EdgeInsets.symmetric(
+          horizontal:
+              Responsive.isDesktop(context) ? width * 0.02 : width * 0.06),
       height: height * 0.08,
       decoration: BoxDecoration(
         color: isactive ? Colors.white : Color(0xffEFF0F6).withOpacity(0.7),

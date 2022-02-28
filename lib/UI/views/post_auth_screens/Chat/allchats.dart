@@ -64,23 +64,27 @@ class AllChatScreen extends StatelessWidget {
               left: Responsive.isDesktop(context) ? width * 0.01 : width * 0.09,
               right:
                   Responsive.isDesktop(context) ? width * 0.01 : width * 0.09,
-              top: height * 0.1),
+              top:
+                  Responsive.isDesktop(context) ? height * 0.01 : height * 0.1),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(""),
-                  Logo(width: width),
-                  Padding(
-                    padding: EdgeInsets.only(top: 10.0),
-                    child: Icon(
-                      Icons.search,
-                      color: Colors.white,
-                    ),
-                  )
-                ],
+              Visibility(
+                visible: !Responsive.isDesktop(context),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(""),
+                    Logo(width: width),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10.0),
+                      child: Icon(
+                        Icons.search,
+                        color: Colors.white,
+                      ),
+                    )
+                  ],
+                ),
               ),
               SizedBox(
                 height: height * 0.04,
