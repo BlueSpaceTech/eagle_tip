@@ -31,7 +31,23 @@ class _LoginScreenState extends State<LoginScreen> {
     fToast!.init(context);
   }
 
- 
+  void loginuser(double width) async {
+    String res = await AuthFunctions()
+        .loginuser(email: _email.text, password: _password.text);
+    if (res == "success") {
+      Navigator.pushNamed(context, AppRoutes.homeScreen);
+      fToast!.showToast(
+        child: Toastt(width: width, message: res),
+        gravity: ToastGravity.BOTTOM,
+        toastDuration: Duration(seconds: 3),
+      );
+    }
+    fToast!.showToast(
+      child: Toastt(width: width, message: res),
+      gravity: ToastGravity.BOTTOM,
+      toastDuration: Duration(seconds: 3),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -107,11 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: height * 0.06,
                     ),
                     GestureDetector(
-                      onTap: () {
-                        AuthFunctions.signIn(
-                            email: _email.text, password: _password.text);
-                        Navigator.pushNamed(context, AppRoutes.welcometour);
-                      },
+                      onTap: () => loginuser(width),
                       child: CustomSubmitButton(
                         width: width,
                         title: "Login",

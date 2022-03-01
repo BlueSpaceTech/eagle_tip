@@ -1,6 +1,9 @@
+import 'dart:typed_data';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/Services/authentication_helper.dart';
+import 'package:eagle_tip/Services/utils.dart';
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
 import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
 import 'package:eagle_tip/UI/Widgets/customfaqbottom.dart';
@@ -11,6 +14,7 @@ import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UploadImage extends StatefulWidget {
   UploadImage({Key? key, required this.doc}) : super(key: key);
@@ -22,6 +26,7 @@ class UploadImage extends StatefulWidget {
 class _UploadImageState extends State<UploadImage> {
   FToast? fToast;
   final TextEditingController _password = TextEditingController();
+  Uint8List? _image;
   @override
   void initState() {
     // TODO: implement initState
@@ -30,6 +35,40 @@ class _UploadImageState extends State<UploadImage> {
     super.initState();
     fToast = FToast();
     fToast!.init(context);
+  }
+
+  void selectImage() async {
+    Uint8List im = await pickImage(ImageSource.gallery);
+    setState(() {
+      _image = im;
+    });
+  }
+
+  void signupUser(double width) async {
+    String res = await AuthFunctions().signupuser(
+      email: widget.doc.get("email"),
+      password: _password.text,
+      username: widget.doc.get("name"),
+      phoneno: widget.doc.get("phonenumber"),
+      role: widget.doc.get("userRole"),
+      Sites: widget.doc.get("sites"),
+      employercode: widget.doc.get("employerCode"),
+      isverified: true,
+      file: _image!,
+    );
+    if (res != "success") {
+      fToast!.showToast(
+        child: Toastt(width: width, message: res),
+        gravity: ToastGravity.BOTTOM,
+        toastDuration: Duration(seconds: 3),
+      );
+    }
+    fToast!.showToast(
+      child: Toastt(width: width, message: res),
+      gravity: ToastGravity.BOTTOM,
+      toastDuration: Duration(seconds: 3),
+    );
+    Navigator.pushNamed(context, AppRoutes.homeScreen);
   }
 
   @override
@@ -104,21 +143,52 @@ class _UploadImageState extends State<UploadImage> {
                     SizedBox(
                       height: height * 0.04,
                     ),
-                    Container(
-                      alignment: Alignment.bottomRight,
-                      width: Responsive.isDesktop(context)
-                          ? width * 0.12
-                          : width * 0.4,
-                      height: height * 0.24,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/Camera.png"),
-                        ),
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Image.asset("assets/addblue.png"),
+                    /*
+                     _image!=null?
+                    CircleAvatar(
+                      radius: 64,
+                      backgroundImage: MemoryImage(_image!),
+                    ):
+                     CircleAvatar(
+                      radius: 64,
+                      backgroundImage: MemoryImage(_image!),
                     ),
+                    */
+                    _image != null
+                        ? Container(
+                            alignment: Alignment.bottomRight,
+                            width: Responsive.isDesktop(context)
+                                ? width * 0.12
+                                : width * 0.4,
+                            height: height * 0.24,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: MemoryImage(_image!),
+                              ),
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                            ),
+                            child: GestureDetector(
+                                onTap: selectImage,
+                                child: Image.asset("assets/addblue.png")),
+                          )
+                        : Container(
+                            alignment: Alignment.bottomRight,
+                            width: Responsive.isDesktop(context)
+                                ? width * 0.12
+                                : width * 0.4,
+                            height: height * 0.24,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage("assets/Camera.png"),
+                              ),
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                            ),
+                            child: GestureDetector(
+                                onTap: selectImage,
+                                child: Image.asset("assets/addblue.png")),
+                          ),
                     SizedBox(
                       height: height * 0.04,
                     ),
@@ -143,30 +213,7 @@ class _UploadImageState extends State<UploadImage> {
                       height: height * 0.01,
                     ),
                     GestureDetector(
-                      onTap: () {
-                        // AuthFunctions.adddpUrl(widget.employercode);
-                        /*
-                        AuthFunctions().signupuser(
-                            email: widget.doc.get("email"),
-                            password: _password.text,
-                            username: widget.doc.get("name"),
-                            phoneno: widget.doc.get("phonenumber"),
-                            role: widget.doc.get("userRole"),
-                            Sites: widget.doc.get("sites"),
-                            employercode: widget.doc.get("employerCode"),
-                            isverified: true);
-                        // AuthFunctions.signUp(
-                        //    email: widget.email, password: _password.text);
-*/
-
-                        Navigator.pushNamed(context, AppRoutes.welcometour);
-                        fToast!.showToast(
-                          child:
-                              Toastt(width: width, message: "ACCOUTN CREATED"),
-                          gravity: ToastGravity.BOTTOM,
-                          toastDuration: Duration(seconds: 3),
-                        );
-                      },
+                      onTap: () => signupUser(width),
                       child: CustomSubmitButton(
                         width: width,
                         title: "Done",

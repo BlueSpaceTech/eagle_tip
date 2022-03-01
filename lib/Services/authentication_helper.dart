@@ -1,13 +1,26 @@
 //import 'dart:ffi';
 import 'dart:math';
+import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eagle_tip/Models/users.dart';
+import 'package:eagle_tip/Services/storagemethods.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
+import 'package:eagle_tip/Models/user.dart' as Model;
 
 class AuthFunctions {
   static final FirebaseAuth _auth = FirebaseAuth.instance;
   get user => _auth.currentUser;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  //fetch user
+  Future<Model.User> getUserDetails() async {
+    User currentUser = _auth.currentUser!;
+    DocumentSnapshot snap =
+        await _firestore.collection("users").doc(currentUser.uid).get();
+
+    return Model.User.fromSnap(snap);
+  }
+
   static genrateemployercode() {
     final _random = Random();
     const _availableChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
@@ -27,6 +40,7 @@ class AuthFunctions {
     required List Sites,
     required String employercode,
     required bool isverified,
+    required Uint8List file,
   }) async {
     String res = "Some error occured";
     try {
@@ -39,16 +53,54 @@ class AuthFunctions {
           employercode.isNotEmpty) {
         UserCredential cred = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
-        _firestore.collection("users").doc(cred.user!.uid).set({
-          "name": username,
-          "email": email,
-          "phonenumber": phoneno,
-          "userRole": role,
-          "isverified": true,
-          "sites": [],
-          "employercode": employercode,
-        });
+
+        //   String photoUrl = await StorageMethods()
+        //       .uploadImageToStorage("profilePics", file, false);
+
+        //add user to database
+        Model.User user = Model.User(
+          name: username,
+          email: email,
+          Phonenumber: phoneno,
+          uid: cred.user!.uid,
+          sites: Sites,
+          employerCode: employercode,
+          phoneisverified: isverified,
+          dpurl: "",
+          userRole: role,
+        );
+        _firestore.collection("users").doc(cred.user!.uid).set(user.toJson());
+
         res = "success";
+        _firestore.collection("users").doc(employercode).delete();
+      }
+    } on FirebaseAuthException catch (err) {
+      if (err.code == "invalid-email") {
+        res = "The email is not valid";
+      } else if (err.code == "weak-password") {
+        res = "Password is weak";
+      }
+    } catch (err) {
+      res = err.toString();
+    }
+    return res;
+  }
+
+//login in user
+  Future<String> loginuser(
+      {required String email, required String password}) async {
+    String res = "Some error occurred";
+    try {
+      if (email.isNotEmpty || password.isNotEmpty) {
+        await _auth.signInWithEmailAndPassword(
+            email: email, password: password);
+        res = "success";
+      }
+    } on FirebaseAuthException catch (err) {
+      if (err.code == "user-not-found") {
+        res = "Account not available";
+      } else if (err.code == "wrong-password") {
+        res = "Wrong Password entered";
       }
     } catch (err) {
       res = err.toString();
@@ -60,6 +112,7 @@ class AuthFunctions {
   static addUserTodb(String name, String email, String phonenumber,
       String userRole, String dpUrl, bool phoneisverified, List sites) {
     String code = genrateemployercode();
+
     FirebaseFirestore.instance.collection("users").doc(code).set({
       "name": name,
       "email": email,
@@ -68,7 +121,7 @@ class AuthFunctions {
       "phoneisverified": phoneisverified,
       "sites": sites,
       "employercode": code,
-    }, SetOptions(merge: true));
+    });
   }
 
   //SIGN UP METHOD
@@ -78,17 +131,6 @@ class AuthFunctions {
         email: email!,
         password: password!,
       );
-      return null;
-    } on FirebaseAuthException catch (e) {
-      return e.message;
-    }
-  }
-
-  //SIGN IN METHOD
-  static Future signIn({String? email, String? password}) async {
-    try {
-      await _auth.signInWithEmailAndPassword(
-          email: email!, password: password!);
       return null;
     } on FirebaseAuthException catch (e) {
       return e.message;

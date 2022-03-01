@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, duplicate_ignore, unused_import, prefer_const_literals_to_create_immutables
 
+import 'package:eagle_tip/Providers/user_provider.dart';
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/Services/authentication.dart';
 import 'package:eagle_tip/Services/authentication_helper.dart';
@@ -15,7 +16,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:eagle_tip/Models/users.dart';
+import 'package:eagle_tip/Models/user.dart' as model;
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -27,9 +29,22 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   bool? isTapped = false;
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    addData();
+  }
+
+  addData() async {
+    UserProvider _userProvider = Provider.of(context, listen: false);
+    await _userProvider.refreshUser();
+  }
+
+  @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    model.User user = Provider.of<UserProvider>(context).getUser;
     return Scaffold(
       floatingActionButton: Responsive.isDesktop(context)
           ? MenuButton(isTapped: false, width: width)
@@ -75,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(
                                 width: width * 0.068,
                                 child: Text(
-                                  "Request Fuel",
+                                  user.name,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: width * 0.016,
