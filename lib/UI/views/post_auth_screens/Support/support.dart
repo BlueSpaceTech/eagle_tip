@@ -2,6 +2,7 @@
 
 // import 'dart:html';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eagle_tip/UI/Widgets/customContainer.dart';
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
 import 'package:eagle_tip/UI/Widgets/customappheader.dart';
@@ -13,8 +14,43 @@ import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class SupportScreen extends StatelessWidget {
+class SupportScreen extends StatefulWidget {
   const SupportScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SupportScreen> createState() => _SupportScreenState();
+}
+
+class _SupportScreenState extends State<SupportScreen> {
+  String? EmployerCode;
+  String? Name;
+  String? Email;
+  String? Subject;
+  String? Message;
+
+  CollectionReference tickets =
+      FirebaseFirestore.instance.collection("tickets");
+
+  Future<void> addTicket() {
+    return tickets
+        .add({
+          "employerCode": EmployerCode,
+          "email": Email,
+          "isopen": true,
+          "messages": [
+            {
+              "title": Subject,
+              "description": Message,
+            }
+          ],
+          "name": Name,
+          "sites": ["Acres Marathon", "Akros Marathon"],
+          "timestamp": DateTime.now(),
+          "visibleto": "SiteManager",
+        })
+        .then((value) => print("Ticket Added"))
+        .catchError((error) => print("Failed to add ticket: $error"));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,202 +60,24 @@ class SupportScreen extends StatelessWidget {
       floatingActionButton: Responsive.isDesktop(context)
           ? MenuButton(isTapped: false, width: width)
           : SizedBox(),
-      body: Responsive(
-        mobile: Mobile(height: height, width: width),
-        tablet: DesktopSupport(
-          height: height,
+      body: SingleChildScrollView(
+        child: Container(
+          height: Responsive.isDesktop(context) ? height * 1.13 : height * 1.05,
           width: width,
-        ),
-        desktop: DesktopSupport(
-          height: height,
-          width: width,
-        ),
-      ),
-    );
-  }
-}
-
-class Mobile extends StatelessWidget {
-  const Mobile({
-    Key? key,
-    required this.height,
-    required this.width,
-  }) : super(key: key);
-
-  final double height;
-  final double width;
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        height: height,
-        width: width,
-        color: backGround_color,
-        child: Padding(
-          padding: EdgeInsets.only(
-              top: height * 0.1, left: width * 0.07, right: width * 0.07),
-          child: Column(
-            children: [
-              TopRow(width: width),
-              SizedBox(
-                height: height * 0.05,
-              ),
-              Text(
-                "Support",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                    fontSize: width * 0.05,
-                    fontFamily: "Poppins"),
-              ),
-              SizedBox(
-                height: height * 0.02,
-              ),
-              CustomTextFieldMobile(
-                  controller: TextEditingController(),
-                  isactive: true,
-                  width: width * 1.1,
-                  height: height,
-                  labelText: "Employer Code"),
-              SizedBox(
-                height: height * 0.012,
-              ),
-              CustomTextFieldMobile(
-                  controller: TextEditingController(),
-                  isactive: true,
-                  width: width * 1.1,
-                  height: height,
-                  labelText: "Name"),
-              SizedBox(
-                height: height * 0.012,
-              ),
-              CustomTextFieldMobile(
-                  controller: TextEditingController(),
-                  isactive: true,
-                  width: width * 1.1,
-                  height: height,
-                  labelText: "Email"),
-              SizedBox(
-                height: height * 0.012,
-              ),
-              CustomTextFieldMobile(
-                  controller: TextEditingController(),
-                  isactive: true,
-                  width: width * 1.1,
-                  height: height,
-                  labelText: "Subject"),
-              SizedBox(
-                height: height * 0.012,
-              ),
-              MessageTextField(
-                  width: width, height: height, labelText: "Message"),
-              SizedBox(
-                height: height * 0.04,
-              ),
-              Container(
-                width: Responsive.isDesktop(context)
-                    ? width * 0.3
-                    : Responsive.isTablet(context)
-                        ? width * 0.6
-                        : width * 0.9,
-                height: height * 0.065,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(13.0),
-                  color: Color(0xFF5081DB),
-                ),
-                child: Center(
-                  child: Text(
-                    "Send",
-                    style: TextStyle(
-                        fontSize: width * 0.05,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: "Poppins"),
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class CustomTextFieldMobile extends StatelessWidget {
-  const CustomTextFieldMobile({
-    Key? key,
-    required this.width,
-    required this.height,
-    required this.labelText,
-    required this.controller,
-    required this.isactive,
-  }) : super(key: key);
-
-  final double width;
-  final double height;
-  final String labelText;
-  final TextEditingController controller;
-  final bool isactive;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: Responsive.isDesktop(context) ? width * 0.4 : width * 0.8,
-      padding: EdgeInsets.only(left: width * 0.06, right: width * 0.06),
-      height: height * 0.08,
-      decoration: BoxDecoration(
-        color: isactive ? Colors.white : Color(0xffEFF0F6).withOpacity(0.7),
-        borderRadius: BorderRadius.all(Radius.circular(15)),
-      ),
-      child: TextField(
-        enabled: isactive,
-        controller: controller,
-        style: TextStyle(fontFamily: "Poppins"),
-        cursorColor: Colors.black12,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          labelText: labelText,
-          labelStyle: TextStyle(
-              color: Color(0xffAEB0C3),
-              fontFamily: "Poppins",
-              fontWeight: FontWeight.w500),
-        ),
-      ),
-    );
-  }
-}
-
-class DesktopSupport extends StatelessWidget {
-  const DesktopSupport({
-    Key? key,
-    required this.height,
-    required this.width,
-  }) : super(key: key);
-
-  final double height;
-  final double width;
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        height: height,
-        width: width,
-        color: backGround_color,
-        child: CustomContainer(
-          opacity: 1.0,
-          topPad: height * 0.08,
-          height: height,
-          width: width,
-          child: Center(
+          color: backGround_color,
+          child: Padding(
+            padding: EdgeInsets.only(
+                top: Responsive.isDesktop(context)
+                    ? height * 0.05
+                    : height * 0.1,
+                left: width * 0.07,
+                right: width * 0.07),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Responsive.isDesktop(context)
                     ? Text(
-                        "Support",
+                        "",
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
@@ -228,83 +86,121 @@ class DesktopSupport extends StatelessWidget {
                                 : width * 0.023,
                             fontFamily: "Poppins"),
                       )
-                    : Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
+                    : TopRow(width: width),
+                SizedBox(
+                  height: height * 0.05,
+                ),
+                CustomContainer(
+                    child: Column(
+                      children: [
+                        Text(
+                          "Support",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                              fontSize: Responsive.isDesktop(context)
+                                  ? width * 0.013
+                                  : width * 0.05,
+                              fontFamily: "Poppins"),
+                        ),
+                        SizedBox(
+                          height: height * 0.02,
+                        ),
+                        SupportTextField(
+                            valueChanged: (value) {
+                              setState(() {
+                                EmployerCode = value;
+                              });
+                            },
+                            width: width,
+                            height: height,
+                            labelText: "Employer Code"),
+                        SizedBox(
+                          height: height * 0.012,
+                        ),
+                        SupportTextField(
+                            valueChanged: (value) {
+                              setState(() {
+                                Name = value;
+                              });
+                            },
+                            width: width,
+                            height: height,
+                            labelText: "Name"),
+                        SizedBox(
+                          height: height * 0.012,
+                        ),
+                        SupportTextField(
+                            valueChanged: (value) {
+                              setState(() {
+                                Email = value;
+                              });
+                            },
+                            width: width,
+                            height: height,
+                            labelText: "Email"),
+                        SizedBox(
+                          height: height * 0.012,
+                        ),
+                        SupportTextField(
+                            valueChanged: (value) {
+                              setState(() {
+                                Subject = value;
+                              });
+                            },
+                            width: width,
+                            height: height,
+                            labelText: "Subject"),
+                        SizedBox(
+                          height: height * 0.012,
+                        ),
+                        MessageTextField(
+                            valueChanged: (value) {
+                              setState(() {
+                                Message = value;
+                              });
+                            },
+                            width: width,
+                            height: height,
+                            labelText: "Message"),
+                        SizedBox(
+                          height: height * 0.04,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            addTicket();
+                          },
+                          child: Container(
+                            width: Responsive.isDesktop(context)
+                                ? width * 0.3
+                                : Responsive.isTablet(context)
+                                    ? width * 0.6
+                                    : width * 0.9,
+                            height: height * 0.065,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(13.0),
+                              color: Color(0xFF5081DB),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "Send",
+                                style: TextStyle(
+                                    fontSize: Responsive.isDesktop(context)
+                                        ? width * 0.009
+                                        : width * 0.04,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: "Poppins"),
+                              ),
+                            ),
                           ),
-                          SizedBox(
-                            width: width * 0.2,
-                          ),
-                          Text(
-                            "Support",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500,
-                                fontSize: Responsive.isDesktop(context)
-                                    ? width * 0.01
-                                    : width * 0.023,
-                                fontFamily: "Poppins"),
-                          ),
-                          SizedBox(
-                            width: width * 0.25,
-                          ),
-                        ],
-                      ),
-                SizedBox(
-                  height: height * 0.02,
-                ),
-                SupportTextField(
-                    width: width, height: height, labelText: "Employer Code"),
-                SizedBox(
-                  height: height * 0.012,
-                ),
-                SupportTextField(
-                    width: width, height: height, labelText: "Name"),
-                SizedBox(
-                  height: height * 0.012,
-                ),
-                SupportTextField(
-                    width: width, height: height, labelText: "Email"),
-                SizedBox(
-                  height: height * 0.012,
-                ),
-                SupportTextField(
-                    width: width, height: height, labelText: "Subject"),
-                SizedBox(
-                  height: height * 0.012,
-                ),
-                MessageTextField(
-                    width: width, height: height, labelText: "Message"),
-                SizedBox(
-                  height: height * 0.04,
-                ),
-                Container(
-                  width: Responsive.isDesktop(context)
-                      ? width * 0.3
-                      : Responsive.isTablet(context)
-                          ? width * 0.6
-                          : width * 0.9,
-                  height: height * 0.065,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(13.0),
-                    color: Color(0xFF5081DB),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "Send",
-                      style: TextStyle(
-                          fontSize: Responsive.isDesktop(context)
-                              ? width * 0.01
-                              : width * 0.023,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: "Poppins"),
+                        )
+                      ],
                     ),
-                  ),
-                )
+                    width: Responsive.isDesktop(context) ? width : width * 0.9,
+                    topPad: 0.0,
+                    height: height,
+                    opacity: 0.0)
               ],
             ),
           ),
@@ -356,6 +252,7 @@ class SupportTextField extends StatefulWidget {
   const SupportTextField({
     Key? key,
     required this.width,
+    required this.valueChanged,
     required this.height,
     required this.labelText,
   }) : super(key: key);
@@ -363,6 +260,7 @@ class SupportTextField extends StatefulWidget {
   final double width;
   final double height;
   final String labelText;
+  final ValueChanged valueChanged;
 
   @override
   State<SupportTextField> createState() => _SupportTextFieldState();
@@ -384,6 +282,8 @@ class _SupportTextFieldState extends State<SupportTextField> {
     super.dispose();
     myFocusNode.dispose();
   }
+
+  TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -411,7 +311,13 @@ class _SupportTextFieldState extends State<SupportTextField> {
         borderRadius: BorderRadius.all(Radius.circular(15)),
       ),
       child: TextField(
+        controller: _controller,
         focusNode: myFocusNode,
+        onChanged: (value) {
+          setState(() {
+            widget.valueChanged(value);
+          });
+        },
         style: TextStyle(fontFamily: "Poppins"),
         cursorColor: Colors.black12,
         decoration: InputDecoration(
@@ -419,7 +325,7 @@ class _SupportTextFieldState extends State<SupportTextField> {
           labelText: widget.labelText,
           labelStyle: TextStyle(
               fontSize: Responsive.isDesktop(context)
-                  ? widget.width * 0.01
+                  ? widget.width * 0.009
                   : widget.width * 0.023,
               color:
                   myFocusNode.hasFocus ? Color(0xFF5E8BE0) : Color(0xffAEB0C3),
@@ -436,12 +342,14 @@ class MessageTextField extends StatefulWidget {
     Key? key,
     required this.width,
     required this.height,
+    required this.valueChanged,
     required this.labelText,
   }) : super(key: key);
 
   final double width;
   final double height;
   final String labelText;
+  final ValueChanged valueChanged;
 
   @override
   _MessageTextFieldState createState() => _MessageTextFieldState();
@@ -489,6 +397,11 @@ class _MessageTextFieldState extends State<MessageTextField> {
         borderRadius: BorderRadius.all(Radius.circular(15)),
       ),
       child: TextField(
+        onChanged: (val) {
+          setState(() {
+            widget.valueChanged(val);
+          });
+        },
         focusNode: myFocusNode,
         style: TextStyle(fontFamily: "Poppins"),
         cursorColor: Colors.black12,
@@ -497,7 +410,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
           labelText: widget.labelText,
           labelStyle: TextStyle(
               fontSize: Responsive.isDesktop(context)
-                  ? widget.width * 0.01
+                  ? widget.width * 0.009
                   : widget.width * 0.03,
               color:
                   myFocusNode.hasFocus ? Color(0xFF5E8BE0) : Color(0xffAEB0C3),

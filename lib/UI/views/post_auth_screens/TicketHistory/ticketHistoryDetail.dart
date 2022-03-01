@@ -12,8 +12,22 @@ import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 
 class TicketDetail extends StatelessWidget {
-  const TicketDetail({Key? key}) : super(key: key);
+  TicketDetail(
+      {Key? key,
+      required this.ticketTitle,
+      required this.status,
+      required this.siteName,
+      required this.ticketMessage,
+      required this.userName,
+      required this.date})
+      : super(key: key);
 
+  final String ticketTitle;
+  final String status;
+  final String siteName;
+  final String ticketMessage;
+  final String userName;
+  final String date;
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -64,7 +78,12 @@ class TicketDetail extends StatelessWidget {
                                     : 0.0),
                             child: Column(
                               children: [
-                                Ticketdet(),
+                                Ticketdet(
+                                  date: date,
+                                  siteName: siteName,
+                                  userName: userName,
+                                  status: status,
+                                ),
                                 SizedBox(
                                   height: height * 0.04,
                                 ),
@@ -72,7 +91,7 @@ class TicketDetail extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "Can't open app",
+                                      ticketTitle,
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Colors.white,
@@ -88,7 +107,7 @@ class TicketDetail extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Ahmad: ",
+                                      "$userName: ",
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 12.0,
@@ -98,7 +117,7 @@ class TicketDetail extends StatelessWidget {
                                     Container(
                                       width: width * 0.9,
                                       child: Text(
-                                        "Risus vestibulum, risus feugiat semper velit feugiat velit. Placerat elit volutpat volutpat elit bibendum molestie eget. Convallis mattis dignissim quis tincidunt quisque. Adipiscing suspendisse faucibus aliquet a turpis odio pellentesque lectus duis. Sodales odio eu bibendum massa velit maecenas eget. Maecenas facilisis nunc tincidunt sed eget viverra porttitor feugiat. Mattis dictum sed suspendisse faucibus gravida. Id eget amet dis amet ut at in eget nam. ",
+                                        ticketMessage,
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 12.0,
@@ -212,8 +231,15 @@ class CustomButton extends StatelessWidget {
 class Ticketdet extends StatelessWidget {
   const Ticketdet({
     Key? key,
+    required this.userName,
+    required this.date,
+    required this.siteName,
+    required this.status,
   }) : super(key: key);
-
+  final String userName;
+  final String siteName;
+  final String date;
+  final String status;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -232,7 +258,7 @@ class Ticketdet extends StatelessWidget {
                     color: Colors.white),
                 children: [
                   TextSpan(
-                    text: "  Ahmad Elizando",
+                    text: "  $userName",
                     style: TextStyle(
                       fontSize: 13.0,
                       color: Color(0xFFD9DBE9),
@@ -256,7 +282,7 @@ class Ticketdet extends StatelessWidget {
                     color: Colors.white),
                 children: [
                   TextSpan(
-                    text: "  Acres Marathon",
+                    text: "  $siteName",
                     style: TextStyle(
                       fontSize: 13.0,
                       color: Color(0xFFD9DBE9),
@@ -282,7 +308,7 @@ class Ticketdet extends StatelessWidget {
                     color: Colors.white),
                 children: [
                   TextSpan(
-                    text: "  5/27/15",
+                    text: date,
                     style: TextStyle(
                       fontSize: 13.0,
                       color: Color(0xFFD9DBE9),
@@ -306,7 +332,7 @@ class Ticketdet extends StatelessWidget {
                     color: Colors.white),
                 children: [
                   TextSpan(
-                    text: "  Open",
+                    text: "  $status",
                     style: TextStyle(
                       fontSize: 13.0,
                       color: Color(0xFFD9DBE9),
