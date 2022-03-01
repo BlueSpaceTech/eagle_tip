@@ -6,12 +6,14 @@ import 'package:eagle_tip/UI/Widgets/customNav.dart';
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
 import 'package:eagle_tip/UI/Widgets/customappheader.dart';
 import 'package:eagle_tip/UI/Widgets/customsubmitbutton.dart';
+import 'package:eagle_tip/UI/Widgets/customtoast.dart';
 import 'package:eagle_tip/UI/Widgets/logo.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/TicketHistory/ticketHistoryDetail.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Invitation extends StatefulWidget {
   Invitation({Key? key, required this.sites, required this.role})
@@ -24,9 +26,26 @@ class Invitation extends StatefulWidget {
 
 class _InvitationState extends State<Invitation> {
   bool? isTapped = false;
+  FToast? fToast;
   TextEditingController _name = new TextEditingController();
   TextEditingController _email = new TextEditingController();
   TextEditingController _phone = new TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fToast = FToast();
+    fToast!.init(context);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _name.dispose();
+    _email.dispose();
+    _phone.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -228,7 +247,7 @@ class _InvitationState extends State<Invitation> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          AuthFunctions.addUserTodb(
+                          String res = AuthFunctions.addUserTodb(
                               _name.text,
                               _email.text,
                               _phone.text,
@@ -236,6 +255,19 @@ class _InvitationState extends State<Invitation> {
                               "",
                               false,
                               widget.sites);
+                          fToast!.showToast(
+                            child: ToastMessage().show(width, context, res),
+                            gravity: ToastGravity.BOTTOM,
+                            toastDuration: Duration(seconds: 3),
+                          );
+                          if (res == "Successfully added") {
+                            if (Responsive.isDesktop(context)) {
+                              Navigator.pushNamed(
+                                  context, AppRoutes.homeScreen);
+                            } else {
+                              Navigator.pushNamed(context, AppRoutes.bottomNav);
+                            }
+                          }
                         },
                         child: CustomSubmitButton(
                           width: width,

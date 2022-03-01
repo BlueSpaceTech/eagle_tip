@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:eagle_tip/Providers/user_provider.dart';
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/Services/user_info_services.dart';
 import 'package:eagle_tip/UI/views/on-borading-tour/final_tour.dart';
@@ -47,6 +48,7 @@ import 'package:eagle_tip/UI/views/pre_auth_screens/forgetpassword.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/login_screen.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/splashscreen.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/uploadimage.dart';
+import 'package:eagle_tip/UI/views/user_navigator.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +81,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => UserInfoServices(),
+          create: (context) => UserProvider(),
         ),
       ],
       child: MaterialApp(
@@ -89,7 +91,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           backgroundColor: Color(0xff2B343B),
         ),
-        initialRoute: AppRoutes.myProfile,
+        // initialRoute: AppRoutes.myProfile,
+        home: UserNavigator(),
         routes: {
           AppRoutes.support: (context) => SupportScreen(),
           AppRoutes.addFAQ: (context) => AddFAQ(),

@@ -58,13 +58,13 @@ class _UploadImageState extends State<UploadImage> {
     );
     if (res != "success") {
       fToast!.showToast(
-        child: Toastt(width: width, message: res),
+        child: ToastMessage().show(width, context, res),
         gravity: ToastGravity.BOTTOM,
         toastDuration: Duration(seconds: 3),
       );
     }
     fToast!.showToast(
-      child: Toastt(width: width, message: res),
+      child: ToastMessage().show(width, context, res),
       gravity: ToastGravity.BOTTOM,
       toastDuration: Duration(seconds: 3),
     );

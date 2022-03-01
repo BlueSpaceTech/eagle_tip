@@ -169,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(
                               width: width * 0.4,
                               child: Text(
-                                "Request Fuel",
+                                user.name != null ? user.name : "Rquest fuel",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize: 34.0,

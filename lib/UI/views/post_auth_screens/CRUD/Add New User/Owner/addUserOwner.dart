@@ -21,7 +21,7 @@ class AddNewUserByOwner extends StatefulWidget {
 
 class _AddNewUserByOwnerState extends State<AddNewUserByOwner> {
   bool isselect = false;
-  List selectedsitess = [];
+
   List sites = [
     "All",
     "Acers Marathon",
@@ -29,10 +29,10 @@ class _AddNewUserByOwnerState extends State<AddNewUserByOwner> {
     "Clarks Marathon",
     "Huntington Marathon"
   ];
-  List Roles = ["Site Manager", "Site User"];
+  List Roles = ["SiteManager", "SiteUser"];
   String selectedrOLE = "";
 
-  List<String> selectedChoices = [];
+  List<String> selectedsites = [];
   _buildsiteschip() {
     bool issel = false;
     List<Widget> choices = [];
@@ -51,14 +51,14 @@ class _AddNewUserByOwnerState extends State<AddNewUserByOwner> {
           selectedColor: Color(0xFF5081db),
           disabledColor: Color(0xFF535c65),
           backgroundColor: Color(0xFF535c65),
-          selected: selectedChoices.contains(item),
+          selected: selectedsites.contains(item),
           onSelected: (selected) {
             setState(() {
               issel = selected;
-              selectedChoices.contains(item)
-                  ? selectedChoices.remove(item)
-                  : selectedChoices.add(item);
-              print(selectedChoices);
+              selectedsites.contains(item)
+                  ? selectedsites.remove(item)
+                  : selectedsites.add(item);
+              print(selectedsites);
               // +added
             });
           },
@@ -299,7 +299,7 @@ class _AddNewUserByOwnerState extends State<AddNewUserByOwner> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => Invitation(
-                                          sites: selectedsitess,
+                                          sites: selectedsites,
                                           role: selectedrOLE,
                                         ),
                                       ));

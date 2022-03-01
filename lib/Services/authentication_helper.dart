@@ -109,19 +109,25 @@ class AuthFunctions {
   }
 
   sendinvite() {}
-  static addUserTodb(String name, String email, String phonenumber,
+  static String addUserTodb(String name, String email, String phonenumber,
       String userRole, String dpUrl, bool phoneisverified, List sites) {
     String code = genrateemployercode();
-
-    FirebaseFirestore.instance.collection("users").doc(code).set({
-      "name": name,
-      "email": email,
-      "phonenumber": phonenumber,
-      "userRole": userRole,
-      "phoneisverified": phoneisverified,
-      "sites": sites,
-      "employercode": code,
-    });
+    String res = "Successfully added";
+    if (name.isNotEmpty || email.isNotEmpty || phonenumber.isNotEmpty) {
+      FirebaseFirestore.instance.collection("users").doc(code).set({
+        "name": name,
+        "email": email,
+        "phonenumber": phonenumber,
+        "userRole": userRole,
+        "phoneisverified": phoneisverified,
+        "sites": sites,
+        "employercode": code,
+      });
+      return res;
+    } else {
+      res = "Please input all fields";
+    }
+    return res;
   }
 
   //SIGN UP METHOD
