@@ -1,7 +1,7 @@
 import 'package:eagle_tip/UI/Widgets/customNav.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Chat/allchats.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Chat/newchat.dart';
-import 'package:eagle_tip/UI/views/post_auth_screens/Chat/newchatscreen.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Chat/chatting.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 

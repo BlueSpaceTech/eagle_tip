@@ -18,7 +18,7 @@ import 'package:eagle_tip/UI/views/post_auth_screens/CRUD/crudmain.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Chat/allchats.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Chat/message_main.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Chat/newchat.dart';
-import 'package:eagle_tip/UI/views/post_auth_screens/Chat/newchatscreen.dart';
+import 'package:eagle_tip/UI/views/post_auth_screens/Chat/chatting.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/bottomNav.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/HomeScreens/Home_screen.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Notifications/createNotification.dart';
