@@ -43,7 +43,7 @@ class User {
       name: snapshot["name"],
       email: snapshot["email"],
       Phonenumber: snapshot["phonenumber"],
-      employerCode: snapshot["employercode"],
+      employerCode: snapshot["employerCode"],
       phoneisverified: snapshot["isverified"],
       sites: snapshot["sites"],
       userRole: snapshot["userRole"],

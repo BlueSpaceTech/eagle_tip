@@ -40,7 +40,6 @@ class AuthFunctions {
     required List Sites,
     required String employercode,
     required bool isverified,
-    ,
   }) async {
     String res = "Some error occured";
     try {

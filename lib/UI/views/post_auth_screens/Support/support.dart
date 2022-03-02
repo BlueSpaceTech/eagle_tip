@@ -3,16 +3,21 @@
 // import 'dart:html';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eagle_tip/Providers/user_provider.dart';
 import 'package:eagle_tip/UI/Widgets/customContainer.dart';
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
 import 'package:eagle_tip/UI/Widgets/customappheader.dart';
+import 'package:eagle_tip/UI/Widgets/customtoast.dart';
 import 'package:eagle_tip/UI/Widgets/logo.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
+import 'package:eagle_tip/Models/user.dart' as model;
 import 'package:eagle_tip/Utils/detectPlatform.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
 
 class SupportScreen extends StatefulWidget {
   const SupportScreen({Key? key}) : super(key: key);
@@ -27,33 +32,59 @@ class _SupportScreenState extends State<SupportScreen> {
   String? Email;
   String? Subject;
   String? Message;
+  FToast? fToast;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fToast = FToast();
+    fToast!.init(context);
+  }
 
   CollectionReference tickets =
       FirebaseFirestore.instance.collection("tickets");
 
-  Future<void> addTicket() {
-    return tickets
-        .add({
-          "employerCode": EmployerCode,
-          "email": Email,
-          "isopen": true,
-          "messages": [
-            {
-              "title": Subject,
-              "description": Message,
-            }
-          ],
-          "name": Name,
-          "sites": ["Acres Marathon", "Akros Marathon"],
-          "timestamp": DateTime.now(),
-          "visibleto": "SiteManager",
-        })
-        .then((value) => print("Ticket Added"))
-        .catchError((error) => print("Failed to add ticket: $error"));
-  }
-
   @override
   Widget build(BuildContext context) {
+    model.User user = Provider.of<UserProvider>(context).getUser;
+
+    String visible(model.User user) {
+      switch (user.userRole) {
+        case "SiteUser":
+          return "SiteManager";
+        case "SiteManager":
+          return "SiteOwner";
+        case "SiteOwner":
+          return "TerminalUser";
+        case "TerminalUser":
+          return "TerminalManager";
+        case "TerminalManager":
+          return "admin";
+      }
+      return "";
+    }
+
+    Future<void> addTicket(context) {
+      return tickets
+          .add({
+            "employerCode": EmployerCode,
+            "email": Email,
+            "isopen": true,
+            "messages": [
+              {
+                "title": Subject,
+                "description": Message,
+              }
+            ],
+            "name": Name,
+            "sites": user.sites,
+            "timestamp": DateTime.now(),
+            "visibleto": visible(user),
+          })
+          .then((value) => print("Ticket Added"))
+          .catchError((error) => print("Failed to add ticket: $error"));
+    }
+
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -168,7 +199,15 @@ class _SupportScreenState extends State<SupportScreen> {
                         ),
                         InkWell(
                           onTap: () {
-                            addTicket();
+                            print(user.userRole);
+                            addTicket(context);
+                            fToast!.showToast(
+                              child: ToastMessage()
+                                  .show(width, context, "Ticket Added"),
+                              gravity: ToastGravity.BOTTOM,
+                              toastDuration: Duration(seconds: 3),
+                            );
+                            Navigator.pop(context);
                           },
                           child: Container(
                             width: Responsive.isDesktop(context)

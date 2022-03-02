@@ -53,7 +53,7 @@ class _EditUserState extends State<EditUser> {
                           height: height,
                           text1: "Home",
                           text2: "Sites",
-                         )
+                        )
                       : Row(
                           children: [
                             InkWell(

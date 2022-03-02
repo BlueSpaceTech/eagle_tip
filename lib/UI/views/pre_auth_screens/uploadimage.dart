@@ -52,7 +52,7 @@ class _UploadImageState extends State<UploadImage> {
       phoneno: widget.doc.get("phonenumber"),
       role: widget.doc.get("userRole"),
       Sites: widget.doc.get("sites"),
-      employercode: widget.doc.get("employerCode"),
+      employercode: widget.doc.get("employercode"),
       isverified: true,
       //file: _image!,
     );

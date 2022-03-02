@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(
                                 width: width * 0.068,
                                 child: Text(
-                                  user.name,
+                                  user.employerCode.toString(),
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: width * 0.016,
