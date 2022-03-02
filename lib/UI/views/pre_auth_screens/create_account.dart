@@ -8,8 +8,10 @@ import 'package:eagle_tip/UI/views/pre_auth_screens/phone_verification.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/uploadimage.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_sms/flutter_sms.dart';
 
 class CreateAccount extends StatefulWidget {
   CreateAccount({
@@ -26,6 +28,17 @@ class _CreateAccountState extends State<CreateAccount> {
   final TextEditingController name = TextEditingController();
   final TextEditingController email = TextEditingController();
   final TextEditingController phoneno = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  String? phoneNumber, verificationId;
+  String? otp, authStatus = "";
+  void _sendSMS(String message, List<String> recipents) async {
+    String _result = await sendSMS(message: message, recipients: recipents)
+        .catchError((onError) {
+      print(onError);
+    });
+    print(_result);
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -114,14 +127,48 @@ class _CreateAccountState extends State<CreateAccount> {
                     ),
                     GestureDetector(
                       onTap: () {
+                        _sendSMS("Hi rakshit", ["9813382163"]);
+                      },
+                      /*
+                        await FirebaseAuth.instance.verifyPhoneNumber(
+                          phoneNumber: "+919813382163",
+                          timeout: const Duration(seconds: 30),
+                          verificationCompleted: (PhoneAuthCredential) {
+                            setState(() {
+                              authStatus =
+                                  "Your account is successfully verified";
+                            });
+                          },
+                          verificationFailed: (verificationFailed) {
+                            setState(() {
+                              authStatus = "Authentication failed";
+                            });
+                          },
+                          codeSent: (verificationID, resendingToken) {
+                            setState(() {
+                              authStatus = "Code Sent!";
+                              verificationId = verificationID;
+                            });
+                          },
+                          codeAutoRetrievalTimeout: (verId) {
+                            setState(() {
+                              authStatus = "TIMEOUT";
+                              verificationId = verId;
+                            });
+                          },
+                        );
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => VerificationScreen(
                                 doc: widget.doc,
+                                verid: verificationId != null
+                                    ? verificationId!
+                                    : "ff",
                               ),
                             ));
-                      },
+                            */
+
                       child: CustomSubmitButton(
                         width: width,
                         title: "Send OTP",

@@ -1,15 +1,32 @@
 import 'package:eagle_tip/Routes/approutes.dart';
+import 'package:eagle_tip/Services/authentication_helper.dart';
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
 import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
 import 'package:eagle_tip/UI/Widgets/customfaqbottom.dart';
 import 'package:eagle_tip/UI/Widgets/customsubmitbutton.dart';
+import 'package:eagle_tip/UI/Widgets/customtoast.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-class ForgetPassword extends StatelessWidget {
+class ForgetPassword extends StatefulWidget {
   const ForgetPassword({Key? key}) : super(key: key);
+
+  @override
+  State<ForgetPassword> createState() => _ForgetPasswordState();
+}
+
+class _ForgetPasswordState extends State<ForgetPassword> {
+  FToast? fToast;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fToast = FToast();
+    fToast!.init(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -101,8 +118,21 @@ class ForgetPassword extends StatelessWidget {
                       height: height * 0.02,
                     ),
                     InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, AppRoutes.mailsent);
+                      onTap: () async {
+                        String res =
+                            await AuthFunctions().resetpassword(_email.text);
+                        if (res == "Link sent to your email!") {
+                          Navigator.pushNamed(context, AppRoutes.mailsent);
+                          fToast!.showToast(
+                              child: ToastMessage().show(width, context, res),
+                              gravity: ToastGravity.BOTTOM,
+                              toastDuration: Duration(seconds: 3));
+                        } else {
+                          fToast!.showToast(
+                              child: ToastMessage().show(width, context, res),
+                              gravity: ToastGravity.BOTTOM,
+                              toastDuration: Duration(seconds: 3));
+                        }
                       },
                       child: CustomSubmitButton(
                         width: width,

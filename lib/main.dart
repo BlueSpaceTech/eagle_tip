@@ -2,7 +2,7 @@
 
 import 'package:eagle_tip/Providers/user_provider.dart';
 import 'package:eagle_tip/Routes/approutes.dart';
-import 'package:eagle_tip/Services/user_info_services.dart';
+
 import 'package:eagle_tip/UI/views/on-borading-tour/final_tour.dart';
 import 'package:eagle_tip/UI/views/on-borading-tour/tour1.dart';
 import 'package:eagle_tip/UI/views/on-borading-tour/tour2.dart';
@@ -91,8 +91,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           backgroundColor: Color(0xff2B343B),
         ),
-        // initialRoute: AppRoutes.myProfile,
-        home: UserNavigator(),
+        initialRoute: AppRoutes.loginscreen,
+        //home: UserNavigator(),
         routes: {
           AppRoutes.support: (context) => SupportScreen(),
           AppRoutes.addFAQ: (context) => AddFAQ(),
