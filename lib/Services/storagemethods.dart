@@ -1,4 +1,3 @@
-/*
 import 'dart:typed_data';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,4 +20,3 @@ class StorageMethods {
     return downloadUrl;
   }
 }
-*/
