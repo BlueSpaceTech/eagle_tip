@@ -1,3 +1,4 @@
+import 'package:eagle_tip/Providers/user_provider.dart';
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/customNav.dart';
 import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
@@ -9,6 +10,8 @@ import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:linked_scroll_controller/linked_scroll_controller.dart';
+import 'package:provider/provider.dart';
+import 'package:eagle_tip/Models/user.dart' as model;
 
 class CrudScreen extends StatefulWidget {
   const CrudScreen({Key? key}) : super(key: key);
@@ -147,6 +150,7 @@ class _CrudScreenState extends State<CrudScreen> {
 
   @override
   Widget build(BuildContext context) {
+    model.User user = Provider.of<UserProvider>(context).getUser;
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     List Site = [
@@ -271,7 +275,7 @@ class _CrudScreenState extends State<CrudScreen> {
                                         color: Colors.white),
                                     cursorColor: Colors.white,
                                     decoration: InputDecoration(
-                                      hintText: "Search by name",
+                                      hintText: user.employerCode,
                                       hintStyle: TextStyle(
                                           color: Colors.white.withOpacity(0.5)),
                                       border: InputBorder.none,

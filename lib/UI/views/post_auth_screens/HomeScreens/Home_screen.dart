@@ -2,7 +2,7 @@
 
 import 'package:eagle_tip/Providers/user_provider.dart';
 import 'package:eagle_tip/Routes/approutes.dart';
-import 'package:eagle_tip/Services/authentication.dart';
+
 import 'package:eagle_tip/Services/authentication_helper.dart';
 import 'package:eagle_tip/UI/Widgets/customNav.dart';
 import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';

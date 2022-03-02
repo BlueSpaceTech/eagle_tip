@@ -27,12 +27,14 @@ import 'package:eagle_tip/UI/Widgets/customTextField.dart';
 import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
 import 'package:eagle_tip/UI/Widgets/customfaqbottom.dart';
 import 'package:eagle_tip/UI/Widgets/customsubmitbutton.dart';
+import 'package:eagle_tip/UI/Widgets/customtoast.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/create_account.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class EmployerCode extends StatefulWidget {
   const EmployerCode({Key? key}) : super(key: key);
@@ -42,10 +44,18 @@ class EmployerCode extends StatefulWidget {
 }
 
 class _EmployerCodeState extends State<EmployerCode> {
+  FToast? fToast;
   String? name;
   String? phone;
   String? email;
   final TextEditingController _emoloyercode = TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fToast = FToast();
+    fToast!.init(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -117,6 +127,7 @@ class _EmployerCodeState extends State<EmployerCode> {
                     ),
                     GestureDetector(
                       onTap: () {
+                        String res = "Data Fetched";
                         DocumentReference dbRef = FirebaseFirestore.instance
                             .collection('users')
                             .doc(_emoloyercode.text);
@@ -135,10 +146,17 @@ class _EmployerCodeState extends State<EmployerCode> {
                                     doc: data,
                                   ),
                                 ));
+                                fToast!.showToast(
+                              child: ToastMessage().show(width, context, "Data fetched Successfully"),
+                              gravity: ToastGravity.BOTTOM,
+                              toastDuration: Duration(seconds: 3),
+                            );
                           } else {
-                            print("not");
-
-                            SnackBar(content: Text("f"));
+                            fToast!.showToast(
+                              child: ToastMessage().show(width, context, "User not exists"),
+                              gravity: ToastGravity.BOTTOM,
+                              toastDuration: Duration(seconds: 3),
+                            );
                           }
                         });
                       },

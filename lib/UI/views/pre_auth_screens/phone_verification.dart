@@ -3,23 +3,66 @@ import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
 import 'package:eagle_tip/UI/Widgets/customfaqbottom.dart';
 import 'package:eagle_tip/UI/Widgets/customsubmitbutton.dart';
+import 'package:eagle_tip/UI/Widgets/customtoast.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/uploadimage.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
 
 class VerificationScreen extends StatefulWidget {
-  VerificationScreen({Key? key, required this.doc}) : super(key: key);
+  VerificationScreen({Key? key, required this.doc, required this.verid})
+      : super(key: key);
   DocumentSnapshot doc;
+  String verid;
   @override
   _VerificationScreenState createState() => _VerificationScreenState();
 }
 
 class _VerificationScreenState extends State<VerificationScreen> {
+  final OtpFieldController _otp = new OtpFieldController();
+  FToast? fToast;
+  Future<void> signIn(String otp, double width) async {
+    String res = "success";
+    try {
+      await FirebaseAuth.instance
+          .signInWithCredential(PhoneAuthProvider.credential(
+        verificationId: widget.verid,
+        smsCode: otp,
+      ));
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => UploadImage(
+              doc: widget.doc,
+            ),
+          ));
+      fToast!.showToast(
+          child: ToastMessage().show(width, context, "success"),
+          gravity: ToastGravity.BOTTOM,
+          toastDuration: Duration(seconds: 3));
+    } catch (err) {
+      res = err.toString();
+      fToast!.showToast(
+          child: ToastMessage().show(width, context, "error"),
+          gravity: ToastGravity.BOTTOM,
+          toastDuration: Duration(seconds: 3));
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fToast = FToast();
+    fToast!.init(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -100,8 +143,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         OTPTextField(
+                          controller: _otp,
                           keyboardType: TextInputType.number,
-                          length: 4,
+                          length: 6,
                           width: Responsive.isDesktop(context)
                               ? width * 0.3
                               : width * 0.6,
@@ -122,13 +166,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => UploadImage(
-                                doc: widget.doc,
-                              ),
-                            ));
+                        signIn(_otp.toString(), width);
                       },
                       child: CustomSubmitButton(
                         width: width,

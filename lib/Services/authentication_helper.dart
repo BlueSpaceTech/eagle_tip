@@ -2,7 +2,7 @@
 import 'dart:math';
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:eagle_tip/Models/users.dart';
+
 import 'package:eagle_tip/Services/storagemethods.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:eagle_tip/Models/user.dart' as Model;
@@ -30,6 +30,20 @@ class AuthFunctions {
 
     return randomString;
   }
+
+  Future<String> resetpassword(String email) async {
+    String res = "Link sent to your email!";
+    try {
+      if (email.isNotEmpty) {
+        _auth.sendPasswordResetEmail(email: email);
+        return res;
+      }
+    } catch (err) {
+      res = err.toString();
+    }
+    return res;
+  }
+
 
   Future<String> signupuser({
     required String email,

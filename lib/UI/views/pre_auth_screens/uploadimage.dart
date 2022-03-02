@@ -58,7 +58,7 @@ class _UploadImageState extends State<UploadImage> {
     );
     if (res != "success") {
       fToast!.showToast(
-        child: ToastMessage().show(width, context, res),
+        child: ToastMessage().show(width, context, "Your Account is Created"),
         gravity: ToastGravity.BOTTOM,
         toastDuration: Duration(seconds: 3),
       );
