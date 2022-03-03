@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eagle_tip/Providers/user_provider.dart';
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Chat/message_model.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:eagle_tip/Models/user.dart' as model;
+import 'package:provider/provider.dart';
 
 class ChatScreenn extends StatefulWidget {
   ChatScreenn({
@@ -11,10 +14,12 @@ class ChatScreenn extends StatefulWidget {
     required this.index,
     required this.frienduid,
     required this.friendname,
+    required this.currentusername,
   }) : super(key: key);
   int index;
   final frienduid;
   final friendname;
+  final currentusername;
   @override
   _ChatScreennState createState() => _ChatScreennState(frienduid, friendname);
 }
@@ -26,8 +31,24 @@ class _ChatScreennState extends State<ChatScreenn> {
   final TextEditingController _sendcontroller = new TextEditingController();
   _ChatScreennState(this.frienduid, this.friendname);
   CollectionReference chat = FirebaseFirestore.instance.collection("chats");
-  void sendmessage(String message) {}
-  _chatBubble(Message message, bool isMe) {
+  void sendmessage(String message) {
+    print("entered in send");
+    if (message == "") {
+      return;
+    } else {
+      print("entered in send1");
+      chat.doc(chatDocId).collection("messages").add({
+        "createdOn": FieldValue.serverTimestamp(),
+        "uid": currentUserUID,
+        "message": message,
+      }).then((value) {
+        print("entered in send2");
+        _sendcontroller.text = "";
+      });
+    }
+  }
+
+  _chatBubble(String message, bool isMe) {
     if (isMe) {
       return Column(
         children: <Widget>[
@@ -44,7 +65,7 @@ class _ChatScreennState extends State<ChatScreenn> {
                 borderRadius: BorderRadius.circular(25),
               ),
               child: Text(
-                message.text,
+                message,
                 style: TextStyle(
                   fontWeight: FontWeight.w300,
                   color: Colors.black,
@@ -70,7 +91,7 @@ class _ChatScreennState extends State<ChatScreenn> {
                 borderRadius: BorderRadius.circular(25),
               ),
               child: Text(
-                message.text,
+                message,
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w300,
@@ -126,8 +147,13 @@ class _ChatScreennState extends State<ChatScreenn> {
             chatDocId = querySnapshot.docs.single.id;
           } else {
             chat.add({
-              'users': {currentUserUID: null, frienduid: null}
-            }).then((value) => {chatDocId = value});
+              'users': {frienduid: null, currentUserUID: null},
+              "between": [frienduid, currentUserUID],
+              "user1": friendname,
+              "user2": widget.currentusername,
+              "uid1": currentUserUID,
+              "uid2": frienduid,
+            }).then((value) => {chatDocId = value.id});
           }
         })
         .catchError((err) {});
@@ -222,6 +248,7 @@ class _ChatScreennState extends State<ChatScreenn> {
               children: <Widget>[
                 Expanded(
                   child: ListView.builder(
+                    shrinkWrap: true,
                     reverse: true,
                     padding: EdgeInsets.all(20),
                     itemCount: snapshot.data?.docs.length,
@@ -235,7 +262,7 @@ class _ChatScreennState extends State<ChatScreenn> {
                     f
       */
                       final bool isMe = document!["uid"] == currentUserUID;
-                      return _chatBubble(document!["message"], isMe);
+                      return _chatBubble(document["message"], isMe);
                     },
                   ),
                 ),

@@ -134,6 +134,7 @@ class MyApp extends StatelessWidget {
           AppRoutes.siteDetails: (context) => SiteDetails(),
           // AppRoutes.settings: (context) => Settings(),
           AppRoutes.chattingscreen: (context) => ChatScreenn(
+                currentusername: "",
                 friendname: "",
                 frienduid: "",
                 index: 0,
@@ -155,6 +156,7 @@ class MyApp extends StatelessWidget {
                   "Risus vestibulum, risus feugiat semper velit feugiat velit. Placerat elit volutpat volutpat elit bibendum molestie eget. Convallis mattis dignissim quis tincidunt quisque. Adipiscing suspendisse faucibus aliquet a turpis odio pellentesque lectus duis. Sodales odio eu bibendum massa velit maecenas eget. Maecenas facilisis nunc tincidunt sed eget viverra porttitor feugiat. Mattis dictum sed suspendisse faucibus gravida. Id eget amet dis amet ut at in eget nam. "),
           AppRoutes.webfinaltour: (context) => FinalTourWeb(),
           AppRoutes.messagemain: (context) => MessageMain(
+                currentusername: "",
                 index: 0,
                 friendname: "",
                 frienduid: "",

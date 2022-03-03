@@ -1,6 +1,11 @@
+import 'dart:html';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eagle_tip/Providers/user_provider.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:eagle_tip/Models/user.dart' as model;
+import 'package:provider/provider.dart';
 
 class ChatListTile extends StatelessWidget {
   const ChatListTile({
@@ -15,6 +20,7 @@ class ChatListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    model.User user = Provider.of<UserProvider>(context).getUser;
     return Container(
       padding: EdgeInsets.only(top: height * 0.03),
       child: Row(
@@ -33,7 +39,7 @@ class ChatListTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  doc["name"],
+                  doc["user1"] == user.name ? doc['user2'] : doc["user1"],
                   style: TextStyle(
                       fontSize: 14,
                       color: Colors.white,

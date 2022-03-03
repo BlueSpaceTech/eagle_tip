@@ -22,12 +22,22 @@ class NewChatScreen extends StatefulWidget {
 }
 
 class _NewChatScreenState extends State<NewChatScreen> {
-  void callChatScreen(String name, String uid) {
-    Navigator.push(
-        context,
-        CupertinoPageRoute(
-            builder: (context) =>
-                MessageMain(index: 0, frienduid: uid, friendname: name)));
+  void callChatScreen(String uid, String name, String currentusername) {
+    Responsive.isDesktop(context)
+        ? Navigator.push(
+            context,
+            CupertinoPageRoute(
+                builder: (context) => MessageMain(
+                      index: 0,
+                      frienduid: uid,
+                      friendname: name,
+                      currentusername: currentusername,
+                    )))
+        : ChatScreenn(
+            index: 0,
+            frienduid: uid,
+            friendname: name,
+            currentusername: currentusername);
   }
 
   @override
@@ -226,8 +236,8 @@ class _NewChatScreenState extends State<NewChatScreen> {
                               final document = snapshot.data?.docs[index];
                               return GestureDetector(
                                 onTap: () {
-                                  callChatScreen(
-                                      document!["uid"], document["name"]);
+                                  callChatScreen(document!["uid"],
+                                      document["name"], user.name);
                                 },
                                 child: MouseRegion(
                                   cursor: SystemMouseCursors.click,

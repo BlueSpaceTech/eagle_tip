@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eagle_tip/Providers/user_provider.dart';
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/chatListTile.dart';
 import 'package:eagle_tip/UI/Widgets/logo.dart';
@@ -7,21 +8,56 @@ import 'package:eagle_tip/UI/views/post_auth_screens/Chat/chatting.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Sites/sites.dart';
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:eagle_tip/Models/user.dart' as model;
+import 'package:provider/provider.dart';
 
-class AllChatScreen extends StatelessWidget {
+class AllChatScreen extends StatefulWidget {
   AllChatScreen({Key? key}) : super(key: key);
+
+  @override
+  State<AllChatScreen> createState() => _AllChatScreenState();
+}
+
+class _AllChatScreenState extends State<AllChatScreen> {
+  final currentUserUID = FirebaseAuth.instance.currentUser!.uid;
   List siteImg = ["site1", "site2"];
+
   List siteName = ["Acres Marathon", "Akron Marathon"];
+
   List sitelocation = ["Tampa,FL", "Leesburg,FL"];
+  void callChatScreen(String uid, String name, String currentusername) {
+    Responsive.isDesktop(context)
+        ?
+        
+         Navigator.push(
+            context,
+            CupertinoPageRoute(
+                builder: (context) => MessageMain(
+                      index: 0,
+                      frienduid: uid,
+                      friendname: name,
+                      currentusername: currentusername,
+                    )))
+        : ChatScreenn(
+            index: 0,
+            frienduid: uid,
+            friendname: name,
+            currentusername: currentusername);
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+    model.User user = Provider.of<UserProvider>(context).getUser;
     return Scaffold(
       floatingActionButton: GestureDetector(
         onTap: () {
+        
           Navigator.pop(context);
           Navigator.push(
               context,
@@ -60,7 +96,9 @@ class AllChatScreen extends StatelessWidget {
       ),
       backgroundColor: Color(0xff2B343B),
       body: StreamBuilder<QuerySnapshot>(
-          stream: FirebaseFirestore.instance.collection("chats").snapshots(),
+          stream: FirebaseFirestore.instance
+              .collection("chats")
+              .where("between", arrayContainsAny: [currentUserUID]).snapshots(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return Text("There's some error");
@@ -194,23 +232,17 @@ class AllChatScreen extends StatelessWidget {
                         itemCount: snapshot.data?.docs.length,
                         itemBuilder: (BuildContext context, int index) {
                           final document = snapshot.data?.docs[index];
+
                           return GestureDetector(
                             onTap: () {
-                              if (Responsive.isDesktop(context)) {
-                                Navigator.pop(context);
-                                /*
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => MessageMain(
-                                        index: index,
-                                      ),
-                                    ));
-                                    */
-                              } else {
-                                Navigator.pushNamed(
-                                    context, AppRoutes.chattingscreen);
-                              }
+                              callChatScreen(
+                                  document!['uid1'] == user.name
+                                      ? document["uid2"]
+                                      : document["uid1"],
+                                  document['name1'] == user.name
+                                      ? document["name2"]
+                                      : document["name1"],
+                                  user.name);
                             },
                             child: MouseRegion(
                               cursor: SystemMouseCursors.text,
