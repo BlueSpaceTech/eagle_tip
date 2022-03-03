@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eagle_tip/Routes/approutes.dart';
+import 'package:eagle_tip/Services/otp_provider.dart';
 import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
 import 'package:eagle_tip/UI/Widgets/customfaqbottom.dart';
 import 'package:eagle_tip/UI/Widgets/customsubmitbutton.dart';
@@ -19,7 +20,7 @@ class VerificationScreen extends StatefulWidget {
   VerificationScreen({Key? key, required this.doc, required this.verid})
       : super(key: key);
   DocumentSnapshot doc;
-  String verid;
+  ConfirmationResult verid;
   @override
   _VerificationScreenState createState() => _VerificationScreenState();
 }
@@ -32,7 +33,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
     try {
       await FirebaseAuth.instance
           .signInWithCredential(PhoneAuthProvider.credential(
-        verificationId: widget.verid,
+        verificationId: "",
         smsCode: otp,
       ));
       Navigator.push(
@@ -157,6 +158,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
                               OtpFieldStyle(backgroundColor: Colors.white),
                           onCompleted: (pin) {
                             print("Completed: " + pin);
+                            //OtpFucnctions().authenticateMe(confirmationResult, _otp)
+                            OtpFucnctions().authenticateMe(
+                                widget.verid, pin, context, widget.doc);
                           },
                         ),
                       ],
@@ -166,7 +170,15 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     ),
                     InkWell(
                       onTap: () {
-                        signIn(_otp.toString(), width);
+                        // signIn(_otp.toString(), width);
+
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => UploadImage(
+                                doc: widget.doc,
+                              ),
+                            ));
                       },
                       child: CustomSubmitButton(
                         width: width,

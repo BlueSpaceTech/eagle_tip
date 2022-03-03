@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class NewChatListTile extends StatelessWidget {
@@ -5,9 +6,11 @@ class NewChatListTile extends StatelessWidget {
     Key? key,
     required this.height,
     required this.width,
+    required this.doc,
   }) : super(key: key);
   final double height;
   final double width;
+  final DocumentSnapshot doc;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +31,7 @@ class NewChatListTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Ahmad Elizondo",
+                  doc["name"],
                   style: TextStyle(
                       fontSize: 14,
                       color: Colors.white,
@@ -36,7 +39,7 @@ class NewChatListTile extends StatelessWidget {
                       fontWeight: FontWeight.w600),
                 ),
                 Text(
-                  "Manager",
+                  doc["userRole"],
                   style: TextStyle(
                       fontSize: 12,
                       color: Color(0xffD9DBE9),

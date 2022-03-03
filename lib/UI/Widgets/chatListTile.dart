@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 
@@ -6,9 +7,11 @@ class ChatListTile extends StatelessWidget {
     Key? key,
     required this.height,
     required this.width,
+    required this.doc,
   }) : super(key: key);
   final double height;
   final double width;
+  final DocumentSnapshot doc;
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +28,12 @@ class ChatListTile extends StatelessWidget {
             width: 10,
           ),
           Container(
-            width: Responsive.isDesktop(context) ? width * 0.2 : width * 0.55,
+            width: Responsive.isDesktop(context) ? width * 0.18 : width * 0.55,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Ahmad Elizondo",
+                  doc["name"],
                   style: TextStyle(
                       fontSize: 14,
                       color: Colors.white,

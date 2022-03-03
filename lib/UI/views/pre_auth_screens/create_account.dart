@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eagle_tip/Routes/approutes.dart';
+import 'package:eagle_tip/Services/otp_provider.dart';
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
 import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
 import 'package:eagle_tip/UI/Widgets/customfaqbottom.dart';
@@ -29,6 +30,7 @@ class _CreateAccountState extends State<CreateAccount> {
   final TextEditingController email = TextEditingController();
   final TextEditingController phoneno = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  String? verifiyme;
   String? phoneNumber, verificationId;
   String? otp, authStatus = "";
   void _sendSMS(String message, List<String> recipents) async {
@@ -127,7 +129,8 @@ class _CreateAccountState extends State<CreateAccount> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        _sendSMS("Hi rakshit", ["9813382163"]);
+                        ConfirmationResult res = OtpFucnctions()
+                            .sendOTP("+91 92052 60904", context, widget.doc);
                       },
                       /*
                         await FirebaseAuth.instance.verifyPhoneNumber(
@@ -181,6 +184,34 @@ class _CreateAccountState extends State<CreateAccount> {
           ),
         ]),
       ),
+    );
+  }
+
+  _verifyphonenumber() async {
+    await FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: "+919813382163",
+      verificationCompleted: (Credential) async {},
+      verificationFailed: (e) {
+        print(e.message);
+      },
+      codeSent: (verificationId, resendToken) {
+        /*
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => VerificationScreen(
+                doc: widget.doc,
+                verid: "ff",
+              ),
+            ));
+            */
+      },
+      codeAutoRetrievalTimeout: (verificationId) {
+        setState(() {
+          verifiyme = verificationId;
+        });
+      },
+      timeout: Duration(seconds: 60),
     );
   }
 }

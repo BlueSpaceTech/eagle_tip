@@ -44,7 +44,6 @@ class AuthFunctions {
     return res;
   }
 
-
   Future<String> signupuser({
     required String email,
     required String password,
@@ -54,6 +53,7 @@ class AuthFunctions {
     required List Sites,
     required String employercode,
     required bool isverified,
+    required Uint8List file,
   }) async {
     String res = "Some error occured";
     try {
@@ -67,8 +67,8 @@ class AuthFunctions {
         UserCredential cred = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
 
-        //   String photoUrl = await StorageMethods()
-        //       .uploadImageToStorage("profilePics", file, false);
+        //  String photoUrl = await StorageMethods()
+        //      .uploadImageToStoragefinal("profilePics", file, false);
 
         //add user to database
         Model.User user = Model.User(
@@ -79,7 +79,7 @@ class AuthFunctions {
           sites: Sites,
           employerCode: employercode,
           phoneisverified: isverified,
-          dpurl: "",
+          dpurl: "ff",
           userRole: role,
         );
         _firestore.collection("users").doc(cred.user!.uid).set(user.toJson());
@@ -132,7 +132,7 @@ class AuthFunctions {
         "email": email,
         "phonenumber": phonenumber,
         "userRole": userRole,
-        "phoneisverified": phoneisverified,
+        "isverified": phoneisverified,
         "sites": sites,
         "employercode": code,
       });

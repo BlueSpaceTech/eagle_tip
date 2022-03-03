@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/Services/authentication_helper.dart';
+import 'package:eagle_tip/Services/storagemethods.dart';
 import 'package:eagle_tip/Services/utils.dart';
 import 'package:eagle_tip/UI/Widgets/customTextField.dart';
 import 'package:eagle_tip/UI/Widgets/custom_webbg.dart';
@@ -54,21 +55,25 @@ class _UploadImageState extends State<UploadImage> {
       Sites: widget.doc.get("sites"),
       employercode: widget.doc.get("employercode"),
       isverified: true,
-      //file: _image!,
+      file: _image!,
     );
+    //  StorageMethods().uploadStorageImage(_image!, "filePath");
+
     if (res != "success") {
+      fToast!.showToast(
+        child: ToastMessage().show(width, context, res),
+        gravity: ToastGravity.BOTTOM,
+        toastDuration: Duration(seconds: 3),
+      );
+    } else {
+      //Uri url = await StorageMethods().uploadImageFile(_image!);
       fToast!.showToast(
         child: ToastMessage().show(width, context, "Your Account is Created"),
         gravity: ToastGravity.BOTTOM,
         toastDuration: Duration(seconds: 3),
       );
+      Navigator.pushNamed(context, AppRoutes.homeScreen);
     }
-    fToast!.showToast(
-      child: ToastMessage().show(width, context, res),
-      gravity: ToastGravity.BOTTOM,
-      toastDuration: Duration(seconds: 3),
-    );
-    Navigator.pushNamed(context, AppRoutes.homeScreen);
   }
 
   @override
@@ -169,8 +174,7 @@ class _UploadImageState extends State<UploadImage> {
                               shape: BoxShape.circle,
                             ),
                             child: GestureDetector(
-                                onTap: //selectImage,
-                                    () {},
+                                onTap: selectImage,
                                 child: Image.asset("assets/addblue.png")),
                           )
                         : Container(
@@ -187,8 +191,7 @@ class _UploadImageState extends State<UploadImage> {
                               shape: BoxShape.circle,
                             ),
                             child: GestureDetector(
-                                onTap: //selectImage,
-                                    () {},
+                                onTap: selectImage,
                                 child: Image.asset("assets/addblue.png")),
                           ),
                     SizedBox(

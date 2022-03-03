@@ -63,6 +63,7 @@ void main() async {
     // Replace with actual values
 
     options: FirebaseOptions(
+      storageBucket: "eagle-tip.appspot.com",
       apiKey: "AIzaSyDVMUtzjQx29o2lMKZx0IHSJ_5v_z4mqnk",
       appId: "1:168073462322:android:364f09407678105ceeb22b",
       messagingSenderId: "168073462322",
@@ -119,6 +120,8 @@ class MyApp extends StatelessWidget {
           AppRoutes.siteDetails: (context) => SiteDetails(),
           AppRoutes.settings: (context) => Settings(),
           AppRoutes.chattingscreen: (context) => ChatScreenn(
+                friendname: "",
+                frienduid: "",
                 index: 0,
               ),
           AppRoutes.addUserOwner: (context) => AddNewUserByOwner(),
@@ -137,7 +140,11 @@ class MyApp extends StatelessWidget {
               notifyContent:
                   "Risus vestibulum, risus feugiat semper velit feugiat velit. Placerat elit volutpat volutpat elit bibendum molestie eget. Convallis mattis dignissim quis tincidunt quisque. Adipiscing suspendisse faucibus aliquet a turpis odio pellentesque lectus duis. Sodales odio eu bibendum massa velit maecenas eget. Maecenas facilisis nunc tincidunt sed eget viverra porttitor feugiat. Mattis dictum sed suspendisse faucibus gravida. Id eget amet dis amet ut at in eget nam. "),
           AppRoutes.webfinaltour: (context) => FinalTourWeb(),
-          AppRoutes.messagemain: (context) => MessageMain(index: 0),
+          AppRoutes.messagemain: (context) => MessageMain(
+                index: 0,
+                friendname: "",
+                frienduid: "",
+              ),
           AppRoutes.terminalhome: (context) => TerminalHome(),
         },
       ),

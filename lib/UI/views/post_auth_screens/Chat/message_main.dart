@@ -6,8 +6,16 @@ import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
 
 class MessageMain extends StatefulWidget {
-  MessageMain({Key? key, required this.index}) : super(key: key);
+  MessageMain({
+    Key? key,
+    required this.index,
+    required this.frienduid,
+    required this.friendname,
+  }) : super(key: key);
   int index;
+  final friendname;
+  final frienduid;
+
   @override
   _MessageMainState createState() => _MessageMainState();
 }
@@ -38,6 +46,8 @@ class _MessageMainState extends State<MessageMain> {
                       Expanded(
                           flex: 5,
                           child: ChatScreenn(
+                            friendname: widget.friendname,
+                            frienduid: widget.friendname,
                             index: widget.index,
                           )),
                     ],
@@ -51,6 +61,8 @@ class _MessageMainState extends State<MessageMain> {
     );
   }
 }
+
+//Widget buildchatscreen(BuildContext context) => ChatScreenn(index: 0);
 
 class NewChatMain extends StatefulWidget {
   NewChatMain({Key? key, required this.index}) : super(key: key);
@@ -84,6 +96,8 @@ class _NewChatMainState extends State<NewChatMain> {
                     Expanded(
                         flex: 5,
                         child: ChatScreenn(
+                          friendname: "selected a cchat",
+                          frienduid: "",
                           index: widget.index,
                         )),
                   ],

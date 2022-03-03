@@ -1,19 +1,32 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/views/post_auth_screens/Chat/message_model.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ChatScreenn extends StatefulWidget {
   ChatScreenn({
     Key? key,
     required this.index,
+    required this.frienduid,
+    required this.friendname,
   }) : super(key: key);
   int index;
+  final frienduid;
+  final friendname;
   @override
-  _ChatScreennState createState() => _ChatScreennState();
+  _ChatScreennState createState() => _ChatScreennState(frienduid, friendname);
 }
 
 class _ChatScreennState extends State<ChatScreenn> {
+  final frienduid;
+  final friendname;
+  final currentUserUID = FirebaseAuth.instance.currentUser!.uid;
+  final TextEditingController _sendcontroller = new TextEditingController();
+  _ChatScreennState(this.frienduid, this.friendname);
+  CollectionReference chat = FirebaseFirestore.instance.collection("chats");
+
   _chatBubble(Message message, bool isMe) {
     if (isMe) {
       return Column(
@@ -82,6 +95,7 @@ class _ChatScreennState extends State<ChatScreenn> {
         color: Color(0xff20272C),
       ),
       child: TextField(
+        controller: _sendcontroller,
         style: TextStyle(color: Colors.white),
         decoration: InputDecoration(
           suffixIcon: Image.asset("assets/send.png"),
@@ -92,6 +106,27 @@ class _ChatScreennState extends State<ChatScreenn> {
         ),
       ),
     );
+  }
+
+  var chatDocId;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    chat
+        .where("users", isEqualTo: {frienduid: null, currentUserUID: null})
+        .limit(1)
+        .get()
+        .then((QuerySnapshot querySnapshot) {
+          if (querySnapshot.docs.isNotEmpty) {
+            chatDocId = querySnapshot.docs.single.id;
+          } else {
+            chat.add({
+              'users': {currentUserUID: null, frienduid: null}
+            }).then((value) => {chatDocId = value});
+          }
+        })
+        .catchError((err) {});
   }
 
   @override
@@ -144,7 +179,7 @@ class _ChatScreennState extends State<ChatScreenn> {
                           width: 10,
                         ),
                         Text(
-                          "Ahmed Elizondo",
+                          friendname,
                           style: TextStyle(
                               fontSize: 16,
                               color: Colors.white,
@@ -161,27 +196,46 @@ class _ChatScreennState extends State<ChatScreenn> {
         ),
       ),
       backgroundColor: Color(0XFF3F4850),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: ListView.builder(
-              reverse: true,
-              padding: EdgeInsets.all(20),
-              itemCount: messages.length,
-              itemBuilder: (BuildContext context, int index) {
-                final Message message = messages[index];
-                final bool isMe = message.sender == "currentUser";
-                /*
-                final bool isSameUser = prevUserId == "";
-                prevUserId = message.sender.id;
-*/
-                return _chatBubble(message, isMe);
-              },
-            ),
-          ),
-          _sendMessageArea(height, width),
-        ],
-      ),
+      body: StreamBuilder<QuerySnapshot>(
+          stream: FirebaseFirestore.instance
+              .collection("chats")
+              .doc(chatDocId)
+              .collection("messages")
+              .orderBy("createdOn", descending: true)
+              .snapshots(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Text("There's some error");
+            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(
+                  color: Colors.blue,
+                ),
+              );
+            }
+            return Column(
+              children: <Widget>[
+                Expanded(
+                  child: ListView.builder(
+                    reverse: true,
+                    padding: EdgeInsets.all(20),
+                    itemCount: messages.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final Message message = messages[index];
+                      final bool isMe = message.sender == "currentUser";
+                      /*
+                    final bool isSameUser = prevUserId == "";
+                    prevUserId = message.sender.id;
+      */
+                      return _chatBubble(message, isMe);
+                    },
+                  ),
+                ),
+                _sendMessageArea(height, width),
+              ],
+            );
+          }),
     );
   }
 }
