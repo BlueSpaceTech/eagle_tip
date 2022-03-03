@@ -26,7 +26,7 @@ class _ChatScreennState extends State<ChatScreenn> {
   final TextEditingController _sendcontroller = new TextEditingController();
   _ChatScreennState(this.frienduid, this.friendname);
   CollectionReference chat = FirebaseFirestore.instance.collection("chats");
-
+  void sendmessage(String message) {}
   _chatBubble(Message message, bool isMe) {
     if (isMe) {
       return Column(
@@ -98,7 +98,11 @@ class _ChatScreennState extends State<ChatScreenn> {
         controller: _sendcontroller,
         style: TextStyle(color: Colors.white),
         decoration: InputDecoration(
-          suffixIcon: Image.asset("assets/send.png"),
+          suffixIcon: GestureDetector(
+              onTap: () {
+                sendmessage(_sendcontroller.text);
+              },
+              child: Image.asset("assets/send.png")),
           border: InputBorder.none,
           hintText: 'Message',
           hintStyle: TextStyle(
@@ -220,15 +224,18 @@ class _ChatScreennState extends State<ChatScreenn> {
                   child: ListView.builder(
                     reverse: true,
                     padding: EdgeInsets.all(20),
-                    itemCount: messages.length,
+                    itemCount: snapshot.data?.docs.length,
                     itemBuilder: (BuildContext context, int index) {
-                      final Message message = messages[index];
-                      final bool isMe = message.sender == "currentUser";
+                      final document = snapshot.data?.docs[index];
+                      // final Message message = messages[index];
+                      //  final bool isMe = message.sender == "currentUser";
                       /*
                     final bool isSameUser = prevUserId == "";
                     prevUserId = message.sender.id;
+                    f
       */
-                      return _chatBubble(message, isMe);
+                      final bool isMe = document!["uid"] == currentUserUID;
+                      return _chatBubble(document!["message"], isMe);
                     },
                   ),
                 ),

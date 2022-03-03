@@ -55,7 +55,6 @@ class _UploadImageState extends State<UploadImage> {
       Sites: widget.doc.get("sites"),
       employercode: widget.doc.get("employercode"),
       isverified: true,
-      file: _image!,
     );
     //  StorageMethods().uploadStorageImage(_image!, "filePath");
 
@@ -174,7 +173,7 @@ class _UploadImageState extends State<UploadImage> {
                               shape: BoxShape.circle,
                             ),
                             child: GestureDetector(
-                                onTap: selectImage,
+                                //  onTap: selectImage,
                                 child: Image.asset("assets/addblue.png")),
                           )
                         : Container(
@@ -191,7 +190,7 @@ class _UploadImageState extends State<UploadImage> {
                               shape: BoxShape.circle,
                             ),
                             child: GestureDetector(
-                                onTap: selectImage,
+//onTap: selectImage,
                                 child: Image.asset("assets/addblue.png")),
                           ),
                     SizedBox(
