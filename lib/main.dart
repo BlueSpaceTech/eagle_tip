@@ -1,5 +1,6 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unused_import
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eagle_tip/Providers/user_provider.dart';
 import 'package:eagle_tip/Routes/approutes.dart';
 
@@ -49,11 +50,15 @@ import 'package:eagle_tip/UI/views/pre_auth_screens/login_screen.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/splashscreen.dart';
 import 'package:eagle_tip/UI/views/pre_auth_screens/uploadimage.dart';
 import 'package:eagle_tip/UI/views/user_navigator.dart';
+import 'package:eagle_tip/Utils/constants.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
+// import 'package:firebase_messaging_web/firebase_messaging_web.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -70,11 +75,20 @@ void main() async {
       projectId: "eagle-tip",
     ),
   );
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+
+  @override
+  void initState() {
+    configOneSignel();
+  }
+
+  void configOneSignel() {
+    OneSignal.shared.setAppId(kAppId);
+  }
 
   // This widget is the root of your application.
   @override
@@ -92,8 +106,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           backgroundColor: Color(0xff2B343B),
         ),
-        initialRoute: AppRoutes.loginscreen,
-        //home: UserNavigator(),
+        // initialRoute: AppRoutes.homeScreen,
+        home: UserNavigator(),
         routes: {
           AppRoutes.support: (context) => SupportScreen(),
           AppRoutes.addFAQ: (context) => AddFAQ(),
@@ -118,7 +132,7 @@ class MyApp extends StatelessWidget {
           AppRoutes.myProfile: (context) => MyProfile(),
           AppRoutes.siteScreen: (context) => Sites(),
           AppRoutes.siteDetails: (context) => SiteDetails(),
-          AppRoutes.settings: (context) => Settings(),
+          // AppRoutes.settings: (context) => Settings(),
           AppRoutes.chattingscreen: (context) => ChatScreenn(
                 friendname: "",
                 frienduid: "",

@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eagle_tip/Services/storagemethods.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:eagle_tip/Models/user.dart' as Model;
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 
 class AuthFunctions {
   static final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -50,10 +51,13 @@ class AuthFunctions {
     required String username,
     required String phoneno,
     required String role,
+    // required String token,
     required List Sites,
     required String employercode,
     required bool isverified,
   }) async {
+    var status = await OneSignal.shared.getDeviceState();
+    String? tokenId = status?.userId;
     String res = "Some error occured";
     try {
       if (email.isNotEmpty ||
@@ -71,6 +75,7 @@ class AuthFunctions {
 
         //add user to database
         Model.User user = Model.User(
+          tokenID: tokenId!,
           name: username,
           email: email,
           Phonenumber: phoneno,

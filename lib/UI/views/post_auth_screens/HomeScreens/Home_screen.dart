@@ -12,6 +12,8 @@ import 'package:eagle_tip/UI/views/post_auth_screens/UserProfiles/myprofile.dart
 import 'package:eagle_tip/Utils/common.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
+// import 'package:firebase_messaging_platform_interface/firebase_messaging_platform_interface.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -32,6 +34,15 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    // model.User user = Provider.of<UserProvider>(context).getUser;
+    // CollectionReference tokens =
+    //     FirebaseFirestore.instance.collection("tokens");
+    // FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
+    // firebaseMessaging.getToken().then((value) {
+    //   print(value);
+    //   // tokens.doc(user.userRole).update(data);
+    // });
+
     addData();
   }
 
@@ -42,9 +53,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    model.User user = Provider.of<UserProvider>(context).getUser;
+
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    model.User user = Provider.of<UserProvider>(context).getUser;
     return Scaffold(
       floatingActionButton: Responsive.isDesktop(context)
           ? MenuButton(isTapped: false, width: width)

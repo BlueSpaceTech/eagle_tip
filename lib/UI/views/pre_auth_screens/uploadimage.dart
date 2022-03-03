@@ -47,6 +47,7 @@ class _UploadImageState extends State<UploadImage> {
 
   void signupUser(double width) async {
     String res = await AuthFunctions().signupuser(
+      // token: widget.doc.get("token"),
       email: widget.doc.get("email"),
       password: _password.text,
       username: widget.doc.get("name"),

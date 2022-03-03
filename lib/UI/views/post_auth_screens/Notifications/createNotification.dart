@@ -1,12 +1,16 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, unnecessary_import
 
 import 'package:eagle_tip/Routes/approutes.dart';
 import 'package:eagle_tip/UI/Widgets/customContainer.dart';
 import 'package:eagle_tip/UI/Widgets/customNav.dart';
+import 'package:flutter/cupertino.dart';
+// import 'package:cron/cron.dart';
+
 import 'package:eagle_tip/UI/Widgets/customappheader.dart';
 import 'package:eagle_tip/Utils/constants.dart';
 import 'package:eagle_tip/Utils/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class CreateNotification extends StatefulWidget {
   CreateNotification({Key? key}) : super(key: key);
@@ -17,17 +21,37 @@ class CreateNotification extends StatefulWidget {
 
 class _CreateNotificationState extends State<CreateNotification> {
   String dropdownvalue = 'All Users';
+  // Future<void> main() async {
+  //   final cron = Cron();
+  //   cron.schedule(
+  //       Schedule.parse("*/30 * * * * *"), () => {print("Hi every 30 seconds")});
+  // }
 
   // List of items in our dropdown menu
   var items = [
     'All Users',
-    'Item 2',
+    "Managers",
     'Item 3',
     'Item 4',
     'Item 5',
   ];
+
+  TimeOfDay selectedTime = TimeOfDay.now();
   @override
   Widget build(BuildContext context) {
+    _selectTime(BuildContext context) async {
+      final TimeOfDay? timeOfDay = await showTimePicker(
+        context: context,
+        initialTime: selectedTime,
+        initialEntryMode: TimePickerEntryMode.dial,
+      );
+      if (timeOfDay != null && timeOfDay != selectedTime) {
+        setState(() {
+          selectedTime = timeOfDay;
+        });
+      }
+    }
+
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -51,10 +75,9 @@ class _CreateNotificationState extends State<CreateNotification> {
                   height: height,
                   text1: "Home",
                   text2: "Sites",
-                  
                 ),
                 SizedBox(
-                  height: height * 0.06,
+                  height: height * 0.03,
                 ),
                 CustomContainer(
                   opacity: 0.2,
@@ -139,7 +162,7 @@ class _CreateNotificationState extends State<CreateNotification> {
                           width: width * 0.42,
                           padding: EdgeInsets.only(
                               left: width * 0.01, right: width * 0.06),
-                          height: height * 0.4,
+                          height: height * 0.35,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -160,6 +183,100 @@ class _CreateNotificationState extends State<CreateNotification> {
                         ),
                         SizedBox(
                           height: height * 0.03,
+                        ),
+                        Row(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Schedule",
+                                  style: TextStyle(
+                                      fontSize: width * 0.01,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white,
+                                      fontFamily: "Poppins"),
+                                ),
+                                SizedBox(
+                                  height: 10.0,
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    // _selectTime(context);
+                                    DatePicker.showDateTimePicker(context,
+                                        showTitleActions: true,
+                                        minTime: DateTime(2018, 3, 5),
+                                        maxTime: DateTime(2019, 6, 7),
+                                        onChanged: (date) {
+                                      // print('change $date');
+                                    }, onConfirm: (date) {
+                                      print('confirm ${date}');
+                                    },
+                                        currentTime: DateTime.now(),
+                                        locale: LocaleType.en);
+                                  },
+                                  child: Container(
+                                    width: width * 0.13,
+                                    height: height * 0.08,
+                                    padding: EdgeInsets.only(
+                                        top: height * 0.01,
+                                        left: width * 0.02,
+                                        right: width * 0.06),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Hour",
+                                          style: TextStyle(
+                                            fontFamily: "Poppins",
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 16.0,
+                                            color: Color(0xFF6E7191),
+                                          ),
+                                        ),
+                                        Text(
+                                          " ${selectedTime.format(context)}",
+                                          style: TextStyle(
+                                              fontSize: 18.0,
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: "Poppins"),
+                                        ),
+                                      ],
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(15)),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              width: width * 0.05,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Days",
+                                  style: TextStyle(
+                                      fontSize: width * 0.01,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white,
+                                      fontFamily: "Poppins"),
+                                ),
+                                SizedBox(
+                                  height: 10.0,
+                                ),
+                                DaysRow(width: width),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: height * 0.04,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -185,21 +302,29 @@ class _CreateNotificationState extends State<CreateNotification> {
                             SizedBox(
                               width: width * 0.01,
                             ),
-                            Container(
-                              width: width * 0.08,
-                              height: height * 0.058,
-                              decoration: BoxDecoration(
-                                color: Color(0Xff5081db),
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "Send",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: width * 0.008,
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: "Poppins"),
+                            InkWell(
+                              onTap: () {
+                                // final cron = Cron();
+                                // cron.schedule(Schedule.parse("* * * * *"), () {
+                                //   print("hi");
+                                // });
+                              },
+                              child: Container(
+                                width: width * 0.08,
+                                height: height * 0.058,
+                                decoration: BoxDecoration(
+                                  color: Color(0Xff5081db),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    "Send",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: width * 0.008,
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: "Poppins"),
+                                  ),
                                 ),
                               ),
                             ),
@@ -210,13 +335,148 @@ class _CreateNotificationState extends State<CreateNotification> {
                   ),
                   width: width,
                   topPad: 10.0,
-                  height: height,
+                  height: height * 1.02,
                 ),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class DaysRow extends StatelessWidget {
+  const DaysRow({
+    Key? key,
+    required this.width,
+  }) : super(key: key);
+
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width * 0.15,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Day(
+            width: width,
+            dayname: "S",
+          ),
+          Day(
+            width: width,
+            dayname: "M",
+          ),
+          Day(
+            width: width,
+            dayname: "T",
+          ),
+          Day(
+            width: width,
+            dayname: "W",
+          ),
+          Day(
+            width: width,
+            dayname: "T",
+          ),
+          Day(
+            width: width,
+            dayname: "F",
+          ),
+          Day(
+            width: width,
+            dayname: "S",
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Day extends StatefulWidget {
+  Day({
+    Key? key,
+    required this.width,
+    required this.dayname,
+  }) : super(key: key);
+
+  final double width;
+  final String dayname;
+
+  @override
+  State<Day> createState() => _DayState();
+}
+
+class _DayState extends State<Day> {
+  bool? val1 = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          widget.dayname,
+          style: TextStyle(
+            fontSize: widget.width * 0.01,
+            fontWeight: FontWeight.w500,
+            color: Colors.white,
+            fontFamily: "Poppins",
+          ),
+        ),
+        Theme(
+          data: ThemeData(unselectedWidgetColor: Colors.white),
+          child: Checkbox(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(3.0)),
+              value: val1,
+              onChanged: (val) {
+                setState(() {
+                  val1 = val;
+                });
+              }),
+        )
+      ],
+    );
+  }
+}
+
+class AudienceRow extends StatefulWidget {
+  AudienceRow({
+    Key? key,
+    required this.width,
+    required this.name,
+  }) : super(key: key);
+  final double width;
+  final String name;
+  @override
+  State<AudienceRow> createState() => _AudienceRowState();
+}
+
+class _AudienceRowState extends State<AudienceRow> {
+  bool? val1 = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Checkbox(
+            value: val1,
+            onChanged: (val) {
+              setState(() {
+                val1 = val;
+              });
+            }),
+        Text(
+          widget.name,
+          style: TextStyle(
+              fontSize: widget.width * 0.01,
+              fontWeight: FontWeight.w500,
+              color: Colors.white,
+              fontFamily: "Poppins"),
+        ),
+      ],
     );
   }
 }
